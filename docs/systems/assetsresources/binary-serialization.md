@@ -24,31 +24,31 @@ public partial class CustomResource : GameResource
 }
 
 // This will be stored as binary data according to Serialize & Deserialize method
-public class MyBigData : BinarySerializable
+public class MyBigData : BlobData
 {
-    public List<float> Data { get; set; } = [];
-    
-    public void override Serialize( ref BlobWriter writer )
+	public List<float> Data { get; set; } = [];
+
+	public override void Serialize( ref Writer writer )
     {
-        // This layout will be what we will be deserializing, plan accordingly
-        
-        writer.Write( Data.Count ); // Int
-        
-        foreach ( var instance in Data ) // float * Data.Count
-        {
-            writer.Write( instance );
-        }
-    }
-    
-    public void override Deserialize( ref BlobReader )
+		// This layout will be what we will be deserializing, plan accordingly
+		writer.Stream.Write( Data.Count ); // int
+		
+		foreach ( var instance in Data )
+		{
+			writer.Stream.Write( instance );
+		}
+	}
+
+	public override void Deserialize( ref Reader reader )
     {
-        var instanceCount = reader.Read<int>(); // Int
-        
-        for( int i = 0; i < instanceCount; i++ )
+
+		var instanceCount = reader.Stream.Read<int>(); // Int
+
+		for ( int i = 0; i < instanceCount; i++ )
         {
-            Data.Add( reader.Stream.Read<float>() );
-        }
-    }
+			Data.Add( reader.Stream.Read<float>() );
+		}
+	}
 }
 ```
 
