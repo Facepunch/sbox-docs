@@ -93,4 +93,5 @@ Sequence tracks are created automatically when you import a movie: either by rig
 * [Motion Editing](/systems/movie-maker/motion-editing.md) - make more detailed animations and edit recordings
 * [Recording](/systems/movie-maker/recording.md) - manually puppet characters or record gameplay
 * [Sequences](/systems/movie-maker/sequences.md) - cleanly structure big projects with nested movies
-* [API] - control movies in more complex ways with C#
+* [Playback API](/systems/movie-maker/playback-api.md) - define movies and play them back using C#.
+* [Recording API](/systems/movie-maker/recording-api.md) - record and save the gameplay using C#

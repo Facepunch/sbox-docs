@@ -16,7 +16,7 @@ Editor code, including libraries, doesn't have to follow these restrictions. If 
 
 ## Reporting a False Positive
 
-If there's an API you need access to that isn't in the whitelist and you believe it's harmless, please report it on our [issue tracker](https://github.com/Facepunch/sbox-issues/issues) with your reasoning, and we'll review it. Please include the symbol as it appears in the error.
+If there's an API you need access to that isn't in the whitelist and you believe it's harmless, please report it on our [issue tracker](https://github.com/Facepunch/sbox-public/issues) with your reasoning, and we'll review it. Please include the symbol as it appears in the error.
 
 
 ## Reporting a Vulnerability

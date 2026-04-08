@@ -8,7 +8,7 @@ updated: 2025-08-15
 # Execution Order
 
 :::warning
-You should not rely on the order in which the same callback methods get invoked for different GameObjects, it is not predictable. If you need more control, you should use a [GameObjectSystem].
+You should not rely on the order in which the same callback methods get invoked for different GameObjects, it is not predictable. If you need more control, you should use a [GameObjectSystem](/scene/GameObjectSystem.md).
 
 :::
 

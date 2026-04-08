@@ -11,7 +11,7 @@ Errors will happen. Here's how to make a useful error report.
 
 # Issue Tracker
 
-We use github to track issues. [Our issue repository is here](https://github.com/Facepunch/sbox-issues/issues). When issues are submitted, they're triaged and assigned [priorities on our project here](https://github.com/orgs/Facepunch/projects/24).
+We use github to track issues. [Our issue repository is here](https://github.com/Facepunch/sbox-public/issues). When issues are submitted, they're triaged and assigned [priorities on our project here](https://github.com/orgs/Facepunch/projects/24).
 
 # Error Logs
 
