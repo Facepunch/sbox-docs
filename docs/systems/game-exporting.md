@@ -2,7 +2,7 @@
 title: "Game Exporting"
 icon: "🧍"
 created: 2025-10-10
-updated: 2025-10-10
+updated: 2026-04-08
 ---
 
 # Game Exporting
@@ -15,6 +15,13 @@ You can export your game, but you shouldn't distribute your exported game just y
 You can choose to export your games as executables, so that you can put them on other storefronts directly - e.g. Steam.
 
 These games don't have the typical restrictions that platform games have - there's no whitelist for code, and you can use standalone-exclusive APIs.
+
+Games are compiled with an extra `STANDALONE` constant when exporting.
+```csharp
+#if STANDALONE
+//code that should only run in an exported game
+#endif
+```
 
 ## How to Export your Game
 
