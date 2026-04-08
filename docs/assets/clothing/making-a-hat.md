@@ -20,7 +20,7 @@ updated: 2025-01-24
 In this example, we are showing our process of creating and setting up Headphones.
 
 :::
-n ![](./images/07f1b330-c98d-41c4-a47d-93cb0f457025.png " =1792x697")
+ ![](./images/07f1b330-c98d-41c4-a47d-93cb0f457025.png " =1792x697")
 
 
 ---
