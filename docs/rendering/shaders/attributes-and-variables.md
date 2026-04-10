@@ -155,7 +155,7 @@ You can set attributes of a specific SceneObject, this will affect the materials
 
 ## Attributes on Command Lists
 
-You can use attributes on the entire render context or the rest of the pipeline when you set them on a [Command List](/graphics/shaders/command-lists.md).
+You can use attributes on the entire render context or the rest of the pipeline when you set them on a [Command List](/rendering/shaders/command-lists.md).
 
 ```csharp
 protected override void OnEnabled()

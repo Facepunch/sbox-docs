@@ -47,4 +47,4 @@ protected override void OnDisabled()
 }
 ```
 
-See [Attributes and Variables](/graphics/shaders/attributes-and-variables.md) for an example of using a Command List
+See [Attributes and Variables](/rendering/shaders/attributes-and-variables.md) for an example of using a Command List

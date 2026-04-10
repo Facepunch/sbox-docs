@@ -7,7 +7,7 @@ updated: 2026-01-13
 
 # Getting Started
 
-You can create different types of shaders in s&box through code or the [ShaderGraph](/graphics/shader-graph/index.md).
+You can create different types of shaders in s&box through code or the [ShaderGraph](/rendering/shader-graph/index.md).
 
 * Material Shaders: Rendering of objects in world space
 * Post Processing Shaders: Full screen 

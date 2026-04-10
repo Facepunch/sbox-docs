@@ -7,7 +7,7 @@ updated: 2025-10-02
 
 # Post Processing
 
-Post-processing effects can be applied by adding components to the Camera or to a [PostProcessVolume](/graphics/post-processing/postprocessvolume.md).
+Post-processing effects can be applied by adding components to the Camera or to a [PostProcessVolume](/rendering/post-processing/postprocessvolume.md).
 
 # Camera Settings
 

@@ -9,10 +9,16 @@ items:
   href: editor/
 - name: Assets
   href: assets/
-- name: Graphics
-  href: graphics/
+- name: Rendering
+  href: rendering/
 - name: UI
   href: ui/
+- name: Physics
+  href: physics/
+- name: Audio
+  href: audio/
+- name: Animation
+  href: animation/
 - name: Gameplay
   href: gameplay/
 - name: Networking

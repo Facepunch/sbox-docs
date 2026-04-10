@@ -9,7 +9,7 @@ updated: 2024-12-08
 
 This class applies atmospheric effects to a fragment.
 
-Only useful if you're doing your own [Shading Model](/graphics/shaders/shading-model.md), otherwise this is already all implied when you use `ShadingModelStandard`
+Only useful if you're doing your own [Shading Model](/rendering/shaders/shading-model.md), otherwise this is already all implied when you use `ShadingModelStandard`
 
 # API
 

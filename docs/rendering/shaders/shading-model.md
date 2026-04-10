@@ -9,7 +9,7 @@ updated: 2024-12-16
 
 Shading Models are what processes how a model is lit, this is typically is the final step and output of your shader.
 
-Consumes your [Material](/graphics/shaders/material.md) and shades the output with lighting, atmospheric, and deals with everything needed to show specific stages of rendering if [Debug Views](/graphics/shaders/modes.md) are enabled.
+Consumes your [Material](/rendering/shaders/material.md) and shades the output with lighting, atmospheric, and deals with everything needed to show specific stages of rendering if [Debug Views](/rendering/shaders/modes.md) are enabled.
 
 The traditional flow of a lit shader is `Input Interpolants > Material Definition > Output Shading Model`
 

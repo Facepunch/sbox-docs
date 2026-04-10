@@ -11,7 +11,7 @@ updated: 2024-12-16
 
 The Material API is a structure to define the surface properties of what you're drawing as described by traditional PBR shading models.
 
-It does nothing on it's own but it's a contract on how the material would react to lighting, [Shading Models](/graphics/shaders/shading-model.md) consume what comes from it.
+It does nothing on it's own but it's a contract on how the material would react to lighting, [Shading Models](/rendering/shaders/shading-model.md) consume what comes from it.
 
 ## API Reference
 
@@ -48,5 +48,5 @@ class Material
 
 ## Helper Functions
 
-* `Material::From( PixelInput i )` can be used to process the [standard input](/graphics/shaders/reference/default-vertex-and-pixel-shader-inputs.md) and expose textures to be used directly to the Material Editor ( MET )
-* To initialize an empty material you can use `Material::Init()` and fill up the needed fields for the [Shading Model](/graphics/shaders/shading-model.md)
+* `Material::From( PixelInput i )` can be used to process the [standard input](/rendering/shaders/reference/default-vertex-and-pixel-shader-inputs.md) and expose textures to be used directly to the Material Editor ( MET )
+* To initialize an empty material you can use `Material::Init()` and fill up the needed fields for the [Shading Model](/rendering/shaders/shading-model.md)

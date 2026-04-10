@@ -7,7 +7,7 @@ updated: 2024-12-09
 
 # Screen Space Tracing
 
-`ScreenSpace::Trace` provides functionality for tracing rays in screen space to compute effects like [Dynamic Reflections](/graphics/shaders/classes/dynamic-reflections.md) or any kind of ray in world space. It leverages hierarchical ray marching for efficient performance.
+`ScreenSpace::Trace` provides functionality for tracing rays in screen space to compute effects like [Dynamic Reflections](/rendering/shaders/classes/dynamic-reflections.md) or any kind of ray in world space. It leverages hierarchical ray marching for efficient performance.
 
 ## API Reference
 
