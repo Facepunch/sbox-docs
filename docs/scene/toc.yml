@@ -5,6 +5,8 @@ items:
   href: gameobject.md
 - name: GameObjectSystem
   href: gameobjectsystem.md
+- name: Maps
+  href: maps/
 - name: Prefabs
   href: prefabs/
 - name: Scenes
