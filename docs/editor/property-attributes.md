@@ -2,7 +2,7 @@
 title: "Property Attributes"
 icon: "design_services"
 created: 2024-10-26
-updated: 2025-07-29
+updated: 2026-04-13
 ---
 
 # Property Attributes
@@ -105,6 +105,16 @@ Fill the width of the editor with the widget and put the label above instead of 
 ![](./images/validate-nameof-isvalid-warning-message-loglevel-warn.png)
 
 Specifies a method in the same class to use for validation. The validation result will be shown in the inspector.
+
+
+## `[Advanced]`
+
+Some properties are not meant for the average user, hide the property unless the user really wants to see it.
+
+
+## `[KeyProperty]`
+
+For use in custom Classes/Structs, marks the property as the key property - which means that it can represent the whole object in a single line while offering an advanced mode to view the entire object.
 
 
 
