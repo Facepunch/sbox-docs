@@ -7,7 +7,7 @@ updated: 2025-10-05
 
 # Editor Events
 
-Editor Events are events that are broadcast globally throughout the editor and can be listened to/fired from any [Editor Project](/editor/editor-project.md). These are useful for creating your own custom Editor Tools and making sure they can work in tandem with existing systems.
+Editor Events are events that are broadcast globally throughout the editor and can be listened to/fired from any [Editor Project](/editor/editor-project/index.md). These are useful for creating your own custom Editor Tools and making sure they can work in tandem with existing systems.
 
 # Hooking into an EditorEvent
 
