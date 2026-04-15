@@ -2,7 +2,7 @@
 title: "Dedicated Servers"
 icon: "settings_input_hdmi"
 created: 2024-11-07
-updated: 2025-04-09
+updated: 2025-04-15
 ---
 
 # Dedicated Servers
@@ -54,3 +54,5 @@ You can pass a path to a `.sbproj` file to load a local project on a Dedicated S
 | +game  | `<packageIdent>` `[mapPackageIdent]` | The game package to load and optionally a map package. |
 | +hostname  | `<name>`  | The server title that players will see. |
 | +net_game_server_token  | `<token>` | **This is not required and is only available as an option once s&box is released.**Visit <https://steamcommunity.com/dev/managegameservers> to generate a token associated with your Steam Account. You can use this token to ensure your Dedicated Server always has the same Steam ID for other players to connect to it. You don't need this, but otherwise every time you load the server it will generate a new Steam ID. |
+| +port  | `<port>`  | The port used to host the server on. |
+| +net_query_port  | `<port>`  | The port used to query server information such as player count, current map, etc. |
