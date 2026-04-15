@@ -61,7 +61,7 @@ You can also check for certain attributes, so you can have a custom Password str
 
 # Creating a Custom InspectorWidget
 
-While creating Custom ControlWidgets is very powerful, sometimes you might want to replace the entire Inspector. This is especially useful for [Editor Tools](/editor/editor-tools/index.md) or Assets, and is done with the \[Inspector\] attribute.
+While creating Custom ControlWidgets is very powerful, sometimes you might want to replace the entire Inspector. This is especially useful for [Editor Tools](/editor/editor-project/editor-tools/index.md) or Assets, and is done with the \[Inspector\] attribute.
 
 ```csharp
 using static Editor.Inspectors.AssetInspector;

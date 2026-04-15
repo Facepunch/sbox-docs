@@ -7,7 +7,7 @@ updated: 2023-12-29
 
 # Editor Tools
 
-You can create your own editor tool to help you create your game. Your tool needs to be created in an [editor project](/editor/editor-project.md).
+You can create your own editor tool to help you create your game. Your tool needs to be created in an [editor project](/editor/editor-project/index.md).
 
 
 ```csharp
