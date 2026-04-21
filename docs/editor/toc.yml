@@ -1,6 +1,4 @@
 items:
-- name: ActionGraph
-  href: actiongraph/
 - name: Asset Previews
   href: asset-previews.md
 - name: Custom Editors
@@ -23,8 +21,6 @@ items:
   href: mapping/
 - name: Model Editor
   href: model-editor.md
-- name: Movie Maker
-  href: movie-maker/
 - name: Property Attributes
   href: property-attributes.md
 - name: Texture Generators

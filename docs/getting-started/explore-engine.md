@@ -56,4 +56,4 @@ Now that you understand the basics, explore these areas of the documentation:
 - **[Editor](/editor/index.md)** — Learn the editor tools
 - **[Gameplay](/gameplay/index.md)** — Input, navigation, terrain, and VR
 - **[Networking](/networking/index.md)** — Multiplayer, RPCs, and dedicated servers
-- **[Graphics](/graphics/index.md)** — Shaders, effects, and post-processing
+- **[Graphics](/rendering/index.md)** — Shaders, effects, and post-processing

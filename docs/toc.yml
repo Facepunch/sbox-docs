@@ -9,13 +9,23 @@ items:
   href: editor/
 - name: Assets
   href: assets/
-- name: Graphics
-  href: graphics/
-- name: UI
-  href: ui/
-- name: Gameplay
-  href: gameplay/
+- name: Rendering
+  href: rendering/
 - name: Networking
   href: networking/
+- name: Physics
+  href: physics/
+- name: UI
+  href: ui/
+- name: Game Mounts
+  href: game-mounts/
+- name: ActionGraph
+  href: actiongraph/
+- name: Movie Maker
+  href: movie-maker/
+- name: Audio
+  href: audio/
+- name: Gameplay
+  href: gameplay/
 - name: Services
   href: services/
