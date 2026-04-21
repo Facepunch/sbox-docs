@@ -47,10 +47,10 @@ You would do `Stat.Increment( "coins", 1 )` in your code every time you collecte
 
 ## Manual
 
-If the stat is set to manual, then you can unlock it in your code like this:
+If the achievement is set to manual, then you can unlock it in your code like this:
 
 ```csharp
-Sandbox.Services.Achievements.Unlock( "statname" );
+Sandbox.Services.Achievements.Unlock( "achievement_ident" );
 ```
 
 
