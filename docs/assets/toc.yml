@@ -9,3 +9,5 @@ items:
   href: resources/
 - name: Storage (UGC)
   href: storage-ugc.md
+- name: Naming Conventions
+  href: naming-conventions/
