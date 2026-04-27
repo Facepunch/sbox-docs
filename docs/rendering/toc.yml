@@ -1,9 +1,0 @@
-items:
-- name: Effects
-  href: effects/
-- name: Post Processing
-  href: post-processing/
-- name: Shader Graph
-  href: shader-graph/
-- name: Shaders
-  href: shaders/

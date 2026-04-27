@@ -1,11 +1,7 @@
 items:
 - name: Clothing
   href: clothing/
-- name: File System
-  href: file-system.md
 - name: Ready-to-use Assets
   href: ready-to-use-assets/
-- name: Resources
-  href: resources/
-- name: Storage (UGC)
-  href: storage-ugc.md
+- name: Custom Assets
+  href: custom-assets.md

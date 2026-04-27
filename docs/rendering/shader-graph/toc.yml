@@ -1,9 +1,0 @@
-items:
-- name: Custom Nodes
-  href: custom-nodes/
-- name: Getting Started
-  href: getting-started.md
-- name: Properties
-  href: properties.md
-- name: Variables
-  href: variables.md

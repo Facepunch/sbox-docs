@@ -1,3 +1,5 @@
 items:
 - name: Scene Metadata
   href: scene-metadata.md
+- name: Tracing
+  href: tracing.md

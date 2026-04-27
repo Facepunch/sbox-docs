@@ -1,15 +1,52 @@
 items:
-- name: Advanced Topics
-  href: advanced-topics/
-- name: Async
-  href: async.md
+- name: Components Overview
+  href: index.md
+- name: Component Versioning
+  href: component-versioning.md
 - name: Component Interfaces
-  href: component-interfaces/
-- name: Component Methods
-  href: component-methods.md
+  href: component-interfaces/index.md
+- name: Component Reference
+  href: component-reference.md
+- name: Component Lifecycle
+  href: component-lifecycle.md
 - name: Events
-  href: events/
+  href: events/index.md
 - name: Execution Order
   href: execution-order.md
-- name: Reference
-  href: reference/
+- name: Built-in Components
+  href: reference/index.md
+  items:
+  - name: Built-in Components Overview
+    href: reference/index.md
+  - name: Lights
+    href: reference/lights.md
+  - name: Model Renderer
+    href: reference/modelrenderer.md
+  - name: Skinned Model Renderer
+    href: reference/skinnedmodelrenderer.md
+  - name: Player Controller
+    href: reference/player-controller.md
+  - name: Hammer Mesh
+    href: reference/hammer-mesh.md
+  - name: Map Instance
+    href: reference/mapinstance.md
+  - name: Clutter Component
+    href: reference/cluttercomponent.md
+  - name: Cable Component
+    href: reference/cablecomponent.md
+  - name: Camera Component
+    href: reference/cameracomponent.md
+  - name: Cubemap Fog
+    href: reference/cubemapfog.md
+  - name: Character Controller
+    href: reference/charactercontroller.md
+  - name: Envmap Probe
+    href: reference/envmapprobe.md
+  - name: Missing Component
+    href: reference/missingcomponent.md
+  - name: Sound Point
+    href: reference/soundpointcomponent.md
+  - name: Prop
+    href: reference/prop.md
+  - name: Spring Joint
+    href: reference/springjoint.md

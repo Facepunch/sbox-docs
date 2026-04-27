@@ -2,35 +2,51 @@
 title: "FAQ"
 icon: "ℹ️"
 created: 2024-02-13
-updated: 2025-09-05
+updated: 2026-04-27
+sources:
+  - game/addons/menu/Code/
 ---
 
 # FAQ
 
-## How do I get it?
+## General
 
-We'll be releasing [s&box on Steam](https://store.steampowered.com/app/590830/sbox/) on the 28th April for $20.
+### How do I get it?
 
-Access to the developer preview is now closed — you may or may not get to keep it post release depending on play time, development or skins purchased.
+s&box is releasing on [Steam](https://store.steampowered.com/app/590830/sbox/) for $20.
 
-## Are you using workshop?
+Access to the developer preview is now closed — you may or may not keep it post-release depending on play time, development activity, or skins purchased.
 
-No. We've made a system where you don't have to install addons. This is what [sbox.game](https://sbox.game) is. In the same way, you don't have to install videos from YouTube; you just download what you need.
+### Is it an engine or a platform?
 
-## Why not Unity? Why not UE?
+Both. You use the **Engine** (Editor, C#, Scene System, Source 2) to build your game. When you publish, you push it to the **Platform** (sbox.game backend). Players launch the s&box client and the platform dynamically downloads and mounts your game — no manual install needed.
 
-We're sentimental about the Source engine. Source 2 has a beautiful renderer and brings the engine up to date with tools like ModelDoc and Animgraph.
+### Are you using Steam Workshop?
 
-It would have been cheaper and easier to do this all on Unity or UE, but we would have loved it less.
+No. s&box uses [sbox.game](https://sbox.game) instead. Games and addons are streamed on demand when a player joins — similar to how YouTube doesn't ask you to "install" a video.
 
-## Will creators be able to monetize?
+### Why not Unity or Unreal?
 
-Yes. It's integral. We owe our entire business to the fact that Valve let us monetize. 
+We're sentimental about Source. Source 2 has a great renderer and brings the engine up to date with tools like ModelDoc and Animgraph. It would have been cheaper to use Unity or UE, but we would have loved it less.
 
-Right now there are two ways for our creators to make money. You can [make a cosmetic item](https://sbox.game/ugc/clothing?sort=thumbsup), which then goes for sale in game and you get a cut of it via Steam Workshop. Or you can make a game and [get a cut of the playfund](/getting-started/monetization.md).
+## Monetization
 
-We want to be careful about pushing further. We want you to be able to charge for whatever you want, but we also don't want everything to become pay-to-win like on other platforms.
+### Can creators make money?
 
-## So is it an engine, or a platform?
+Yes — it's integral. There are currently two paths:
 
-It's everything. An [explanation was posted on this blog here](https://sbox.game/news/july-update-97c0fa3c/explaining-sbox).
+- **Clothing / cosmetics:** Sell items via Steam Workshop and receive a cut.
+- **Play Fund:** Make a game and [earn a share of the Play Fund](monetization.md) based on playtime.
+
+### Why isn't my game earning from the Play Fund?
+
+The Play Fund requires your game to meet minimum engagement metrics (unique players, playtime) over a qualifying period. Publishing alone doesn't trigger payment.
+
+### How do I clear downloaded game cache?
+
+Through the s&box Main Menu settings — not through Steam's storage manager, since s&box bypasses the Workshop.
+
+## Related Pages
+- [Monetization](monetization.md)
+- [Project Types](project-types/index.md)
+- [For Players](../for-players/index.md)

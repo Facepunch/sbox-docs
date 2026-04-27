@@ -11,20 +11,16 @@ updated: 2025-09-01
 
 # How to use them?
 
-
-
 :::info
 This section needs to be rewritten with an explanation of all the code, libraries, etc.
 
 :::
-
 
 # Character source files
 
 **All source files come with the game: VMDLs, FBXs, animgraphs, etc.**
 
 You can find them right in the game folder, under `addons/citizen/models/citizen`. These files are synced straight from our source folders; when new source files are added on our end, they'll show up in that folder for you too!
-
 
 :::info
 If you would like to make animations for the Citizen, here is a community-made control rig to get you started: <https://github.com/Ali3nSystems/Ecodelia-Tools-for-Facepunch-Assets>
@@ -47,7 +43,6 @@ Because they're procedural, animation data doesn't need to be exported from your
 
 If you're making a model (e.g. clothing) to be bonemerged on top of the citizen, you don't actually *need* to skin your mesh to these bones... but it's better if you do!
 
-
 :::warning
 The limb bone is a sort of "container" for its `*_twist{0/1}` bones. **The limb bones aren't skinning anything and should never skin anything**; the twist bones are. Think of them as the "upper part" and the "lower part" of each limb respectively. This is how the height scaling feature works.
 
@@ -56,7 +51,6 @@ The limb bone is a sort of "container" for its `*_twist{0/1}` bones. **The limb 
 # Adding new animations
 
 If you only need to add a few animations to the VMDL, you can try using the "Base Model" feature. This is similar to the Source 1 "$includemodel" feature. **You can only add animations to an existing model using this feature; you can't add anything else.** You only need to reference the official `citizen.vmdl` file in the "Base Model" field, above the "Add" button in ModelDoc.
-
 
 :::warning
 Name your new animations something unique (maybe by giving them all a prefix); bad things could happen if animation names collide.
@@ -68,7 +62,6 @@ You could also simply make your own "fork" of citizen.vmdl while keeping the ref
 ## IK bones
 
 These bones are used to drive IK constraints in-engine. **They need animation data, and the default graph assumes it is present.** This data is baked by the 3D animation program during the exporting process.
-
 
 ![](./images/ik-bones.jpg)
 
@@ -104,7 +97,6 @@ To give you an idea of how we use LODs on the Citizen... here are the figures fo
 *(\*) For now. Whenever our tech & tools allow us to start maintaining a lower-density head with no headaches with regards to transferring morphs etc., we'll probably try to target a 4-5k tris head for LOD1.*
 
 Some clothing items might shift LOD1 back to a distance of 10 instead of 5, but this is only applicable when they are displayed on their own, away from the player; s&box implements a sort of "LOD sync", which makes bonemerged models follow the LOD level of their parent.
-
 
 :::tip
 Here's a decent rule of thumb for telling at which distances your model needs to switch down a LOD level. Zoom out slowly, and look at when the wireframe starts looking like "solid green". Of course, it doesn't tell the whole story, but it's a good place to start from.

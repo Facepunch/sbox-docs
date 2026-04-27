@@ -19,10 +19,6 @@ You can make it look nicer by fiddling with the other variables, and even throw 
 
 ![](./images/prefab-templates-3.png) ![](./images/prefab-templates-2.png)
 
-
-
-
-
 The final option is whether or not the prefab should be treated as a template. Templates will always break the prefab when created, otherwise the prefab reference will be maintained:
 
 [DontBreakAsTemplate = false VS DontBreakAsTemplate = true

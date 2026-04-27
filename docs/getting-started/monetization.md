@@ -2,71 +2,91 @@
 title: "Monetization"
 icon: "💸"
 created: 2025-02-07
-updated: 2025-06-15
+updated: 2026-04-27
 ---
 
 # Monetization
 
-An important part of s&box being a modern game platform is allowing the developers that use it to make money from it. 
-
+An important part of s&box being a modern game platform is allowing the developers that use it to make money from it.
 
 :::info
-Our plans around monetization are evolving over time, nothing is set in stone. We want to give developers all the opportunities to make money possible without harming player experience. 
-
+Our plans around monetization are evolving over time — nothing is set in stone. We want to give developers every opportunity to make money without harming player experience.
 :::
 
-
-# The Play Fund
+## The Play Fund
 
 Every day we create a pool of money. That pool is distributed among the games and maps with the most players.
 
+### What is it weighted by — players, or hours?
 
-### What is it, like most players? Most hours?
-
-It's based roughly on clamped individual player hours. The exact algorithm we use is kept secret. We will need tweak the algorithm over time to encourage and discourage specific behaviours.
-
+Roughly clamped *individual player hours*. The exact algorithm is kept secret and will be tweaked over time to encourage and discourage specific behaviours.
 
 ### How do I enable it?
 
-Open your map or game package on sbox.game and go to `Configure > Edit Features`. You'll then see an option to include it.
+Open your map or game package on [sbox.game](https://sbox.game), then go to **Configure → Edit Features**. The Play Fund opt-in is one of the toggles there. It is **not** enabled by default.
 
+### How do I see how much I've made?
 
-### How do I know how much money I made?
+Daily estimates are visible on your Organization page under **Monetization**.
 
-The daily estimates are visible on your Organization's Page, under `Monetization`.
+For a platform-wide view, two public dashboards on sbox.game show real numbers:
 
-![](./images/how-do-i-know-how-much-money-i-made.png)
+* [**Play Fund metrics**](https://sbox.game/metrics/playfund) — cumulative payouts to the community, plus the current period's top-earning packages and what each made.
+* [**Finance**](https://sbox.game/metrics/finance) — Facepunch's monthly income and outgoings, with the Play Fund line broken out alongside item sales, Workshop, wages, etc.
 
+If you want to know roughly what your game has to do to land in the top earners list, those pages are the most honest reference point.
 
-### Am I allowed to enable it for my Package? What are the rules?
+### Am I allowed to enable it for my package?
 
-If you're using copyrighted material in your package - then **no**. If you're repackaging someone else's work with no real creativity of your own, then **no**. 
+If your package contains copyrighted material you don't own, **no**. If you're repackaging someone else's work without meaningful original contribution, **no**.
 
-If you're using stuff from sbox.game where author permission is implicit, stuff you created, stuff with an open license, then yes. 
-
+If everything is yours, properly licensed, or comes from sbox.game (where author permission is implicit), then yes.
 
 ### When are payments made?
 
-Payments are made towards the middle of every month, for the previous month. For example, in the middle of March we'll pay out what you made in February.
+Payments go out around the middle of each month for the previous month — so mid-March pays out February.
 
+You need at least **$100 pending** to receive a payment. Anything under that rolls over. You also need to have set up payment and tax information in your profile settings.
 
-You will need to have at least $100 pending to receive a payment. You also need to have set up your payment information in your profile settings.
+### Can I split payments with my team?
 
-
-### Can I subdivide payments to my team?
-
-Yes! You can split your payments between your different team members. 
-
-They don't need to be members of the organization.
-
+Yes. You can split a package's payments between multiple recipients, and they don't need to be members of the same organization.
 
 ### Is it just maps and games?
 
-Yes, for now. It would be awesome for a map creator to be able to say "okay I used these models so I'm gonna give this org 10%", but if we do that it's something that will come later. This is the first step.
+For now, yes. Long-term we'd like map creators to be able to say "I used these models, give that org 10%" — but that comes later. This is the first step.
 
+### Where does the money come from?
 
-### Where's the pool from? How much is it?
+Garry's Mod's revenue funds s&box development, and the Play Fund is currently paid out of that. The hope is that one day s&box stands on its own and the fund grows with it.
 
-I'd like to get more transparent about the pool in the future and show the figure somewhere. For now, while we're finding out feet, it's not public. 
+The monthly Play Fund outlay is published as a line item on the [**Finance dashboard**](https://sbox.game/metrics/finance) — recent months have been in the $40–50k range. Total paid out to date is shown on [**Play Fund metrics**](https://sbox.game/metrics/playfund).
 
-Garry's Mod's revenue is funding the development of s&box. So the fund is from Garry's Mod for now. Our hope is that one day s&box will be able to stand on its own two feet, and the fund will grow with its success.
+## Skins and Workshop Items
+
+The Play Fund is one earnings path. The other is **selling skins** (clothing items, hats, accessories) through the Steam Workshop revenue share. This is a separate stream from the Play Fund and operates per-item rather than per-game-played.
+
+Public earnings for items are published at [**Skins metrics**](https://sbox.game/metrics/skins) — newest additions, top-earning items all-time, and top earners over the current period. To put your own item up for sale, see [Publishing Clothing](../assets/clothing/publishing-clothing.md); the [Quality Guidelines](../assets/clothing/guidelines-quality-bar.md) page covers what gets approved.
+
+Receiving Workshop revenue requires accepting the Steam Workshop legal agreement on your Steam account before revenue-share percentages can be finalized.
+
+## Best Practices
+
+1. **Build for retention.** Genuine player hours drive payout, so games people return to earn more than ones they bounce off.
+2. **Agree splits up front.** If you're collaborating, configure the revenue split when you publish so there's nothing to argue about later.
+3. **Own what you ship.** Copyrighted or ripped content disqualifies the package — and may get it removed from the platform entirely.
+
+## Troubleshooting
+
+:::warning Monetization Gotchas
+- **"I have players but I'm not seeing any revenue."** Double-check that you actually enabled the Play Fund in **Configure → Edit Features** on the package's sbox.game page. It is not on by default.
+- **"My payout is pending but hasn't arrived."** Payouts require a $100 minimum. Anything below rolls into next month. Also confirm your payment and tax info is filled out in profile settings.
+- **"My package was disqualified."** Usually means a copyright or community-guidelines violation — ripped models, cloned games, etc. Everything in the package needs to be created by you or properly licensed.
+:::
+
+## Related Pages
+
+* [Publishing Addons](../publishing/publishing-addons.md)
+* [Exporting Standalone](../publishing/exporting-standalone.md)
+* [Publishing Clothing](../assets/clothing/publishing-clothing.md)
+* [Clothing Quality Guidelines](../assets/clothing/guidelines-quality-bar.md)

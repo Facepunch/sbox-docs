@@ -1,61 +1,71 @@
 ---
 title: "Prefabs"
 icon: "📦"
-created: 2024-01-10
-updated: 2024-10-03
+sources:
+  - engine/Sandbox.Engine/Scene/GameObject/GameObject.Clone.cs
+created: 2026-04-27
+updated: 2026-04-27
 ---
 
 # Prefabs
 
-A prefab is a GameObject that can be used in multiple places. They're usually used to contain an object that is used across multiple scenes, or needs to be instantiated at runtime.
+A Prefab is a saved GameObject template that can be reused across multiple scenes or instantiated dynamically at runtime.
 
-
-# Assets
-
-Prefabs are saved to disk as [PrefabFile]. These assets can be referenced in Components anywhere a [GameObject](/scene/gameobject.md) can be referenced. When the PrefabFile is updated, all instantiations of the prefab in scenes are updated, too.
-
-To create a PrefabFile, right-click on a GameObject in the scene and select `Convert to Prefab`.
-
-
-# In Scene
-
-In the scene view, GameObjects that are instantiations of Prefabs are made obvious by their colour. 
-
-
-![They're blue](./images/they-re-blue.png)
-
-When in their Prefab Instantiation state, they can't be edited significantly. You can't view or select objects in their hierarchy.
-
-If you want to edit a prefab in the scene you can right-click it and choose `Unlink from Prefab` to change it to a bunch of normal GameObjects.
-
-
-# In Code
-
-To spawn Prefabs at runtime via code, you treat them like a regular GameObject. A GameObject property on your Component can be populated by dragging a PrefabFile into it.
+## Quick Working Example
 
 ```csharp
-public sealed class MyGun : Component
+using Sandbox;
+
+public sealed class SpawnerComponent : Component
 {
-	[Property] 
-	GameObject BulletPrefab { get; set; }
+    // Assign a Prefab in the Editor Inspector
+    [Property] public GameObject MyPrefab { get; set; }
 
-
-	protected override void OnUpdate()
-	{
-        // throw an error if BulletPrefab wasn't defined
-        Assert.NotNull( BulletPrefab );
-        
-		if ( Input.Pressed( "Attack1" ) )
-		{
-            // create a new instance of the bullet prefab at the gun's position
-			GameObject bullet = BulletPrefab.Clone( WorldPosition );
-
-			// bullet is now in the current scene, what do you want to do with it?
-			// maybe get components and set the velocity or something?
-		}
-	}
+    protected override void OnUpdate()
+    {
+        if ( Input.Pressed( "Attack1" ) && MyPrefab != null )
+        {
+            // Create a new instance of the prefab in the world
+            var spawnedObj = MyPrefab.Clone( GameObject.WorldTransform );
+            Log.Info( $"Spawned: {spawnedObj.Name}" );
+        }
+    }
 }
 ```
 
+### Creating a Prefab
+To create a Prefab, right-click any GameObject in the Scene hierarchy and select **Convert to Prefab**. This saves it as an asset on disk (e.g., `my_object.prefab`).
 
-Note that a cloned prefab will still be linked to the prefab. You can call `bullet.BreakFromPrefab()` to remove that link and have it appear as a normal stack of GameObjects if you want to.
+### Editing a Prefab
+If you select a prefab instance in the scene, it appears blue, and you cannot edit its hierarchy directly. 
+
+![They're blue](./images/they-re-blue.png)
+
+To modify the master template:
+1. Double-click the `.prefab` file in your Asset Browser to open it in isolation.
+2. Make your changes and save. All instances across all scenes will update automatically.
+
+### Unlinking a Prefab
+If you want to turn a prefab instance back into regular GameObjects (so you can modify it freely without affecting the master template), right-click it in the scene and choose **Unlink from Prefab**. 
+In code, you can do this by calling:
+```csharp
+myGameObject.BreakFromPrefab();
+```
+
+## Navigation Hub
+
+- [**Instance Overrides**](instance-overrides.md) - Learn how to modify specific properties on a single prefab instance without changing the master template.
+- [**Prefab Templates**](prefab-templates.md) - Use variables to make customizable prefabs.
+
+## Troubleshooting
+
+:::warning "I can't delete or move children of a prefab in the scene!"
+By design, you cannot radically alter the hierarchy of a prefab instance while it is linked to the master template. To add or remove child objects, either double-click the prefab to edit the master, or right-click the instance and select **Unlink from Prefab**.
+:::
+
+:::danger "My prefab spawns at 0,0,0 instead of where I want it!"
+If you call `MyPrefab.Clone()` without arguments, it spawns at the world origin. Use `MyPrefab.Clone( WorldTransform )` or manually set `spawnedObj.WorldPosition` immediately after cloning.
+:::
+
+## Related Guides
+- [**Spawn a Prefab**](../../how-to/spawn-prefab.md)

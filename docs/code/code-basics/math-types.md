@@ -2,146 +2,132 @@
 title: "Math Types"
 icon: "📐"
 created: 2025-06-16
-updated: 2025-06-16
+updated: 2026-04-12
+sources:
+  - engine/Sandbox.System/Utility/MathX.cs
 ---
 
 # Math Types
 
-## Vectors
+Learn the fundamental math types (`Vector3`, `Rotation`, `Transform`) required for moving, rotating, and scaling GameObjects in 3D space.
 
-A **Vector** is just a set of numbers that describe a position or a direction in space. 
+## Quick Working Example
 
+```csharp
+using Sandbox;
 
-* **Vector2** – for flat 2D stuff (like a screen): x and y.
-* [**Vector3**](https://sbox.game/api/Vector3) – for 3D stuff: x, y, z.
-* **Vector4** – same as Vector3 but with a bonus W value. Used commonly for shaders, or margins, or borders, or corners.
-* **Vector2Int + Vector3Int** – like normal, but with whole numbers only.
+public sealed class MathExampleComponent : Component
+{
+	protected override void OnUpdate()
+	{
+		// 1. Vectors (Position and Direction)
+		Vector3 forwardDirection = Vector3.Forward;
+		
+		// 2. Rotation (Orientation)
+		Rotation spin = Rotation.FromYaw( 90f * Time.Delta );
+		GameObject.LocalRotation *= spin;
+		
+		// 3. Transform (Position, Rotation, and Scale combined)
+		Transform currentTransform = GameObject.WorldTransform;
+		Vector3 worldForward = currentTransform.Forward;
+		
+		// Move the object forward
+		GameObject.WorldPosition += worldForward * 100f * Time.Delta;
+	}
+}
+```
 
+### Working with Vectors
 
-```javascript
-// Make a new vector
-var a = new Vector3(1, 2, 3);
-var b = new Vector3(4, 5, 6);
+Vectors are used for positions, directions, velocities, and forces.
 
-// Get or set the values
-float x = a.x;
-a.z = 10;
+```csharp
+// Creating Vectors
+var a = new Vector3( 1, 2, 3 );
+var b = new Vector3( 4, 5, 6 );
 
-// You can add and subtract them
+// Basic Math
 var sum = a + b;
-var difference = b - a;
+var scaled = a * 2.0f;
 
-// You can scale them (make them bigger or smaller)
-var twiceAsBig = a * 2;
-var halfAsBig = a / 2;
+// Getting direction and distance
+float distance = a.Distance( b );
+Vector3 directionToB = (b - a).Normal; // .Normal makes the length exactly 1
 
-// Get how long the vector is (like the length of the arrow)
-float length = a.Length;
-
-// Make it point in the same direction but only 1 unit long
-Vector3 normal = a.Normal;
-
-// How far apart two vectors are
-float distance = a.Distance(b);
-
-// Dot product tells how similar two directions are
-float dot = Vector3.Dot(a, b);
-
-// Cross product gives you a new direction that's 90° to both
-Vector3 cross = Vector3.Cross(a, b);
-
-// Lerp moves smoothly from a to b (0.5 is halfway)
-Vector3 halfway = Vector3.Lerp(a, b, 0.5f);
+// Comparing directions
+float dotProduct = Vector3.Dot( a, b ); // 1 if parallel, 0 if perpendicular, -1 if opposite
 ```
 
+### Working with Rotations
 
-## Rotation & Angles
-
-A [**Rotation**](https://sbox.game/api/Rotation) tells you which way something is facing in 3D. It's technically a Quaternion.
-
-There's also [**Angles**](https://sbox.game/api/Angles), which uses pitch, yaw, and roll. It's easier to write by hand, but it can suffer from gimbal lock. That's why we mostly use Rotation in code - it avoids those problems and is more reliable.
-
+Always use the `Rotation` struct instead of `Angles` when doing math to avoid gimbal lock. Multiply rotations to combine them.
 
 ```csharp
-// Make some angles (easy to understand)
-Angles ang = new Angles(30, 90, 0);  // pitch, yaw, roll
+// Create basic rotations
+Rotation turnRight = Rotation.FromYaw( 90f );
+Rotation lookUp = Rotation.FromPitch( 45f );
 
-// Convert to Rotation
-Rotation rot = ang.ToRotation();
+// Combine rotations by multiplying them
+Rotation combined = turnRight * lookUp;
 
-// Convert back to Angles
-Angles ang2 = rot.ToAngles();
+// Get directional vectors from a rotation
+Vector3 forwardDir = combined.Forward;
+Vector3 upDir = combined.Up;
 
-// Get direction vectors from a Rotation
-Vector3 fwd = rot.Forward;
-Vector3 up = rot.Up;
-Vector3 right = rot.Right;
-
-// Make a Rotation that looks in a direction
-Rotation look = Rotation.LookAt(new Vector3(1, 0, 0), Vector3.Up);
-
-// Create basic axis rotations
-Rotation ry = Rotation.FromYaw(90);    // turn right 90°
-Rotation rx = Rotation.FromPitch(45);  // look up 45°
-Rotation combined = ry * rx;           // do both
-
-// Smoothly rotate between two rotations
-Rotation start = Rotation.FromYaw(0);
-Rotation end = Rotation.FromYaw(180);
-Rotation halfway = Rotation.Slerp(start, end, 0.5f);
-
-// Rotate a direction vector
-Vector3 forward = Vector3.Forward;
-Vector3 rotated = rot * forward;
-
-// Invert a rotation
-Rotation inverse = rot.Inverse;
+// Smoothly interpolate between two rotations
+Rotation current = GameObject.LocalRotation;
+Rotation target = Rotation.LookAt( enemy.WorldPosition - GameObject.WorldPosition );
+GameObject.LocalRotation = Rotation.Slerp( current, target, Time.Delta * 5f );
 ```
 
+### Working with Transforms
 
-## Transform
-
-A [**Transform**](https://sbox.game/api/Transform) holds three things:
-
-* a **Position (Vector3)**,
-* a **Rotation (Rotation)**,
-* and a **Scale (Vector3)**
-
-In this way, it can fully represent the "transform" of a GameObject. On a GameObject it's available in two forms.. 
-
-* `GameObject.WorldTransform` - position in the world
-* `GameObject.LocalTransform` - position relative to its parent
-
+A Transform wraps position, rotation, and scale. It is incredibly useful for converting local space (relative to the object) to world space (absolute).
 
 ```csharp
-// Create a basic Transform at origin, facing forward
-Transform t = Transform.Zero;
+Transform t = GameObject.WorldTransform;
 
-// Or with custom position and rotation
-Vector3 pos = new Vector3(10, 0, 0);
-Rotation rot = Rotation.FromYaw(90);
-Transform custom = new Transform(pos, rot, 1f);  // scale is 1
+// Move a point from local space (e.g., 50 units in front of the object) to world space
+Vector3 localOffset = new Vector3( 50, 0, 0 );
+Vector3 absoluteWorldPosition = t.PointToWorld( localOffset );
 
-// Access individual parts
-Vector3 p = custom.Position;
-Rotation r = custom.Rotation;
-float scale = custom.Scale;
-
-// Get direction vectors from the transform
-Vector3 forward = custom.Forward;
-Vector3 up = custom.Up;
-Vector3 right = custom.Right;
-
-// Move a point from local space to world space
-Vector3 local = new Vector3(1, 0, 0);
-Vector3 world = custom.PointToWorld(local);
-
-// Move a point from world space to local space
-Vector3 backToLocal = custom.PointToLocal(world);
-
-// You can also turn the Transform into a Matrix
-Matrix mat = custom.ToMatrix();
-
-// Or create a Transform from a Matrix
-Transform fromMat = Transform.FromMatrix(mat);
+// Move a world position into local space
+Vector3 relativePosition = t.PointToLocal( absoluteWorldPosition );
 ```
+
+### World vs Local
+
+Every GameObject exposes both `WorldTransform`/`WorldPosition`/`WorldRotation` and `LocalTransform`/`LocalPosition`/`LocalRotation`. The difference is whether the transform is *relative to the parent* (Local) or *absolute in the scene* (World).
+
+```csharp
+// Top-level objects: Local and World are the same.
+// Children of a parent: they differ.
+GameObject.LocalPosition = new Vector3( 0, 0, 50 );  // 50 above the parent
+GameObject.WorldPosition = new Vector3( 0, 0, 50 );  // 50 above the scene origin
+```
+
+The setter on `WorldPosition` recomputes the local transform behind the scenes so the object lands at the requested world point, regardless of where its parent is. Use `WorldPosition` when you have an absolute target (`MoveTo(enemy.WorldPosition)`); use `LocalPosition` when you're authoring an offset relative to the parent (`muzzle.LocalPosition = new Vector3(50, 0, 0)`).
+
+## Core Types Reference
+
+| Type | Description |
+|---|---|
+| `Vector3` | Represents 3D positions and directions (X, Y, Z). |
+| `Vector2` | Represents 2D positions and directions (X, Y), useful for UI. |
+| `Rotation` | Represents an orientation using Quaternions. Avoids Gimbal lock. |
+| `Angles` | Represents an orientation using Euler angles (Pitch, Yaw, Roll). Easier for humans to read, but prone to Gimbal lock during calculations. |
+| `Transform` | A struct containing `Vector3 Position`, `Rotation Rotation`, and `Vector3 Scale` (per-axis). |
+
+## Troubleshooting
+
+:::danger "My object is spinning wildly!"
+When combining rotations, remember to **multiply** them (`rotA * rotB`), not add them (`rotA + rotB`). Adding Quaternions directly produces invalid rotations.
+:::
+
+:::warning "Angles vs Rotation"
+If you find your object getting stuck when rotating or acting unpredictably when looking straight up or down, you might be suffering from Gimbal Lock caused by manipulating `Angles` directly. Try to perform your math using `Rotation` (Quaternions) instead.
+:::
+
+## Related Pages
+- [Rotate an Object](../../how-to/rotate-object.md)
+- [Transform Component](../../scene/transform.md)

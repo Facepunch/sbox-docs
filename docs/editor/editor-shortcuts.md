@@ -3,46 +3,78 @@ title: "Editor Shortcuts"
 icon: "⌨️"
 created: 2025-02-04
 updated: 2025-02-04
+sources:
+  - engine/Sandbox.Tools/Editor/ShortcutAttribute.cs
+  - engine/Sandbox.Tools/EditorShortcuts.cs
 ---
 
 # Editor Shortcuts
 
-When creating a Tool or Editor Project, it's common to want to be able to trigger certain actions with a key press or combined keystroke (Like `O` to enter Object Mode, or `SHIFT+B` to enter the Block Tool).
+The `[Shortcut]` attribute allows you to bind specific key combinations to trigger methods within Editor Tools or Widgets.
 
-Editor Shortcuts do exactly that, while also giving the user the option to rebind each shortcut themselves.
+## Quick Working Example
 
-![](./images/editor-shortcuts.png)
-
-# Creating a Static Shortcut
-
-Shortcuts are created by adding the `[Shortcut]` attribute to a function, giving a name and default bind. The function can reside within any class (including static classes).
+You can add the `[Shortcut]` attribute to any static method to execute logic when a key combination is pressed.
 
 ```csharp
-[Shortcut("scene.toggle-gizmos", "SHIFT+G")]
-static void ToggleGizmos()
+using Editor;
+
+public static class MyEditorTools 
 {
-    // Do stuff...
+	[Shortcut("scene.toggle-gizmos", "SHIFT+G")]
+	public static void ToggleGizmos()
+	{
+		// Logic to toggle gizmos here...
+		Log.Info("Toggled gizmos!");
+	}
 }
 ```
 
-Now whenever you press SHIFT+G in the editor, this static function will be run if the primary Editor window is in focus.
+### Creating a Widget Shortcut
 
-# Creating a Widget Shortcut
-
-Widget Shortcuts are created just the same, but there's some optional parameters to play with.
+If you want a shortcut to apply only when a specific Editor `Widget` is in focus, you can provide the target widget type.
 
 ```csharp
-[Shortcut("mesh.merge", "M", typeof(SceneViewportWidget), ShortcutType.Widget)]
-private void Merge()
+using Editor;
+
+public class MyCustomWidget : Widget
 {
-    // Do stuff...
+	// This shortcut will only fire if a SceneViewportWidget is currently in focus
+	[Shortcut("mesh.merge", "M", typeof(SceneViewportWidget), ShortcutType.Widget)]
+	private void Merge()
+	{
+		// Merge logic here...
+		Log.Info("Merged meshes!");
+	}
 }
 ```
 
-The last 2 arguments are optional.
+## Configuration
 
-The first is which type of Widget you need to have in focus to do the shortcut (if none/null, assumes the class the function is defined in is the Widget type)
+The `[Shortcut]` attribute accepts several parameters to configure when and how it executes.
 
-The second is the ShortcutType, which is either the `Widget` itself needs to be in focus, a `Window` containing it needs to be in focus, or the `Application` as a whole needs to be in focus.
+| Parameter | Type | Description |
+|:---|:---|:---|
+| `identifier` | `string` | A unique string identifier for the shortcut (e.g., `"scene.toggle-gizmos"`). |
+| `keyBind` | `string` | The default key combination (e.g., `"SHIFT+G"`, `"M"`). |
+| `targetOverride` | `Type` | (Optional) The specific type of Widget that must be in focus to trigger the shortcut. If omitted, it assumes the class the function is defined in is the target type. |
+| `type` | `ShortcutType` | (Optional) The scope of the shortcut. Defaults to `ShortcutType.Widget`. |
 
-So in this example, `Merge()` will only be called when pressing M while a SceneViewportWidget is in focus.
+### Shortcut Types
+
+| `ShortcutType` | Description |
+|:---|:---|
+| `Widget` | The specific Widget must be in focus. |
+| `Window` | A Window containing the Widget must be in focus. |
+| `Application` | The Application as a whole must be in focus. |
+
+## Troubleshooting
+
+:::warning Shortcut Not Firing
+If your `ShortcutType.Widget` shortcut isn't executing when you press the keybind, ensure that the target widget is actually in focus. If the user has clicked away to the Inspector or Console, the widget shortcut will not trigger.
+:::
+
+## Related Pages
+
+* [Editor Widgets](editor-widgets.md)
+* [Editor Apps](editor-apps.md)
