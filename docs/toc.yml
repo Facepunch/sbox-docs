@@ -1,35 +1,1126 @@
 items:
-- name: Getting Started
-  href: getting-started/
-- name: Scene
-  href: scene/
-- name: Code
-  href: code/
-- name: Editor
-  href: editor/
-- name: Exporting Standalone
-  href: exporting/
-- name: Assets
-  href: assets/
-- name: Rendering
-  href: rendering/
-- name: Networking
-  href: networking/
-- name: Physics
-  href: physics/
-- name: UI
-  href: ui/
-- name: Game Mounts
-  href: game-mounts/
-- name: ActionGraph
-  href: actiongraph/
-- name: Movie Maker
-  href: movie-maker/
-- name: Media
-  href: media/
-- name: Sound
-  href: sound/
-- name: Gameplay
-  href: gameplay/
-- name: Services
-  href: services/
+- name: For Players
+  href: for-players/index.md
+  items:
+  - name: What is s&box?
+    href: for-players/what-is-sbox.md
+  - name: Account & Steam Setup
+    href: for-players/account-steam-setup.md
+  - name: Installation & Setup
+    href: for-players/installation.md
+  - name: Finding Games & Addons
+    href: for-players/finding-games.md
+  - name: Troubleshooting
+    href: for-players/troubleshooting.md
+  - name: Reporting Bugs
+    href: for-players/reporting-bugs.md
+- name: Build Games
+  href: build-games/index.md
+  items:
+  - name: Architectural Overview
+    href: architecture.md
+  - name: Glossary
+    href: glossary.md
+  - name: Learning Path (Game Dev)
+    href: learning-path-game-dev.md
+  - name: Getting Started
+    href: getting-started/index.md
+    items:
+    - name: Download & Install
+      href: getting-started/installation.md
+    - name: First Steps
+      href: getting-started/first-steps/index.md
+    - name: System Requirements
+      href: getting-started/system-requirements.md
+    - name: Your First Project
+      href: getting-started/first-project.md
+    - name: Explore the Engine
+      href: getting-started/explore-engine.md
+    - name: Project Types
+      href: getting-started/project-types/index.md
+      items:
+      - name: Game Project
+        href: getting-started/project-types/game-project.md
+      - name: Addon Project
+        href: getting-started/project-types/addon-project.md
+    - name: Monetization
+      href: getting-started/monetization.md
+    - name: Reporting Issues
+      href: getting-started/reporting-errors.md
+    - name: FAQ
+      href: getting-started/faq.md
+    - name: Status
+      href: getting-started/status.md
+  - name: Tutorials
+    href: tutorials/index.md
+    items:
+    - name: Your First Game
+      href: tutorials/your-first-game.md
+    - name: Your First Component
+      href: tutorials/your-first-component.md
+    - name: Build a Third-Person Controller
+      href: tutorials/build-a-third-person-controller.md
+    - name: Build a NavMesh AI
+      href: tutorials/build-a-navmesh-ai.md
+    - name: Build a Networked Lobby
+      href: tutorials/networking-basics.md
+    - name: Build a User Interface
+      href: tutorials/build-a-ui.md
+  - name: Samples & Templates
+    href: build-games/samples-templates/index.md
+    items:
+    - name: Sweeper Sample
+      href: build-games/samples-templates/sweeper.md
+    - name: Minimal Addon Template
+      href: build-games/samples-templates/addon-minimal.md
+    - name: Minimal Game Template
+      href: build-games/samples-templates/game-minimal.md
+    - name: Minimal Library Template
+      href: build-games/samples-templates/library-minimal.md
+    - name: Sandbox Addon Template
+      href: build-games/samples-templates/sandbox-addon.md
+    - name: Walker Map Template
+      href: build-games/samples-templates/walker-map.md
+  - name: Content Workflows
+    items:
+    - name: UI
+      href: systems/ui/index.md
+      items:
+      - name: Screen Panel
+        href: systems/ui/screenpanel.md
+      - name: World Panel
+        href: systems/ui/worldpanel.md
+      - name: World Input
+        href: systems/ui/worldinput.md
+      - name: Scene Panel
+        href: systems/ui/scenepanel.md
+      - name: Virtual Grid
+        href: systems/ui/virtualgrid.md
+      - name: Razor Panels
+        href: systems/ui/razor-panels/index.md
+        items:
+        - name: Razor Components
+          href: systems/ui/razor-panels/razor-components.md
+      - name: Styling Panels
+        href: systems/ui/styling-panels/index.md
+        items:
+        - name: Style Properties
+          href: systems/ui/styling-panels/style-properties.md
+      - name: HudPainter
+        href: systems/ui/hudpainter.md
+      - name: Localization
+        href: systems/ui/localization.md
+    - name: Shaders
+      href: systems/shaders/index.md
+      items:
+      - name: Getting Started
+        href: systems/shaders/getting-started.md
+      - name: Material
+        href: systems/shaders/material.md
+      - name: Shading Model
+        href: systems/shaders/shading-model.md
+      - name: Modes
+        href: systems/shaders/modes.md
+      - name: Attributes and Variables
+        href: systems/shaders/attributes-and-variables.md
+      - name: Render Attributes
+        href: systems/shaders/render-attributes.md
+      - name: Render States
+        href: systems/shaders/render-states.md
+      - name: Sampler States
+        href: systems/shaders/sampler-states.md
+      - name: Command Lists
+        href: systems/shaders/command-lists.md
+      - name: GPU Instancing
+        href: systems/shaders/gpu-instancing.md
+      - name: Classes
+        href: systems/shaders/classes/index.md
+        items:
+        - name: Bindless API
+          href: systems/shaders/classes/bindless-api.md
+        - name: Depth
+          href: systems/shaders/classes/depth.md
+        - name: Dynamic Reflections
+          href: systems/shaders/classes/dynamic-reflections.md
+        - name: Fog
+          href: systems/shaders/classes/fog.md
+        - name: G-Buffer
+          href: systems/shaders/classes/g-buffer.md
+        - name: Light
+          href: systems/shaders/classes/light.md
+        - name: Motion
+          href: systems/shaders/classes/motion.md
+        - name: Screen Space Tracing
+          href: systems/shaders/classes/screen-space-tracing.md
+        - name: SSAO
+          href: systems/shaders/classes/ssao.md
+        - name: Texture Sheets
+          href: systems/shaders/classes/texture-sheets.md
+      - name: Reference
+        href: systems/shaders/reference/index.md
+        items:
+        - name: Default Vertex and Pixel Shader Inputs
+          href: systems/shaders/reference/default-vertex-and-pixel-shader-inputs.md
+        - name: Global Variables
+          href: systems/shaders/reference/global-variables.md
+        - name: Screen Space Reflections
+          href: systems/shaders/reference/screen-space-reflections.md
+        - name: Vertex Helpers
+          href: systems/shaders/reference/vertex-helpers.md
+    - name: Shader Graph
+      href: systems/shader-graph/index.md
+      items:
+      - name: Getting Started
+        href: systems/shader-graph/getting-started.md
+      - name: Properties
+        href: systems/shader-graph/properties.md
+      - name: Variables
+        href: systems/shader-graph/variables.md
+      - name: Custom Nodes
+        href: systems/shader-graph/custom-nodes/index.md
+        items:
+        - name: C# Shader Nodes
+          href: systems/shader-graph/custom-nodes/c-shader-nodes.md
+        - name: Creating a Subgraph
+          href: systems/shader-graph/custom-nodes/creating-a-subgraph.md
+    - name: Avatar
+      href: systems/avatar/index.md
+    - name: Assets & Resources
+      href: systems/assetsresources/index.md
+      items:
+      - name: Custom Assets
+        href: systems/assetsresources/custom-assets.md
+      - name: GameResource Extensions
+        href: systems/assetsresources/gameresource-extensions.md
+      - name: Binary Serialization
+        href: systems/assetsresources/binary-serialization.md
+      - name: Cloud Assets
+        href: systems/assetsresources/cloud-assets.md
+    - name: Assets
+      href: assets/index.md
+      items:
+      - name: Custom Assets
+        href: assets/custom-assets.md
+      - name: Clothing
+        href: assets/clothing/index.md
+        items:
+        - name: First-Time Setup
+          href: assets/clothing/first-time-setup.md
+        - name: Guidelines & Quality Bar
+          href: assets/clothing/guidelines-quality-bar.md
+        - name: Layering Clothing
+          href: assets/clothing/layering-clothing.md
+        - name: Making a Hat
+          href: assets/clothing/making-a-hat.md
+        - name: Morphing to Humans
+          href: assets/clothing/morphing-to-humans.md
+        - name: Publishing Clothing
+          href: assets/clothing/publishing-clothing.md
+      - name: Ready-to-Use Assets
+        href: assets/ready-to-use-assets/index.md
+        items:
+        - name: Citizen Characters
+          href: assets/ready-to-use-assets/citizen-characters.md
+        - name: First-Person Weapons
+          href: assets/ready-to-use-assets/first-person-weapons.md
+    - name: Effects
+      href: systems/effects/index.md
+      items:
+      - name: Particle Effect
+        href: systems/effects/particle-effect/index.md
+        items:
+        - name: Particle Effect
+          href: systems/effects/particle-effect/particleeffect.md
+        - name: Particle Emitters
+          href: systems/effects/particle-effect/particleemitters.md
+        - name: Custom Particle Controller
+          href: systems/effects/particle-effect/custom-particle-controller.md
+      - name: Indirect Light Volume
+        href: systems/effects/indirect-light-volumes.md
+      - name: Volumetric Fog Volume
+        href: systems/effects/volumetric-fog-volume.md
+      - name: Temporary Effect
+        href: systems/effects/temporaryeffect.md
+      - name: Beams
+        href: systems/effects/beams/index.md
+        items:
+        - name: BeamEffect
+          href: systems/effects/beams/beameffect.md
+        - name: Tracers
+          href: systems/effects/beams/tracers.md
+      - name: Decals
+        href: systems/effects/decals/index.md
+        items:
+        - name: Decal Component
+          href: systems/effects/decals/decal-component.md
+        - name: Decal Definition
+          href: systems/effects/decals/decaldefinition.md
+        - name: Animated Effects
+          href: systems/effects/decals/animated-effects.md
+        - name: Lifetime
+          href: systems/effects/decals/lifetime.md
+    - name: Post Processing
+      href: systems/post-processing/index.md
+      items:
+      - name: Creating Post Processes
+        href: systems/post-processing/creating-postprocesses.md
+      - name: Post Process Volume
+        href: systems/post-processing/postprocessvolume.md
+      - name: Effects
+        href: systems/post-processing/effects/index.md
+        items:
+        - name: Bloom
+          href: systems/post-processing/effects/bloom.md
+        - name: Depth of Field
+          href: systems/post-processing/effects/depthoffield.md
+        - name: Film Grain
+          href: systems/post-processing/effects/filmgrain.md
+        - name: Tonemapping
+          href: systems/post-processing/effects/tonemapping.md
+    - name: Clutter
+      href: systems/clutter/index.md
+    - name: Terrain
+      href: systems/terrain/index.md
+      items:
+      - name: Creating Terrain
+        href: systems/terrain/creating-terrain.md
+      - name: Terrain Materials
+        href: systems/terrain/terrain-materials.md
+    - name: Movie Maker
+      href: systems/movie-maker/index.md
+      items:
+      - name: Getting Started
+        href: systems/movie-maker/getting-started.md
+      - name: Editor Map
+        href: systems/movie-maker/editor-map.md
+      - name: Keyframe Editing
+        href: systems/movie-maker/keyframe-editing.md
+      - name: Motion Editing
+        href: systems/movie-maker/motion-editing.md
+      - name: Skeletal Animation
+        href: systems/movie-maker/skeletal-animation.md
+      - name: Recording
+        href: systems/movie-maker/recording.md
+      - name: Sequences
+        href: systems/movie-maker/sequences.md
+      - name: Exporting Video
+        href: systems/movie-maker/exporting-video.md
+      - name: Playback API
+        href: systems/movie-maker/playback-api.md
+      - name: Recording API
+        href: systems/movie-maker/recording-api.md
+  - name: Scripting & Code Workflows
+    items:
+    - name: Code Basics
+      href: code/index.md
+      items:
+      - name: Code Basics Overview
+        href: code/code-basics/index.md
+      - name: API Whitelist
+        href: code/code-basics/api-whitelist.md
+      - name: Cheat Sheet
+        href: code/code-basics/cheat-sheet.md
+      - name: Code Generation
+        href: code/code-basics/code-generation.md
+      - name: Console Variables
+        href: code/code-basics/console-variables.md
+      - name: Hotloading
+        href: code/code-basics/hotloading.md
+      - name: Math Types
+        href: code/code-basics/math-types.md
+      - name: Unit Tests
+        href: code/code-basics/unit-tests.md
+    - name: Libraries
+      href: code/libraries.md
+    - name: Networking
+      href: systems/networking-multiplayer/index.md
+      items:
+      - name: Networked Objects
+        href: systems/networking-multiplayer/networked-objects.md
+      - name: Ownership
+        href: systems/networking-multiplayer/ownership.md
+      - name: Sync Properties
+        href: systems/networking-multiplayer/sync-properties.md
+      - name: Custom Snapshot Data
+        href: systems/networking-multiplayer/custom-snapshot-data.md
+      - name: Network Events
+        href: systems/networking-multiplayer/network-events.md
+      - name: Network Helper
+        href: systems/networking-multiplayer/network-helper.md
+      - name: Network Visibility
+        href: systems/networking-multiplayer/network-visibility.md
+      - name: RPC Messages
+        href: systems/networking-multiplayer/rpc-messages.md
+      - name: HTTP Requests
+        href: systems/networking-multiplayer/http-requests.md
+      - name: WebSockets
+        href: systems/networking-multiplayer/websockets.md
+      - name: Connection Permissions
+        href: systems/networking-multiplayer/connection-permissions.md
+      - name: Testing Multiplayer
+        href: systems/networking-multiplayer/testing-multiplayer.md
+      - name: Dedicated Servers
+        href: systems/networking-multiplayer/dedicated-servers/index.md
+        items:
+        - name: Running Local Projects
+          href: systems/networking-multiplayer/dedicated-servers/running-local-projects.md
+        - name: Server-side Code
+          href: systems/networking-multiplayer/dedicated-servers/serverside-code.md
+        - name: User Permissions
+          href: systems/networking-multiplayer/dedicated-servers/user-permissions.md
+    - name: Input
+      href: systems/input/index.md
+      items:
+      - name: Controller Input
+        href: systems/input/controller-input.md
+      - name: Glyphs
+        href: systems/input/glyphs.md
+      - name: Raw Input
+        href: systems/input/raw-input.md
+      - name: VR Input
+        href: systems/input/vr-input.md
+    - name: ActionGraph
+      href: systems/actiongraph/index.md
+      items:
+      - name: Intro to ActionGraphs
+        href: systems/actiongraph/intro-to-actiongraphs.md
+      - name: Component Actions
+        href: systems/actiongraph/component-actions.md
+      - name: Variables
+        href: systems/actiongraph/variables.md
+      - name: Examples
+        href: systems/actiongraph/examples.md
+      - name: Using with C#
+        href: systems/actiongraph/using-with-c.md
+      - name: Custom Nodes
+        href: systems/actiongraph/custom-nodes/index.md
+        items:
+        - name: Action Resources
+          href: systems/actiongraph/custom-nodes/action-resources.md
+        - name: C# Method Nodes
+          href: systems/actiongraph/custom-nodes/c-method-nodes.md
+    - name: Code Hotloading & Compilation
+      href: scripting-code-workflows/code-hotloading.md
+    - name: Type Library & Reflection
+      href: scripting-code-workflows/reflection.md
+    - name: Pipeline Tools
+      href: scripting-code-workflows/pipeline-tools.md
+  - name: Engine Systems
+    href: systems/index.md
+    items:
+    - name: File System
+      href: systems/file-system/index.md
+      items:
+      - name: Storage & UGC
+        href: systems/file-system/storage-ugc.md
+    - name: Mounting System
+      href: systems/mounting.md
+      items:
+      - name: Creating Mounts
+        href: systems/mounting/creating-mounts.md
+    - name: Scene System
+      href: scene/index.md
+      items:
+      - name: Cloning
+        href: scene/cloning.md
+      - name: GameObject
+        href: scene/gameobject.md
+      - name: GameObject System
+        href: scene/gameobjectsystem.md
+      - name: Tags
+        href: scene/tags.md
+      - name: Transform
+        href: scene/transform.md
+      - name: Components
+        href: scene/components/index.md
+        items:
+        - name: Component Interfaces
+          href: scene/components/component-interfaces/index.md
+        - name: Component Lifecycle
+          href: scene/components/component-lifecycle.md
+        - name: Component Methods Reference
+          href: scene/components/component-methods.md
+        - name: Component Reference
+          href: scene/components/component-reference.md
+        - name: Component Versioning
+          href: scene/components/component-versioning.md
+        - name: Events
+          href: scene/components/events/index.md
+          items:
+          - name: ISceneStartup
+            href: scene/components/events/iscenestartup.md
+          - name: IGameObjectNetworkEvents
+            href: scene/components/events/igameobjectnetworkevents.md
+        - name: Execution Order
+          href: scene/components/execution-order.md
+        - name: Reference
+          href: scene/components/reference/index.md
+          items:
+          - name: 2D Skybox
+            href: scene/components/reference/skybox2d.md
+          - name: Ambient Light
+            href: scene/components/reference/ambientlight.md
+          - name: Audio Listener
+            href: scene/components/reference/audiolistener.md
+          - name: Cable Component
+            href: scene/components/reference/cablecomponent.md
+          - name: Camera Component
+            href: scene/components/reference/cameracomponent.md
+          - name: Chair
+            href: scene/components/reference/chair.md
+          - name: Character Controller
+            href: scene/components/reference/charactercontroller.md
+          - name: Clutter Component
+            href: scene/components/reference/cluttercomponent.md
+          - name: Cubemap Fog
+            href: scene/components/reference/cubemapfog.md
+          - name: Decal
+            href: scene/components/reference/decal.md
+          - name: Dresser
+            href: scene/components/reference/dresser.md
+          - name: Envmap Probe
+            href: scene/components/reference/envmapprobe.md
+          - name: Fire Damage
+            href: scene/components/reference/firedamage.md
+          - name: Gradient Fog
+            href: scene/components/reference/gradientfog.md
+          - name: Hammer Mesh
+            href: scene/components/reference/hammer-mesh.md
+          - name: Highlight Outline
+            href: scene/components/reference/highlightoutline.md
+          - name: Hitboxes
+            href: scene/components/reference/hitboxes.md
+          - name: Hitboxes From Model
+            href: scene/components/reference/modelhitboxes.md
+          - name: Indirect Light Volume
+            href: scene/components/reference/indirectlightvolume.md
+          - name: Lights
+            href: scene/components/reference/lights.md
+          - name: Line Renderer
+            href: scene/components/reference/linerenderer.md
+          - name: Lip Sync
+            href: scene/components/reference/lipsync.md
+          - name: Manual Hitbox
+            href: scene/components/reference/manualhitbox.md
+          - name: Map Instance
+            href: scene/components/reference/mapinstance.md
+          - name: Mesh Component
+            href: scene/components/reference/meshcomponent.md
+          - name: Missing Component
+            href: scene/components/reference/missingcomponent.md
+          - name: Model Physics
+            href: scene/components/reference/modelphysics.md
+          - name: Model Renderer
+            href: scene/components/reference/modelrenderer.md
+          - name: NavMesh Agent
+            href: scene/components/reference/navmeshagent.md
+          - name: Particle Renderers
+            href: scene/components/reference/particle-renderers.md
+          - name: Physics Filter
+            href: scene/components/reference/physicsfilter.md
+          - name: Polygon Mesh
+            href: scene/components/reference/polygonmesh.md
+          - name: Player Controller
+            href: scene/components/reference/player-controller.md
+          - name: Prop
+            href: scene/components/reference/prop.md
+          - name: Radius Damage
+            href: scene/components/reference/radiusdamage.md
+          - name: Scene Information
+            href: scene/components/reference/sceneinformation.md
+          - name: Skinned Model Renderer
+            href: scene/components/reference/skinnedmodelrenderer.md
+          - name: Sound Point
+            href: scene/components/reference/soundpointcomponent.md
+          - name: Soundscape Trigger
+            href: scene/components/reference/soundscapetrigger.md
+          - name: Spawn Point
+            href: scene/components/reference/spawnpoint.md
+          - name: Spring Joint
+            href: scene/components/reference/springjoint.md
+          - name: Sprite Renderer
+            href: scene/components/reference/spriterenderer.md
+          - name: Terrain
+            href: scene/components/reference/terraincomponent.md
+          - name: Text Renderer
+            href: scene/components/reference/textrenderer.md
+          - name: Trail Renderer
+            href: scene/components/reference/trailrenderer.md
+          - name: Trigger Hurt
+            href: scene/components/reference/triggerhurt.md
+          - name: Verlet Rope
+            href: scene/components/reference/cable-rope.md
+          - name: Voice
+            href: scene/components/reference/voice.md
+      - name: Prefabs
+        href: scene/prefabs/index.md
+        items:
+        - name: Instance Overrides
+          href: scene/prefabs/instance-overrides.md
+        - name: Prefab Templates
+          href: scene/prefabs/prefab-templates.md
+      - name: Scenes
+        href: scene/scenes/index.md
+        items:
+        - name: Scene Metadata
+          href: scene/scenes/scene-metadata.md
+        - name: Tracing
+          href: scene/scenes/tracing.md
+      - name: Maps
+        href: scene/maps/index.md
+        items:
+        - name: Loading Maps
+          href: scene/maps/loading-maps.md
+        - name: Map Entities
+          href: scene/maps/map-entities.md
+        - name: Map Networking
+          href: scene/maps/map-networking.md
+      - name: Scene Mapping
+        href: scene/scene-mapping/index.md
+        items:
+        - name: Shortcuts
+          href: scene/scene-mapping/shortcuts.md
+    - name: Physics
+      href: systems/physics/index.md
+      items:
+      - name: Physics World
+        href: systems/physics/physics-world.md
+      - name: Rigidbody
+        href: systems/physics/rigidbody.md
+      - name: Colliders
+        href: systems/physics/colliders.md
+      - name: Joints
+        href: systems/physics/joints.md
+      - name: Collisions and Triggers
+        href: systems/physics/collisions-and-triggers.md
+      - name: Physics Events
+        href: systems/physics/physics-events.md
+    - name: Navigation
+      href: systems/navigation/index.md
+      items:
+      - name: NavMesh Agent
+        href: systems/navigation/navmesh-agent.md
+      - name: NavMesh Links
+        href: systems/navigation/navmesh-links.md
+      - name: NavMesh Areas
+        href: systems/navigation/navmesh-areas/index.md
+        items:
+        - name: Costs & Filters
+          href: systems/navigation/navmesh-areas/costs-filters.md
+        - name: Obstacles
+          href: systems/navigation/navmesh-areas/obstacles.md
+    - name: Security & Access Control
+      href: systems/security/index.md
+    - name: Audio
+      href: systems/audio/index.md
+      items:
+      - name: Audio Components
+        href: systems/audio/sound-components.md
+      - name: Mixers
+        href: systems/audio/mixer.md
+      - name: DSP Volume
+        href: systems/audio/dsp-volume.md
+    - name: Media
+      href: systems/media/index.md
+      items:
+      - name: Audio (Streaming)
+        href: systems/media/audio.md
+      - name: Video
+        href: systems/media/video.md
+    - name: VR
+      href: systems/vr/index.md
+      items:
+      - name: VR Anchor
+        href: systems/vr/vranchor.md
+      - name: VR Hand
+        href: systems/vr/vrhand.md
+      - name: VR Model Renderer
+        href: systems/vr/vrmodelrenderer.md
+      - name: VR Tracked Object
+        href: systems/vr/vrtrackedobject.md
+    - name: Services
+      href: systems/services/index.md
+      items:
+      - name: Achievements
+        href: systems/services/achievements.md
+      - name: Auth Tokens
+        href: systems/services/auth-tokens.md
+      - name: Stats
+        href: systems/services/stats.md
+      - name: Leaderboards
+        href: systems/services/leaderboards/index.md
+        items:
+        - name: Web API
+          href: systems/services/leaderboards/web-api.md
+    - name: Editor
+      href: editor/index.md
+      items:
+      - name: Editor Architecture
+        href: editor/custom-tools/architecture.md
+      - name: Editor Project Layout
+        href: editor/editor-project.md
+      - name: Editor Apps
+        href: editor/editor-apps.md
+      - name: Editor Events
+        href: editor/editor-events.md
+      - name: Editor Shortcuts
+        href: editor/editor-shortcuts.md
+      - name: Editor Widgets
+        href: editor/editor-widgets.md
+      - name: Property Attributes
+        href: editor/property-attributes.md
+      - name: Asset Previews
+        href: editor/asset-previews.md
+      - name: Texture Generators
+        href: editor/texture-generators.md
+      - name: Undo System
+        href: editor/undo-system.md
+      - name: Custom Editors
+        href: editor/custom-editors.md
+      - name: Editor Tools
+        href: editor/editor-tools/index.md
+        items:
+        - name: Component Editor Tools
+          href: editor/editor-tools/component-editor-tools.md
+      - name: Mapping (Legacy Hammer)
+        href: editor/mapping/index.md
+      - name: Action Graph
+        href: editor/action-graph.md
+      - name: DooEditor
+        href: editor/doo-editor.md
+      - name: Hammer
+        href: editor/hammer.md
+      - name: Model Editor
+        href: editor/model-editor.md
+      - name: Movie Maker
+        href: editor/movie-maker.md
+      - name: Shader Graph
+        href: editor/shader-graph.md
+    - name: Platform Integration
+      href: systems/platform/index.md
+      items:
+      - name: Standalone
+        href: systems/platform/standalone.md
+      - name: Steam
+        href: systems/platform/steam.md
+      - name: Stream
+        href: systems/platform/stream.md
+        items:
+        - name: Twitch
+          href: systems/platform/twitch.md
+      - name: VR
+        href: systems/platform/vr.md
+        items:
+        - name: VR Input
+          href: systems/platform/vr-input.md
+        - name: VR Overlays
+          href: systems/platform/vr-overlay.md
+    - name: Performance & Optimization
+      href: systems/performance/index.md
+      items:
+      - name: Profiling & Overlays
+        href: systems/performance/profiling.md
+      - name: Optimize Game Logic & Rendering
+        href: systems/performance/optimization-guide.md
+  - name: Addons & Extensions
+    href: engine-internals/addons/index.md
+    items:
+    - name: Base Addon
+      href: engine-internals/addons/base.md
+      items:
+      - name: Base Code Architecture
+        href: engine-internals/addons/base-code.md
+    - name: Citizen Addon
+      href: build-games/addons/citizen/index.md
+
+    - name: Tools Addon
+      href: engine-internals/addons/tools.md
+      items:
+      - name: Tools Code Architecture
+        href: engine-internals/addons/tools-code.md
+        items:
+        - name: CodeEditors
+          href: engine-internals/addons/codeeditors.md
+        - name: NodeGraph
+          href: engine-internals/addons/nodegraph.md
+        - name: LibraryManager
+          href: engine-internals/addons/librarymanager.md
+  - name: Cookbook & How-To
+    href: how-to/index.md
+    items:
+    - name: Create a Component
+      href: how-to/create-a-component.md
+    - name: Manage Components
+      href: how-to/manage-components.md
+    - name: Create a UI Health Bar
+      href: how-to/health-bar.md
+    - name: Player Movement
+      href: how-to/player-movement.md
+    - name: Apply Physics Forces
+      href: how-to/apply-physics-forces.md
+    - name: Create a NavMesh Obstacle
+      href: how-to/navmesh-obstacle.md
+    - name: Create a State Machine AI
+      href: how-to/state-machine-ai.md
+    - name: Clone GameObjects
+      href: how-to/clone-gameobjects.md
+    - name: Spawn a Prefab
+      href: how-to/spawn-prefab.md
+    - name: Create an Object Spawner
+      href: how-to/object-spawner.md
+    - name: Spawn Particles
+      href: how-to/spawn-particles.md
+    - name: Load Image from URL
+      href: how-to/load-image-from-url.md
+    - name: Trace / Raycast
+      href: how-to/trace-raycast.md
+    - name: Detect Player Input
+      href: how-to/detect-input.md
+    - name: Find GameObjects
+      href: how-to/find-gameobjects.md
+    - name: Attach an Object to a Bone
+      href: how-to/attach-weapon.md
+    - name: Use Inverse Kinematics (IK)
+      href: how-to/use-ik.md
+    - name: Animate a Model
+      href: how-to/animate-model.md
+    - name: Deal and Take Damage
+      href: how-to/deal-damage.md
+    - name: Play Sounds from Code
+      href: how-to/play-sounds.md
+    - name: Query Components
+      href: how-to/component-queries.md
+    - name: Use Async Tasks
+      href: how-to/component-async.md
+    - name: Rotate an Object
+      href: how-to/rotate-object.md
+    - name: Move an Object Smoothly
+      href: how-to/move-object-smoothly.md
+    - name: Sync Variables
+      href: how-to/sync-variables.md
+    - name: Change Scenes
+      href: how-to/change-scenes.md
+    - name: Camera Follow Player
+      href: how-to/camera-follow.md
+    - name: Import a Map from Blender
+      href: how-to/import-map-from-blender.md
+    - name: Save and Load Data
+      href: how-to/save-and-load.md
+    - name: Use Cookies
+      href: how-to/use-cookies.md
+    - name: Async Component Loading
+      href: how-to/async-loading.md
+    - name: UI Drag and Drop
+      href: how-to/ui-drag-and-drop.md
+  - name: Runtime Layout
+    href: build-games/runtime-layout/core.md
+  - name: Troubleshooting
+    href: troubleshooting/index.md
+    items:
+    - name: Scene & Components
+      href: troubleshooting/scene-and-components.md
+    - name: Networking
+      href: troubleshooting/networking.md
+    - name: Physics
+      href: troubleshooting/physics.md
+    - name: Hotload & Compile
+      href: troubleshooting/hotload-and-compile.md
+    - name: Mapping & Hammer
+      href: troubleshooting/mapping.md
+    - name: UI & Razor
+      href: troubleshooting/ui-razor.md
+    - name: Editor & Inspector
+      href: troubleshooting/editor.md
+    - name: Runtime & Build
+      href: troubleshooting/runtime-and-build.md
+    - name: Audio, Effects & Rendering
+      href: troubleshooting/audio-and-effects.md
+    - name: Input, Navigation & AI
+      href: troubleshooting/input-navigation-and-ai.md
+  - name: Publishing & Exporting
+    href: publishing/index.md
+    items:
+    - name: Exporting as a Standalone Game
+      href: publishing/exporting-standalone.md
+    - name: Publishing Addons
+      href: publishing/publishing-addons.md
+  - name: API Reference (sbox.game/api)
+    href: reference/index.md
+- name: Engine Internals
+  href: engine-internals/index.md
+  items:
+  - name: Menu Addon (Reference)
+    href: engine-internals/addons/index.md
+    items:
+    - name: Menu Code Architecture
+      href: engine-internals/addons/menu-code.md
+    - name: Menu Avatar Editor
+      href: engine-internals/addons/menu-avatar-editor.md
+    - name: Menu Map Browser
+      href: engine-internals/addons/menu-map-browser.md
+    - name: Menu Map Components
+      href: engine-internals/addons/menu-map-components.md
+    - name: Menu Mapping
+      href: engine-internals/addons/menu-mapping.md
+    - name: Menu Modals
+      href: engine-internals/addons/menu-modals.md
+    - name: Menu Settings
+      href: engine-internals/addons/menu-settings.md
+    - name: Menu VR Support
+      href: engine-internals/addons/menu-vr.md
+  - name: Building from Source & Contributing
+    href: engine-internals/contributing.md
+  - name: Learning Path (Engine Contributor)
+    href: engine-internals/learning-path-contributor.md
+  - name: Where to Make Changes
+    href: engine-internals/where-to-make-changes.md
+  - name: First Contribution Walkthrough
+    href: engine-internals/first-contribution-walkthrough.md
+  - name: Engine Concepts (Overview)
+    href: engine-concepts/index.md
+    items:
+    - name: Definitions
+      href: engine-concepts/definitions.md
+    - name: Launcher
+      href: engine-concepts/launcher.md
+    - name: Mounting
+      href: engine-concepts/mounting.md
+    - name: Sandbox.Access
+      href: engine-concepts/sandbox-access.md
+    - name: Sandbox.AppSystem
+      href: engine-concepts/sandbox-appsystem.md
+    - name: Sandbox.Bind
+      href: engine-concepts/sandbox-bind.md
+  - name: Engine Definitions
+    href: engine-internals/definitions.md
+  - name: Engine Launcher
+    href: engine-internals/launcher.md
+    items:
+    - name: Crash Reporter
+      href: engine-internals/launcher/crash-reporter.md
+    - name: Sbox Launchers
+      href: engine-internals/launcher/sbox-launchers.md
+  - name: Foundational Systems Architecture
+    href: systems/foundations/architecture.md
+  - name: Scene System Architecture
+    href: systems/scene-system/architecture.md
+  - name: Global Event System
+    href: systems/events.md
+  - name: Virtual Filesystem Architecture
+    href: systems/file-system/architecture.md
+  - name: Client Architecture
+    href: systems/networking-multiplayer/client-architecture.md
+  - name: Server Architecture
+    href: systems/networking-multiplayer/server-architecture.md
+  - name: Backend Services Architecture
+    href: systems/services/architecture/backend.md
+  - name: Razor UI Compiler Architecture
+    href: systems/ui/razor/architecture.md
+  - name: External Game Mounting
+    href: systems/mounting/index.md
+    items:
+    - name: GoldSrc Mounting
+      href: systems/mounting/goldsrc.md
+    - name: NS2 Mounting
+      href: systems/mounting/ns2.md
+    - name: Quake Mounting
+      href: systems/mounting/quake.md
+  - name: Game Instance Lifecycle
+    href: engine-internals/runtime-layout/game-architecture/game-instance.md
+  - name: .NET Core Hosting
+    href: engine-internals/runtime-layout/launcher/netcore-hosting.md
+  - name: Editor API Architecture
+    href: editor/custom-tools/architecture.md
+  - name: Main Menu Environment Architecture
+    href: build-games/addons/menu/architecture.md
+  - name: Menu Modals
+    href: build-games/addons/menu-modals.md
+  - name: Menu Settings
+    href: build-games/addons/menu-settings.md
+  - name: Menu Mapping
+    href: build-games/addons/menu-mapping.md
+  - name: Menu Avatar Editor
+    href: build-games/addons/menu-avatar-editor.md
+  - name: Menu VR Support
+    href: build-games/addons/menu-vr.md
+  - name: Code Hotloading & Compilation
+    href: scripting-code-workflows/code-hotloading.md
+  - name: Type Library & Reflection
+    href: scripting-code-workflows/reflection.md
+  - name: Pipeline Tools
+    href: scripting-code-workflows/pipeline-tools.md
+  - name: Runtime Layout & Architecture
+    href: engine-internals/runtime-layout/index.md
+    items:
+    - name: Game Overview
+      href: engine-internals/runtime-layout/game-overview.md
+    - name: Game Core
+      href: engine-internals/runtime-layout/game-core.md
+    - name: Mounting System
+      href: engine-internals/runtime-layout/mounting.md
+    - name: Mount
+      href: engine-internals/runtime-layout/mount.md
+    - name: AppSystem
+      href: engine-internals/runtime-layout/appsystem.md
+    - name: Engine Launcher
+      href: engine-internals/runtime-layout/launcher.md
+  - name: Mounting Internals
+    href: engine-internals/mounting.md
+  - name: Microsoft.AspNetCore.Components
+    href: engine-internals/microsoft-aspnetcore-components.md
+  - name: Sandbox.Access
+    href: engine-internals/sandbox-access.md
+    items:
+    - name: Config
+      href: engine-internals/sandbox-access-config/index.md
+    - name: Modifier
+      href: engine-internals/sandbox-access-modifier/index.md
+    - name: Rules
+      href: engine-internals/sandbox-access-rules/index.md
+  - name: Sandbox.AppSystem
+    href: engine-internals/sandbox-appsystem.md
+  - name: Sandbox.Bind
+    href: engine-internals/sandbox-bind.md
+    items:
+    - name: Links
+      href: engine-internals/sandbox-bind-links/index.md
+    - name: Proxy
+      href: engine-internals/sandbox-bind-proxy/index.md
+  - name: Sandbox.Client
+    href: engine-internals/sandbox-client.md
+    items:
+    - name: Network
+      href: engine-internals/sandbox-client-network.md
+  - name: Sandbox.CodeUpgrader
+    href: engine-internals/sandbox-codeupgrader/index.md
+    items:
+    - name: Helpers
+      href: engine-internals/sandbox-codeupgrader-helpers.md
+    - name: Upgraders
+      href: engine-internals/sandbox-codeupgrader-upgraders.md
+  - name: Sandbox.CodeUpgrader.Test
+    href: engine-internals/sandbox-codeupgrader-test/index.md
+  - name: Sandbox.Compiling
+    href: engine-internals/sandbox-compiling.md
+    items:
+    - name: CodeArchive
+      href: engine-internals/sandbox-compiling-codearchive.md
+    - name: Compiler
+      href: engine-internals/sandbox-compiling-compiler.md
+      items:
+      - name: Blacklist
+        href: engine-internals/sandbox-compiling-compiler-blacklist.md
+  - name: Sandbox.Compiling.Test
+    href: engine-internals/sandbox-compiling-test/index.md
+  - name: Sandbox.Engine
+    href: engine-internals/sandbox-engine/index.md
+    items:
+    - name: Core
+      href: engine-internals/sandbox-engine/core.md
+    - name: Editor
+      href: engine-internals/sandbox-engine/editor.md
+    - name: Input
+      href: engine-internals/sandbox-engine/input.md
+    - name: Scene
+      href: engine-internals/sandbox-engine/scene.md
+      items:
+      - name: GameObjectSystems
+        href: engine-internals/sandbox-engine/scene-gameobjectsystems.md
+      - name: Scene Networking
+        href: engine-internals/sandbox-engine/scene-networking.md
+    - name: Systems
+      href: engine-internals/sandbox-engine/systems/index.md
+      items:
+      - name: Hotload
+        href: engine-internals/sandbox-engine/systems/hotload.md
+      - name: Filesystem
+        href: engine-internals/sandbox-engine/systems/filesystem.md
+      - name: Movies
+        href: engine-internals/sandbox-engine/systems/movies.md
+      - name: Networking
+        href: engine-internals/sandbox-engine/systems/networking.md
+      - name: Audio
+        href: engine-internals/sandbox-engine/systems/audio.md
+  - name: Sandbox.Event
+    href: engine-internals/sandbox-event.md
+  - name: Sandbox.Filesystem
+    href: engine-internals/sandbox-filesystem.md
+  - name: Sandbox.GameInstance
+    href: engine-internals/sandbox-gameinstance.md
+  - name: Sandbox.Generator
+    href: engine-internals/sandbox-generator.md
+  - name: Sandbox.Hotload
+    href: engine-internals/sandbox-hotload.md
+  - name: Sandbox.Menu
+    href: engine-internals/sandbox-menu.md
+  - name: Sandbox.NetCore
+    href: engine-internals/sandbox-netcore.md
+  - name: Sandbox.Razor
+    href: engine-internals/sandbox-razor.md
+  - name: Sandbox.Reflection
+    href: engine-internals/sandbox-reflection.md
+  - name: Sandbox.Server
+    href: engine-internals/sandbox-server.md
+    items:
+    - name: Network
+      href: engine-internals/sandbox-server-network.md
+  - name: Sandbox.Services
+    href: engine-internals/sandbox-services.md
+  - name: Sandbox.SolutionGenerator
+    href: engine-internals/sandbox-solutiongenerator.md
+  - name: Sandbox.System
+    href: engine-internals/sandbox-system.md
+  - name: Sandbox.Tools
+    href: engine-internals/sandbox-tools/index.md
+    items:
+    - name: Animgraph
+      href: engine-internals/sandbox-tools/animgraph.md
+    - name: CodeEditor
+      href: engine-internals/sandbox-tools/codeeditor.md
+    - name: ControlWidget
+      href: engine-internals/sandbox-tools/controlwidget.md
+    - name: Debug
+      href: engine-internals/sandbox-tools/debug.md
+    - name: Editor
+      href: engine-internals/sandbox-tools/editor.md
+    - name: Events
+      href: engine-internals/sandbox-tools/events.md
+    - name: Extensions
+      href: engine-internals/sandbox-tools/extensions.md
+    - name: GameData
+      href: engine-internals/sandbox-tools/gamedata.md
+    - name: Input
+      href: engine-internals/sandbox-tools/input.md
+    - name: Inspector
+      href: engine-internals/sandbox-tools/inspector.md
+    - name: MapEditor
+      href: engine-internals/sandbox-tools/mapeditor.md
+    - name: MeshEditor
+      href: engine-internals/sandbox-tools/mesheditor.md
+    - name: ModelEditor
+      href: engine-internals/sandbox-tools/modeleditor.md
+    - name: Qt
+      href: engine-internals/sandbox-tools/qt.md
+    - name: Scene
+      href: engine-internals/sandbox-tools/scene.md
+    - name: Utility
+      href: engine-internals/sandbox-tools/utility.md
+    - name: Widgets
+      href: engine-internals/sandbox-tools/widgets.md
+  - name: Tools
+    href: engine-internals/tools/index.md
+    items:
+    - name: CodeGen
+      href: engine-internals/tools/codegen.md
+    - name: CreateGameCache
+      href: engine-internals/tools/creategamecache.md
+    - name: InteropGen
+      href: engine-internals/tools/interopgen.md
+    - name: MenuBuild
+      href: engine-internals/tools/menubuild.md
+    - name: SboxBuild
+      href: engine-internals/tools/sboxbuild.md
+    - name: ShaderCompiler
+      href: engine-internals/tools/shadercompiler.md
+    - name: ShaderProc
+      href: engine-internals/tools/shaderproc.md

@@ -21,7 +21,6 @@ Console commands are just static methods with an attribute. Here running `hello`
     }
 ```
 
-
 Commands can also have arguments. Here running `hello dave` will print out `Hello there dave!`. 
 
 ```csharp
@@ -32,24 +31,19 @@ Commands can also have arguments. Here running `hello dave` will print out `Hell
     }
 ```
 
-
 :::info
 The backend will try its best to convert the arguments from strings to the type you specify.
 
 :::
 
-
 ## Server Commands
 
 You might want to have a command that is always run on the server. You can do this by adding the `ConVarFlags.Server` flag to the `ConCmd` attribute.
-
-
 
 :::tip
 If you make the first parameter of the method have the `Connection` type, you'll be able to tell who actually ran the command.
 
 :::
-
 
 ```csharp
 	[ConCmd( "test", ConVarFlags.Server )]
@@ -69,7 +63,6 @@ Here's an example:
 	[ConVar]
 	public static bool debug_bullets{ get; set; } = false;
 ```
-
 
 ConVars can have flags. These can be combined.
 
@@ -98,7 +91,6 @@ public static string ViewMode{ get; set; } = "firstperson";
 [ConVar( "secret", ConVarFlags.Hidden )]
 public static int SecretVariableMode { get; set; } = 3;
 ```
-
 
 ## Game Settings
 

@@ -2,7 +2,7 @@
 title: "First-Person Weapons"
 icon: "🔫"
 created: 2024-07-29
-updated: 2026-02-06
+updated: 2026-04-27
 ---
 
 # First-Person Weapons
@@ -13,59 +13,43 @@ Facepunch provides some ready-to-use first-person weapons for you!
 
 ## ➡️ <https://sbox.game/facepunch/sboxweapons>
 
-
 These first-person resources are "open-source". If downloaded from the editor, they will come bundled with their source files: VMDL, FBX, animgraphs & subgraphs…
-
-
 
 :::info
 **… But source files are currently NOT included with downloads, while the feature is getting re-implemented in a better way.**
 
 :::
 
+Our first-person arms are also in the collection; [here's a direct link for convenience](https://sbox.game/facepunch/v_first_person_arms_human). By themselves, they contain and are assigned the "punching" animgraph, for all of your barehanded melee needs.
 
-Our first-person arms are also in the collection. By themselves, they contain and are assigned the "punching" animgraph, for all of your barehanded melee needs.
-
-# How to use our weapons & arms
-
+# How to use our weapons
 
 You may be familiar with the classic Source 1 setup of [bonemerging](https://developer.valvesoftware.com/wiki/$bonemerge) separate weapon models onto a single common arms model. **However, our weapon assets require the opposite.**
-
-
 
 :::warning
 You must bonemerge the arms ***→ onto →*** the weapons.
 
 :::
 
-We have two arms: the [human ones](https://sbox.game/facepunch/v_first_person_arms_human), and the [citizen ones](https://sbox.game/facepunch/v_first_person_arms_citizen).
-
-When using the citizen arms, you need to let our weapons know by using a special animgraph parameter. See more below.
+We ship two arm models: the [human arms](https://sbox.game/facepunch/v_first_person_arms_human) and the [citizen arms](https://sbox.game/facepunch/v_first_person_arms_citizen). When using the citizen arms you need to tell the weapon, via the `skeleton` animgraph parameter — see the **Others** table below.
 
 :::tip
 The recommended *maximum* FOV for these is 80° (horizontal) at 16:9. I try to keep them looking OK in 4:3 and at higher FOVs, but this is not a guarantee.
 
 :::
 
-
 # Common animgraph parameters
-
 
 Now that you've bonemerged arms onto our weapons, you can send animgraph inputs to the weapon just like you would with any other model.
 
-
 ![](./images/common-animgraph-parameters.png)
-
 
 :::info
 As a reminder, **♻️ self-resetting parameters** set themselves immediately back to default after one frame. For example, you don't need to set `b_attack` back to `false` yourself; it does that on its own.
 
 :::
 
-
 ## Movement
-
-
 
 | **Parameters** | **Type & values** | **Description** |
 |------------|---------------|-------------|
@@ -76,10 +60,7 @@ As a reminder, **♻️ self-resetting parameters** set themselves immediately b
 | `move_bob_cycle_control` | 🎚️ float, 0.0↔1.0 | Manual control of movement animation phase. Think of it like scrubbing through the animation yourself. Active if ≠ 0.0. If = 0.0, auto-resumes normal behaviour after 100ms. |
 | `move_x`, `move_y`, `move_z` | 🎚️ float, -1.0↔1.0 | Normalized movement input; unused but reserved for future, and should ideally be set anyway. |
 
-
 ## Weapon mechanics, actions, and states
-
-
 
 | **Parameters** | **Type & values** | **Description** |
 |------------|---------------|-------------|
@@ -101,20 +82,14 @@ As a reminder, **♻️ self-resetting parameters** set themselves immediately b
 | `grab_action` | 🗂️ enum, ♻️ self-resets | Trigger a "grab gesture". 1 = sweep down, 2 = sweep right, 3 = sweep left, 4 = push button. |
 | `deploy_type`, `reload_type` | 🗂️ enum      | Used by some weapons; refer to the section below. |
 
-
 ## Others
-
-
 
 | **Parameters** | **Type & values** | **Description** |
 |------------|---------------|-------------|
 | `camera_position_scale`<br>`camera_rotation_scale` | 🎚️ float, 0.0↔2.0 | Control the strength of camera animations. Setting the float above 1.0 makes them stronger (but only up to 2.0).  |
-| `skeleton | 🗂️ enum  | Slightly adjusts animations based on which arms you're using. 0 = human (default), 1 = citizen.   |
-
-
+| `skeleton` | 🗂️ enum | Slightly adjusts animations based on which arms you're using. `0` = human (default), `1` = citizen. |
 
 ## Speed scaling
-
 
 You can change these 🎚️ floats at any time, including in the middle of the animations they affect!
 
@@ -125,20 +100,17 @@ You can change these 🎚️ floats at any time, including in the middle of the 
 | `speed_ironsights` | Ironsight transitions |
 | `speed_grab` | Grab stance & grab gestures |
 
-
 ## Aim modifiers
-
 
 The `aim_pitch_inertia` and `aim_yaw_inertia` parameters (🎚️ floats, exploitable range of `-45↔45`) control an animated, bouncy "lag" of the weapon when looking around (or other parts, e.g. the left arm when "grab stance" is active).
 
-
 ## Parameters & behaviours specific to certain weapons
-
 
 ### v_first_person_arms (🤜 punching animgraph)
 
-* (todo…)
-
+- `b_attack` triggers the punch.
+- `b_attack_has_hit` (☑️ bool) indicates the punch connected.
+- Support for `b_twohanded` (☑️ bool) might exist for variations.
 
 ### v_crowbar (λ)
 
@@ -152,17 +124,14 @@ The `aim_pitch_inertia` and `aim_yaw_inertia` parameters (🎚️ floats, exploi
 * `reload_type` (🗂️ enum) can be set to 1 for a "pull" animation, instead of tossing the magazine.
 * `deploy_type` (🗂️ enum) can be set to 1 for a faster variant.
 
-
 ### v_m700 (sniper rifle)
 
 * `b_reload_bolt` (☑️ bool, ♻️ self-resets) triggers a bolt action. This can be done at any time. The firing pin (striker) will be sent back to its ready position only after using this parameter.
 * `deploy_type` (🗂️ enum) can be set to 1 for a faster variant.
 
-
 ### v_mp5 (submachine gun)
 
 * `deploy_type` (🗂️ enum) can be set to 1 for a faster variant.
-
 
 ### v_physgun 
 
@@ -170,11 +139,9 @@ The `aim_pitch_inertia` and `aim_yaw_inertia` parameters (🎚️ floats, exploi
 * `brake`  (🎚️ float, 0.0↔1.0) makes the left hand squeeze the bicycle brake.
 * `stylus`  (🎚️ float, -1.0↔1.0) makes the record player stylus needles go in/out.
 
-
 ### v_recoillessrifle (🚀 rocket launcher)
 
 * `deploy_type` & `reload_type` (🗂️ enums) can be set to 1 for faster variants.
-
 
 ### v_spaghellim4 (shotgun, automatic)
 
@@ -188,7 +155,6 @@ The `aim_pitch_inertia` and `aim_yaw_inertia` parameters (🎚️ floats, exploi
 * `deploy_type` (🗂️ enum) can be set to 1 for a faster variant.
 * The 🏷️`reload_bodygroup` tag should be used as a hint to display the shell bodygroup when it's active, and to keep it disabled whenever it's not.
 
-
 ### v_toolgun
 
 * `b_twohanded` (☑️ bool) is supported.
@@ -198,7 +164,6 @@ The `aim_pitch_inertia` and `aim_yaw_inertia` parameters (🎚️ floats, exploi
 * `firing_mode` is assigned to the state of the side switch. 0 = middle, 1 = up, 2 = down.
 * `coil` (🎚️ float, 0.0↔1.0) controls the orientation of the coil, so it can be spun. 
 
-
 ### v_trenchknife & v_m9bayonet (🔪 knives)
 
 * Melee attacks automatically chain into different swing animations if `b_attack` is called again within ≈500ms. The animations & animgraph were made with swings every 350ms in mind.
@@ -206,7 +171,6 @@ The `aim_pitch_inertia` and `aim_yaw_inertia` parameters (🎚️ floats, exploi
   * Attacks will change to be "heavy" attacks, similar to Counter-Strike games.
   * You can toggle this stance at any time, but note that doing so during an attack will interrupt it.
   * `b_attack_has_hit` is used during this state.
-
 
 ### v_usp (🔫 pistol)
 
@@ -230,24 +194,19 @@ Once a throw animation has finished, you must trigger `b_reload` to bring up a n
 
 With these parameters at your disposal, there are three ways you can implement grenades:
 
-
 1. **Counter-Strike style:** deploy normally → `charge_type` = 0 (pull pin) → throw.
 2. **Faster style:** deploy with `b_pin_remove` = true → `charge_type` = 1 (lift) → throw.
 3. **Cook style:** deploy with `b_pin_remove` = true → trigger `b_lever_release` = true → `charge_type` = 1 (lift) → throw.
 
 # Tags
 
-
 Animgraphs can use "Internal Tags" for various purposes (letting parts of the graph communicate with one another without spaghetti wiring) — but there are also "Event Tags" that are sent to the game code to let it know about various events. The most common example is changing the bodygroup of a mesh mid-reload animation, so that a held empty magazine becomes full again.
 
-
 ![](./images/tags.png)
-
 
 See [**OnAnimTagEvent**](https://sbox.game/api/Sandbox.SkinnedModelRenderer/OnAnimTagEvent). Tags are passed as a string, as-is; they are effectively "hints" for the code, they don't contain any other data than their name. You won't have to hard-code lengths, timings, etc. and handle logic that scales those timings based on speed scaling parameters. All you have to do is listen for these tags!
 
 ## Standard "Event Tags"
-
 
 * 🏷️`attack_discouraged`: you probably shouldn't let the player attack/fire right now (because it would look weird or off), but there's nothing stopping you; this is just a hint. For example, when it comes to reload animations, this tag will let you know when the weapon will be "ready" again (aiming at the crosshair).
 * 🏷️`holster_finished`: fired once the holster animation is done playing; this lets you know when it's safe to switch without interrupting the animation (which might feel weird, as some weapons significantly animate the camera's position).
@@ -257,9 +216,7 @@ See [**OnAnimTagEvent**](https://sbox.game/api/Sandbox.SkinnedModelRenderer/OnAn
 * 🏷️`melee_hit`: the actual time when a melee swing connects with its target, in the center of the screen. Swinging takes a bit of time, so you could use this to delay sounds, particle effects, etc.
 * 🏷️`melee_plant`: the time range during which a melee weapon stays planted inside something or someone (e.g. a knife in someone's back). Example use case: during this tag, freeze player movement, freeze the camera, or freeze the viewmodel rotation relative to the player view + soft-clamp player look to ±10°…
 
-
 # 🦴 Camera bone
-
 
 The camera is animated through the `🦴camera` bone. Its position (relative to the first-person 0,0,0) and orientation (relative to +X forwards, +Y left, +Z up) should **add** onto your in-game camera.
 
@@ -267,12 +224,9 @@ Our animgraphs automatically "weaken" this camera animation by 50% while moving 
 
 **The "positional" part of these animations should always be used.** As for rotations, feel free to offer a toggle for players prone to motion sickness, or to simply not play it back.
 
-
 # Replacing weapons with your own
 
-
 ![](./images/replacing-weapons-with-your-own.png)
-
 
 You might want to use your own weapon meshes. You can hide them, and then bonemerge (or simply parent) yours on top. For example, as pictured in this image, you could grab v_crowbar, hide the crowbar itself, then add a police baton on top.
 
@@ -286,8 +240,7 @@ This approach has many benefits. Here's one: you can store collections of differ
 
 # Technical details
 
-
-Each weapon contains its own . There are three separate root hierarchies: the weapon bones, the arms bones, and the camera.
+Each weapon contains its own skeleton. There are three separate root hierarchies: the weapon bones, the arms bones, and the camera.
 
 Under `🦴weapon_root`, there's `🦴weapon_root_children`, and under that one, different bones for every weapon (as the various mechanical bits of every gun are different).
 

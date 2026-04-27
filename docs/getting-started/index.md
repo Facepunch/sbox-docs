@@ -2,61 +2,71 @@
 title: "Getting Started"
 icon: "🚀"
 created: 2025-06-15
-updated: 2026-04-09
+updated: 2026-04-25
+sources:
+  - engine/Sandbox.Engine/Scene/Components/Component.cs
 ---
 
 # Getting Started
 
-S&box is coded in C#. Under the hood, it uses the Source 2 engine (CS2, HL:Alyx, DOTA2) and some of its systems: rendering, resources, physics, and audio.
+This is the on-ramp. Install the editor, make a project, get something on screen, write your first script. Most of the pages in this section are short.
 
-We use a scene system, similar to Godot and Unity. This allows faster iteration, without everything being code-based. The scene system aims to make how everything works more transparent, by being easily visible, and easily accessible.
+If you want the bigger picture before you start, read [Architectural Overview](../architecture.md). Otherwise just keep going.
 
-We have developed a hotload system which is capable of compiling & hotloading your changes to code within a few milliseconds, which negates the need for a scripting language.
+## What you'll write
 
-Our intention is to let you export the things that you make in our engine and release them standalone. We'll let you do this royalty-free.
+```csharp
+using Sandbox;
 
----
+public sealed class WelcomeComponent : Component
+{
+    protected override void OnStart()
+    {
+        Log.Info( "Welcome to s&box. This runs once when the object spawns." );
+    }
 
-## [Download & Install](/getting-started/installation.md)
+    protected override void OnUpdate()
+    {
+        GameObject.LocalRotation *= Rotation.FromAxis( Vector3.Up, 10f * Time.Delta );
+    }
+}
+```
 
-Get the s&box editor through Steam and start building. Available to everyone through the developer preview.
+This is a real component. You attach it to a GameObject in the editor, and the engine handles the rest — calling `OnStart` once, `OnUpdate` every frame, hotloading your edits without restarting.
 
-## [System Requirements](/getting-started/system-requirements.md)
+## The pages in this section, in order
 
-Minimum and recommended hardware specs to run s&box.
+You can take them in order or jump straight to whichever you need.
 
-## [Your First Project](/getting-started/first-project.md)
+| Step | Page | What you'll do |
+|---|---|---|
+| 1 | [Download & Install](installation.md) | Pull the editor down through Steam |
+| 2 | [System Requirements](system-requirements.md) | Confirm your machine can run it |
+| 3 | [First Steps](first-steps/index.md) | The core concepts — scenes, GameObjects, components, hotload |
+| 4 | [A Tour of the Editor](editor-tour.md) | What you see at first launch — panels, toolbars, menus, viewport navigation |
+| 5 | [Your First Project](first-project.md) | Make a project, place an object, attach a component, see it move |
+| 6 | [Project Types](project-types/index.md) | Game project vs addon — pick the right one for what you're building |
+| 7 | [Explore the Engine](explore-engine.md) | The Sandbox Testbed and other learning resources |
 
-Create a new game project, add GameObjects and Components, and get something moving on screen.
+When you've got something working, the [Tutorials](../tutorials/index.md) section walks through six guided builds: third-person controller, NavMesh AI, networking lobby, UI, and more.
 
-## [Explore the Engine](/getting-started/explore-engine.md)
+## Reference info, when you need it
 
-Understand the scene system, play the Testbed to see engine features in action, and find sample projects to learn from.
+- [FAQ](faq.md) — quick answers
+- [Reporting Issues](reporting-errors.md) — where bugs go
+- [Monetization](monetization.md) — Play Fund and revenue
+- [Feature Status](status.md) — what's done, what's missing
 
-## [Project Types](/getting-started/project-types/index.md)
+## Things that surprise people
 
-Learn about the different project types: game projects and addon projects.
+**There's no built-in code editor.** s&box doesn't ship with a text editor for `.cs` files — you write code in Visual Studio, Rider, or VS Code, then save. The engine watches the disk and recompiles on save.
 
-## [Monetization](/getting-started/monetization.md)
+**Hotload pauses on errors.** A red error in the editor console means hotload is paused entirely until you fix it. Save → see error → fix → save again.
 
-Learn how creators can make money through the Play Fund and other revenue systems.
+**`OnUpdate` runs every frame.** Multiply continuous changes by `Time.Delta` so they're framerate-independent. Don't allocate inside it; cache references in `OnStart`.
 
-## [Reporting Issues](/getting-started/reporting-errors.md)
-
-How to report bugs, submit error logs, and troubleshoot common problems.
-
-## [FAQ](/getting-started/faq.md)
-
-Answers to frequently asked questions about s&box.
-
-## [Feature Status](/getting-started/status.md)
-
-Current status of key features and known missing functionality.
-
----
+**Disabled GameObjects don't tick.** Setting `GameObject.Enabled = false` halts `OnUpdate` for everything underneath it — useful for optimization (disable distant objects) and a common debugging technique.
 
 ## Community
 
-If you don't understand something, [please ask on the forums](https://sbox.game/f) or on [Discord in the beginner's channel](https://discord.gg/sbox).
-
-Issues and feature suggestions should be posted in [the sbox-public repo](https://github.com/Facepunch/sbox-public).
+If something's stuck and the docs don't help: ask on [the forums](https://sbox.game/f) or in [Discord](https://discord.gg/sbox). Bug reports go in the [sbox-public repo](https://github.com/Facepunch/sbox-public).

@@ -11,8 +11,6 @@ When creating your own Classes/Structs/Assets/ect, you'll sometimes want custom 
 
 ![With a Custom Editor](./images/with-a-custom-editor.png) ![Without a Custom Editor](./images/without-a-custom-editor.png)
 
-
-
 # Creating a Custom ControlWidget
 
 The above are examples of ControlWidgets. The Inspector will try to find the appropriate one for each type, falling back on a Class/Struct editor (or none if it's not applicable). We can define our own with \[CustomEditor\]
@@ -61,7 +59,7 @@ You can also check for certain attributes, so you can have a custom Password str
 
 # Creating a Custom InspectorWidget
 
-While creating Custom ControlWidgets is very powerful, sometimes you might want to replace the entire Inspector. This is especially useful for [Editor Tools](/editor/editor-tools/index.md) or Assets, and is done with the \[Inspector\] attribute.
+While creating Custom ControlWidgets is very powerful, sometimes you might want to replace the entire Inspector. This is especially useful for [Editor Tools](editor-tools/index.md) or Assets, and is done with the \[Inspector\] attribute.
 
 ```csharp
 using static Editor.Inspectors.AssetInspector;
@@ -93,7 +91,7 @@ public class CharacterInspector : Widget, IAssetInspector
         var button = Layout.Add( new Button( "Randomize", "casino", this ) );
         button.Clicked += () =>
         {
-        	foreach ( var prop in Test.GetSerialized() )
+        	foreach ( var prop in Character.GetSerialized() )
         	{
         		// Randomize all the float values from 0-100
         		if ( prop.PropertyType != typeof( float ) ) continue;
@@ -125,7 +123,6 @@ public class CharacterInspector : Widget, IAssetInspector
         MainSheet.AddObject( so, x => x.PropertyType == typeof( float ) );   
     }
 
-
     // Only needed if Asset Inspector, and you are implementing IAssetInspector
     public void SetAssetPreview( AssetPreview preview )
     {
@@ -141,7 +138,6 @@ public class CharacterInspector : Widget, IAssetInspector
     }
 }
 ```
-
 
 [Now we have a Custom Inspector whenever we select our Character Asset
  670x382](./images/custom-inspector-character-asset.mp4)

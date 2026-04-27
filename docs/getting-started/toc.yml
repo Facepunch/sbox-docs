@@ -1,4 +1,6 @@
 items:
+- name: First Steps
+  href: first-steps/index.md
 - name: Download & Install
   href: installation.md
 - name: System Requirements

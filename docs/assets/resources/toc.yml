@@ -1,9 +1,0 @@
-items:
-- name: Binary Serialization
-  href: binary-serialization.md
-- name: Cloud Assets
-  href: cloud-assets.md
-- name: Custom Assets
-  href: custom-assets.md
-- name: GameResource Extensions
-  href: gameresource-extensions.md

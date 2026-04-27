@@ -1,9 +1,15 @@
 items:
-- name: Api Whitelist
-  href: api-whitelist.md
 - name: Cheat Sheet
   href: cheat-sheet.md
-- name: Console Variables
-  href: console-variables.md
 - name: Math Types
   href: math-types.md
+- name: Api Whitelist
+  href: api-whitelist.md
+- name: Console Variables
+  href: console-variables.md
+- name: Code Generation
+  href: code-generation.md
+- name: Hotloading
+  href: hotloading.md
+- name: Unit Tests
+  href: unit-tests.md

@@ -9,7 +9,6 @@ updated: 2025-06-15
 
 In the editor Textures can be generated in a number of ways. They can be created from an image (which is pretty normal), or a color, or a gradient, or text, or SVG source. These are called texture generators.
 
-
 You can create your own texture generators in code, and they will then be selectable.
 
 ```csharp
@@ -40,7 +39,6 @@ public class CircleTextureGenerator : Sandbox.Resources.TextureGenerator
 }
 
 ```
-
 
 The code above creates a circle texture generator. It draws a circle in the middle of a 128x128 texture.
 

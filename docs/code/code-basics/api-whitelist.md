@@ -13,17 +13,14 @@ When playing s&box, any code that doesn't pass these checks **will not** be load
 
 Editor code, including libraries, doesn't have to follow these restrictions. If you are developing a standalone game, you can opt out, but you won't be able to publish to the platform while the whitelist is disabled. 
 
-
 ## Reporting a False Positive
 
 If there's an API you need access to that isn't in the whitelist and you believe it's harmless, please report it on our [issue tracker](https://github.com/Facepunch/sbox-public/issues) with your reasoning, and we'll review it. Please include the symbol as it appears in the error.
-
 
 ## Reporting a Vulnerability
 
 As bugs in this system represent serious security issues, please report discoveries as described [here](https://facepunch.com/security).
 ***Do not report them publicly***.
-
 
 ## Cheat Sheet
 
@@ -33,5 +30,8 @@ Here are some of the common ones to help new devs. Check out our full API refere
 
 | ❌ Not allowed | ✅ Allowed |
 |---------------|-----------|
-| `Console.Log` | Use `Log.Info` as a drop-in replacement. |
-| `System.IO*`  | Most standard .NET IO isn't allowed, but you can use our [Filesystem](https://sbox.game/dev/doc/assets/file-system/) API for storage of user data. |
+| `Console.WriteLine` / `Console.Write` | Use `Log.Info`, `Log.Warning`, `Log.Error`. |
+| `System.IO.*` | Most standard .NET IO is sandboxed. Use the [File System](../../systems/file-system/index.md) API for reading/writing user data. |
+| `System.Net.*` (sockets, raw HTTP) | Use `Sandbox.Http`, [WebSockets](../../systems/networking-multiplayer/websockets.md), or [HTTP Requests](../../systems/networking-multiplayer/http-requests.md). |
+| `System.Threading.Thread` | Use `async/await` with `Task` (`OnLoad`, `OnStart` can be `async`); see [Async Tasks](../../how-to/component-async.md). |
+| `System.Reflection.Emit`, dynamic codegen | Blocked. Use `[Sync]`, `[Property]`, `TypeLibrary`, or source generators. |
