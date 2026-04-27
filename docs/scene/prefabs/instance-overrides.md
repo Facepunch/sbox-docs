@@ -47,7 +47,6 @@ The inspector and scene hierarchy provides controls to manage overrides on indiv
 
 ![](./images/managing-overrides-1.png)
 
-
 ![](./images/managing-overrides.png)
 
 ## Reverting Overrides

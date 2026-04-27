@@ -7,7 +7,7 @@
     ],
     "resource": [
       {
-        "files": ["docs/**/*.png", "docs/**/*.jpg", "docs/**/*.gif", "docs/**/*.svg", "docs/**/*.webp"]
+        "files": ["docs/**/*.png", "docs/**/*.jpg", "docs/**/*.gif", "docs/**/*.svg", "docs/**/*.webp", "docs/**/*.mp4", "docs/**/*.webm", "docs/**/*.vmat", "docs/**/*.vmdl"]
       }
     ],
     "dest": "_site",

@@ -9,7 +9,6 @@ updated: 2025-06-15
 
 # Scope Based Undo
 
-
 The scope based system works by creating a snapshot of a change set when the scope is entered and another one when the scope is disposed of. The system will automatically take care of restoring the state on undo/redo.
 
 A basic **blank** scope can be created as follows:
@@ -68,7 +67,6 @@ using var undoScope = SceneEditorSession.Active.UndoScope( "You Action Name" )
   .Push();
 ```
 
-
 To capture GameObject creation you can use `GameObjectCreations()`.
 
 ```csharp
@@ -77,7 +75,6 @@ using ( SceneEditorSession.Active.UndoScope( "Create Empty" ).WithGameObjectCrea
 	var go = new GameObject( true, "Object" );
 }
 ```
-
 
 Similarly you can capture objects that are about to be destroyed.
 

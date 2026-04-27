@@ -2,80 +2,79 @@
 title: "GameObjectSystem"
 icon: "⚙️"
 created: 2023-12-01
-updated: 2026-02-06
+updated: 2026-04-11
+sources:
+  - engine/Sandbox.Engine/Scene/GameObjectSystem/GameObjectSystem.cs
 ---
 
 # GameObjectSystem
 
-A scene can contain systems that need to do work in specific places during the frame. 
+A `GameObjectSystem` allows you to create a system that exists globally in every scene, hooks into precise stages of the scene's lifecycle, and updates code deterministically independent of individual components.
 
-For example, one of these systems is the `SceneAnimationSystem,` which finds all `SkinnedModelRenderer` components and works out all of their animations in parallel. This is faster than doing it in Update() and avoids weird out of order problems. It gives us a single point in the frame where we know for sure that all of the bone positions are up to date.
-
-# Implementation
-
-To create your own system, you just define a new class that derives from `GameObjectSystem`.
+## Quick Working Example
 
 ```csharp
 public class MyGameSystem : GameObjectSystem
 {
 	public MyGameSystem( Scene scene ) : base( scene )
 	{
+		// Listen to a stage executing at order 10
 		Listen( Stage.PhysicsStep, 10, DoSomething, "DoingSomething" );
 	}
 
 	void DoSomething()
 	{
-		Log.Info( "Did something!" );
-  
-        var allThings = Scene.GetAllComponents<MyThing>();
-        
-        // do something to all of the things
+		Log.Info( "Physics Step is happening!" );
 	}
 }
 ```
 
-When a scene is created, a copy of every defined `GameObjectSystem` is created and added to it, you don't need to do anything else.
+### Accessing Systems
 
-# Access
+You can retrieve the instance of your system running in the current scene using `Scene.GetSystem<T>()` or `Scene.GetAllComponents<T>()` if interacting with components en masse.
 
-You can access a GameObjectSystem in a number of ways. One way is using `Scene.Get<MyGameSystem>()`
+```csharp
+var mySystem = Scene.GetSystem<MyGameSystem>();
+mySystem.DoSomething();
+```
 
-You can also inherit from `GameObjectSystem<T>` which adds a `static T Current` property to your system.
+## Configuration
 
-```cpp
+Systems are automatically instantiated. You can listen to specific execution stages in the constructor using `Listen( Stage, Order, Action, DebugName )`.
+
+**Order:** Defines the execution priority if multiple systems listen to the same stage. Smaller numbers run first. A default action might happen at `0`. To guarantee you run before it, use `-1`. To run after it, use `1`.
+
+## Advanced
+
+### Inheritance with `<T>`
+
+For cleaner access, inherit from `GameObjectSystem<T>`. This provides a static `.Current` property that automatically gets the system from the active scene.
+
+```csharp
 public class MyGameSystem : GameObjectSystem<MyGameSystem>
 {
-  	public MyGameSystem( Scene scene ) : base( scene )
-	{
-	}
+	public MyGameSystem( Scene scene ) : base( scene ) { }
  
-    public void MyMethod()
-    {
-        Log.Info( "Hello, World!" );
-    }
+	public void TriggerGlobalEvent()
+	{
+		Log.Info( "Global event triggered!" );
+	}
 }
+
+// Access it from anywhere:
+MyGameSystem.Current.TriggerGlobalEvent();
 ```
 
-Then you can use them like…
+### Exposing Properties
 
-```cpp
-MyGameSystem.Current.MyMethod();
-```
+Any property marked with `[Property]` on a `GameObjectSystem` will be configurable in the project settings and saved.
 
-# Stages & Order
+## Troubleshooting
 
-Stages are based around certain events. For example, the PhysicsStep stage is called when ticking the physics, during FixedUpdate.
-
-The order defines where to call your method during that event. -1 would call it before, +1 would call it after. You will be defining the systems, so getting them in an order you can live with is your business.
-
-# Configuration
-
-GameObjectSystems have two methods of configuration. You can either globally configure them, or edit them per scene.
-
-In Project Settings, hit Systems — and you can configure them there.
-
-
-:::info
-Any property marked with \[Property\] will be configurable in project settings and saved.
-
+:::danger Invalid Return
+Make sure your system does not execute heavy blocking calls in its listeners to prevent halting the game loop.
 :::
+
+## Related Pages
+* [Components Overview](components/index.md)
+* [Execution Order](components/execution-order.md)

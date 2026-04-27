@@ -1,9 +1,0 @@
-items:
-- name: Beams
-  href: beams/
-- name: Decals
-  href: decals/
-- name: Indirect Light Volumes
-  href: indirect-light-volumes.md
-- name: Particle Effect
-  href: particle-effect/

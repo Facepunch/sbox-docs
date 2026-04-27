@@ -3,9 +3,13 @@ items:
   href: components/
 - name: GameObject
   href: gameobject.md
+- name: Cloning
+  href: cloning.md
 - name: GameObjectSystem
   href: gameobjectsystem.md
 - name: Prefabs
   href: prefabs/
 - name: Scenes
   href: scenes/
+- name: Transform
+  href: transform.md

@@ -7,7 +7,7 @@ updated: 2025-10-05
 
 # Editor Events
 
-Editor Events are events that are broadcast globally throughout the editor and can be listened to/fired from any [Editor Project](/editor/editor-project.md). These are useful for creating your own custom Editor Tools and making sure they can work in tandem with existing systems.
+Editor Events are events that are broadcast globally throughout the editor and can be listened to/fired from any [Editor Project](editor-project.md). These are useful for creating your own custom Editor Tools and making sure they can work in tandem with existing systems.
 
 # Hooking into an EditorEvent
 
@@ -47,9 +47,7 @@ EditorEvent.RunInterface<ICustomEvent>( x => x.MyCustomEvent(1,2,3,4,5) );
 
 While string-based events still exist, we prefer to use event interfaces nowadays. We find that they're more stable than strings. It's more obvious if things are using it, and it's really IntelliSense friendly.
 
-
 To use the interface, you just implement it. They're coded in a way that means you don't have to implement each member, so you can just implement what you want to listen to.
-
 
 ```csharp
 public class MyCustomWidget : Widget, ResourceLibrary.IEventListener
@@ -60,8 +58,6 @@ public class MyCustomWidget : Widget, ResourceLibrary.IEventListener
 	}
 }
 ```
-
-
 
 :::tip
 For widgets event listeners will register automatically, if you want to listen to events on a non widget class you will manually need to call `EditorEvent.Register( myCustomListenerInstance );`
@@ -94,7 +90,6 @@ void OnAssetSystemChanges() { }
 void OnAssetTagsChanged() { }
 ```
 
-
 # ResourceLibrary.IEventListener
 
 ```csharp
@@ -119,7 +114,6 @@ void OnExternalChanges( GameResource resource ) { }
 /// </summary>
 void OnExternalChangesPostLoad( GameResource resource ) { }
 ```
-
 
 # Other Default EditorEvents
 

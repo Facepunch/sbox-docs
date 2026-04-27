@@ -1,6 +1,4 @@
 items:
-- name: Advanced Topics
-  href: advanced-topics/
 - name: Code Basics
   href: code-basics/
 - name: Libraries
