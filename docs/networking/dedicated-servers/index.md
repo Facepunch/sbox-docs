@@ -67,3 +67,43 @@ You can pass a path to a `.sbproj` file to load a local project on a Dedicated S
 | +net_game_server_token  | `<token>` | **This is not required and is only available as an option once s&box is released.**Visit <https://steamcommunity.com/dev/managegameservers> to generate a token associated with your Steam Account. You can use this token to ensure your Dedicated Server always has the same Steam ID for other players to connect to it. You don't need this, but otherwise every time you load the server it will generate a new Steam ID. |
 | +port  | `<port>`  | The port used to host the server on. |
 | +net_query_port  | `<port>`  | The port used to query server information such as player count, current map, etc. |
+
+# Connecting to the Server
+
+Once your dedicated server is running, you can connect to it using the in-game console.
+
+## Getting Connection Information
+
+After your game has created a lobby, run the following command in the **dedicated server console**:
+
+~~~ 
+status
+~~~
+
+This will display the server’s connection details, including the **lobby ID**.
+
+:::info
+By default, s&box servers use Steam’s proxy relay system. This means connections are routed through Steam’s servers, and your dedicated server’s IP address is not exposed.
+:::
+
+## Connecting
+
+To join the server, open the game client console and run:
+
+~~~
+connect <lobbyId>
+~~~
+
+Example:
+
+~~~
+connect 1234567890
+~~~
+
+**Important:** Do not include the `steamid:` prefix when using the lobby ID.
+
+## Troubleshooting
+
+- **"Not Connected" error**  
+  This means a lobby has not been created in your game code yet.  
+  Refer to the networking documentation to implement lobby creation.
