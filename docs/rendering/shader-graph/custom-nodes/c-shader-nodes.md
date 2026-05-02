@@ -63,7 +63,7 @@ public class MyMathNode : ShaderNode
         var dir = compiler.Result(Direction, Vector3.Forward);
         
         // Generate shader code
-        return new NodeResult(1, $"dot({a}, {dir}.x)");
+        return new NodeResult( NodeResultType.Float, $"dot({a}, {dir}.x)");
     };
 }
 ```
