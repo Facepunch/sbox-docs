@@ -1,5 +1,7 @@
 items:
 - name: Tracing
   href: tracing.md
+- name: Triggers
+  href: triggers.md
 - name: Physics Events
   href: physics-events.md
