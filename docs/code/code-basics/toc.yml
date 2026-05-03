@@ -7,3 +7,5 @@ items:
   href: console-variables.md
 - name: Math Types
   href: math-types.md
+- name: Time
+  href: time.md
