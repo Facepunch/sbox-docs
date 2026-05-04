@@ -26,4 +26,4 @@ Audio components can be added to any GameObject in the editor. They handle every
 
 ## In This Section
 
-- [Playing Sounds](playing-sounds.md) — `Sound.Play`, `SoundHandle`, `GameObject.PlaySound`, and audio components
+- [Playing Sounds](/sound/playing-sounds.md) — `Sound.Play`, `SoundHandle`, `GameObject.PlaySound`, and audio components
