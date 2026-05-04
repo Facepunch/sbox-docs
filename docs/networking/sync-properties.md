@@ -19,8 +19,11 @@ public class MyComponent : Component
 }
 ```
 
+:::info
+`[Sync]` only works when the GameObject has the `NetworkMode.Object` mode. Properties on `NetworkMode.Snapshot` objects are never synced after the initial snapshot to anyone, even if marked with `[Sync]`.
+:::
 
-These properties are controlled by the owner of the object, therefore only the owner of the object can change them.
+These properties are controlled by the owner of the object, therefore only the owner of the object can change them. If you try to set a `[Sync]` property while `IsProxy` is `true`, the change is silently discarded - it will not replicate. For host-controlled values, see the `FromHost` flag below.
 
 
 # Supported Types
@@ -35,8 +38,7 @@ You can detect changes to a `[Sync]` property by also applying a the `[Change]` 
 
 
 :::warning
-Right now the `[Change]` attribute will not invoke the callback when a collection has changed. The callback will only be invoked when the property itself is assigned to something different.
-
+The `[Change]` attribute will not invoke the callback when a collection has changed. The callback will only be invoked when the property itself is assigned to something different. To detect changes to collections, use the `OnChanged` event on `NetList<T>` and `NetDictionary<K,V>`. See the *Collections* section below for more details.
 :::
 
 
@@ -52,6 +54,12 @@ public class MyComponent : Component
 }
 ```
 
+You can use `nameof` to avoid hardcoding the method name as a string, making it safer to refactor:
+
+```csharp
+[Sync, Change( nameof(OnIsRunningChanged) )] public bool IsRunning { get; set; }
+```
+
 
 # Sync Flags
 
@@ -64,6 +72,25 @@ You can customize the behaviour of a synchronized property with `SyncFlags`.
 | `SyncFlags.Query` | Enables Query Mode for the property. See the *Query Mode* section below. |
 | `SyncFlags.FromHost` | The host has ownership over the value, instead of the owner of the networked object. Only the host may change the value. |
 | `SyncFlags.Interpolate` | The value of the property will be interpolated for other clients. The value is interpolated over a few ticks. |
+
+### SyncFlags.FromHost
+
+Use `FromHost` for values that represent shared game state - things every player sees the same way, and only the host should be authoritative about. A round timer or team score is a good example.
+
+```csharp
+// Only the host can set this; clients read it as-is
+[Sync( SyncFlags.FromHost )] public int RoundTimer { get; set; }
+```
+
+### SyncFlags.Interpolate
+
+Use `Interpolate` for properties that change every frame and benefit from smooth rendering on other clients, such as a character's eye angles or a carried object's position.
+
+```csharp
+[Sync( SyncFlags.Interpolate )] public Angles EyeAngles { get; set; }
+```
+
+Interpolation only affects how the value is displayed on remote clients - it does not change how or when data is sent.
 
 # Collections
 
@@ -89,11 +116,69 @@ You can initialize each in the declaration with `new()` or you can initialize th
 
 You can use `NetList<T>` and `NetDictionary<K,V>` like their regular counterparts. They contain indexers, `Add`, `Remove` and other methods you'd expect.
 
+## Detecting Changes to Collections
 
+The `[Change]` attribute does not fire when a collection's contents change, only when the property itself is reassigned. Instead, both `NetList<T>` and `NetDictionary<K,V>` expose an `OnChanged` event that fires whenever their contents change, on both the owner and all clients.
 
-:::warning
-`NetList` and `NetDictionary` do not currently support the `[Property]` attribute.
+### NetList
 
+```csharp
+public class MyComponent : Component
+{
+    [Sync] public NetList<string> Players { get; set; } = new();
+
+    protected override void OnStart()
+    {
+        Players.OnChanged += OnPlayersChanged;
+    }
+
+    private void OnPlayersChanged( NetListChangeEvent<string> e )
+    {
+        Log.Info( $"List changed: {e.Type} — New: {e.NewValue}, Old: {e.OldValue}, Index: {e.Index}" );
+    }
+}
+```
+
+The `NetListChangeEvent<T>` describes what happened:
+
+| Property | Description |
+|---|---|
+| `Type` | The kind of change: `Add`, `Remove`, `Replace`, `Move`, or `Reset` |
+| `Index` | The index where the change occurred |
+| `MovedIndex` | The new index, only relevant for `Move` |
+| `NewValue` | The value that was added or replaced with |
+| `OldValue` | The value that was removed or replaced |
+
+### NetDictionary
+
+```csharp
+public class MyComponent : Component
+{
+    [Sync] public NetDictionary<string, int> Scores { get; set; } = new();
+
+    protected override void OnStart()
+    {
+        Scores.OnChanged += OnScoresChanged;
+    }
+
+    private void OnScoresChanged( NetDictionaryChangeEvent<string, int> e )
+    {
+        Log.Info( $"Scores changed: {e.Type} — Key: {e.Key}, New: {e.NewValue}, Old: {e.OldValue}" );
+    }
+}
+```
+
+The `NetDictionaryChangeEvent<TKey, TValue>` describes what happened:
+
+| Property | Description |
+|---|---|
+| `Type` | The kind of change: `Add`, `Remove`, `Replace`, or `Reset` |
+| `Key` | The key that was added, removed, or updated |
+| `NewValue` | The new value for that key |
+| `OldValue` | The previous value for that key |
+
+:::info
+`OnChanged` fires on **all clients**, not just the owner. This makes it a good place to update UI or trigger effects in response to collection changes, regardless of who made them.
 :::
 
 
