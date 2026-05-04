@@ -23,3 +23,7 @@ Audio components can be added to any GameObject in the editor. They handle every
 | `AudioListener` | Overrides where the client hears audio from, instead of the camera |
 | `LipSyncComponent` | Drives morphs with lipsync from sounds |
 | `VoiceComponent` | Records and transmits microphone input to other players |
+
+## In This Section
+
+- [Playing Sounds](playing-sounds.md) — `Sound.Play`, `SoundHandle`, `GameObject.PlaySound`, and audio components
