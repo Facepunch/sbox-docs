@@ -51,3 +51,15 @@ var tr = Scene.Trace
 	.UseHitboxes( true ) // hit hitboxes too!
 	.Run();
 ```
+
+# Debugging traces
+
+You can visualize traces in the editor by calling `DebugOverlay.Trace(tr)` - this will draw the trace and the hit point if there was a hit.
+
+```csharp
+var tr = Scene.Trace
+    .Ray( start, end )
+    .Run();
+
+DebugOverlay.Trace( tr, 5f ); // lasts for 5 seconds
+```
