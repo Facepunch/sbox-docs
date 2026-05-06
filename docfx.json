@@ -1,0 +1,20 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": ["docs/**/*.md", "docs/**/toc.yml"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["docs/**/*.png", "docs/**/*.jpg", "docs/**/*.gif", "docs/**/*.svg", "docs/**/*.webp"]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "S&box Documentation",
+      "_enableSearch": true
+    },
+    "template": ["default", "modern"]
+  }
+}

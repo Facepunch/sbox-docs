@@ -1,0 +1,21 @@
+items:
+- name: Getting Started
+  href: getting-started.md
+- name: Editor Map
+  href: editor-map.md
+- name: Keyframe Editing
+  href: keyframe-editing.md
+- name: Motion Editing
+  href: motion-editing.md
+- name: Skeletal Animation
+  href: skeletal-animation.md
+- name: Recording
+  href: recording.md
+- name: Sequences
+  href: sequences.md
+- name: Exporting Video
+  href: exporting-video.md
+- name: Playback API
+  href: playback-api.md
+- name: Recording API
+  href: recording-api.md

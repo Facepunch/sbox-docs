@@ -19,7 +19,7 @@ Imagine your game has a button, and you want it to make a bing noise when it's p
 ```csharp
 void OnPressed()
 {
-	Sound.FromWorld( "bing", WorldPosition );
+	Sound.Play( "bing", WorldPosition );
 }
 ```
 
@@ -34,11 +34,11 @@ void OnPressed()
 [Rpc.Broadcast]
 public void PlayOpenEffects()
 {
-	Sound.FromWorld( "bing", WorldPosition );
+	Sound.Play( "bing", WorldPosition );
 }
 ```
 
-The attribute `[Rpc.Broadcast]`makes it so when you call that function, it broadcasts a network message to everyone to call that function too.
+The attribute `[Rpc.Broadcast]` makes it so when you call that function, it broadcasts a network message to everyone to call that function too. Without any flags, anyone could technically call that function, but you could add flags to restrict it to only the host, or only the owner of the object. See the *Flags* section below for more details.
 
 
 # Static RPC
@@ -79,8 +79,8 @@ public static void PlaySoundAllClients( string soundName, Vector3 position )
 | `NetFlags.Reliable` | This is the default, so you don't need to specify this. Message will be sent reliably. Multiple attempts will be made until the recipient has received it. Use this for things like chat messages, or important events. This is the slowest way to send a message. It is also the most expensive. |
 | `NetFlags.SendImmediate` | Message will not be grouped up with other messages, and will be sent immediately. This is most useful for things like streaming voice data, where packets need to stream in real-time, rather than arriving with a bunch of other packets. |
 | `NetFlags.DiscardOnDelay` | Message will be dropped if it can't be sent quickly. Only applicable to unreliable messages. |
-| `NetFlag.HostOnly` | This RPC can only be called from the Host. |
-| `NetFlag.OwnerOnly` | This RPC can only be called from the owner of the object it's being called on. |
+| `NetFlags.HostOnly` | This RPC can only be called from the Host. |
+| `NetFlags.OwnerOnly` | This RPC can only be called from the owner of the object it's being called on. |
 
 # Arguments
 
@@ -95,7 +95,7 @@ void OnPressed()
 [Rpc.Broadcast]
 public void PlayOpenEffects( string soundName, Vector3 position )
 {
-	Sound.FromWorld( soundName, position );
+	Sound.Play( soundName, position );
 }
 ```
 
@@ -135,6 +135,6 @@ public void PlayOpenEffects( string soundName, Vector3 position )
 	if ( !Rpc.Caller.IsHost ) return;
 
 	Log.Info( $"{Rpc.Caller.DisplayName} with the steamid {Rpc.Caller.SteamId} played open effects!" );
-	Sound.FromWorld( soundName, position );
+	Sound.Play( soundName, position );
 }
 ```

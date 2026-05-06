@@ -7,15 +7,29 @@ items:
   href: code/
 - name: Editor
   href: editor/
+- name: Exporting Standalone
+  href: exporting/
 - name: Assets
   href: assets/
-- name: Graphics
-  href: graphics/
-- name: UI
-  href: ui/
-- name: Gameplay
-  href: gameplay/
+- name: Rendering
+  href: rendering/
 - name: Networking
   href: networking/
+- name: Physics
+  href: physics/
+- name: UI
+  href: ui/
+- name: Game Mounts
+  href: game-mounts/
+- name: ActionGraph
+  href: actiongraph/
+- name: Movie Maker
+  href: movie-maker/
+- name: Media
+  href: media/
+- name: Sound
+  href: sound/
+- name: Gameplay
+  href: gameplay/
 - name: Services
   href: services/

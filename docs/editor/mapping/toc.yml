@@ -1,3 +1,7 @@
 items:
+- name: Games
+  href: games.md
+- name: Publish
+  href: publish.md
 - name: Shortcuts
   href: shortcuts.md

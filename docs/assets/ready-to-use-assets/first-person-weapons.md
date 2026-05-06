@@ -24,9 +24,9 @@ These first-person resources are "open-source". If downloaded from the editor, t
 :::
 
 
-Our first-person arms are also in the collection; [here's a direct link for convenience](https://sbox.game/facepunch/v_first_person_arms_human). By themselves, they contain and are assigned the "punching" animgraph, for all of your barehanded melee needs.
+Our first-person arms are also in the collection. By themselves, they contain and are assigned the "punching" animgraph, for all of your barehanded melee needs.
 
-# How to use our weapons
+# How to use our weapons & arms
 
 
 You may be familiar with the classic Source 1 setup of [bonemerging](https://developer.valvesoftware.com/wiki/$bonemerge) separate weapon models onto a single common arms model. **However, our weapon assets require the opposite.**
@@ -38,7 +38,9 @@ You must bonemerge the arms ***→ onto →*** the weapons.
 
 :::
 
+We have two arms: the [human ones](https://sbox.game/facepunch/v_first_person_arms_human), and the [citizen ones](https://sbox.game/facepunch/v_first_person_arms_citizen).
 
+When using the citizen arms, you need to let our weapons know by using a special animgraph parameter. See more below.
 
 :::tip
 The recommended *maximum* FOV for these is 80° (horizontal) at 16:9. I try to keep them looking OK in 4:3 and at higher FOVs, but this is not a guarantee.
@@ -107,6 +109,8 @@ As a reminder, **♻️ self-resetting parameters** set themselves immediately b
 | **Parameters** | **Type & values** | **Description** |
 |------------|---------------|-------------|
 | `camera_position_scale`<br>`camera_rotation_scale` | 🎚️ float, 0.0↔2.0 | Control the strength of camera animations. Setting the float above 1.0 makes them stronger (but only up to 2.0).  |
+| `skeleton | 🗂️ enum  | Slightly adjusts animations based on which arms you're using. 0 = human (default), 1 = citizen.   |
+
 
 
 ## Speed scaling
@@ -283,7 +287,7 @@ This approach has many benefits. Here's one: you can store collections of differ
 # Technical details
 
 
-Each weapon contains its own skeleton. There are three separate root hierarchies: the weapon bones, the arms bones, and the camera.
+Each weapon contains its own . There are three separate root hierarchies: the weapon bones, the arms bones, and the camera.
 
 Under `🦴weapon_root`, there's `🦴weapon_root_children`, and under that one, different bones for every weapon (as the various mechanical bits of every gun are different).
 
