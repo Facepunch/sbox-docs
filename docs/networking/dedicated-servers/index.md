@@ -67,4 +67,4 @@ You can pass a path to a `.sbproj` file to load a local project on a Dedicated S
 | +net_game_server_token  | `<token>` | **This is not required and is only available as an option once s&box is released.**Visit <https://steamcommunity.com/dev/managegameservers> to generate a token associated with your Steam Account. You can use this token to ensure your Dedicated Server always has the same Steam ID for other players to connect to it. You don't need this, but otherwise every time you load the server it will generate a new Steam ID. |
 | +port  | `<port>`  | The port used to host the server on. |
 | +net_query_port  | `<port>`  | The port used to query server information such as player count, current map, etc. |
-| +extensions  | `<asset1>;<asset2>`  | Additional extensions pulled from the UGC Workshop. |
+| +extensions  | `<asset1>;<asset2>`  | Additional extensions pulled from the UGC Workshop. Multiple extensions are seperated by a semi-colon (`;`) |
