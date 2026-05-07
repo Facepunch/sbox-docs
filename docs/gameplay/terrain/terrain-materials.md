@@ -33,12 +33,6 @@ Existing Terrain Material assets can be dragged from the Asset Browser into the 
 
 Terrain Materials can be found on the cloud by clicking the Browse… button, or filtering `@cloud ext:tmat`.
 
-
-:::warning
-There is a limit of 4 Terrain Materials currently, this is planned to be resolved.
-
-:::
-
 ## Terrain Material Properties
 
 
