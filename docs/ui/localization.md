@@ -32,6 +32,27 @@ Then it's as easy as doing the following:
 <label>#spawnmenu.props</label>
 ```
 
+# Advanced tokens
+
+Sometimes you need to display text which has to be mixed with names of players, other items and so on. You will need to use a more advanced technique to display those strings.
+
+First, in your localization file, add placeholders using braces like this:
+
+```json
+  "player.join": "{Name} has joined the game",
+  "player.leave": "{Name} has left the game",
+```
+
+Then, use Language.GetPhrase to substitute that placeholder with your desired text:
+
+```cs
+    var data = new Dictionary<string, object>();
+    data["Name"] = connection.DisplayName;
+    var message = Language.GetPhrase( "player.join", data );
+```
+
+Make sure to tell your localization team to leave the text inside the placeholder intact, even in different languages.
+
 # Languages
 
 | English Name | API Language Code |
