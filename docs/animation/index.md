@@ -20,4 +20,4 @@ Key features:
 
 ## Movie Maker
 
-[Movie Maker](/movie-maker/) is a timeline-based editor for animating properties in a scene. It's ideal for in-game cutscenes, editing trailers, coordinating timed events, and creating skeletal animations — all without leaving the editor.
+[Movie Maker](/movie-maker/index.md) is a timeline-based editor for animating properties in a scene. It's ideal for in-game cutscenes, editing trailers, coordinating timed events, and creating skeletal animations — all without leaving the editor.
