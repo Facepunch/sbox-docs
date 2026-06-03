@@ -59,8 +59,8 @@ public class MyMathNode : ShaderNode
     [Title("Result")]
     public NodeResult.Func Result => (GraphCompiler compiler) =>
     {
-        var a = compiler.Result(InputA, DefaultA);
-        var dir = compiler.Result(Direction, Vector3.Forward);
+        var a = compiler.ResultOrDefault(InputA, DefaultA);
+        var dir = compiler.ResultOrDefault(Direction, Vector3.Forward);
         
         // Generate shader code
         return new NodeResult( NodeResultType.Float, $"dot({a}, {dir}.x)");

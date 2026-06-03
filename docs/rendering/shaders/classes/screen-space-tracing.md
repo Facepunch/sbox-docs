@@ -15,8 +15,7 @@ updated: 2024-12-09
 static TraceResult Trace(
     const float3 Position,    // The world-space origin point of the trace.
     const float3 Direction,   // The world-space direction vector of the ray.
-    const float2 vPositionSs, // Screen-space position corresponding to the origin.
-    uint nMaxSteps = 64,      // Maximum steps for ray marching (default is 64).
+    uint nMaxSteps = 64       // Maximum steps for ray marching (default is 64).
 );
 ```
 
@@ -34,13 +33,12 @@ Material m = /* .. */
 
 float3 origin = /* world-space origin */;
 float3 direction = /* world-space direction */;
-float2 screenPos = /* screen-space position */;
 
-TraceResult result = ScreenSpace::Trace(origin, direction, screenPos);
+TraceResult result = ScreenSpace::Trace(origin, direction);
 
 if (result.ValidHit)
 {
-    float3 vReflectionColor = FrameBufferCopy[ trace.HitClipSpace.xy ].rgb;
+    float3 vReflectionColor = FrameBufferCopy[ result.HitClipSpace.xy ].rgb;
     m.Emission = lerp( m.Emission, vReflectionColor, result.Confidence );
 }
 ```

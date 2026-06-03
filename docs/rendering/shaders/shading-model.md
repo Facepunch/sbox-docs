@@ -75,11 +75,11 @@ class ShadingModelToon
             color += diffuse + specular;
         }
         
-        if( DepthNormal::WantsDepthNormal() )
-            return DepthNormal::Output( m );
+        if( DepthNormals::WantsDepthNormals() )
+            return DepthNormals::Output( m.Normal, m.Roughness, color.a );
 
-        if( ToolVis::WantsToolVis() )
-            return ToolVis::Output( color, m );
+        if( ToolsVis::WantsToolsVis() )
+            return ToolsVis::Output( color, m );
 
         // Composite atmospherics after lighting
         color.xyz = Fog::Apply( m.WorldPosition, m.ScreenPosition.xy, color );

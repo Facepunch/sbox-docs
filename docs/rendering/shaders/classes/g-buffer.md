@@ -21,7 +21,7 @@ float3 Normals::Sample( int2 ScreenPosition )
 ```
 
 ```cpp
-float3 Roughness::Sample( int2 ScreenPosition )
+float Roughness::Sample( int2 ScreenPosition )
 ```
 
 If the object in that texel does not write to the G-buffer, then it reconstructs normal maps from it

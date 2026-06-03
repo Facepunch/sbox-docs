@@ -19,11 +19,13 @@ To get the Object→World matrix in your vertex shader you use the following fun
 float3x4 CalculateInstancingObjectToWorldMatrix( const VS_INPUT i );
 ```
 
-Extra per instance data can be grabbed by using:
+Extra per instance data can be grabbed by passing the instance's transform id:
 
 ```cpp
-ExtraShaderData_t GetExtraPerInstanceShaderData( const VS_INPUT i );
+ExtraShaderData_t GetExtraPerInstanceShaderData( uint nTransformIndexID );
 ```
+
+In a vertex shader you'd call it like `GetExtraPerInstanceShaderData( i.nInstanceTransformID )`.
 
 ExtraShaderData allows you to still have instances even though some data is different between them, currently only tint color is changeable within instances:
 
@@ -31,7 +33,8 @@ ExtraShaderData allows you to still have instances even though some data is diff
 struct ExtraShaderData_t
 {
 	float4 vTint;
-	uint nBlendWeightCount;			// if D_SKINNING, blend weight count
+	uint nVertexCacheOffset;
+	uint nBlendWeightCount;			// blend weight count
 };
 ```
 
