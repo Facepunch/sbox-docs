@@ -18,14 +18,6 @@ struct VertexInput
     float4 vTangentUOs_flTangentVSign : TANGENT	< Semantic( TangentU_SignV ); >;
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Skinning
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    #if ( D_SKINNING > 0 )
-    	uint4 vBlendIndices : BLENDINDICES 	< Semantic( BlendIndices ); >;
-    	float4 vBlendWeight : BLENDWEIGHT 	< Semantic( BlendWeight ); >;
-    #endif	
-    	
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     // SSS Curvature
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     #if ( S_USE_PER_VERTEX_CURVATURE )
@@ -33,16 +25,20 @@ struct VertexInput
     #endif
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Morph
+    // Compute Skinning
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    #if ( D_MORPH )
+    #if ( D_CS_VERTEX_ANIMATION )
+    	float4 vBlendWeight : BLENDWEIGHT 	< Semantic( BlendWeight ); >;
+
     	float nVertexIndex : TEXCOORD14 < Semantic( MorphIndex ); >;
+    	float nVertexCacheIndex : TEXCOORD15 < Semantic( MorphIndex ); >;
     #endif
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Instancing data
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     uint nInstanceTransformID : TEXCOORD13 < Semantic( InstanceTransformUv ); >;
+    uint nBoneIndex 		  : BLENDINDICES < Semantic( BlendIndices ); >; // 1D Blend Index for rigid objects transforms, skinning_cs takes uint4 from mesh
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Baked lighting
@@ -64,10 +60,8 @@ struct PixelInput
     #endif
     
     float3 vNormalWs 		: TEXCOORD1;
-    float2 vTextureCoords 	: TEXCOORD2;
+    float4 vTextureCoords 	: TEXCOORD2;
     float4 vVertexColor 	: TEXCOORD4;
-    
-    centroid float3 vCentroidNormalWs : TEXCOORD5; // For specular, used if interpolation sends normal outside the unit sphere
 
   	float3 vTangentUWs : TEXCOORD6; 
   	float3 vTangentVWs : TEXCOORD7; 

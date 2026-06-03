@@ -34,7 +34,7 @@ class Material
     float3 WorldPosition;
 	float3 WorldPositionWithOffset;
     float4 ScreenPosition; // SV_Position
-    float3 GeometricNormal;
+    float3 GeometricNormal; // DEPRECATED
 
     // baked lighting and/or anisotropic lighting
     float3 TangentNormal;
@@ -48,5 +48,5 @@ class Material
 
 ## Helper Functions
 
-* `Material::From( PixelInput i )` can be used to process the [standard input](/rendering/shaders/reference/default-vertex-and-pixel-shader-inputs.md) and expose textures to be used directly to the Material Editor ( MET )
+* `Material::Init( PixelInput i )` can be used to process the [standard input](/rendering/shaders/reference/default-vertex-and-pixel-shader-inputs.md) and set up the surface properties coming from the Vertex Shader ( `Material::From( PixelInput i )` is the legacy equivalent )
 * To initialize an empty material you can use `Material::Init()` and fill up the needed fields for the [Shading Model](/rendering/shaders/shading-model.md)

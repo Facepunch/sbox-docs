@@ -12,7 +12,7 @@ Much like SSAO, you can composite dynamic specular reflections on your object, w
 You can use it directly by sampling on your shader:
 
 ```cpp
-float3 DynamicReflections::Sample( float4 ScreenPosition, float Roughness )
+float4 DynamicReflections::Sample( float2 ScreenPosition, float Roughness )
 ```
 
 
@@ -35,5 +35,5 @@ Roughness parameter when sampling will optionally get a specific mip level from 
 Since you are overriding the envmap reflections of an object, overriding reflection color can also be used to force them off entirely
 
 ```csharp
-commands.SetGlobal( "ReflectionColorIndex", Texture.Black.ColorIndex );
+commands.SetGlobal( "ReflectionColorIndex", Texture.Black.Index );
 ```
