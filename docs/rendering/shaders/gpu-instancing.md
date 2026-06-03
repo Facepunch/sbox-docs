@@ -2,7 +2,7 @@
 title: "GPU Instancing"
 icon: "⚡"
 created: 2024-12-05
-updated: 2026-07-29
+updated: 2026-10-10
 ---
 
 # GPU Instancing
@@ -15,7 +15,7 @@ Everything is automatically instanced by default, if the renderer can batch your
 
 ### Instance ID
 
-Standard vertex input comes with a property for ID of your instance already, it is called `i.nInstanceTransformID`. Bone index (1D blend index for skinned meshes) can be fetched from `i.nBoneIndex`.
+Standard vertex input provides `i.nInstanceTransformID` for the instance's transform slot. `i.nBoneIndex` is a single blend index for rigid transforms; compute skinning reads its blend indices separately from the mesh.
 
 To add batched instance ID and bone index to your custom vertex struct, add this:
 ```cpp
@@ -31,20 +31,24 @@ uint nBoneIndex 		  : BLENDINDICES < Semantic( BlendIndices ); >;
 float3x4 GetTransformMatrix( uint nTransformIndexID, uint nBlendIndex = 0 )
 ```
 
-* Extra per instance data can be grabbed by using:
+With the standard vertex input, call `GetTransformMatrix( i.nInstanceTransformID, i.nBoneIndex )` to include the bone index when needed.
+
+* Extra per instance data can be grabbed by passing the instance's transform ID:
 
 ```cpp
 ExtraShaderData_t GetExtraPerInstanceShaderData( uint nTransformIndexID );
 ```
 
-ExtraShaderData allows you to still have instances even though some data is different between them, currently only tint color is changeable within instances:
+In a vertex shader you'd call it like `GetExtraPerInstanceShaderData( i.nInstanceTransformID )`.
+
+The returned data contains the instance tint and alpha, vertex-cache offset and blend-weight count:
 
 ```cpp
 struct ExtraShaderData_t
 {
 	float4 vTint;
 	uint nVertexCacheOffset;
-	uint nBlendWeightCount;	// if D_SKINNING, blend weight count
+	uint nBlendWeightCount;	// blend weight count
 };
 ```
 
@@ -55,19 +59,28 @@ float3 ComputeMatrixScale( float3x4 m )
 
 ## Procedural Instancing
 
-Procedural instancing is useful for programmatic shaders that are to be invoked from C# or indirectly.
-No transforms are passed, only the count of instance ids, you would derive some form of transform yourself from them within the shader.
+`Graphics.DrawModelInstanced( Model, int count )` and `Graphics.DrawModelInstancedIndirect( Model, GpuBuffer buffer, int bufferOffset = 0, RenderAttributes attributes = null )` draw instances without supplying per-instance transforms. The latter reads its draw arguments from the GPU buffer. Your shader derives or loads each transform itself.
 
 You can get the instance id from SV_InstanceID in your vertex function. This is also useful for indirect draw calls.
 
 ```cpp
-PixelInput MainVs( VertexInput i, uint instanceID : SV_InstanceID )
-{ 
-    float3 offsetPosition = float3( 0, 0, 64 * instanceID );
+float4 MainVs( VertexInput i, uint instanceID : SV_InstanceID ) : SV_Position
+{
+    float3 worldPosition = i.vPositionOs + float3( 0, 0, 64 * instanceID );
+    return Position3WsToPs( worldPosition );
 }
 ```
 
-See:
+This minimal example outputs only the clip-space position. Add the interpolants your pixel shader needs when using it in a material shader.
 
-* `Graphics.DrawModelInstanced( Model, count )`
-* `Graphics.DrawModelInstancedIndirect( Model, GpuBuffer )`
+## Supplying Instance Transforms
+
+Use `Graphics.DrawModelInstanced( Model, Span<Transform> transforms, RenderAttributes attributes = null )` to supply transforms from C# and use the standard shader instancing path.
+
+For GPU-driven transforms and counts, use this overload:
+
+```csharp
+Graphics.DrawModelInstancedIndirect( model, transformBuffer, indirectArgs );
+```
+
+`transformBuffer` contains `Sandbox.Rendering.GpuInstanceTransform` elements; `indirectArgs` contains `DrawIndexedInstancedArguments` and must be created with `GpuBuffer.UsageFlags.IndirectDrawArguments`. This overload feeds the standard `GetTransformMatrix()` path, so material shaders can use the supplied transforms without implementing procedural placement.

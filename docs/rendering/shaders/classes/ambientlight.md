@@ -2,52 +2,50 @@
 title: "AmbientLight"
 icon: "🌥️"
 created: 2024-12-19
-updated: 2026-09-03
+updated: 2026-10-10
 ---
 
 # Ambient Light
 
 This class is part of the standard shading model, which allows fetching proper diffuse light contribution from appropriate sources on scene.
 
+Use it directly when implementing your own [Shading Model](/rendering/shaders/shading-model.md). `ShadingModelStandard` already handles ambient light for you.
+
 ## From
 
 ```cpp
-AmbientLight::From( float3 WorldPosition, float4 PositionSs, float3 WorldNormal )
-
+float3 AmbientLight::From( float3 WorldPosition, float4 PositionSs, float3 WorldNormal )
 ```
-* `WorldPosition`: world-space pixel position, can get it with `i.vPositionWithOffsetWs` + `g_vCameraPositionWs`
+* `WorldPosition`: world-space pixel position, `i.vPositionWithOffsetWs + g_vHighPrecisionLightingOffsetWs.xyz`, or `m.WorldPosition` from an initialized material
 * `PositionSs`: screen-space position data, `i.vPositionSs` in standard pixel input struct
-* `WorldNormal`: world-space geometry normals 
+* `WorldNormal`: normalized world-space surface normal
 
 This method will return diffuse ambient light from one of the sources on scene in current order of priority:
 
-1. Indirect Light Volume (DDGI)
-2. Lightmap Probes
-3. Sky Color (directional light, controlled by alpha)
-4. Environment Probe/Sky Indirect Lighting (2D Skybox)
+1. DDGI, when `DDGI::IsEnabled()` is true
+2. Lightmap probes, when `UsesBakedLightingFromProbe` is true
+3. Environment probes, blended with the sky color using its alpha
 
-For example, if you have directional light *and* environment probe set up, `::From` will return flat sky color first, which visibility can be controlled by adjusting the alpha. Set the sky color alpha to zero (or anything inbetween) to make envprobes/indirect sky lighting more visible. Everything outside environment probes will draw indirect sky lighting from 2D Skybox.
+On the environment-probe path, a sky color alpha of one replaces the sampled probe lighting with the sky color. An alpha of zero keeps the probe lighting, and values in between blend the two. If no probe contributes at the position, only the sky color multiplied by its alpha remains.
 
 ![](./images/ambientlight_skycoloralpha.png)
 
-If there is indirect light volume present on scene, then `::From` will always return it first. You can also sample different types of diffuse light sources separately using following functions below:
+When DDGI is enabled, `From` uses that path even outside its volumes; it does not fall back to probes when the DDGI sample is zero. You can also sample each source directly using the functions below.
 
 ## FromDDGI
 
-Samples ambient light produced by **Indirect Light Volume**. If you don't have this component on scene, and it hasn't been baked yet, this will return **0**. Everything outside of the volume (even when baked) will be always **0** too. 
+Samples ambient light produced by an **Indirect Light Volume**. Returns **0** when there is no valid volume at the position, including outside the volumes or when the selected volume has no irradiance texture.
 
 ```cpp
-AmbientLight::FromDDGI( float3 WorldPosition, float3 WorldNormal )
-
+float3 AmbientLight::FromDDGI( float3 WorldPosition, float3 WorldNormal )
 ```
 
 ## FromEnvMapProbe
 
-Samples ambient light from **Environment Probe**, **Indirect Sky Lighting** (2D Skybox) or **Sky Color** (Directional Light). Read the explanation in `::From` section to see how exactly AmbientLight class selects the light source for sampling. 
+Samples ambient light from environment probes and blends it with the sky color. See `From` above for the alpha behavior.
 
 ```cpp
-AmbientLight::FromEnvMapProbe( float3 WorldPosition, float4 PositionSs, float3 WorldNormal )
-
+float3 AmbientLight::FromEnvMapProbe( float3 WorldPosition, float4 PositionSs, float3 WorldNormal )
 ```
 
 ## FromLightMapProbeVolume
@@ -55,5 +53,5 @@ AmbientLight::FromEnvMapProbe( float3 WorldPosition, float4 PositionSs, float3 W
 This will draw ambient light produced from lightmap probes.
 
 ```cpp
-AmbientLight::FromLightMapProbeVolume( float3 WorldPosition, float3 WorldNormal )
+float3 AmbientLight::FromLightMapProbeVolume( float3 WorldPosition, float3 WorldNormal )
 ```
