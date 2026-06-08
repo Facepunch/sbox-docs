@@ -19,7 +19,7 @@ Note that for the component be enabled, its GameObject and all of their ancestor
 
 This is called after deserialization and is meant for a place for the component to "load". When loading a scene, the loading screen will stay open and the game won't start until all components `OnLoad` tasks are complete. 
 
-Unlike other methods, this one will execute even if the component is inactive. You may need to check `Component.Active` if you don't want the OnLoad to execute on inactive components.
+Unlike other methods (except `OnDestroy`), this one will execute even if the component is inactive. You may need to check `Component.Active` if you don't want the OnLoad to execute on inactive components.
 
 If your component is doing something special, such as generating a procedural level, you can override this on your component to do this in the loadscreen.
 
@@ -76,4 +76,4 @@ Called when the component is disabled.
 
 # OnDestroy
 
-Called when the component is destroyed.
+Called when the component is destroyed. This method will be called even if the component was never enabled.
