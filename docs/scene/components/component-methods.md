@@ -2,7 +2,7 @@
 title: "Component Methods"
 icon: "👷"
 created: 2023-12-28
-updated: 2025-02-17
+updated: 2026-06-08
 ---
 
 # Component Methods
@@ -18,6 +18,8 @@ Note that for the component be enabled, its GameObject and all of their ancestor
 # OnLoad (async)
 
 This is called after deserialization and is meant for a place for the component to "load". When loading a scene, the loading screen will stay open and the game won't start until all components `OnLoad` tasks are complete. 
+
+Unlike other methods, this one will execute even if the component is inactive. You may need to check `Component.Active` if you don't want the OnLoad to execute on inactive components.
 
 If your component is doing something special, such as generating a procedural level, you can override this on your component to do this in the loadscreen.
 
@@ -35,12 +37,6 @@ Internally this is where the Map component downloads and loads the map.
 
 :::
 
-# OnValidate
-
-Called whenever a property is changed in the editor, and after deserialization. 
-
-A good place to enforce property limits etc.
-
 # OnAwake
 
 Called once when the component is created, but only if our parent GameObject is enabled. This is called after deserialization and loading.
@@ -55,11 +51,14 @@ Called when the component is enabled.
 
 # OnUpdate
 
-Called every frame
+Called every frame.
 
 # OnPreRender
 
-> ==This method is not called on dedicated servers.==
+:::info
+This method is not called on dedicated servers.
+
+:::
 
 Called every frame, right before rendering is about to take place.
 
