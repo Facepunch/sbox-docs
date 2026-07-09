@@ -7,7 +7,7 @@ updated: 2024-09-26
 
 # Http Requests
 
-s&box provides a static [Http](https://asset.party/api/Sandbox.Http) class, this lets you easily create asynchronous HTTP requests of different methods (GET, POST, DELETE, etc…) providing JSON content and parsing JSON responses.
+s&box provides a static [Http](https://sbox.game/dev/api/Sandbox.Http) class, this lets you easily create asynchronous HTTP requests of different methods (GET, POST, DELETE, etc…) providing JSON content and parsing JSON responses.
 
 
 ## Allowed URLs
