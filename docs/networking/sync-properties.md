@@ -25,6 +25,9 @@ public class MyComponent : Component
 
 These properties are controlled by the owner of the object, therefore only the owner of the object can change them. If you try to set a `[Sync]` property while `IsProxy` is `true`, the change is silently discarded - it will not replicate. For host-controlled values, see the `FromHost` flag below.
 
+:::warning
+[Sync] only guarantees the client eventually gets the latest value, not every value in between. If a property changes again before the last value is acknowledged, that earlier value is skipped, not queued. If you need something more reliable, Use a [reliable RPC](/networking/rpc-messages.md) instead.
+:::
 
 # Supported Types
 
