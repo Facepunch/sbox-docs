@@ -2,7 +2,7 @@
 title: "Network Visibility"
 icon: "👁️"
 created: 2025-11-14
-updated: 2025-11-19
+updated: 2026-07-09
 ---
 
 # Network Visibility
@@ -45,6 +45,12 @@ public class MyVisibilityComponent : Component, INetworkVisible
     }
 }
 ```
+
+:::info
+Objects aren't culled the instant `IsVisibleToConnection` returns false. There's a **2 second cull delay** - a connection has to be continuously invisible for that long before it actually stops receiving updates. If visibility flips back to true at any point during those 2 seconds, the timer resets and the object is never culled.
+
+This avoids needlessly toggling network updates on and off for connections that are only briefly or intermittently out of view. Becoming visible again isn't delayed - a culled connection starts receiving updates again as soon as `IsVisibleToConnection` returns true.
+:::
 
 ### IsVisibleToConnection Parameters
 
