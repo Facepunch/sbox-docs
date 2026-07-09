@@ -2,7 +2,7 @@
 title: "Dedicated Servers"
 icon: "📦"
 created: 2024-11-07
-updated: 2025-04-15
+updated: 2026-07-09
 ---
 
 # Dedicated Servers
@@ -95,6 +95,7 @@ You can pass a path to a `.sbproj` file to load a local project on a Dedicated S
 | +net_game_server_token  | `<token>` | **This is not required and is only available as an option once s&box is released.**Visit <https://steamcommunity.com/dev/managegameservers> to generate a token associated with your Steam Account. You can use this token to ensure your Dedicated Server always has the same Steam ID for other players to connect to it. You don't need this, but otherwise every time you load the server it will generate a new Steam ID. |
 | +port  | `<port>`  | The port used to host the server on. |
 | +net_query_port  | `<port>`  | The port used to query server information such as player count, current map, etc. |
+| +net_allow_local | `<0\|1>` | Opens a loopback TCP connection for testing multiple instances against the same server on one machine, bypassing the Steam relay. Clients on that machine can join with `connect local`. |
 
 # Connecting to the Server
 
