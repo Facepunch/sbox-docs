@@ -30,7 +30,7 @@ The editor has these built-in for you to use:
 
 
 ## Default emitter properties
-In all emitters you can find these same parameters
+In all emitters you can find these same parameters. You can randomize all of them and animate the rate and rate over distance with curves over the emitter duration
 
 ![](./images/emitters/emitter-properties.png)
 
