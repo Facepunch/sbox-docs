@@ -2,10 +2,8 @@
 title: "Network Visibility"
 icon: "👁️"
 created: 2025-11-14
-updated: 2026-07-09
+updated: 2026-07-28
 ---
-
-# Network Visibility
 
 # Network Visibility & Culling
 
@@ -63,6 +61,14 @@ Return **true** if the object should be visible to that connection; **false** if
 
 To enable this behaviour, disable `AlwaysTransmit` on the root network object.
 
+:::info
+The GameObject holding the component must be **enabled** for it to be asked. If it's disabled, the engine ignores it and falls back to PVS.
+
+Networked children get checked too. A child is sent if its **root object is being sent** to that connection, **or** if its own check says it's visible. So a visible root brings its networked children with it, but a child can still be visible on its own even when the root is culled.
+
+On the client, being active always follows the hierarchy. A child under a culled parent won't be active, even if it's still getting updates.
+:::
+
 
 ---
 
@@ -71,26 +77,35 @@ To enable this behaviour, disable `AlwaysTransmit` on the root network object.
 If **no** component implementing `INetworkVisible` exists on the root GameObject *and* the map is a **Hammer map** with VIS compiled:
 
 * The engine automatically falls back to **PVS (Potentially Visible Set)**.
-* Visibility is determined using Hammer's visibility data.
+* Visibility is determined using Hammer's visibility data, checked against where the player can see from.
 
 This is an ideal default for static world objects on Hammer maps.
+
+If there's no PVS data to check against - no Hammer map, or VIS wasn't compiled - everything counts as visible, so nothing gets culled even with `AlwaysTransmit` turned off. On those maps you need an `INetworkVisible` component to cull anything.
 
 
 ---
 
 ## What Happens When an Object Is Culled?
 
-When the owner decides an object is **not visible** to a connection:
+It depends on whether the object has ever been sent to that connection.
 
-### The following *stop being sent*:
+### Before it's first sent
 
-* Sync Var updates
-* Transform updates
+If a connection has never seen the object, it **doesn't have it at all**. The object isn't spawned on that client, so it isn't there in any form - not even hidden. It spawns the first time it becomes visible to that connection.
 
-### The following *still occur*:
+This only matters for players who **join after the object already exists**. If an object is network spawned while you're already connected, it's created on your client straight away, whether you can see it or not - culling then just turns it off. The filtering happens in the snapshot a player gets when they join. A joining player only gets objects that are visible to them right then, plus anything with `AlwaysTransmit` on, and anything in `NetworkMode.Snapshot`.
 
-* The object **still spawns** for the client.
-* The object becomes **Disabled** locally for that client while hidden.
-* **RPCs are still delivered**.
+An object is also included if one of its networked **children** is visible, because a child is never sent without its parents. So an object you'd expect to be culled can still show up on a client because something under it was visible.
 
-Invisible objects remain known to the client, just not updated.
+### After it's been sent
+
+Once the object has spawned for a connection, it **stays on that client for good**. Culling never destroys it - it just hides it while it's not visible.
+
+While it's hidden, for that connection:
+
+* Sync Var updates and Transform updates stop being sent.
+* **RPCs are still delivered.** They still run, even though the object is inactive.
+
+
+Hidden objects are still known to the client once they've been seen, they just stop getting updates. When they become visible again, the same object turns back on and starts getting updates - it doesn't respawn.
