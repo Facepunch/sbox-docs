@@ -228,7 +228,7 @@ These work across most properties:
 | text-transform | none (default) / capitalize / lowercase / uppercase |                  |
 | top  | Length     |                  |
 | transform | Fills in the properties below | `scale()` accepts comma-separated arguments. eg. `transform: scale(2, 0.5);` |
-| transform-origin | Length, Length, Length (optional) |                  |
+| transform-origin | Length, Length (optional) |                  |
 | transform-origin-x | Length     |                  |
 | transform-origin-y | Length     |                  |
 | transition | Fills in the properties below | `transition: all 0.1s ease;`,`transition: opacity 0.1s, transform 0.2s ease-out;` |
