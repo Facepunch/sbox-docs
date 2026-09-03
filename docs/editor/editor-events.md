@@ -155,7 +155,6 @@ void OnExternalChangesPostLoad( GameResource resource ) { }
 | `open.shader` | string    | When opening a shader |
 | `package.changed` | Package   | When you update a package |
 | `package.changed.installed` | Package   | When a package is installed |
-| `package.changed.uninstalled` | Package   | When a package is uninstalled |
 | `package.changed.favourite` | Package   | When you favourite a package |
 | `package.changed.rating` | Package   | When you upvote/downvote |
 
@@ -163,7 +162,6 @@ void OnExternalChangesPostLoad( GameResource resource ) { }
 
 | Event | Arguments | Invokes |
 |-------|-----------|---------|
-| `scene.open` |           | When a Scene or Prefab is opened |
 | `scene.startplay` |           | When you click the Play button |
 | `scene.play` |           | When the Scene enters Play Mode |
 | `scene.stop` |           | When the Scene exits Play Mode |
@@ -176,8 +174,6 @@ void OnExternalChangesPostLoad( GameResource resource ) { }
 |-------|-----------|---------|
 | `sceneview.paintoverlay` |           | When highlighting a Panel in the "UI Panels" tab |
 | `qt.mousepressed` |           | When the Editor receives a mouse event |
-| `gameframe.statusbar` | StatusBar | When the status bar is being built<br>(Used to add your own Widgets) |
-| `tools.headerbar.build` | HeadBarEvent | When the header bar is being built<br>(Used to add your own Widgets) |
 | `editor.preferences` | NavigationView | When the preferences widget is opened<br>(Used to add your own pages) |
 
 ### Tools
@@ -192,7 +188,6 @@ void OnExternalChangesPostLoad( GameResource resource ) { }
 | `hammer.mapview.contextmenu` | Menu, MapView | When the MapView is right clicked |
 | `actiongraph.saving` | ActionGraph, GameResource | Right before an ActionGraph is saved |
 | `actiongraph.saved` | ActionGraph | When an ActionGraph is saved |
-| `actiongraph.inspect` | IMessageContext | When inspecting anything in the ActionGraph |
 | `actiongraph.findreflectionnodes` | FindReflectionNodeTypesEvent | When attempting to get a list of reflection nodes |
 | `actiongraph.findtarget` | FindGraphTargetEvent | When attempting to find the target |
 | `actiongraph.globalnodes` | GetGlobalNodeTypesEvent | When attempting to get global nodes |
