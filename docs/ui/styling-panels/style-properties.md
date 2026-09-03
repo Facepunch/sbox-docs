@@ -53,7 +53,7 @@ These work across most properties:
 
 | Name | Parameters | Examples / Notes |
 |------|------------|------------------|
-| align-content | auto / flex-start / flex-end / center / stretch / space-between / space-around / start / end / baseline |                  |
+| align-content | auto / flex-start / flex-end / center / stretch / space-between / space-around / space-evenly / start / end / self-start / self-end / normal / baseline | `start`/`self-start` map to `flex-start`, `end`/`self-end` to `flex-end`, `normal` to `stretch`. |
 | align-items | Same as `align-content` |                  |
 | align-self | Same as `align-content` |                  |
 | animation | Fills in the properties below |                  |
@@ -155,7 +155,8 @@ These work across most properties:
 | inset-inline | Length, Length (optional) | Shorthand for `inset-inline-start` and `inset-inline-end`. |
 | inset-inline-end | Length     |                  |
 | inset-inline-start | Length     |                  |
-| justify-content | Same as `align-content` |                  |
+| isolation | auto (default) / isolate | `isolate` forces a new stacking context. |
+| justify-content | flex-start (default) / flex-end / center / stretch / space-between / space-around / space-evenly / start / end / left / right / normal | `start`/`left`/`normal`/`stretch` map to `flex-start`, `end`/`right` to `flex-end`. |
 | left | Length     |                  |
 | letter-spacing | Length / normal |                  |
 | line-height | Length     |                  |
