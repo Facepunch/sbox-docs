@@ -2,7 +2,7 @@
 title: "AmbientLight"
 icon: "🌥️"
 created: 2024-12-19
-updated: 2026-06-19
+updated: 2026-09-03
 ---
 
 # Ambient Light
@@ -22,9 +22,9 @@ AmbientLight::From( float3 WorldPosition, float4 PositionSs, float3 WorldNormal 
 This method will return diffuse ambient light from one of the sources on scene in current order of priority:
 
 1. Indirect Light Volume (DDGI)
-2. Sky Color (directional light, controlled by alpha)
-3. Environment Probe/Sky Indirect Lighting (2D Skybox)
-4. Lightmap Probes
+2. Lightmap Probes
+3. Sky Color (directional light, controlled by alpha)
+4. Environment Probe/Sky Indirect Lighting (2D Skybox)
 
 For example, if you have directional light *and* environment probe set up, `::From` will return flat sky color first, which visibility can be controlled by adjusting the alpha. Set the sky color alpha to zero (or anything inbetween) to make envprobes/indirect sky lighting more visible. Everything outside environment probes will draw indirect sky lighting from 2D Skybox.
 
