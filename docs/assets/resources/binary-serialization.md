@@ -2,7 +2,7 @@
 title: "Binary Serialization"
 icon: "🔟"
 created: 2026-01-16
-updated: 2026-01-16
+updated: 2026-09-03
 ---
 
 # Binary Serialization
@@ -20,7 +20,7 @@ public partial class CustomResource : GameResource
 {
 	public string Title { get; set; }
 
-	public MyBigData Data = new();
+	public MyBigData Data { get; set; } = new();
 }
 
 // This will be stored as binary data according to Serialize & Deserialize method
