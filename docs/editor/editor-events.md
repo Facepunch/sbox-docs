@@ -174,7 +174,7 @@ void OnExternalChangesPostLoad( GameResource resource ) { }
 
 | Event | Arguments | Invokes |
 |-------|-----------|---------|
-| `paintoverlay` |           | When highlighting a Panel in the "UI Panels" tab |
+| `sceneview.paintoverlay` |           | When highlighting a Panel in the "UI Panels" tab |
 | `qt.mousepressed` |           | When the Editor receives a mouse event |
 | `gameframe.statusbar` | StatusBar | When the status bar is being built<br>(Used to add your own Widgets) |
 | `tools.headerbar.build` | HeadBarEvent | When the header bar is being built<br>(Used to add your own Widgets) |
