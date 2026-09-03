@@ -2,7 +2,7 @@
 title: "Raw Input"
 icon: "⌨️"
 created: 2025-04-07
-updated: 2025-05-15
+updated: 2026-09-03
 ---
 
 # Raw Input
@@ -55,7 +55,6 @@ Most of the keys on the keyboard should work, here's an exhaustive list of them.
 | "KP_ENTER" | Numpad Enter |
 | "KP_DEL" | Numpad Delete |
 | "<" | Less Than |
-| ">" | More Than |
 | "\[" | Left Bracket |
 | "\]" | Right Bracket |
 | "SEMICOLON" | Semicolon |
