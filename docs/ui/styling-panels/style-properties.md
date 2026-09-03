@@ -112,8 +112,9 @@ These work across most properties:
 | border-top-width | Length     |                  |
 | border-width | Length (1–4 values) | Accepts 1–4 values like the CSS shorthand. eg. `border-width: 1px;`,`border-width: 1px 2px;`,`border-width: 1px 2px 3px 4px;` |
 | bottom | Length     |                  |
-| box-shadow | Length,<br>Length (optional),<br>Length (blur, optional),<br>Length (spread, optional),<br>Color | `box-shadow: 2px 2px 4px black;` |
-| color | Color /<br>linear-gradient(Color, Color) /<br>radial-gradient(Color, Color) /<br>conic-gradient(Color, Color) |                  |
+| box-shadow | Length (x),<br>Length (y),<br>Length (blur, optional),<br>Length (spread, optional),<br>Color | `box-shadow: 2px 2px 4px black;` |
+| caret-color | Color      | The text cursor in a `TextEntry`. Defaults to the text colour. |
+| color | Color /<br>linear-gradient(Color, Color) /<br>radial-gradient(Color, Color) |                  |
 | column-gap | Length     |                  |
 | content | string     | Sets the text of a Label.<br>eg. `content: "Loading…";` |
 | cursor | none / pointer / progress / wait / crosshair / text / move / not-allowed / any custom cursors |                  |
