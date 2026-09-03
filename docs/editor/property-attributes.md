@@ -2,7 +2,7 @@
 title: "Property Attributes"
 icon: "design_services"
 created: 2024-10-26
-updated: 2026-04-13
+updated: 2026-09-03
 ---
 
 # Property Attributes
@@ -62,7 +62,7 @@ Hide this property if another property is equal to the value.
 
 ## `[Range( 0, 100 )]`
 
-When used on a number property, the control widget will have a **min and max value** provided, with an **optional argument to clamp the value** (enabled by default, so the user cannot manually input a number outside of the range) **and another to show a slider** instead of a number field (enabled by default)
+When used on a number property, the control widget will have a **min and max value** provided, with an **optional argument to clamp the value** (disabled by default, so the user can still manually input a number outside of the range) **and another to show a slider** instead of a number field (enabled by default)
 
 
 ## `[Step( 10 )]`
