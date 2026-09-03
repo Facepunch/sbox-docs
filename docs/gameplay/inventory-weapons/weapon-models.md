@@ -2,7 +2,7 @@
 title: "Weapon Models"
 icon: "✋"
 created: 2026-07-04
-updated: 2026-07-04
+updated: 2026-09-03
 ---
 
 # Weapon Models
@@ -21,7 +21,7 @@ A weapon has two looks. The view model renders for the holding player in first p
 
 ## Effects
 
-Muzzle flash, brass eject and tracers come with default prefabs, so shots look right with zero setup. Swap them per weapon with the `MuzzleEffect`, `EjectBrass` and `TracerEffect` properties, or clear them to have none.
+Muzzle flash, brass eject and tracers come with default prefabs, so once the attachments are set shots look right with nothing more to do. Swap them per weapon with the `MuzzleEffect`, `EjectBrass` and `TracerEffect` properties, or clear them to have none.
 
 ## Animation
 
