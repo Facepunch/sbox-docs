@@ -2,7 +2,7 @@
 title: "Recording API"
 icon: "code"
 created: 2026-02-04
-updated: 2026-03-18
+updated: 2026-09-03
 ---
 
 # Recording API
@@ -83,7 +83,7 @@ var recorder = new MovieRecorder( Scene, options );
 If you want to base your configuration off the default options (which captures all renderers, cameras, particles etc), you can access it through *MovieRecorderOptions.Default*.
 
 ```csharp
-var options = MovieRecorderOptions.Default with { SampleRate = 60 }
+var options = (MovieRecorderOptions.Default with { SampleRate = 60 })
     .WithFilter( x => !x.Tags.Has( "effect" ) );
 ```
 
