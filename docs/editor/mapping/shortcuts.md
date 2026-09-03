@@ -63,8 +63,8 @@ updated: 2026-09-03
 | Center Origin | End |
 | Clear Pivot | Home |
 | Zero Pivot | Ctrl + End |
-| Next Pivot | N + Scroll Up |
-| Previous Pivot | N + Scroll Down |
+| Next Pivot | Shift + Scroll Up |
+| Previous Pivot | Shift + Scroll Down |
 | Collapse | Shift + O |
 | Combine Faces | Backspace |
 | Connect | V |
@@ -107,7 +107,7 @@ updated: 2026-09-03
 | Nudge Down | Alt + Down |
 | Nudge Left | Alt + Left |
 | Nudge Right | Alt + Right |
-| Align Down Local | Ctrl + 1 |
-| Align Down World | Ctrl + 2 |
-| Align To Closest Normal | Ctrl + 3 |
+| Align Down Local | Ctrl + Numpad 1 |
+| Align Down World | Ctrl + Numpad 2 |
+| Align To Closest Normal | Ctrl + Numpad 3 |
 | Reset Rotation And Scale | Ctrl + 0 |
