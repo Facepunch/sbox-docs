@@ -2,7 +2,7 @@
 title: "Player Controller"
 icon: "🏃‍♀️"
 created: 2024-10-30
-updated: 2026-08-20
+updated: 2026-09-03
 ---
 
 # Player Controller
@@ -68,6 +68,7 @@ The animator feature is optional. Right click on the animator tab to disable it.
 		/// <summary>
 		/// Called after we've set the camera up
 		/// </summary>
+		[Obsolete( "Implement ICameraModifier instead - it runs in the camera's ordered modifier chain, after the player's view (order 0)." )]
 		void PostCameraSetup( CameraComponent cam ) { }
 
 		/// <summary>
