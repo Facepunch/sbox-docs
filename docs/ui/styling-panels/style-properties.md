@@ -129,7 +129,7 @@ These work across most properties:
 | filter-invert | Length     |                  |
 | filter-saturate | Length     |                  |
 | filter-sepia | Length     |                  |
-| filter-tint | Length     |                  |
+| filter-tint | Color      |                  |
 | flex-basis | Length     |                  |
 | flex-direction | row (default) / row-reverse / column / column-reverse |                  |
 | flex-flow | flex-direction, flex-wrap | Shorthand for `flex-direction` and `flex-wrap`. eg. `flex-flow: row wrap;` |
