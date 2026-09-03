@@ -2,7 +2,7 @@
 title: "Attributes and Variables"
 icon: "📥"
 created: 2024-12-07
-updated: 2026-08-03
+updated: 2026-09-03
 ---
 
 # Attributes and Variables
@@ -179,7 +179,7 @@ And there is also a number of other mip generators which are listed here just fo
 | `RGBM` | Applies box filtering to mips and encodes them to RGBM format | 
 | `WrapGaussian( TexA )` | Mips with gaussian blur |
 | `GGXCubeMapBlur` | This method is only for cubemaps. Applies GGX-weighted cubemap blur | 
-| `GGXCubeMapBlurRGBM` | This method is only for cubemaps. Applies same effect as `GGXCubeMapBlur` but also encodes mips in RGBM format | 
+| `GGXCubeMapBlur_RGBM` | This method is only for cubemaps. Applies same effect as `GGXCubeMapBlur` but also encodes mips in RGBM format | 
 | `HeightCombine( HeightA, HeightB )` | Generates mips and combines two heightmaps together |
 
 ### Some Mips Previews
