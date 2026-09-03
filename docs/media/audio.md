@@ -2,7 +2,7 @@
 title: "Audio"
 icon: "🔊"
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-09-03
 ---
 
 # Audio
@@ -41,9 +41,8 @@ float amplitude = music.Amplitude;               // approximate loudness
 
 | Codec | Containers |
 |---|---|
-| Opus | .ogg, .opus, .webm |
-| Vorbis | .ogg, .webm |
-| FLAC | .flac |
+| Opus | .webm, .mp4 |
+| Vorbis | .ogg |
 | MP3 | .mp3 |
 | WAV / PCM | .wav |
 | AAC | MP4 (Windows only via Media Foundation, not recommended) |
