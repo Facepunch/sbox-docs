@@ -84,7 +84,7 @@ These work across most properties:
 | background-position | Length, Length (optional) | `background-position: 10px``background-position: 10px 15px` |
 | background-position-x | Length     |                  |
 | background-position-y | Length     |                  |
-| background-repeat | no-repeat repeat-x repeat-y repeat |                  |
+| background-repeat | no-repeat / repeat-x / repeat-y / repeat / round / clamp |                  |
 | background-size | Length, Length (optional) | `background-size: 10px` `background-size: 10px 15px` |
 | background-size-x | Length     |                  |
 | background-size-y | Length     |                  |
@@ -95,7 +95,7 @@ These work across most properties:
 | border-bottom-right-radius | Length     |                  |
 | border-bottom-width | Length     |                  |
 | border-color | Color      |                  |
-| border-image | Same as `background-image` |                  |
+| border-image | url(String) / gradient (as `background-image`), Length (slice, 1–4, optional) / Length (width, 1–4, optional), stretch / round, fill | `border-image: url( border.png ) 20px / 10px round fill;` The slice defaults to a third of the image. |
 | border-image-tint | Color      |                  |
 | border-image-width-bottom | Length     |                  |
 | border-image-width-left | Length     |                  |
@@ -145,9 +145,9 @@ These work across most properties:
 | **font-family\*** | String     | Specify a single font, based on the name of the font itself, not the filename.<br>eg. `font-family: Comic Sans MS;`<br>Generic families (`serif`, `sans-serif`, `monospace`) are mapped to a default font. |
 | font-size | Length / xx-small / x-small / small / medium / large / x-large / xx-large / xxx-large |                  |
 | font-smooth | auto / always / never / none | `never` is good for pixel fonts |
-| font-style | normal  (default) / italic |                  |
+| font-style | normal (default) / italic / oblique |                  |
 | font-variant-numeric | normal / tabular-nums |                  |
-| font-weight | normal (default) / bold / light / bolder / lighter / black / int | `font-weight: bold;`,`font-weight: 300;` |
+| font-weight | int / hairline / thin / ultralight / extralight / light / regular / normal (default) / medium / demibold / semibold / bold / extrabold / heavy / black / extrablack / ultrablack / bolder / lighter | `font-weight: bold;`,`font-weight: 300;` |
 | gap  | Length, Length (optional) / normal | Shorthand for `row-gap` and `column-gap`, specified the size of gutters. |
 | height | Length     |                  |
 | image-rendering | auto (default) / anisotropic / bilinear / trilinear / point / pixelated / nearest-neighbor / crisp-edges | `crisp-edges` uses point sampling. |
@@ -177,7 +177,7 @@ These work across most properties:
 | mask | Shorthand for other mask properties |                  |
 | mask-angle | Length     |                  |
 | mask-image | Same as `background-image` |                  |
-| mask-mode | luminance / alpha |                  |
+| mask-mode | alpha / luminance / match-source |                  |
 | mask-position | Length, Length (optional) |                  |
 | mask-position-x | Length     |                  |
 | mask-position-y | Length     |                  |
@@ -231,23 +231,23 @@ These work across most properties:
 | text-decoration-thickness | Length     |                  |
 | text-line-through-offset | Length     |                  |
 | text-overflow | clip / ellipsis |                  |
+| text-overline-offset | Length     |                  |
 | text-shadow | Same as `box-shadow` |                  |
 | text-transform | none (default) / capitalize / lowercase / uppercase |                  |
+| text-underline-offset | Length     |                  |
 | top  | Length     |                  |
 | transform | Fills in the properties below | `scale()` accepts comma-separated arguments. eg. `transform: scale(2, 0.5);` |
 | transform-origin | Length, Length (optional) |                  |
 | transform-origin-x | Length     |                  |
 | transform-origin-y | Length     |                  |
 | transition | Fills in the properties below | `transition: all 0.1s ease;`,`transition: opacity 0.1s, transform 0.2s ease-out;` |
-| text-overline-offset | Length     |                  |
 | transition-delay | Time (s / ms) | A unit is required. eg. `transition-delay: 200ms;` |
 | transition-duration | Time (s / ms) | A unit is required. eg. `transition-duration: 0.5s;` |
-| text-underline-offset | Length     |                  |
 | transition-property | String     |                  |
 | transition-timing-function | ease (default) / linear / ease-in / ease-out / ease-in-out / bounce-in / bounce-out / bounce-in-out / sin-ease-in / sin-ease-out / sin-ease-in-out / step-start / step-end / cubic-bezier(x1, y1, x2, y2) / steps(n, start / end) | Use `cubic-bezier()` and `steps(n, end)` in the `transition` / `animation` shorthands or `animation-timing-function`; this longhand splits its value on commas, so they don't parse here. |
 | white-space | normal / nowrap / pre / pre-wrap / pre-line / break-spaces | Use `pre` to format tabs and newlines. |
 | width | Length     |                  |
-| word-break | normal / break-all / break-word |                  |
+| word-break | normal / break-all / break-word / keep-all |                  |
 | word-spacing | Length / normal |                  |
 | z-index | int        |                  |
 
