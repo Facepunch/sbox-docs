@@ -2,7 +2,7 @@
 title: "NavMesh Links"
 icon: "🔗"
 created: 2025-03-03
-updated: 2025-04-14
+updated: 2026-09-03
 ---
 
 # NavMesh Links
@@ -100,15 +100,15 @@ The positional values can be used to drive custom movement and animations.
 
 
 ```csharp
-public record struct LinkTraversalData
+public readonly record struct LinkTraversalData
 {
-	public Vector3 LinkEnterPosition;
+	public readonly Vector3 LinkEnterPosition { init; get; }
 
-	public Vector3 LinkExitPosition;
+	public readonly Vector3 LinkExitPosition { init; get; }
 
-	public Vector3 AgentInitialPosition;
+	public readonly Vector3 AgentInitialPosition { init; get; }
 
-	public NavMeshLink LinkComponent;
+	public readonly NavMeshLink LinkComponent { init; get; }
 }
 ```
 
