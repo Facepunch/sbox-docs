@@ -2,7 +2,7 @@
 title: "Editor Events"
 icon: "📅"
 created: 2024-12-17
-updated: 2025-10-05
+updated: 2026-09-03
 ---
 
 # Editor Events
@@ -11,7 +11,7 @@ Editor Events are events that are broadcast globally throughout the editor and c
 
 # Hooking into an EditorEvent
 
-Hooking into an Editor Event allows you to run additional code whenever an event is called. You can control the order at which event hooks are triggered via the `Priority` variable. Events with a lower Priority run first.
+Hooking into an Editor Event allows you to run additional code whenever an event is called. You can control the order at which event hooks are triggered via the `Priority` variable. Events with a higher Priority run first.
 
 ```csharp
 // Hooking into a named event
