@@ -2,7 +2,7 @@
 title: "Depth"
 icon: "👀"
 created: 2023-11-26
-updated: 2024-12-09
+updated: 2026-09-03
 ---
 
 # Depth
@@ -31,11 +31,11 @@ Depth can be separated in 3 spaces, Normalized and Linear depth are the ones you
 
 ## Depth::Get( float2 ss )
 
-Returns the distance on this screen position.
+Returns the raw depth buffer value on this screen position.
 
 ## Depth::Normalize( float d )
 
-Given a distance (like the one returned from Depth::Get), it'll convert it to a float between 0-1 representing the distance between zfar and znear.
+Given a raw depth value (like the one returned from Depth::Get), it'll convert it to a float between 0-1 representing the distance between zfar and znear.
 
 ## Depth::GetNormalized( float2 ss )
 
@@ -47,7 +47,7 @@ Return the position in world coordinates of the passed in screenspace position.
 
 ## Depth::Linearize( float d, float2 ss = -1 )
 
-* Converts a raw value of the depth buffer into one in view space, with world units of distance away from the camera
+* Converts a normalized depth value (like the one returned from Depth::GetNormalized) into one in view space, with world units of distance away from the camera
 
 ## Depth::WorldPosition( float d, float3 direction )
 
