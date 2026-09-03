@@ -2,7 +2,7 @@
 title: "Dedicated Servers"
 icon: "📦"
 created: 2024-11-07
-updated: 2026-07-09
+updated: 2026-09-03
 ---
 
 # Dedicated Servers
@@ -37,11 +37,11 @@ sbox-server.exe +game facepunch.sandbox facepunch.flatgrass +hostname My Dedicat
 
 ## Linux
 
-The server runs on .NET, so you'll need the [.NET Runtime](https://dotnet.microsoft.com/en-us/download) installed. You can create a shell script to start your server, for example `run-server.sh`:
+The Linux server ships with its own .NET runtime in `bin/dotnet`, so nothing extra needs installing. You can create a shell script to start your server, for example `run-server.sh`:
 
 ```bash
 #!/bin/bash
-./sbox-server.exe +game facepunch.sandbox facepunch.flatgrass +hostname "My Dedicated Server"
+./sbox-server +game facepunch.sandbox facepunch.flatgrass +hostname "My Dedicated Server"
 ```
 
 When run, this will load the `facepunch.sandbox` game with the `facepunch.flatgrass` map and the title would be *My Dedicated Server*.
