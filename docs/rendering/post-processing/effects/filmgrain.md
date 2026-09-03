@@ -2,7 +2,7 @@
 title: "FilmGrain"
 icon: "📽️"
 created: 2025-10-02
-updated: 2025-10-02
+updated: 2026-09-03
 ---
 
 # FilmGrain
@@ -37,6 +37,8 @@ public sealed class FilmGrain : BasePostProcess<FilmGrain>
 	[Range( 0, 1 )]
 	[Property] public float Response { get; set; } = 0.5f;
 
+	private static Material Shader = Material.FromShader( "shaders/postprocess/pp_filmgrain.shader" );
+
 	public override void Render()
 	{
 		float intensity = GetWeighted( x => x.Intensity );
@@ -47,8 +49,7 @@ public sealed class FilmGrain : BasePostProcess<FilmGrain>
 		Attributes.Set( "intensity", intensity );
 		Attributes.Set( "response", GetWeighted( x => x.Response, 1 ) );
 
-		var shader = Material.FromShader( "shaders/postprocess/pp_filmgrain.shader" );
-		var blit = BlitMode.WithBackbuffer( shader, Stage.AfterPostProcess, 200, false );
+		var blit = BlitMode.WithBackbuffer( Shader, Stage.AfterPostProcess, 200, false );
 		Blit( blit, "FilmGrain" );
 	}
 }
