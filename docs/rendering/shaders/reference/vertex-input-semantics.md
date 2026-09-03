@@ -38,7 +38,7 @@ Here's a full list of all available semantics:
 | `PerVertexLighting` | Written by lighting baker when a static prop/surface has per-vertex lighting enabled. Mutually exclusive with LightmapUV. Not present in standard vertex input |
 | `Curvature` | Available only if "Calculate Per-Vertex Curvature" is enabled from ModelDoc |
 | `PropWorldOrigin` | Not used by any shader | 
-| `nInstanceTransformID` | Instance ID of this mesh | 
+| `InstanceTransformUv` | Instance ID of this mesh | 
 | `MorphIndex` | Morph data ID, used by skinned meshes |
 
 ## More UV channels
