@@ -23,7 +23,7 @@ Streaming from a URL:
 var music = MusicPlayer.PlayUrl( "https://example.com/stream.ogg" );
 ```
 
-By default, `MusicPlayer` plays globally. To place it in world-space:
+By default, `MusicPlayer` is positioned at the world origin (set `music.ListenLocal = true` to play it globally). To place it in world-space:
 
 ```csharp
 music.ListenLocal = false;
