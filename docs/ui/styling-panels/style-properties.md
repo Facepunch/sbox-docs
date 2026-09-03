@@ -217,12 +217,11 @@ These work across most properties:
 | text-background-angle | Length     |                  |
 | text-decoration | Color / Length / LineStyle, Line | Properties can be in any order and you can have multiple lines. |
 | text-decoration-color | Color      |                  |
-| text-decoration-line | underline / line-through / overline | Multiple properties can be set. eg. `text-decoration-line: overline underline;` |
-| text-decoration-line-through-offset | Length     |                  |
-| text-decoration-overline-offset | Length     |                  |
-| text-decoration-skip-ink | all / none | Decides whether the line decoration should draw above glyphs or not |
+| text-decoration-line | none / underline / line-through / overline | Multiple properties can be set. eg. `text-decoration-line: overline underline;` |
+| text-decoration-skip-ink | auto / all / none | Decides whether the line decoration should draw above glyphs or not |
+| text-decoration-style | solid (default) / double / dotted / dashed / wavy |                  |
 | text-decoration-thickness | Length     |                  |
-| text-decoration-underline-offset | Length     |                  |
+| text-line-through-offset | Length     |                  |
 | text-overflow | clip / ellipsis |                  |
 | text-shadow | Same as `box-shadow` |                  |
 | text-transform | none (default) / capitalize / lowercase / uppercase |                  |
@@ -232,8 +231,10 @@ These work across most properties:
 | transform-origin-x | Length     |                  |
 | transform-origin-y | Length     |                  |
 | transition | Fills in the properties below | `transition: all 0.1s ease;`,`transition: opacity 0.1s, transform 0.2s ease-out;` |
+| text-overline-offset | Length     |                  |
 | transition-delay | Time (s / ms) | A unit is required. eg. `transition-delay: 200ms;` |
 | transition-duration | Time (s / ms) | A unit is required. eg. `transition-duration: 0.5s;` |
+| text-underline-offset | Length     |                  |
 | transition-property | String     |                  |
 | transition-timing-function | ease (default) / linear / ease-in / ease-out / ease-in-out / bounce-in / bounce-out / bounce-in-out / sin-ease-in / sin-ease-out / sin-ease-in-out / step-start / step-end / cubic-bezier(x1, y1, x2, y2) / steps(n, start / end) | Use `cubic-bezier()` and `steps(n, end)` in the `transition` / `animation` shorthands or `animation-timing-function`; this longhand splits its value on commas, so they don't parse here. |
 | white-space | normal / nowrap / pre / pre-wrap / pre-line / break-spaces | Use `pre` to format tabs and newlines. |
