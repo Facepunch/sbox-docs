@@ -2,7 +2,7 @@
 title: "UI Interactions"
 icon: "🖱️"
 created: 2026-05-10
-updated: 2026-05-10
+updated: 2026-09-03
 ---
 
 # UI Interactions
@@ -83,3 +83,38 @@ public class MyButton : Panel
     void OnUnhover() => Log.Info( "Unhovered" );
 }
 ```
+
+## Tooltips
+
+Set `Tooltip` on any panel to show a line of text when the cursor rests on it. The tooltip is a panel with the class `tooltip`, positioned beside the cursor, so style it in your stylesheet. `TooltipClass` adds a class of your own to it.
+
+```csharp
+<div class="button" Tooltip="Save the game" TooltipClass="tooltip-large">Save</div>
+```
+
+```scss
+.tooltip {
+    background-color: #222;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+```
+
+For a tooltip with more than text, use `OnTooltip`. It's called with the tooltip panel as it's about to be shown, so fill it with whatever you like. If `Tooltip` is set as well, that text is already in the panel as its first child.
+
+```csharp
+<div class="item" OnTooltip=@BuildTooltip>@Item.Name</div>
+
+@code
+{
+    void BuildTooltip( Panel tooltip )
+    {
+        tooltip.Add.Label( Item.Name, "title" );
+        tooltip.Add.Label( Item.Description, "description" );
+        tooltip.AddChild( new Image { Texture = Item.Icon } );
+    }
+}
+```
+
+A hovered panel with no tooltip uses the nearest ancestor's, so a tooltip on a container covers everything in it. To take over completely, override `CreateTooltipPanel` on a Panel subclass and return your own panel.
