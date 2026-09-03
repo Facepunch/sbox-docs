@@ -2,7 +2,7 @@
 title: "Components"
 icon: "🧩"
 created: 2023-11-14
-updated: 2025-06-15
+updated: 2026-09-03
 ---
 
 # Components
@@ -58,10 +58,10 @@ var x = go.GetComponentInChildren<ModelRenderer>();
 var x = go.GetComponentsInChildren<ModelRenderer>();
 
 // Get all components from a gameobject's ancestors and itself
-var x = go.Components.GetComponentsInParent<ModelRenderer>();
+var x = go.GetComponentsInParent<ModelRenderer>();
 
 // Get a single component from a gameobject's ancestors and itself
-var x = go.Components.GetComponentInParent<ModelRenderer>();
+var x = go.GetComponentInParent<ModelRenderer>();
 ```
 
 # Specialized Queries
