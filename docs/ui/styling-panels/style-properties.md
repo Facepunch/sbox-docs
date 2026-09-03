@@ -230,9 +230,9 @@ These work across most properties:
 | transform-origin | Length, Length, Length (optional) |                  |
 | transform-origin-x | Length     |                  |
 | transform-origin-y | Length     |                  |
-| transition | Fills in the properties below | `transition: all 0.1s ease;`,`transition: opacity 0.1s transform 0.2s ease-out;` |
-| transition-delay | Float      |                  |
-| transition-duration | Float      |                  |
+| transition | Fills in the properties below | `transition: all 0.1s ease;`,`transition: opacity 0.1s, transform 0.2s ease-out;` |
+| transition-delay | Time (s / ms) | A unit is required. eg. `transition-delay: 200ms;` |
+| transition-duration | Time (s / ms) | A unit is required. eg. `transition-duration: 0.5s;` |
 | transition-property | String     |                  |
 | transition-timing-function | linear (default) / ease / ease-in-out / ease-out / ease-in |                  |
 | white-space | normal / nowrap / pre / pre-wrap / break-spaces | Use `pre` to format tabs and newlines. |
