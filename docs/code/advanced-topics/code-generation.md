@@ -2,7 +2,7 @@
 title: "Code Generation"
 icon: "🧞"
 created: 2023-11-19
-updated: 2026-08-03
+updated: 2026-09-03
 ---
 
 # Code Generation
@@ -128,7 +128,7 @@ public class MyObject
 
 
 :::info
-`methodName` on a static callback will be the fully qualified name. For example if `[WrapCall]` was added to a method called `DoSomething` on `MyClass` then the method name would be `MyClass.DoSomething`.
+`MethodName` is the name of the original method, and `TypeName` is the fully qualified name of the type it belongs to. For example if `[WrapCall]` was added to a method called `DoSomething` on `MyClass` then `MethodName` would be `DoSomething` and `TypeName` would be `MyClass` (prefixed with its namespace, if it has one).
 
 :::
 
