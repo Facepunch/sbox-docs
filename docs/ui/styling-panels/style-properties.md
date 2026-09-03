@@ -234,8 +234,8 @@ These work across most properties:
 | transition-delay | Time (s / ms) | A unit is required. eg. `transition-delay: 200ms;` |
 | transition-duration | Time (s / ms) | A unit is required. eg. `transition-duration: 0.5s;` |
 | transition-property | String     |                  |
-| transition-timing-function | linear (default) / ease / ease-in-out / ease-out / ease-in |                  |
-| white-space | normal / nowrap / pre / pre-wrap / break-spaces | Use `pre` to format tabs and newlines. |
+| transition-timing-function | ease (default) / linear / ease-in / ease-out / ease-in-out / bounce-in / bounce-out / bounce-in-out / sin-ease-in / sin-ease-out / sin-ease-in-out / step-start / step-end / cubic-bezier(x1, y1, x2, y2) / steps(n, start / end) | Use `cubic-bezier()` and `steps(n, end)` in the `transition` / `animation` shorthands or `animation-timing-function`; this longhand splits its value on commas, so they don't parse here. |
+| white-space | normal / nowrap / pre / pre-wrap / pre-line / break-spaces | Use `pre` to format tabs and newlines. |
 | width | Length     |                  |
 | word-break | normal / break-all / break-word |                  |
 | word-spacing | Length / normal |                  |
