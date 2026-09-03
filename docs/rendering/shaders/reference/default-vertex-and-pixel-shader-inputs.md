@@ -2,7 +2,7 @@
 title: "Default Vertex and Pixel Shader Inputs"
 icon: "🔏"
 created: 2024-12-11
-updated: 2024-12-12
+updated: 2026-09-03
 ---
 
 # Default Vertex and Pixel Shader Inputs
@@ -14,17 +14,13 @@ struct VertexInput
 {
     float3 vPositionOs : POSITION < Semantic( PosXyz ); >;
     float2 vTexCoord : TEXCOORD0 < Semantic( LowPrecisionUv ); >;	
+    float2 vTexCoord2 : TEXCOORD1 < Semantic( LowPrecisionUv1 ); >;	
     float4 vNormalOs : NORMAL < Semantic( OptionallyCompressedTangentFrame ); >;
-    float4 vTangentUOs_flTangentVSign : TANGENT	< Semantic( TangentU_SignV ); >;
+
+    #if ( VS_INPUT_HAS_TANGENT_BASIS )
+    	float4 vTangentUOs_flTangentVSign : TANGENT	< Semantic( TangentU_SignV ); >;
+    #endif
     
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Skinning
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    #if ( D_SKINNING > 0 )
-    	uint4 vBlendIndices : BLENDINDICES 	< Semantic( BlendIndices ); >;
-    	float4 vBlendWeight : BLENDWEIGHT 	< Semantic( BlendWeight ); >;
-    #endif	
-    	
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     // SSS Curvature
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,16 +29,20 @@ struct VertexInput
     #endif
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Morph
+    // Compute Skinning
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-    #if ( D_MORPH )
+    #if ( D_CS_VERTEX_ANIMATION )
+    	float4 vBlendWeight : BLENDWEIGHT 	< Semantic( BlendWeight ); >;
+
     	float nVertexIndex : TEXCOORD14 < Semantic( MorphIndex ); >;
+    	float nVertexCacheIndex : TEXCOORD15 < Semantic( MorphIndex ); >;
     #endif
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Instancing data
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     uint nInstanceTransformID : TEXCOORD13 < Semantic( InstanceTransformUv ); >;
+    uint nBoneIndex 		  : BLENDINDICES < Semantic( BlendIndices ); >; // 1D Blend Index for rigid objects transforms, skinning_cs takes uint4 from mesh
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Baked lighting
