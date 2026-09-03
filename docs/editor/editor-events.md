@@ -109,6 +109,11 @@ void OnRegister( GameResource resource ) { }
 void OnUnregister( GameResource resource ) { }
 
 /// <summary>
+/// Called when a resource has been saved
+/// </summary>
+void OnSave( GameResource resource ) { }
+
+/// <summary>
 /// Called when the source file of a known resource has been externally modified on disk
 /// </summary>
 void OnExternalChanges( GameResource resource ) { }
