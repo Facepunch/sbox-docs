@@ -2,7 +2,7 @@
 title: "Network Helper"
 icon: "🔌"
 created: 2023-12-14
-updated: 2024-10-03
+updated: 2026-09-03
 ---
 
 # Network Helper
@@ -24,7 +24,7 @@ When a player enters a server you need to create an object for them to control. 
 
 Generally this is done using a prefab. You define your player gameobject and create a prefab, then you can drag the prefab object into the `PlayerPrefab` property on the component. 
 
-You can also define a list spawnpoint GameObject's. The player will spawn randomly on one of them. If you don't define any spawn points, they will spawn at the location of the `NetworkHelper` object.
+You can also define a list spawnpoint GameObject's. The player will spawn randomly on one of them. If you don't define any spawn points, any `SpawnPoint` components in the scene will be used instead. If there are none of those either, they will spawn at the location of the `NetworkHelper` object.
 
 
 # Player Object
