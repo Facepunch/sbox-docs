@@ -185,7 +185,7 @@ These work across most properties:
 | min-height | Length     |                  |
 | min-width | Length     |                  |
 | mix-blend-mode | normal / lighten / multiply |                  |
-| object-fit | fill (default) / contain / cover / none / scale-down | `scale-down` is treated as `contain`. |
+| object-fit | fill / contain / cover (default) / none / scale-down | `scale-down` is treated as `contain`. |
 | opacity | Float / Percentage | `opacity: 0.5;`,`opacity: 50%;` |
 | order | int        |                  |
 | overflow | visible (default) / hidden / scroll / auto | `auto` maps to `scroll`. |
