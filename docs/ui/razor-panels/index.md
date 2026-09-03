@@ -2,7 +2,7 @@
 title: "Razor Panels"
 icon: "⬜"
 created: 2024-09-24
-updated: 2024-12-16
+updated: 2026-09-03
 ---
 
 # Razor Panels
@@ -133,7 +133,7 @@ Sometimes you want to bind a variable to a control, and if it changes, sync the 
 You create a two way bind using `:bind` after the attribute name:
 
 ```csharp
-<SliderEntry min="0" max="100" step="1" Value:bind=@IntValue></SliderEntry>
+<SliderControl Min=@(0) Max=@(100) Step=@(1) Value:bind=@IntValue></SliderControl>
 
 @code
 {
