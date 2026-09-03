@@ -2,7 +2,7 @@
 title: "Style Properties"
 icon: "🎨"
 created: 2024-09-24
-updated: 2026-08-27
+updated: 2026-09-03
 ---
 
 # Style Properties
@@ -209,6 +209,9 @@ These work across most properties:
 | **position\*** | static (default) / relative / absolute | See how it works: <https://yogalayout.com/docs/absolute-relative-layout/> |
 | right | Length     |                  |
 | row-gap | Length     |                  |
+| **scrollbar-color\*** | Color, Color (optional) / auto | Thumb colour then track colour. `auto` clears both. Inherited. |
+| scrollbar-gutter | auto (default) / stable / stable both-edges | `stable` reserves the vertical bar's width so content is laid out beside it instead of under it. |
+| **scrollbar-width\*** | auto / thin / none (default) / Length | Zero or `none` means no bar. Unlike the web it's inherited, so one rule on a root turns bars on for a whole tree, and a child can opt out with `none`. |
 | text-align | left (default) / center / right / justify / start / end |                  |
 | text-background-angle | Length     |                  |
 | text-decoration | Color / Length / LineStyle, Line | Properties can be in any order and you can have multiple lines. |
