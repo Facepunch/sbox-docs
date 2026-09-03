@@ -2,7 +2,7 @@
 title: "Style Properties"
 icon: "🎨"
 created: 2024-09-24
-updated: 2026-08-27
+updated: 2026-09-03
 ---
 
 # Style Properties
@@ -39,12 +39,14 @@ These work across most properties:
 | Name | Parameters | Examples / Notes |
 |------|------------|------------------|
 | aspect-ratio | Float, Float (Optional) / auto | `aspect-ratio: 1;`,`aspect-ratio: 16/9;`,`aspect-ratio: auto;` |
-| background-image-tint | Color      | Multiplies the `background-image` by this Color. Not a replacement for `filter` or `backdrop-filter`. |
+| background-image-tint | Color      | Multiplies the `background-image` by this Color. Not a replacement for `filter` or `backdrop-filter`. `background-tint` is an alias. |
+| background-playback-state | running (default) / paused | Pauses an animated or video `background-image`. |
 | border-image-tint | Color      | Multiplies the `border-image` by this Color. |
 | border-shape | none / polygon(x y, ...) / circle(radius at x y) | Replaces the rounded rectangle with a polygon (3-8 points) or a circle, for backgrounds, borders and hit testing. See [Border Shape](border-shape.md). |
 | mask-scope | default / filter | `default` will apply the mask normally, `filter` will use the mask to blend between unfiltered and filtered. |
 | sound-in | String     | The name of the sound to play when this style is applied to an element. This is useful to put on a `:hover` or `:active` style to play a sound on hover/click |
 | sound-out | String     | The name of a sound to play when this style is removed from an element. |
+| text-filter | bilinear (default) / linear / point / trilinear / anisotropic | Texture filtering for text. `point` is good for pixel fonts. |
 | text-stroke | Length, Color | This will put an outline |
 | text-stroke-color | Color      |                  |
 | text-stroke-width | Length     |                  |
@@ -53,19 +55,19 @@ These work across most properties:
 
 | Name | Parameters | Examples / Notes |
 |------|------------|------------------|
-| align-content | auto / flex-start / flex-end / center / stretch / space-between / space-around / start / end / baseline |                  |
+| align-content | auto / flex-start / flex-end / center / stretch / space-between / space-around / space-evenly / start / end / self-start / self-end / normal / baseline | `start`/`self-start` map to `flex-start`, `end`/`self-end` to `flex-end`, `normal` to `stretch`. |
 | align-items | Same as `align-content` |                  |
 | align-self | Same as `align-content` |                  |
 | animation | Fills in the properties below |                  |
 | animation-delay | Float      |                  |
-| animation-direction | normal (default) reverse alternate alternate-reverse |                  |
+| animation-direction | normal (default) / reverse / alternate / alternate-reverse |                  |
 | animation-duration | Float      |                  |
-| animation-fill-mode | none forwardsbackwardsboth |                  |
+| animation-fill-mode | none (default) / forwards / backwards / both |                  |
 | animation-iteration-count | int / infinite |                  |
 | animation-name | String     |                  |
-| animation-play-state | runningpaused |                  |
-| animation-timing-function | linear (default) ease ease-in ease-out ease-in-out |                  |
-| backdrop-filter | blur(Length) <br>saturate(Length) <br>contrast(Length) <br>brightness(Length) <br>grayscale(Length) <br>sepia(Length) <br>hue-rotate(Length) <br>invert(Length) <br>border-wrap(Length, Color) | `backdrop-filter: blur(10px) saturate(80%);` |
+| animation-play-state | running (default) / paused |                  |
+| animation-timing-function | Same as `transition-timing-function` |                  |
+| backdrop-filter | blur(Length) <br>saturate(Length) <br>contrast(Length) <br>brightness(Length) <br>grayscale(Length) <br>sepia(Length) <br>hue-rotate(Length) <br>invert(Length) / none | `backdrop-filter: blur(10px) saturate(80%);` `none` clears any backdrop filters. |
 | backdrop-filter-blur | Length     |                  |
 | backdrop-filter-brightness | Length     |                  |
 | backdrop-filter-contrast | Length     |                  |
@@ -75,13 +77,14 @@ These work across most properties:
 | backdrop-filter-sepia | Length     |                  |
 | background | Fills in the properties below |                  |
 | background-angle | Length     |                  |
-| background-blend-mode | normal lighten multiply |                  |
+| background-blend-mode | normal (default) / lighten / multiply |                  |
+| background-clip | border-box (default) / padding-box / content-box / text | `text` paints the background only where the text is, so it shows through the glyphs. |
 | background-color | Color      |                  |
 | background-image | url(string) <br>linear-gradient(Color, Color) <br>radial-gradient(Color, Color) <br>conic-gradient(Color, Color) |                  |
 | background-position | Length, Length (optional) | `background-position: 10px``background-position: 10px 15px` |
 | background-position-x | Length     |                  |
 | background-position-y | Length     |                  |
-| background-repeat | no-repeat repeat-x repeat-y repeat |                  |
+| background-repeat | no-repeat / repeat-x / repeat-y / repeat / round / clamp |                  |
 | background-size | Length, Length (optional) | `background-size: 10px` `background-size: 10px 15px` |
 | background-size-x | Length     |                  |
 | background-size-y | Length     |                  |
@@ -92,7 +95,7 @@ These work across most properties:
 | border-bottom-right-radius | Length     |                  |
 | border-bottom-width | Length     |                  |
 | border-color | Color      |                  |
-| border-image | Same as `background-image` |                  |
+| border-image | url(String), Length (slice, 1–4, optional) / Length (width, 1–4, optional), stretch / round, fill | `border-image: url( border.png ) 20px / 10px round fill;` The slice defaults to a third of the image. |
 | border-image-tint | Color      |                  |
 | border-image-width-bottom | Length     |                  |
 | border-image-width-left | Length     |                  |
@@ -113,12 +116,13 @@ These work across most properties:
 | border-width | Length (1–4 values) | Accepts 1–4 values like the CSS shorthand. eg. `border-width: 1px;`,`border-width: 1px 2px;`,`border-width: 1px 2px 3px 4px;` |
 | bottom | Length     |                  |
 | box-shadow | Length,<br>Length (optional),<br>Length (blur, optional),<br>Length (spread, optional),<br>Color | `box-shadow: 2px 2px 4px black;` |
+| caret-color | Color      | The text cursor in a `TextEntry`. Defaults to the text colour. |
 | color | Color /<br>linear-gradient(Color, Color) /<br>radial-gradient(Color, Color) /<br>conic-gradient(Color, Color) |                  |
 | column-gap | Length     |                  |
 | content | string     | Sets the text of a Label.<br>eg. `content: "Loading…";` |
 | cursor | none / pointer / progress / wait / crosshair / text / move / not-allowed / any custom cursors |                  |
-| **display\*** | flex (default) / none | Everything is flex by default |
-| filter | Same as `backdrop-filter` / none | `none` clears any filters. |
+| **display\*** | flex (default) / none / contents | Everything is flex by default |
+| filter | Same as `backdrop-filter`, plus <br>tint(Color) <br>drop-shadow(Same as `box-shadow`) <br>border-wrap(Length, Color) / none | `filter: blur(2px) tint(#f00);` `none` clears any filters. |
 | filter-blur | Length     |                  |
 | filter-border-color | Color      |                  |
 | filter-border-width | Length     |                  |
@@ -141,9 +145,9 @@ These work across most properties:
 | **font-family\*** | String     | Specify a single font, based on the name of the font itself, not the filename.<br>eg. `font-family: Comic Sans MS;`<br>Generic families (`serif`, `sans-serif`, `monospace`) are mapped to a default font. |
 | font-size | Length / xx-small / x-small / small / medium / large / x-large / xx-large / xxx-large |                  |
 | font-smooth | auto / always / never / none | `never` is good for pixel fonts |
-| font-style | normal  (default) / italic |                  |
+| font-style | normal (default) / italic / oblique |                  |
 | font-variant-numeric | normal / tabular-nums |                  |
-| font-weight | normal (default) / bold / light / bolder / lighter / black / int | `font-weight: bold;`,`font-weight: 300;` |
+| font-weight | int / hairline / thin / ultralight / extralight / light / regular / normal (default) / medium / demibold / semibold / bold / extrabold / heavy / black / extrablack / ultrablack / bolder / lighter | `font-weight: bold;`,`font-weight: 300;` |
 | gap  | Length, Length (optional) / normal | Shorthand for `row-gap` and `column-gap`, specified the size of gutters. |
 | height | Length     |                  |
 | image-rendering | auto (default) / anisotropic / bilinear / trilinear / point / pixelated / nearest-neighbor / crisp-edges | `crisp-edges` uses point sampling. |
@@ -154,7 +158,8 @@ These work across most properties:
 | inset-inline | Length, Length (optional) | Shorthand for `inset-inline-start` and `inset-inline-end`. |
 | inset-inline-end | Length     |                  |
 | inset-inline-start | Length     |                  |
-| justify-content | Same as `align-content` |                  |
+| isolation | auto (default) / isolate | `isolate` forces a new stacking context. |
+| justify-content | flex-start (default) / flex-end / center / stretch / space-between / space-around / space-evenly / start / end / left / right / normal | `start`/`left` map to `flex-start`, `end`/`right` to `flex-end`, `normal` to `stretch`. |
 | left | Length     |                  |
 | letter-spacing | Length / normal |                  |
 | line-height | Length     |                  |
@@ -172,7 +177,7 @@ These work across most properties:
 | mask | Shorthand for other mask properties |                  |
 | mask-angle | Length     |                  |
 | mask-image | Same as `background-image` |                  |
-| mask-mode | luminance / alpha |                  |
+| mask-mode | alpha / luminance / match-source |                  |
 | mask-position | Length, Length (optional) |                  |
 | mask-position-x | Length     |                  |
 | mask-position-y | Length     |                  |
@@ -188,7 +193,11 @@ These work across most properties:
 | object-fit | fill (default) / contain / cover / none / scale-down | `scale-down` is treated as `contain`. |
 | opacity | Float / Percentage | `opacity: 0.5;`,`opacity: 50%;` |
 | order | int        |                  |
-| overflow | visible (default) / hidden / scroll / auto | `auto` maps to `scroll`. |
+| outline | outline-width, outline-style, outline-color | Same syntax as `border`. Drawn outside the box, offset by `outline-offset`. eg. `outline: 2px solid #08f;` |
+| outline-color | Color      |                  |
+| outline-offset | Length     |                  |
+| outline-width | Length     |                  |
+| overflow | visible (default) / hidden / scroll / auto / clip / clip-whole | `auto` maps to `scroll`. `clip` clips like `hidden` without making a scroll container. `clip-whole` hides any child that extends outside the box entirely, rather than clipping it. |
 | overflow-x | Same as `overflow` |                  |
 | overflow-y | Same as `overflow` |                  |
 | padding | Fills in the properties below |                  |
@@ -209,19 +218,23 @@ These work across most properties:
 | **position\*** | static (default) / relative / absolute | See how it works: <https://yogalayout.com/docs/absolute-relative-layout/> |
 | right | Length     |                  |
 | row-gap | Length     |                  |
+| **scrollbar-color\*** | Color, Color (optional) / auto | Thumb colour then track colour. `auto` clears both. Inherited. |
+| scrollbar-gutter | auto (default) / stable / stable both-edges | `stable` reserves the vertical bar's width so content is laid out beside it instead of under it. |
+| **scrollbar-width\*** | auto / thin / none (default) / Length | Zero or `none` means no bar. Unlike the web it's inherited, so one rule on a root turns bars on for a whole tree, and a child can opt out with `none`. |
 | text-align | left (default) / center / right / justify / start / end |                  |
 | text-background-angle | Length     |                  |
 | text-decoration | Color / Length / LineStyle, Line | Properties can be in any order and you can have multiple lines. |
 | text-decoration-color | Color      |                  |
-| text-decoration-line | underline / line-through / overline | Multiple properties can be set. eg. `text-decoration-line: overline underline;` |
-| text-decoration-line-through-offset | Length     |                  |
-| text-decoration-overline-offset | Length     |                  |
-| text-decoration-skip-ink | all / none | Decides whether the line decoration should draw above glyphs or not |
+| text-decoration-line | none / underline / line-through / overline | Multiple properties can be set. eg. `text-decoration-line: overline underline;` |
+| text-decoration-skip-ink | auto / all / none | Decides whether the line decoration should draw above glyphs or not |
+| text-decoration-style | solid (default) / double / dotted / dashed / wavy |                  |
 | text-decoration-thickness | Length     |                  |
-| text-decoration-underline-offset | Length     |                  |
+| text-line-through-offset | Length     |                  |
 | text-overflow | clip / ellipsis |                  |
+| text-overline-offset | Length     |                  |
 | text-shadow | Same as `box-shadow` |                  |
 | text-transform | none (default) / capitalize / lowercase / uppercase |                  |
+| text-underline-offset | Length     |                  |
 | top  | Length     |                  |
 | transform | Fills in the properties below | `scale()` accepts comma-separated arguments. eg. `transform: scale(2, 0.5);` |
 | transform-origin | Length, Length, Length (optional) |                  |
@@ -231,10 +244,10 @@ These work across most properties:
 | transition-delay | Float      |                  |
 | transition-duration | Float      |                  |
 | transition-property | String     |                  |
-| transition-timing-function | linear (default) / ease / ease-in-out / ease-out / ease-in |                  |
-| white-space | normal / nowrap / pre / pre-wrap / break-spaces | Use `pre` to format tabs and newlines. |
+| transition-timing-function | linear (default) / ease / ease-in / ease-out / ease-in-out / bounce-in / bounce-out / bounce-in-out / sin-ease-in / sin-ease-out / sin-ease-in-out / step-start / step-end | `cubic-bezier()` and `steps()` are not supported. |
+| white-space | normal / nowrap / pre / pre-wrap / pre-line / break-spaces | Use `pre` to format tabs and newlines. |
 | width | Length     |                  |
-| word-break | normal / break-all / break-word |                  |
+| word-break | normal / break-all / break-word / keep-all |                  |
 | word-spacing | Length / normal |                  |
 | z-index | int        |                  |
 
