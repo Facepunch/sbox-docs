@@ -2,7 +2,7 @@
 title: "Serverside Code"
 icon: "👾"
 created: 2025-07-09
-updated: 2025-07-09
+updated: 2026-09-03
 ---
 
 # Serverside Code
@@ -14,7 +14,7 @@ Serverside Code only works when running local projects - please read that page f
 
 # What is it?
 
-When compiling a project, if we're a dedicated server, we can run code in `if #SERVER` blocks.
+When compiling a project, if we're a dedicated server, we can run code in `#if SERVER` blocks.
 
 ```csharp
 protected override void OnUpdate()
