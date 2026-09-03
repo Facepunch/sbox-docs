@@ -63,9 +63,9 @@ These work across most properties:
 | animation-fill-mode | none (default) / forwards / backwards / both |                  |
 | animation-iteration-count | int / infinite |                  |
 | animation-name | String     |                  |
-| animation-play-state | runningpaused |                  |
-| animation-timing-function | linear (default) ease ease-in ease-out ease-in-out |                  |
-| backdrop-filter | blur(Length) <br>saturate(Length) <br>contrast(Length) <br>brightness(Length) <br>grayscale(Length) <br>sepia(Length) <br>hue-rotate(Length) <br>invert(Length) <br>border-wrap(Length, Color) | `backdrop-filter: blur(10px) saturate(80%);` |
+| animation-play-state | running (default) / paused |                  |
+| animation-timing-function | Same as `transition-timing-function` |                  |
+| backdrop-filter | blur(Length) <br>saturate(Length) <br>contrast(Length) <br>brightness(Length) <br>grayscale(Length) <br>sepia(Length) <br>hue-rotate(Length) <br>invert(Length) / none | `backdrop-filter: blur(10px) saturate(80%);` `none` clears any backdrop filters. |
 | backdrop-filter-blur | Length     |                  |
 | backdrop-filter-brightness | Length     |                  |
 | backdrop-filter-contrast | Length     |                  |
