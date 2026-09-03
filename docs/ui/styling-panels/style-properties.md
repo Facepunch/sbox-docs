@@ -57,10 +57,10 @@ These work across most properties:
 | align-items | Same as `align-content` |                  |
 | align-self | Same as `align-content` |                  |
 | animation | Fills in the properties below |                  |
-| animation-delay | Float      |                  |
-| animation-direction | normal (default) reverse alternate alternate-reverse |                  |
-| animation-duration | Float      |                  |
-| animation-fill-mode | none forwardsbackwardsboth |                  |
+| animation-delay | Time (s / ms) | A unit is required. eg. `animation-delay: 200ms;` |
+| animation-direction | normal (default) / reverse / alternate / alternate-reverse |                  |
+| animation-duration | Time (s / ms) | A unit is required. eg. `animation-duration: 0.5s;` |
+| animation-fill-mode | none (default) / forwards / backwards / both |                  |
 | animation-iteration-count | int / infinite |                  |
 | animation-name | String     |                  |
 | animation-play-state | runningpaused |                  |
