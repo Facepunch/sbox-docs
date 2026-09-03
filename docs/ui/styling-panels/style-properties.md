@@ -28,7 +28,7 @@ These work across most properties:
 | Feature | Description | Examples |
 |---------|-------------|----------|
 | `min()` / `max()` / `clamp()` | Math functions usable anywhere a `Length` is accepted. | `width: min(100px, 50%);`,`width: clamp(10px, 50%, 200px);` |
-| CSS-wide keywords | `inherit`, `initial`, `unset` and `revert` are accepted on any property, including shorthands. | `color: inherit;`,`margin: unset;` |
+| CSS-wide keywords | `inherit`, `initial`, `unset` and `revert` are accepted on single-value properties and most shorthands (`margin`, `border`, `background`, `filter`, `animation`, …). Not on `box-shadow`, `text-shadow`, `filter-drop-shadow`, `background-image`, `mask-image`, `border-image`, `transition*` or `flex`. | `color: inherit;`,`margin: unset;` |
 | `currentColor` | Resolves to the element's current `color` value. | `border-color: currentColor;` |
 | `oklch()` / `lab()` / `hwb()` | Additional color syntaxes, on top of hex / `rgb()` / `rgba()`. | `color: oklch(0.7 0.15 200);` |
 | Viewport units | `dvh`, `svh`, `lvh` and `dvw` are treated the same as `vh` / `vw`. | `height: 100dvh;` |
