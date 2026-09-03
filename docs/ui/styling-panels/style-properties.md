@@ -39,12 +39,14 @@ These work across most properties:
 | Name | Parameters | Examples / Notes |
 |------|------------|------------------|
 | aspect-ratio | Float, Float (Optional) / auto | `aspect-ratio: 1;`,`aspect-ratio: 16/9;`,`aspect-ratio: auto;` |
-| background-image-tint | Color      | Multiplies the `background-image` by this Color. Not a replacement for `filter` or `backdrop-filter`. |
+| background-image-tint | Color      | Multiplies the `background-image` by this Color. Not a replacement for `filter` or `backdrop-filter`. `background-tint` is an alias. |
+| background-playback-state | running (default) / paused | Pauses an animated or video `background-image`. |
 | border-image-tint | Color      | Multiplies the `border-image` by this Color. |
 | border-shape | none / polygon(x y, ...) / circle(radius at x y) | Replaces the rounded rectangle with a polygon (3-8 points) or a circle, for backgrounds, borders and hit testing. See [Border Shape](border-shape.md). |
 | mask-scope | default / filter | `default` will apply the mask normally, `filter` will use the mask to blend between unfiltered and filtered. |
 | sound-in | String     | The name of the sound to play when this style is applied to an element. This is useful to put on a `:hover` or `:active` style to play a sound on hover/click |
 | sound-out | String     | The name of a sound to play when this style is removed from an element. |
+| text-filter | bilinear (default) / linear / point / trilinear / anisotropic | Texture filtering for text. `point` is good for pixel fonts. |
 | text-stroke | Length, Color | This will put an outline |
 | text-stroke-color | Color      |                  |
 | text-stroke-width | Length     |                  |
@@ -75,7 +77,8 @@ These work across most properties:
 | backdrop-filter-sepia | Length     |                  |
 | background | Fills in the properties below |                  |
 | background-angle | Length     |                  |
-| background-blend-mode | normal lighten multiply |                  |
+| background-blend-mode | normal (default) / lighten / multiply |                  |
+| background-clip | border-box (default) / padding-box / content-box / text | `text` paints the background only where the text is, so it shows through the glyphs. |
 | background-color | Color      |                  |
 | background-image | url(string) <br>linear-gradient(Color, Color) <br>radial-gradient(Color, Color) <br>conic-gradient(Color, Color) |                  |
 | background-position | Length, Length (optional) | `background-position: 10px``background-position: 10px 15px` |
@@ -190,7 +193,11 @@ These work across most properties:
 | object-fit | fill / contain / cover (default) / none / scale-down | `scale-down` is treated as `contain`. |
 | opacity | Float / Percentage | `opacity: 0.5;`,`opacity: 50%;` |
 | order | int        |                  |
-| overflow | visible (default) / hidden / scroll / auto | `auto` maps to `scroll`. |
+| outline | outline-width, outline-style, outline-color | Same syntax as `border`. Drawn outside the box, offset by `outline-offset`. eg. `outline: 2px solid #08f;` |
+| outline-color | Color      |                  |
+| outline-offset | Length     |                  |
+| outline-width | Length     |                  |
+| overflow | visible (default) / hidden / scroll / auto / clip / clip-whole | `auto` maps to `scroll`. `clip` clips like `hidden` without making a scroll container. `clip-whole` hides any child that extends outside the box entirely, rather than clipping it. |
 | overflow-x | Same as `overflow` |                  |
 | overflow-y | Same as `overflow` |                  |
 | padding | Fills in the properties below |                  |
