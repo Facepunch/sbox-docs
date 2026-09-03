@@ -2,7 +2,7 @@
 title: "Keyframe Editing"
 icon: "🔑"
 created: 2025-06-30
-updated: 2025-07-03
+updated: 2026-09-03
 ---
 
 # Keyframe Editing
@@ -33,8 +33,9 @@ Copy the scene view's perspective into a selected camera with Ctrl+Shift+F
 
 ## Interpolation Mode
 
-Each keyframe can choose between three different interpolation modes:
+Each keyframe can choose between four different interpolation modes:
 
+* Step - hold the value until the next keyframe
 * Linear - change at a constant velocity
 * Quadratic - ease in / out, with 0 velocity at the keyframe
 * Cubic - move along a smooth spline connecting keyframes
