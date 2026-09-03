@@ -2,7 +2,7 @@
 title: "Shading Model"
 icon: "🔦"
 created: 2024-12-08
-updated: 2026-08-03
+updated: 2026-09-03
 ---
 
 # Shading Model
@@ -107,4 +107,4 @@ vis.HandleRoughness( color, float2( m.Roughness, m.Roughness ) );
 return color;
 ```
 
-`ShadingModelStandard` wires up every one of these in its own `DoToolsVis`, so [shadingmodel.hlsl](https://github.com/Facepunch/sbox-public/blob/master/game/addons/base/Assets/shaders/common/shadingmodel.hlsl) is the reference to copy from. Note `DoToolsVis` itself is private to `ShadingModelStandard` - you can't call it from your own shading model.
+`ShadingModelStandard` wires up every one of these in its own `DoToolsVis`, so [shadingmodel.hlsl](https://github.com/Facepunch/sbox-public/blob/master/game/core/shaders/common/shadingmodel.hlsl) is the reference to copy from. Note `DoToolsVis` itself takes the `LightingTerms_t` that `ShadingModelStandard::Shade` fills in from the built-in lighting path, so it isn't directly reusable from your own shading model.
