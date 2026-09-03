@@ -2,7 +2,7 @@
 title: "Networked Objects"
 icon: "👾"
 created: 2024-03-21
-updated: 2024-04-30
+updated: 2026-09-03
 ---
 
 # Networked Objects
@@ -41,7 +41,7 @@ You can disable interpolation in one of two ways. Either by code, or using the i
 
 ```csharp
 // Disable interpolation for this networked object.
-Network.DisableInterpolation();
+Network.Interpolation = false;
 ```
 
 
