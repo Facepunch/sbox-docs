@@ -118,8 +118,8 @@ These work across most properties:
 | column-gap | Length     |                  |
 | content | string     | Sets the text of a Label.<br>eg. `content: "Loading…";` |
 | cursor | none / pointer / progress / wait / crosshair / text / move / not-allowed / any custom cursors |                  |
-| **display\*** | flex (default) / none | Everything is flex by default |
-| filter | Same as `backdrop-filter` / none | `none` clears any filters. |
+| **display\*** | flex (default) / none / contents | Everything is flex by default |
+| filter | Same as `backdrop-filter`, plus <br>tint(Color) <br>drop-shadow(Same as `box-shadow`) <br>border-wrap(Length, Color) / none | `filter: blur(2px) tint(#f00);` `none` clears any filters. |
 | filter-blur | Length     |                  |
 | filter-border-color | Color      |                  |
 | filter-border-width | Length     |                  |
