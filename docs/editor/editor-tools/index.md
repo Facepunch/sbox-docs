@@ -2,7 +2,7 @@
 title: "Editor Tools"
 icon: "🪛"
 created: 2023-12-29
-updated: 2023-12-29
+updated: 2026-09-03
 ---
 
 # Editor Tools
@@ -11,12 +11,14 @@ You can create your own editor tool to help you create your game. Your tool need
 
 
 ```csharp
-[EditorTool] // this class is an editor tool
+[EditorTool( "editortool.rocket" )] // this class is an editor tool, with the identifier of its shortcut
 [Title( "Rocket" )] // title of your tool
 [Icon( "rocket_launch" )] // icon name from https://fonts.google.com/icons?selected=Material+Icons
-[Shortcut( "editortool.rocket", "u" )] // keyboard shortcut
 public class MyRocketTool : EditorTool
 {
+	[Shortcut( "editortool.rocket", "u", typeof( SceneViewWidget ) )] // keyboard shortcut
+	public static void Activate() => EditorToolManager.SetTool( nameof( MyRocketTool ) );
+
 	public override void OnEnabled()
 	{
 

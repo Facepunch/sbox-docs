@@ -2,7 +2,7 @@
 title: "Reporting Errors"
 icon: "🚨"
 created: 2024-01-18
-updated: 2025-06-15
+updated: 2026-09-03
 ---
 
 # Reporting Errors
@@ -21,7 +21,7 @@ They're written to the `logs` folder inside your s&box installation directory, t
 
 ![](./images/error-logs.png)
 
-The last 10 are kept, the latest one is always called `Log.log`. Find the right one for the session and attach this to your issue on GitHub.
+The last 10 are kept, the latest one is always called `sbox.log` (or `sbox-dev.log` for the editor). Find the right one for the session and attach this to your issue on GitHub.
 
 
 

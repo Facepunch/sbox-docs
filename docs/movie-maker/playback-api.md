@@ -2,7 +2,7 @@
 title: "Playback API"
 icon: "code"
 created: 2025-06-30
-updated: 2026-03-18
+updated: 2026-09-03
 ---
 
 # Playback API
@@ -17,6 +17,7 @@ Create a reference track that, when played, binds to an object named "Camera".
 
 ```csharp
 using Sandbox.MovieMaker;
+using Sandbox.MovieMaker.Compiled;
 
 var objectTrack = MovieClip.RootGameObject( "Camera" );
 ```
@@ -44,8 +45,11 @@ var fovTrack = objectTrack
 Animate the scene with each track. They will try to bind to root objects in the scene with the matching names and component types, and silently fail if they don't exist.
 
 ```csharp
-positionTrack.Update( time );
-fovTrack.Update( time );
+var update = new MovieUpdateBuilder();
+
+update.Add( positionTrack, time );
+update.Add( fovTrack, time );
+update.Apply();
 ```
 
 # MovieClip
@@ -99,20 +103,20 @@ Binders can be serialized too.
 Log.Info( Json.Serialize( TrackBinder.Default ) );
 ```
 
-We can have multiple *Binder* instances, so the same clip can control different objects.
+We can have multiple *TrackBinder* instances, so the same clip can control different objects.
 
 ```csharp
 var binder = new TrackBinder( Game.ActiveScene );
 
-binder.Get( cameraTrack ).Bind( Game.ActiveScene.Camera );
+binder.Get( objectTrack ).Bind( Game.ActiveScene.Camera.GameObject );
 
-// Using Binder.Default
+// Using TrackBinder.Default
 
-cameraTrack.Update( time );
+clip.Update( time );
 
-// Using our own Binder instance
+// Using our own TrackBinder instance
 
-cameraTrack.Update( time, binder );
+clip.Update( time, binder );
 ```
 
 ## Target Creation
@@ -131,8 +135,8 @@ You can also manually create targets through the player's *TrackBinder*.
 moviePlayer.Binder.CreateTargets( clip );
 
 // Create targets for a specific set of tracks
-var track1 = clip.GetTrack( "Example", "ModelRenderer" );
-var track2 = clip.GetTrack( "Player", "PlayerController" );
+var track1 = clip.GetReference<ModelRenderer>( "Example", "ModelRenderer" );
+var track2 = clip.GetReference<PlayerController>( "Player", "PlayerController" );
 
 moviePlayer.Binder.CreateTargets( [track1, track2] );
 ```
@@ -145,7 +149,7 @@ The MoviePlayer component has a clip, a binder, and a time position.
 var moviePlayer = GameObject.AddComponent<MoviePlayer>();
 
 moviePlayer.Clip = clip;
-moviePlayer.Binder.Get( clip.GetReference<GameObject>( "Camera" ) ).Bind( Game.ActiveScene.Camera );
+moviePlayer.Binder.Get( clip.GetReference<GameObject>( "Camera" ) ).Bind( Game.ActiveScene.Camera.GameObject );
 
 // Time in seconds
 

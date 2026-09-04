@@ -2,7 +2,7 @@
 title: "Map Entities"
 icon: "🏗️"
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-09-03
 ---
 
 # Map Entities
@@ -21,16 +21,20 @@ When a map is loaded, its embedded entities are converted into GameObjects as ch
 | `env_cubemap_fog` | `CubemapFog` component |
 | `env_cubemap` / `env_cubemap_box` | `EnvmapProbe` component |
 | `env_volumetric_fog_volume` | `VolumetricFogVolume` component |
+| `env_volumetric_fog_controller` | `VolumetricFogController` component |
+| `env_combined_light_probe_volume` | `EnvmapProbe` component + `MapObjectComponent` |
 | `snd_soundscape` | `SoundscapeTrigger` (sphere) |
 | `snd_soundscape_box` | `SoundscapeTrigger` (box) |
-| Lights | `SceneLight` objects (directional, spot, omni, rect, capsule) |
+| `light_environment` / `light_directional` | `DirectionalLight` component |
+| `light_spot` | `SpotLight` component |
+| `light_omni` | `PointLight` component |
 
-Any entity type not listed above will get a `MapObjectComponent` that manages its scene objects directly.
+Any entity type not listed above (including rect, capsule and ortho lights) will get a `MapObjectComponent` that manages its scene objects directly.
 
 
 # Custom Entity Handling
 
-You can create your own `MapInstance` subclass and override `OnCreateObject` to handle custom entity types or modify how built-in types are created. This method is only called for entity types that are not already handled internally.
+You can create your own `MapInstance` subclass and override `OnCreateObject` to handle custom entity types or modify how built-in types are created. This method is called for every entity, after the built-in handling above has run.
 
 ```csharp
 public class MyMapInstance : MapInstance

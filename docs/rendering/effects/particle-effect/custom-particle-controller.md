@@ -2,7 +2,7 @@
 title: "Custom Particle Controller"
 icon: "🎮"
 created: 2023-11-27
-updated: 2023-11-27
+updated: 2026-09-03
 ---
 
 # Custom Particle Controller
@@ -22,11 +22,11 @@ public class MyParticleController : ParticleController
 }
 ```
 
-Then add this to your GameObject with a Particle Effect on it. You will see that the particles go up, slowly.
+Then add this to your GameObject with a Particle Effect on it. You will see that the particles fall.
 
 # OnParticleStep
 
-This method is called for each particle in the particle system. The second argument is the time delta (which is the game time delta multiplied by the particle system's time delta).
+This method is called for each particle in the particle system. The second argument is the time delta (which is the game time delta multiplied by the particle system's time scale).
 
 This method is run in a thread, so you should be careful about what you're doing here. For example, don't create callbacks here, don't delete GameObjects or components etc.
 
@@ -50,7 +50,7 @@ public class MyParticleController : ParticleController
 		{
 			lock ( this )
 			{
-				callbacks += () => SceneUtility.Instantiate( myPrefab, particle.Position );
+				callbacks += () => myPrefab.Clone( particle.Position );
 			}
 		}
 	}
