@@ -2,7 +2,7 @@
 title: "Mapping"
 icon: "🔨"
 created: 2026-02-16
-updated: 2026-05-05
+updated: 2026-09-03
 ---
 
 # Mapping
@@ -37,12 +37,11 @@ Each tool in the toolbar serves a specific purpose in the mapping workflow. The 
 | Tool | Shortcut | Description |
 |------|----------|-------------|
 | Primitive Tool | Shift + B | Creates different types of primitives (box, sphere, cylinder, etc.) |
-| Object Mode | 5 | Select and transform objects |
+| Object Mode | 4 | Select and transform objects |
 | Vertex Tool | 1 | Select and edit vertices |
 | Edge Tool | 2 | Select and edit edges |
 | Face Tool | 3 | Select and edit faces |
-| Texture Tool | 4 | Apply materials to faces and adjust texture alignment, scale, and rotation |
-| Vertex Paint | 6 | Paint colour or blends directly onto mesh vertices |
+| Vertex Paint | 5 | Paint colour or blends directly onto mesh vertices |
 | Displacement | | Sculpt and displace vertices to create organic shapes |
 
 ### Move modes

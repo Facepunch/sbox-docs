@@ -2,7 +2,7 @@
 title: "Controller Input"
 icon: "🎮"
 created: 2025-02-25
-updated: 2025-02-25
+updated: 2026-09-03
 ---
 
 # Controller Input
@@ -51,7 +51,7 @@ You can also force all haptics to stop using `Input.StopAllHaptics()`
 
 # Motion Controls
 
-If the Controller has a gyroscope or an accelerometer, then you can get motion data, otherwise it will be null.
+If the Controller has a gyroscope or an accelerometer, then you can get motion data, otherwise the values will be zero.
 
 ```csharp
 InputMotionData motionData = Input.MotionData;

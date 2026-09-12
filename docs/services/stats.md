@@ -2,7 +2,7 @@
 title: "Stats"
 icon: "📉"
 created: 2024-08-23
-updated: 2026-08-03
+updated: 2026-09-03
 ---
 
 # Stats
@@ -54,7 +54,7 @@ You can call these apis as often as you like. We batch the stats and send them w
 
 ## Attaching Data
 
-Both `Increment` and `SetValue` take optional extra data, which is available when querying leaderboards. Pass a `Dictionary<string, object>`, or any object you like - it gets serialized to JSON and flattened into one.
+Both `Increment` and `SetValue` take optional extra data, which is available when querying leaderboards. Pass a `Dictionary<string, object>` (`SetValue` also accepts any object as its `data` argument - it gets serialized to JSON and flattened into one).
 
 ```csharp
 Sandbox.Services.Stats.SetValue( "win-time", SecondsTaken, new Dictionary<string, object>

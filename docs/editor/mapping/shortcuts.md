@@ -2,7 +2,7 @@
 title: "Shortcuts"
 icon: "🩳"
 created: 2026-02-16
-updated: 2026-04-08
+updated: 2026-09-03
 ---
 
 # Shortcuts
@@ -45,9 +45,8 @@ updated: 2026-04-08
 | Vertex Tool | 1 |
 | Edge Tool | 2 |
 | Face Tool | 3 |
-| Texture Tool | 4 |
-| Object Selection | 5 |
-| Vertex Paint Tool | 6 |
+| Object Selection | 4 |
+| Vertex Paint Tool | 5 |
 | Position Tool | W |
 | Rotate Tool | E |
 | Scale Tool | R |
@@ -64,8 +63,8 @@ updated: 2026-04-08
 | Center Origin | End |
 | Clear Pivot | Home |
 | Zero Pivot | Ctrl + End |
-| Next Pivot | N + Scroll Up |
-| Previous Pivot | N + Scroll Down |
+| Next Pivot | Shift + Scroll Up |
+| Previous Pivot | Shift + Scroll Down |
 | Collapse | Shift + O |
 | Combine Faces | Backspace |
 | Connect | V |
@@ -108,7 +107,7 @@ updated: 2026-04-08
 | Nudge Down | Alt + Down |
 | Nudge Left | Alt + Left |
 | Nudge Right | Alt + Right |
-| Align Down Local | Ctrl + 1 |
-| Align Down World | Ctrl + 2 |
-| Align To Closest Normal | Ctrl + 3 |
+| Align Down Local | Ctrl + Numpad 1 |
+| Align Down World | Ctrl + Numpad 2 |
+| Align To Closest Normal | Ctrl + Numpad 3 |
 | Reset Rotation And Scale | Ctrl + 0 |

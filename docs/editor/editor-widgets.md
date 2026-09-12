@@ -2,7 +2,7 @@
 title: "Editor Widgets"
 icon: "⚙️"
 created: 2024-10-10
-updated: 2024-11-10
+updated: 2026-09-03
 ---
 
 # Editor Widgets
@@ -56,7 +56,7 @@ parentWidget.Layout.Add(childExample);
 Creating a Widget with the \[Dock\] attribute will allow it to be docked within any DockArea. It will also be added to the View menu so it can be toggled easily, the Dockarea is specified to determine where the Widget will be docked by default.
 
 ```csharp
-[Dock("Editor", "Example Editor Dock", "local_fire_department", Dockarea.Center)]
+[Dock("Editor", "Example Editor Dock", "local_fire_department", DockArea.Center)]
 ```
 
 ![The Dockable Window can now be opened/closed from the View menu](./images/the-dockable-window-can-now-be-opened-closed-from-the-view-m.png) ![How the Widget looks when un-docked](./images/how-the-widget-looks-when-un-docked.png)

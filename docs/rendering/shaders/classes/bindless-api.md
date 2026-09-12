@@ -2,7 +2,7 @@
 title: "Bindless API"
 icon: "🔗"
 created: 2024-12-03
-updated: 2026-07-30
+updated: 2026-09-03
 ---
 
 # Bindless API
@@ -119,10 +119,13 @@ float4 MainPs( PixelInput i ) : SV_Target0
 
 # Non-uniform Resource Index
 
-If your bindless resources index is going to vary across threads within a wave (this could happen if passed from a vertex input) you need to explicitly mark it as so otherwise you'll get undefined behavior.
+If your bindless resources index is going to vary across threads within a wave (this could happen if passed from a vertex input) it needs to be marked as non-uniform, otherwise you'll get undefined behavior. In pixel shaders the texture getters already apply `NonUniformResourceIndex` for you; samplers don't (it crashes some AMD drivers), so pass a `NonUniform` index instead:
 
 ```cpp
 Texture2D texture = Bindless::GetTexture2D( NonUniformResourceIndex( i.TextureIndex ) );
+
+NonUniform samplerIndex = { i.SamplerIndex };
+SamplerState sampler = Bindless::GetSampler( samplerIndex );
 ```
 
 ![Undefined behavior from a non uniform resource index](./images/undefined-behavior-from-a-non-uniform-resource-index.webp)

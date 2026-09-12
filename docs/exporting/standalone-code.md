@@ -2,7 +2,7 @@
 title: "Standalone Code"
 icon: "🔓"
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-09-03
 ---
 
 # Standalone Code
@@ -23,4 +23,4 @@ Exported games are compiled with a `STANDALONE` constant. Use this to branch log
 
 Platform games enforce an [API whitelist](/code/code-basics/api-whitelist.md) that blocks potentially dangerous .NET APIs. Standalone games can disable this restriction entirely.
 
-To disable the whitelist, open your project settings and turn off the whitelist option. This gives you full access to the .NET runtime - but your game won't be publishable to the s&box platform while the whitelist is disabled.
+To disable the whitelist, open your project settings and turn on **Disable Whitelist** under **Game Exporting**. This gives you full access to the .NET runtime - but your game won't be publishable to the s&box platform while the whitelist is disabled. Exported builds are always compiled with the whitelist off.

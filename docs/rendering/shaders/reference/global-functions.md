@@ -2,7 +2,7 @@
 title: "Global Functions"
 icon: "🔨"
 created: 2026-08-31
-updated: 2026-08-31
+updated: 2026-09-03
 ---
 
 Engine comes with a bunch of helper functions that are accessible from every shader. Here's a list of them. Please note that this page omits a bunch of global functions that are tied to specific classes, for example Depth, G-Buffer and others - we have dedicated pages for them, so take a look at the "Classes" category.
@@ -24,7 +24,7 @@ float3 TransformNormal( float3 vNormalTs, float3 vGeometricNormalWs, float3 vTan
 
 ```cpp
 // Converts normals from world space to tangent space
-float3 NormalWorldToTangent( float3 vNormalWs, float3 vGeometricNormalWs, float3 vTangentUWs, float3 vTangentVWs )
+float3 NormalWorldToTangent( float3 vNormalWs, float3 vTangentUWs, float3 vTangentVWs )
 ```
 
 ```cpp

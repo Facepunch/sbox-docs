@@ -2,7 +2,7 @@
 title: "Networked Objects"
 icon: "👾"
 created: 2024-03-21
-updated: 2024-04-30
+updated: 2026-09-03
 ---
 
 # Networked Objects
@@ -41,7 +41,7 @@ You can disable interpolation in one of two ways. Either by code, or using the i
 
 ```csharp
 // Disable interpolation for this networked object.
-Network.DisableInterpolation();
+Network.Interpolation = false;
 ```
 
 
@@ -69,4 +69,4 @@ Once you call `NetworkSpawn()` on a game object, any further changes to its comp
 If you add new components, change the enabled state of a component, add new children or change the hierarchy of a networked object significantly, you can send a refresh update to other clients by calling `Network.Refresh()` on the networked game object or from one of its components.
 
 
-By default, only the host can send refresh updates for networked objects. If you'd like to enable the owner to also send refresh updates you can do so by changing the [connection permissions](/networking/connection-permissions.md) for a client.
+By default, both the host and the owner of a networked object can send refresh updates for it. If you'd like to stop the owner from sending refresh updates you can do so by changing the [connection permissions](/networking/connection-permissions.md) for a client.

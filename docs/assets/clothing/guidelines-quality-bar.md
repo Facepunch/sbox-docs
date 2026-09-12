@@ -2,7 +2,7 @@
 title: "Guidelines & Quality Bar"
 icon: "📖"
 created: 2024-12-20
-updated: 2026-03-20
+updated: 2026-09-03
 ---
 
 # Guidelines & Quality Bar
@@ -178,9 +178,6 @@ We use the Complex shader to plug in our textures.
 *In the PBR settings on the left of the Material Editor…*
 
 
-* **Specular** must be ticked on for the roughness map to work correctly.
-
-  \
 * **Metalness Texture** must be ticked on to be able to add your Metal texture.
 
 

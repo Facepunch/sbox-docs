@@ -2,7 +2,7 @@
 title: "Light"
 icon: "💡"
 created: 2024-12-08
-updated: 2026-08-03
+updated: 2026-09-03
 ---
 
 # Light
@@ -44,7 +44,7 @@ struct Light
 
     // Gets the light structure given the world and screen-space position and
     // the light index.
-    static Light From( float3 vPositionWs, float4 vPositionSs, uint nLightIndex );
+    static Light From( float3 vPositionWs, float4 vPositionSs, uint nLightIndex, float2 vLightMapUV = 0.0f );
     
     // Number of lights in the current fragment.
     static uint Count( float4 vPositionSs );
@@ -60,7 +60,7 @@ for( uint i = 0; i < Light::Count( ScreenPosition ); i++ )
 }
 ```
 
-This iterates both Dynamic and Static lights, this does all you need and returns with all optimizations from Frustum Tiled Lighting
+This iterates both Dynamic and Static lights, this does all you need and returns with all optimizations from clustered light culling
 
 ### Diffuse, Specular and Transmissive
 
@@ -147,7 +147,7 @@ This data can be accessed from anywhere, even when you are not iterating lights 
 Directional lights have their own shadow path, so if you want to sample a shadow that is being cast by sun, you should use `DirectionalLightShadow` class: 
 
 ```cpp
-float flDirLightShadow = DirectionalLightShadow::GetVisibility( WorldPosition, ScreenPosition.xy );
+float flDirLightShadow = DirectionalLightShadow::GetVisibility( WorldPosition, ScreenPosition );
 ```
 
 # Binned Lights
@@ -193,15 +193,15 @@ class BinnedLight
     Texture2D GetLightCookieTexture()   { return Bindless::GetTexture2D( LightCookieTextureIndex ); }
 };
 
-StructuredBuffer<BinnedLight> BinnedLightBuffer < Attribute( "BinnedLightBuffer" );  > ;
+StructuredBuffer<BinnedLight> BinnedLightBufferV2 < Attribute( "BinnedLightBufferV2" );  > ;
 
 BinnedLight DynamicLightConstantByIndex( int index )
 {
-    return BinnedLightBuffer[ index ];
+    return BinnedLightBufferV2[ index ];
 }
 
 BinnedLight BakedIndexedLightConstantByIndex( int index )
 {
-    return BinnedLightBuffer[ BakedLightIndexMapping[index].x ];
+    return BinnedLightBufferV2[ BakedLightIndexMapping[index].x ];
 }
 ```

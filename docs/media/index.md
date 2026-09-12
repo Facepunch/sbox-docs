@@ -2,7 +2,7 @@
 title: "Media"
 icon: "💿"
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-09-03
 ---
 
 # Media
@@ -26,14 +26,13 @@ See [Video](./video.md) and [Audio](./audio.md) for more details.
 
 | Codec | Formats | Notes |
 |---|---|---|
-| Opus | .ogg, .opus, .webm | |
-| Vorbis | .ogg, .webm | |
-| FLAC | .flac | |
+| Opus | .webm, .mp4 | |
+| Vorbis | .ogg | |
 | MP3 | .mp3 | |
 | WAV / PCM | .wav | |
 | AAC | .mp4 | Windows only via Media Foundation, not recommended |
 
 :::warning
-H.264 and AAC are only available on Windows via system decoders. Use VP9 or AV1 for video, and Opus, MP3, FLAC, or WAV for audio.
+H.264 and AAC are only available on Windows via system decoders. Use VP9 or AV1 for video, and Opus, MP3, or WAV for audio.
 :::
 

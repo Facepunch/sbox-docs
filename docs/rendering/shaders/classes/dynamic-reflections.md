@@ -2,7 +2,7 @@
 title: "Dynamic Reflections"
 icon: "🪩"
 created: 2024-08-16
-updated: 2025-07-30
+updated: 2026-09-03
 ---
 
 # Dynamic Reflections
@@ -18,24 +18,7 @@ float4 DynamicReflections::Sample( float2 ScreenPosition, float Roughness = 0.0f
 
 On the standard shading model they are composited with the correct BRDF, so it respects the reflection value from Metalness and Roughness set by it
 
-
-## Custom Dynamic Reflections
-
-You can implement your own dynamic reflections solution simply by providing the dynamic reflection texture globally from your own component:
-
-```csharp
-commands.SetGlobal( "ReflectionColorIndex", PlanarReflection.ColorIndex );
-```
-
-
-Roughness parameter when sampling will optionally get a specific mip level from your texture from `0.0f` to `1.0f` to composite with variable blurriness based on how rough the overlayed material is
+Roughness parameter when sampling will optionally get a specific mip level from the reflection texture from `0.0f` to `1.0f` to composite with variable blurriness based on how rough the overlayed material is
 
 `DynamicReflections::IsEnabled()` tells you whether there's a reflection texture bound at all, so you can skip the work when there isn't.
 
-## Overriding Indirect Specular Reflections For Disabling
-
-Since you are overriding the envmap reflections of an object, overriding reflection color can also be used to force them off entirely
-
-```csharp
-commands.SetGlobal( "ReflectionColorIndex", Texture.Black.ColorIndex );
-```

@@ -2,7 +2,7 @@
 title: "Feature Upgrade"
 icon: "🛠️"
 created: 2026-07-06
-updated: 2024-07-06
+updated: 2026-09-03
 ---
 
 # Feature Upgrade
@@ -75,4 +75,4 @@ PS
 }
 ```
 
-You can check out the [Fur Shader source code](https://github.com/Facepunch/sbox/blob/master/game/addons/base/Assets/shaders/fur.shader) to see how feature upgrade is used to split the code path between old and new materials, and safely implement changes that would break existing materials without this upgrader.
+You can check out the [Fur Shader source code](https://github.com/Facepunch/sbox/blob/master/game/core/shaders/fur.shader) to see how feature upgrade is used to split the code path between old and new materials, and safely implement changes that would break existing materials without this upgrader.

@@ -2,7 +2,7 @@
 title: "Material"
 icon: "💎"
 created: 2024-12-05
-updated: 2026-06-15
+updated: 2026-09-03
 ---
 
 # Material
@@ -53,5 +53,5 @@ class Material
 
 While this method is still working and compiles normally, it is recommended to use `Material::Init( PixelInput i )` instead.
 
-* `Material::From( PixelInput i )` can be used to process the [standard input](/rendering/shaders/reference/default-vertex-and-pixel-shader-inputs.md) and automatically expose all common PBR texture inputs to Material Editor. All these texture inputs will be automatically sampled and inserted into initialized material as well. You must add `#include Material.CommonInputs.hlsl` in your pixel shader code for this to work correctly. If you need more control over inputs, use different ways to initialize a new material. 
+* `Material::From( PixelInput i )` can be used to process the [standard input](/rendering/shaders/reference/default-vertex-and-pixel-shader-inputs.md) and automatically expose all common PBR texture inputs to Material Editor. All these texture inputs will be automatically sampled and inserted into initialized material as well. You must add `#include "common/utils/Material.CommonInputs.hlsl"` in your pixel shader code for this to work correctly. If you need more control over inputs, use different ways to initialize a new material. 
 
