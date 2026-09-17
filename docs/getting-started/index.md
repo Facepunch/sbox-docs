@@ -49,10 +49,6 @@ How to report bugs, submit error logs, and troubleshoot common problems.
 
 Answers to frequently asked questions about s&box.
 
-## [Feature Status](/getting-started/status.md)
-
-Current status of key features and known missing functionality.
-
 ---
 
 ## Community
