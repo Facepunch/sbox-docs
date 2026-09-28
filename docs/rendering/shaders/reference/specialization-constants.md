@@ -2,7 +2,7 @@
 title: "Specialization Constants"
 icon: "🔗"
 created: 2026-09-22
-updated: 2026-09-22
+updated: 2026-09-28
 ---
 
 # What is it?

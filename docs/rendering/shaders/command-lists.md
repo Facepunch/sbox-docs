@@ -2,7 +2,7 @@
 title: "Command Lists"
 icon: "📋"
 created: 2024-12-08
-updated: 2025-08-11
+updated: 2026-09-28
 ---
 
 # Command Lists
