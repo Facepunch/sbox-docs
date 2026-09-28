@@ -36,6 +36,24 @@ PS
 
 It essentially turns this static combo into a variable instead of another `#define`, which would add up to list of shader variants that engine must compile. The benefit is that it is works as a variable while GPU still treats it as a static combo, doing necessary optimizations, but without having to compile it.
 
+# ActiveIf() Shader Variable Attribute
+
+You can also use this attribute along with specialized constants or features to mark specific variables as active/inactive so they become accessible and useable only when certain constants are enabled. 
+Inactive variables will be hidden from material editor UI.
+
+```cpp
+StaticCombo( S_USE_BENT_NORMALS, F_USE_BENT_NORMALS, Sys( ALL ), ShaderConstant() );
+
+Texture2D g_tBentNormal <
+    Channel( RG, HemiOctIsoRoughness_RG_B( TextureBentNormal ), Linear );
+    OutputFormat( ATI2N );
+    SrgbRead( false );
+    ActiveIf( S_USE_BENT_NORMALS != 0 );
+>;
+
+float g_flStrength < Default( 1.0 ); ActiveIf( S_USE_BENT_NORMALS != 0 ); >;
+```
+
 # Limitations
 
 - This can be used only with `if`, `switch` and expressions. `#if` or `#elif`, texture processing annotations, conditional includes, render states or material attributes **will not** work with this.
