@@ -46,6 +46,8 @@ Unlike ActionGraph, pose connections are not execution signals. You are describi
 
 **A Selector chooses on entry, not continuously.** If changing a parameter should switch the animation immediately, use a state machine or a blend instead.
 
+For the full list, see [Node Reference](/animation/animgraph/node-reference.md): editor node names, what each one does, and the important restrictions.
+
 ## Learn by building
 
 Start with [your first graph](/animation/animgraph/getting-started.md), then extend it:
