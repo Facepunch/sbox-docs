@@ -35,6 +35,8 @@ The **Animation Clips** panel lists clips for the selected skeleton. Drag a clip
 
 Select a node to edit its properties. On the idle clip, leave **Loop** enabled and **Speed Multiplier** at `1`.
 
+To play it backward, connect a true Bool to **Play In Reverse** rather than using a negative speed. This works for the direct-to-output setup here; [Reversing Clips](/animation/animgraph/reversing-clips.md) explains the restrictions when adding synchronized blends or layers.
+
 The preview shows the result of the graph. If it is out of date, use **View > Compile Preview**. Check **Compile Log** for errors and warnings, and save the graph.
 
 ## Put it on a character

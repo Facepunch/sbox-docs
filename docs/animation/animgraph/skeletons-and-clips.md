@@ -40,6 +40,10 @@ You can also import from the graph editor's **Animation Clips** panel. This uses
 
 The import dialogs copy source files from outside the project into `Assets`, so those sources stay with the project.
 
+## Reverse playback
+
+Use **Play In Reverse** on an unsynchronized Animation Clip node to play a clip backward. See [Reversing Clips](/animation/animgraph/reversing-clips.md) for playback and sampling options, including the synchronized-blend restriction.
+
 ## Ordinary clips and additive clips
 
 An ordinary clip describes a pose. An **additive** clip describes a change to another pose: for example, a small recoil movement added to a weapon hold.

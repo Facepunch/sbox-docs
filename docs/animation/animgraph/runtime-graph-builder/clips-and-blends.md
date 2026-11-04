@@ -28,13 +28,33 @@ Non-looping means **stop advancing at the end**, not remove the pose, leave a st
 |---|---|
 | `Looping` | Repeat the clip; defaults to `true` |
 | `Speed` | Constant playback multiplier; defaults to `1` |
-| `PlayInReverse` | Optional Bool node controlling reverse playback |
+| `PlayInReverse` | Optional Bool node controlling reverse playback; ignored during synchronized updates |
 | `ResetTime` | Optional Bool node requesting a time reset; do not leave it true unintentionally |
 | `SyncEventOffset` | Offset in the clip's synchronization events |
 | `SampleRootMotion` | Include the clip's root-motion contribution; defaults to `true` |
 | `GraphEvents` | Names of generic graph events emitted by the active clip |
 
 For a changing playback multiplier, wrap the clip in `SpeedScale` rather than rebuilding `ClipSettings`.
+
+## Reverse a clip
+
+Declare a Bool before adding any other nodes, then connect it through `ClipSettings`. This fragment assumes a fresh builder with its skeleton already selected and a compatible `waveClip`:
+
+```csharp
+var reverse = builder.BoolParameter( "reverse" );
+var pose = builder.Clip( waveClip, new GraphBuilder.ClipSettings
+{
+    Looping = false,
+    PlayInReverse = reverse,
+    SampleRootMotion = false
+} );
+```
+
+Create the graph from `pose`, then supply `"reverse"` through `Renderer.Animation.Parameters.Set`. For a graph that always plays backward, use `builder.Constant( true )` as `PlayInReverse` instead of declaring a control.
+
+**This requires unsynchronized playback.** `Blend` itself, `BlendSpace`, `BlendSpace2D`, and `VelocityBlend` synchronize their child clips. So do layers with `Synchronized = true` and synchronized transitions while active. An ordinary clip ignores its reverse input when that parent timing reaches it.
+
+Putting a blend inside an unsynchronized layer does not remove the blend's own synchronization. Use an independent action branch, a deliberately time-controlled clip, or a separately baked reversed asset. See [Reversing Clips](/animation/animgraph/reversing-clips.md) for editor setup and the full restrictions.
 
 ## Sample a time instead of playing
 
@@ -51,6 +71,23 @@ The clip-taking methods accept either paths or loaded clips.
 `TimeControlledClip` takes time in the range `0` to `1` and ignores synchronization. Its `TimeControlledClipSettings` provides `PlayInReverse`, `SampleRootMotion` (default `true`), and `GraphEvents`.
 
 `PoseSettings` provides an optional Float `Time`, a `FixedTime` fallback (default `0`), `RemapRangeStart`/`RemapRangeEnd` (default `0`/`1`), and `UseFramesAsInput` (default `false`). A pose sample does not play through the clip by itself.
+
+To play backward from a progress parameter that increases from `0` to `1`, drive the source time backward **and** set the direction:
+
+```csharp
+var progress = builder.FloatParameter( "progress", 0, 1 );
+var time = builder.Subtract( builder.Constant( 1.0f ), progress );
+var pose = builder.TimeControlledClip( waveClip, time,
+    new GraphBuilder.TimeControlledClipSettings
+    {
+        PlayInReverse = builder.Constant( true ),
+        SampleRootMotion = false
+    } );
+```
+
+Use a fresh builder for this alternative, with the skeleton selected before building. The input still determines the sampled source position: the reverse bool does not invert that position for you. It makes event and root-motion sampling follow the backward direction. Decreasing time without that flag is interpreted as a forward loop.
+
+For pose-only sampling, use `builder.Pose( waveClip, time )` with the same decreasing time instead. It does not sample events or root motion.
 
 ## Blend two poses
 
@@ -103,7 +140,9 @@ For precomputed data, use `BlendSpace2D( x, y, BlendSpace2DSettings )`. Supply m
 | `VelocityScale( clipNode, desiredVelocity, defaultVelocity )` | Clip-node version with a fallback desired velocity |
 | `VelocityBlend( speed, clips )` | Blend clips using their baked average root-motion speeds as positions; supply them slowest first |
 
-Use positive durations and sensible playback speeds. Velocity-based nodes need meaningful authored root motion; they cannot infer foot speed from arbitrary in-place animation. A manually positioned blend space is often the clearer starting point.
+Use positive durations and sensible playback speeds. Negative Speed Scale inputs become zero, not reverse playback; negative driven durations and desired velocities are not reverse controls either. Use `PlayInReverse` on a suitable clip instead.
+
+Velocity-based nodes need meaningful authored root motion; they cannot infer foot speed from arbitrary in-place animation. A manually positioned blend space is often the clearer starting point.
 
 ## Select once on entry
 
