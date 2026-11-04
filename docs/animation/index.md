@@ -11,11 +11,11 @@ s&box uses animation graphs to decide which animations a character plays and how
 
 ## AnimGraph
 
-[AnimGraph](animgraph/index.md), also called **AG2**, is the new animation graph system. Build a graph visually, preview it on your model, then drive it from your game.
+[AnimGraph](/animation/animgraph/index.md), also called **AG2**, is the new animation graph system. Build a graph visually, preview it on your model, then drive it from your game.
 
-Start with [your first graph](animgraph/getting-started.md). The examples build up from a looping idle to movement blending and an upper-body action.
+Start with [your first graph](/animation/animgraph/getting-started.md). The examples build up from a looping idle to movement blending and an upper-body action.
 
-Already using the old `.vanmgrph` graphs? Read [moving from AG1](animgraph/moving-from-ag1.md) before changing your assets or code. The two systems use different resources and parameter APIs.
+Already using the old `.vanmgrph` graphs? Read [moving from AG1](/animation/animgraph/moving-from-ag1.md) before changing your assets or code. The two systems use different resources and parameter APIs.
 
 ## Movie Maker
 

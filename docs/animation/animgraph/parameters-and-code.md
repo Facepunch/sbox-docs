@@ -26,7 +26,7 @@ A parameter's **Runtime > Default Value** is its authored runtime starting value
 
 ## Drive the movement example
 
-This small component lets you drive the [movement blend](blending-movement.md) from a property:
+This small component lets you drive the [movement blend](/animation/animgraph/blending-movement.md) from a property:
 
 ```csharp
 using Sandbox;
@@ -73,7 +73,7 @@ Do not use persisted parameter writes as a substitute for runtime movement updat
 
 An action bool such as `b_wave` stays at its last value until you change it. Keep it true for an animation update, then clear it on the next one.
 
-Do not set it true and immediately false in the same method: the graph may never see the true value. Also decide what should happen if another request arrives during the action; the [basic wave graph](states-and-transitions.md) ignores requests while already waving.
+Do not set it true and immediately false in the same method: the graph may never see the true value. Also decide what should happen if another request arrives during the action; the [basic wave graph](/animation/animgraph/states-and-transitions.md) ignores requests while already waving.
 
 ## Virtual parameters
 
@@ -107,4 +107,4 @@ The standard PlayerController supplies a set of optional inputs when its assigne
 
 For the movement example, rename `speed` to `move_groundspeed` and remove the test driver. Let the controller supply the value instead of having two components write it.
 
-This does not make an arbitrary AG2 graph understand the legacy CitizenAnimationHelper contract. See [moving from AG1](moving-from-ag1.md).
+This does not make an arbitrary AG2 graph understand the legacy CitizenAnimationHelper contract. See [moving from AG1](/animation/animgraph/moving-from-ag1.md).

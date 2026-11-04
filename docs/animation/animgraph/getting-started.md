@@ -12,7 +12,7 @@ Let's make a character play a looping idle. You do not need C# or a state machin
 
 You need a skinned model, its `.skel` skeleton, and a compatible, non-additive `.anim` clip. Use an idle with more than one frame so you can see it playing.
 
-If you only have a model and source animation files, follow [skeletons and clips](skeletons-and-clips.md) first. An animation listed in ModelDoc is not automatically an AG2 clip.
+If you only have a model and source animation files, follow [skeletons and clips](/animation/animgraph/skeletons-and-clips.md) first. An animation listed in ModelDoc is not automatically an AG2 clip.
 
 The examples call the clips `idle.anim`, `walk.anim`, `run.anim`, and `wave.anim`. These are example names for your own compatible clips, not built-in asset paths.
 
@@ -25,7 +25,7 @@ The examples call the clips `idle.anim`, `walk.anim`, `run.anim`, and `wave.anim
 
 The editor opens with the selected clip already connected:
 
-![A looping idle Animation Clip sends its pose directly to Graph Output.](images/first-graph.svg)
+![A looping idle Animation Clip sends its pose directly to Graph Output.](./images/first-graph.png)
 
 You can also create a graph without choosing a clip. It starts with **Reference Pose**, which holds the skeleton's reference pose rather than playing an animation.
 
@@ -57,4 +57,4 @@ This renderer assignment overrides the model's default graph. Clearing the assig
 | Distorted or incorrectly sized animation | Check the skeleton, source rig, and import scale. |
 | Correct preview, wrong result in the scene | Check the renderer's graph assignment and Use Anim Graph setting. |
 
-Next, [blend idle, walk, and run](blending-movement.md) using a speed parameter.
+Next, [blend idle, walk, and run](/animation/animgraph/blending-movement.md) using a speed parameter.

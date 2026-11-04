@@ -29,9 +29,9 @@ Start with one character and one working behavior. Keep the old setup available 
 
 Create or reuse one skeleton, then import a small set of clips against it. Start with idle and movement before adding actions, aiming, or IK.
 
-Preserve the old source settings that affect the result: scale, take, trim range, duration, and additive subtraction source/frame. Use [skeletons and clips](skeletons-and-clips.md) to prepare the assets.
+Preserve the old source settings that affect the result: scale, take, trim range, duration, and additive subtraction source/frame. Use [skeletons and clips](/animation/animgraph/skeletons-and-clips.md) to prepare the assets.
 
-Build [a one-clip graph](getting-started.md) and check it on the actual renderer before recreating the rest of the character.
+Build [a one-clip graph](/animation/animgraph/getting-started.md) and check it on the actual renderer before recreating the rest of the character.
 
 ## Update the parameter calls
 
@@ -61,9 +61,9 @@ Audit the components writing parameters too. **CitizenAnimationHelper still uses
 
 | Behavior | A simple AG2 approach |
 |---|---|
-| Idle/walk/run from speed | [Blend 1D](blending-movement.md) |
-| Jump, land, or play an action | [States and transitions](states-and-transitions.md) |
-| Reload or wave while moving | [State Machine Layer with a bone mask](layers-and-masks.md) |
+| Idle/walk/run from speed | [Blend 1D](/animation/animgraph/blending-movement.md) |
+| Jump, land, or play an action | [States and transitions](/animation/animgraph/states-and-transitions.md) |
+| Reload or wave while moving | [State Machine Layer with a bone mask](/animation/animgraph/layers-and-masks.md) |
 | Smooth a value used by several branches | A Spring inside a virtual parameter |
 | Choose one idle variation on entry | Selector |
 | Change the current animation when a parameter changes | State Machine, not an entry-only Selector |

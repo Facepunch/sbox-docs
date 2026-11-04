@@ -10,7 +10,7 @@ Use a **State Machine** for distinct behaviors: moving, jumping, waving, or relo
 
 Let's make a character idle, wave once, then return to idle.
 
-![Idle transitions to Wave when b_wave is true. State Completed transitions back to Idle. Both transitions blend over 0.2 seconds.](images/wave-states.svg)
+![Idle transitions to Wave when b_wave is true. State Completed transitions back to Idle. Both transitions blend over 0.2 seconds.](./images/wave-states.png)
 
 These arrows are state transitions, not pose connections.
 
@@ -29,7 +29,7 @@ Double-click each state to build its pose graph:
 | Idle | `Animation Clip (idle.anim) ---> Graph Output` | Loop on |
 | Wave | `Animation Clip (wave.anim) ---> Graph Output` | **Loop off** |
 
-You can replace Idle's single clip with the [movement blend](blending-movement.md) later. A state can contain a whole blend tree, not just one animation.
+You can replace Idle's single clip with the [movement blend](/animation/animgraph/blending-movement.md) later. A state can contain a whole blend tree, not just one animation.
 
 ## Add the transition into Wave
 
@@ -69,4 +69,4 @@ Use a blend for a continuous value, such as walking faster. Use states for a cha
 
 Do not replace this state machine with a **Selector** expecting it to watch `b_wave` continuously. Selectors choose on entry and keep that choice until their branch shuts down.
 
-Next, [put the wave on an upper-body layer](layers-and-masks.md) so movement continues underneath.
+Next, [put the wave on an upper-body layer](/animation/animgraph/layers-and-masks.md) so movement continues underneath.

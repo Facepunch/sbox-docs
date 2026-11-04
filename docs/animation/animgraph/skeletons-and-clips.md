@@ -46,7 +46,7 @@ An ordinary clip describes a pose. An **additive** clip describes a change to an
 
 Use an ordinary clip for your first graph. Do not connect an additive recoil clip directly to Graph Output and expect a complete character pose.
 
-For additive animation, author the clip's subtraction/base settings and apply it through an **Additive** layer. Choosing Additive on a layer does not turn an ordinary animation into a correctly authored additive clip. See [layers and masks](layers-and-masks.md).
+For additive animation, author the clip's subtraction/base settings and apply it through an **Additive** layer. Choosing Additive on a layer does not turn an ordinary animation into a correctly authored additive clip. See [layers and masks](/animation/animgraph/layers-and-masks.md).
 
 ## Reusing old animation sources
 

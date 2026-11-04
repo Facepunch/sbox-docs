@@ -48,12 +48,12 @@ Unlike ActionGraph, pose connections are not execution signals. You are describi
 
 ## Learn by building
 
-Start with [your first graph](getting-started.md), then extend it:
+Start with [your first graph](/animation/animgraph/getting-started.md), then extend it:
 
-1. [Blend movement](blending-movement.md) from one speed value.
-2. [Add states and transitions](states-and-transitions.md) to play a wave and return.
-3. [Use layers and masks](layers-and-masks.md) to wave while the legs keep moving.
+1. [Blend movement](/animation/animgraph/blending-movement.md) from one speed value.
+2. [Add states and transitions](/animation/animgraph/states-and-transitions.md) to play a wave and return.
+3. [Use layers and masks](/animation/animgraph/layers-and-masks.md) to wave while the legs keep moving.
 
-[Skeletons and clips](skeletons-and-clips.md) explains asset preparation. [Parameters and code](parameters-and-code.md) connects the graph to your game.
+[Skeletons and clips](/animation/animgraph/skeletons-and-clips.md) explains asset preparation. [Parameters and code](/animation/animgraph/parameters-and-code.md) connects the graph to your game.
 
-Coming from the old editor? [Moving from AG1](moving-from-ag1.md) maps the old workflow to the new one.
+Coming from the old editor? [Moving from AG1](/animation/animgraph/moving-from-ag1.md) maps the old workflow to the new one.

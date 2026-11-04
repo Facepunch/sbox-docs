@@ -33,7 +33,7 @@ A mask does nothing by itself: connect it to the layer that should use it. Masks
 
 ## Keep locomotion in the base
 
-Start with your [movement blend](blending-movement.md), then add Layer Blend:
+Start with your [movement blend](/animation/animgraph/blending-movement.md), then add Layer Blend:
 
 ```text
 Movement Blend 1D ---> Layer Blend.Base
@@ -51,7 +51,7 @@ Create a separate State Machine for the upper-body action. It needs two states:
 | Off | An **Off State**, made with **Add Off State** |
 | Wave | Your non-looping wave clip connected to Graph Output |
 
-Set Off as the default. As in [states and transitions](states-and-transitions.md), transition from Off to Wave on `b_wave`, then from Wave to Off on **State Completed**. Use `0.2`-second transitions.
+Set Off as the default. As in [states and transitions](/animation/animgraph/states-and-transitions.md), transition from Off to Wave on `b_wave`, then from Wave to Off on **State Completed**. Use `0.2`-second transitions.
 
 Do not put an idle clip in Off. Off means this layer contributes no pose, letting the base animation show through.
 
@@ -64,7 +64,7 @@ Bone Mask (upper_body) ----> State Layer Data.Bone Mask
 
 Back in the main graph, connect the action machine through **State Machine Layer**:
 
-![Movement feeds Layer Blend's Base input. A separate wave state machine feeds Layer 0 through State Machine Layer, and Layer Blend connects to Graph Output.](images/layered-wave.svg)
+![Movement feeds Layer Blend's Base input. A separate wave state machine feeds Layer 0 through State Machine Layer, and Layer Blend connects to Graph Output.](./images/layered-wave.png)
 
 Set State Machine Layer's **Blend Mode** to **Overlay** and leave **Is Synchronized** off. The wave should run on its own timeline, not follow the walk cycle.
 
