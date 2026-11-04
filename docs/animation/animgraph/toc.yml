@@ -11,5 +11,7 @@ items:
   href: layers-and-masks.md
 - name: Parameters and Code
   href: parameters-and-code.md
+- name: Runtime Graph Builder
+  href: runtime-graph-builder/
 - name: Moving from AG1
   href: moving-from-ag1.md

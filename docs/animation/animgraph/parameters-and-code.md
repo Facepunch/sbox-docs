@@ -75,6 +75,14 @@ An action bool such as `b_wave` stays at its last value until you change it. Kee
 
 Do not set it true and immediately false in the same method: the graph may never see the true value. Also decide what should happen if another request arrives during the action; the [basic wave graph](/animation/animgraph/states-and-transitions.md) ignores requests while already waving.
 
+The [runtime state-machine guide](/animation/animgraph/runtime-graph-builder/state-machines.md) includes a wave graph and a C# request driver. For runtime-selected clips without a request bool, use the [external clip player](/animation/animgraph/runtime-graph-builder/external-graphs.md).
+
+## Build a graph in C#
+
+`Sandbox.Animation.Graph.Builder` creates the same kinds of nodes used in the graph editor. Build the graph once, retain the resource while assigned, and drive it with ordinary parameters.
+
+See [Runtime Graph Builder](/animation/animgraph/runtime-graph-builder/index.md) for a complete component and guides to each node family.
+
 ## Virtual parameters
 
 A **control parameter** comes from outside the graph. A **virtual parameter** is a named calculation inside it.

@@ -56,4 +56,6 @@ Start with [your first graph](/animation/animgraph/getting-started.md), then ext
 
 [Skeletons and clips](/animation/animgraph/skeletons-and-clips.md) explains asset preparation. [Parameters and code](/animation/animgraph/parameters-and-code.md) connects the graph to your game.
 
+Want to construct graphs in C#? [Runtime Graph Builder](/animation/animgraph/runtime-graph-builder/index.md) covers clips, blends, states, layers, procedural animation, and runtime-selected actions.
+
 Coming from the old editor? [Moving from AG1](/animation/animgraph/moving-from-ag1.md) maps the old workflow to the new one.

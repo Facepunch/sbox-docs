@@ -106,6 +106,8 @@ External graphs do not inherit matching parent control-parameter values. Keep th
 
 **External Pose is not Direct Playback.** It is for externally computed poses, not selecting an animation clip.
 
+You do not need to author a separate `.ag` for every runtime-selected clip. The [runtime external-graph guide](/animation/animgraph/runtime-graph-builder/external-graphs.md) includes a complete clip player that builds a child graph in C#, checks evaluated playback completion, and disconnects it. The [runtime state-machine guide](/animation/animgraph/runtime-graph-builder/state-machines.md) also shows an explicit one-shot bool driver.
+
 ## Check the differences that are easy to miss
 
 Check movement while stationary, accelerating, stopping, and changing direction. Check action entry, completion, repeated requests, and interruptions. Check both the graph preview and the running character.
