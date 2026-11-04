@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="290" viewBox="0 0 840 290" role="img" aria-labelledby="title description">
+  <title id="title">Play a wave once, then return to idle</title>
+  <desc id="description">Idle is the default state and loops. A true b_wave request starts a 0.2 second transition into Wave, which does not loop. State Completed starts a 0.2 second transition back to Idle.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+  </defs>
+  <rect width="840" height="290" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="38" fill="#f1f5fa" font-size="20" font-weight="600">A one-shot action</text>
+    <rect x="38" y="93" width="206" height="100" rx="8" fill="#24332f" stroke="#739c89"/>
+    <text x="58" y="126" fill="#d5f0e2" font-size="20" font-weight="600">Idle</text>
+    <text x="58" y="154" fill="#b5cec2" font-size="14">Default state</text>
+    <text x="58" y="175" fill="#b5cec2" font-size="14">Loop enabled</text>
+    <rect x="596" y="93" width="206" height="100" rx="8" fill="#35282b" stroke="#a7787c"/>
+    <text x="616" y="126" fill="#ffd9d9" font-size="20" font-weight="600">Wave</text>
+    <text x="616" y="154" fill="#c6afb4" font-size="14">Play once</text>
+    <text x="616" y="175" fill="#c6afb4" font-size="14">Loop disabled</text>
+    <g fill="none" stroke="#b8c7dc" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M 244 114 H 589"/>
+      <path d="M 596 178 H 251"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="420" y="97" fill="#f4dfab" font-size="16">b_wave is true</text>
+      <text x="420" y="139" fill="#aabbd0" font-size="13">0.2-second blend</text>
+      <text x="420" y="203" fill="#d4e9ff" font-size="16">State Completed</text>
+      <text x="420" y="225" fill="#aabbd0" font-size="13">0.2-second blend</text>
+    </g>
+    <text x="28" y="266" fill="#aabbd0" font-size="13">Clear b_wave after the request is seen, so returning to Idle does not start another wave.</text>
+  </g>
+</svg>

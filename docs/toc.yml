@@ -23,6 +23,8 @@ items:
   href: game-mounts/
 - name: ActionGraph
   href: actiongraph/
+- name: Animation
+  href: animation/
 - name: Movie Maker
   href: movie-maker/
 - name: Media

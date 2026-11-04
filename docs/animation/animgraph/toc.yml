@@ -1,0 +1,15 @@
+items:
+- name: Your First Graph
+  href: getting-started.md
+- name: Skeletons and Clips
+  href: skeletons-and-clips.md
+- name: Blending Movement
+  href: blending-movement.md
+- name: States and Transitions
+  href: states-and-transitions.md
+- name: Layers and Masks
+  href: layers-and-masks.md
+- name: Parameters and Code
+  href: parameters-and-code.md
+- name: Moving from AG1
+  href: moving-from-ag1.md

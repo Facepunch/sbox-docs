@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="title description">
+  <title id="title">A wave layer over continuous movement</title>
+  <desc id="description">Movement Blend 1D connects to Layer Blend's Base input. A separate Wave State Machine connects through State Machine Layer to Layer 0. Layer Blend produces the Graph Output. The action uses an upper-body mask and independent timing.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+  </defs>
+  <rect width="960" height="330" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="39" fill="#f1f5fa" font-size="20" font-weight="600">Wave while moving</text>
+    <text x="28" y="64" fill="#aabbd0" font-size="14">Keep movement in the base. Add the action only where its mask allows.</text>
+    <g fill="none" stroke="#b8c7dc" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M 482 133 H 559"/>
+      <path d="M 234 235 H 271"/>
+      <path d="M 482 235 H 520 Q 536 235 536 219 V 191 Q 536 179 548 179 H 559"/>
+      <path d="M 726 156 H 775"/>
+    </g>
+    <rect x="276" y="99" width="206" height="68" rx="8" fill="#1b3045" stroke="#527da5"/>
+    <text x="292" y="127" fill="#d4e9ff" font-size="16" font-weight="600">Movement Blend 1D</text>
+    <text x="292" y="149" fill="#aabbd0" font-size="13">Idle / walk / run</text>
+    <rect x="28" y="199" width="206" height="72" rx="8" fill="#35282b" stroke="#a7787c"/>
+    <text x="44" y="228" fill="#ffd9d9" font-size="16" font-weight="600">Wave State Machine</text>
+    <text x="44" y="252" fill="#c6afb4" font-size="13">Off / Wave</text>
+    <rect x="276" y="199" width="206" height="72" rx="8" fill="#35282b" stroke="#a7787c"/>
+    <text x="292" y="228" fill="#ffd9d9" font-size="16" font-weight="600">State Machine Layer</text>
+    <text x="292" y="252" fill="#c6afb4" font-size="13">Overlay, not synchronized</text>
+    <rect x="564" y="99" width="162" height="106" rx="8" fill="#24332f" stroke="#739c89"/>
+    <text x="580" y="123" fill="#d5f0e2" font-size="16" font-weight="600">Layer Blend</text>
+    <text x="580" y="149" fill="#b5cec2" font-size="13">Base</text>
+    <text x="580" y="185" fill="#b5cec2" font-size="13">Layer 0</text>
+    <circle cx="564" cy="133" r="4" fill="#d4e9ff"/>
+    <circle cx="564" cy="179" r="4" fill="#ffd9d9"/>
+    <rect x="780" y="123" width="152" height="66" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="796" y="162" fill="#f1f5fa" font-size="16" font-weight="600">Graph Output</text>
+    <text x="28" y="307" fill="#aabbd0" font-size="13">Wave's State Layer Data supplies the upper_body mask and a layer weight of 1.</text>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="190" viewBox="0 0 760 190" role="img" aria-labelledby="title description">
+  <title id="title">The smallest animation graph</title>
+  <desc id="description">A looping idle Animation Clip sends its pose to Graph Output.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+  </defs>
+  <rect width="760" height="190" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="40" y="48" width="260" height="94" rx="8" fill="#24332f" stroke="#739c89"/>
+    <text x="60" y="79" fill="#d5f0e2" font-size="18" font-weight="600">Animation Clip</text>
+    <text x="60" y="107" fill="#f1f5fa" font-size="16">idle.anim</text>
+    <text x="60" y="128" fill="#b5cec2" font-size="13">Loop enabled</text>
+    <path d="M 300 95 H 496" fill="none" stroke="#b8c7dc" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="397" y="79" text-anchor="middle" fill="#aabbd0" font-size="14">pose</text>
+    <rect x="502" y="48" width="218" height="94" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="522" y="88" fill="#f1f5fa" font-size="18" font-weight="600">Graph Output</text>
+    <text x="522" y="116" fill="#aabbd0" font-size="14">The character's final pose</text>
+  </g>
+</svg>

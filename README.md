@@ -4,6 +4,25 @@ This repository contains the documentation source files for s&box, which is view
 
 Documentation is written in Markdown and synced onto sbox.game after it's pushed to master.
 
+## Local preview
+
+With the .NET SDK installed, install DocFX once:
+
+```powershell
+dotnet tool install --global docfx
+```
+
+From this repository, build and serve the pages:
+
+```powershell
+docfx build docfx.json
+docfx serve _site --hostname localhost --port 8080
+```
+
+Open <http://localhost:8080/docs/animation/animgraph/index.html> for the AnimGraph guide. Rebuild after editing, then refresh your browser. The generated `_site` folder is ignored by Git.
+
+DocFX is a content preview, not an exact reproduction of sbox.game's styling or custom Markdown features.
+
 ## Contributing
 
 Anyone can contribute to the documentation by making a pull request. Some guidelines:

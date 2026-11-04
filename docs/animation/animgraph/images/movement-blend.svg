@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="310" viewBox="0 0 960 310" role="img" aria-labelledby="title description">
+  <title id="title">Blend idle, walk, and run with speed</title>
+  <desc id="description">The float control parameter speed feeds Blend 1D, which sends a pose to Graph Output. Inside the blend, Idle is at speed zero, Walk at one hundred, and Run at three hundred.</desc>
+  <defs>
+    <marker id="value-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#e7c778"/>
+    </marker>
+    <marker id="pose-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+  </defs>
+  <rect width="960" height="310" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="38" fill="#f1f5fa" font-size="20" font-weight="600">One value, three movement poses</text>
+    <rect x="28" y="107" width="158" height="78" rx="8" fill="#373122" stroke="#a99157"/>
+    <text x="46" y="138" fill="#f4dfab" font-size="18" font-weight="600">speed</text>
+    <text x="46" y="164" fill="#ccb988" font-size="13">Float parameter</text>
+    <path d="M 186 146 H 267" fill="none" stroke="#e7c778" stroke-width="2" marker-end="url(#value-arrow)"/>
+    <text x="227" y="130" text-anchor="middle" fill="#e7c778" font-size="13">value</text>
+    <rect x="273" y="76" width="412" height="178" rx="8" fill="#1b3045" stroke="#527da5"/>
+    <text x="293" y="106" fill="#d4e9ff" font-size="18" font-weight="600">Blend 1D</text>
+    <text x="293" y="130" fill="#aabbd0" font-size="13">Each point contains its own pose graph</text>
+    <path d="M 317 188 H 641" fill="none" stroke="#82a8ca" stroke-width="2"/>
+    <g fill="#d4e9ff">
+      <circle cx="317" cy="188" r="5"/>
+      <circle cx="425" cy="188" r="5"/>
+      <circle cx="641" cy="188" r="5"/>
+    </g>
+    <g text-anchor="middle" font-size="15" fill="#f1f5fa">
+      <text x="317" y="170">Idle</text>
+      <text x="425" y="170">Walk</text>
+      <text x="641" y="170">Run</text>
+    </g>
+    <g text-anchor="middle" font-size="14" fill="#aabbd0">
+      <text x="317" y="217">0</text>
+      <text x="425" y="217">100</text>
+      <text x="641" y="217">300</text>
+    </g>
+    <path d="M 685 146 H 775" fill="none" stroke="#b8c7dc" stroke-width="2" marker-end="url(#pose-arrow)"/>
+    <text x="730" y="130" text-anchor="middle" fill="#aabbd0" font-size="13">pose</text>
+    <rect x="781" y="107" width="151" height="78" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="797" y="151" fill="#f1f5fa" font-size="16" font-weight="600">Graph Output</text>
+    <text x="28" y="285" fill="#aabbd0" font-size="13">Example values in units per second. Tune them to your clips and movement speeds.</text>
+  </g>
+</svg>
