@@ -1,7 +1,7 @@
 ---
 title: "Runtime Graph Builder"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 # Runtime Graph Builder
@@ -138,4 +138,4 @@ The fluent helpers for blends, selectors, layers, and state machines convert to 
 | Add a masked action over movement | [Layers and masks](/animation/animgraph/runtime-graph-builder/layers-and-masks.md) |
 | Aim, solve IK, or adjust root motion | [Procedural animation](/animation/animgraph/runtime-graph-builder/procedural-animation.md) |
 | Make decisions from animation events | [Events and timing](/animation/animgraph/runtime-graph-builder/events-and-timing.md) |
-| Play a runtime-selected clip or reuse another graph | [Referenced and external graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) |
+| Extend a character with custom holds, runtime actions, or reusable child graphs | [Referenced and external graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) |

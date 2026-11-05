@@ -1,7 +1,7 @@
 ---
 title: "Node Reference"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 # Node Reference
@@ -90,7 +90,7 @@ See [States and Transitions](/animation/animgraph/states-and-transitions.md) for
 | Is External Slot Filled | Tests whether a graph is connected to an External Graph slot. Connected does not necessarily mean its branch is active. |
 | External Pose | Accepts a pose supplied by native integration. It is not clip playback, and managed runtime pose assignment is not exposed. |
 
-Unlike Internal Graph, External Graph does not inherit parent control values. See [Referenced and External Graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) for ownership, connection rules, and a runtime clip player.
+Unlike Internal Graph, External Graph does not inherit parent control values. See [Referenced and External Graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) for custom item hold types, editor wiring, layered actions, connection rules, and complete gameplay examples.
 
 ## Parameters
 
