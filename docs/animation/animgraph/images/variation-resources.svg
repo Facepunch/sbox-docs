@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="440" viewBox="0 0 1120 440" role="img" aria-labelledby="title description">
+  <title id="title">One source asset, separately loadable variations</title>
+  <desc id="description">The source graphs/character.ag contains a shared graph and three variations. Compilation produces graphs/character.ag for Default, graphs/character.ag+Heavy.ag for Heavy, and graphs/character.ag+HeavyArmored.ag for HeavyArmored. Gameplay loads the Heavy resource and assigns it to a renderer. Choosing a variation in the editor is only for authoring and preview.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+    <marker id="selected-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#c7a8ec"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="440" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="40" fill="#f1f5fa" font-size="24" font-weight="600">One source asset, separately loadable variations</text>
+    <text x="28" y="70" fill="#aabbd0" font-size="17">Gameplay selects a compiled resource. The editor's current selection does not choose it for you.</text>
+    <g fill="none" stroke="#b8c7dc" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M 295 245 H 325 V 140 H 375"/>
+      <path d="M 295 245 H 375"/>
+      <path d="M 295 245 H 325 V 350 H 375"/>
+    </g>
+    <path d="M 815 245 H 880" fill="none" stroke="#c7a8ec" stroke-width="3" marker-end="url(#selected-arrow)"/>
+    <rect x="28" y="155" width="267" height="180" rx="9" fill="#1b3045" stroke="#527da5"/>
+    <text x="46" y="188" fill="#d4e9ff" font-size="21" font-weight="600">character.ag</text>
+    <text x="46" y="219" fill="#aabbd0" font-size="18">Shared nodes + wiring</text>
+    <text x="46" y="255" fill="#aabbd0" font-size="17">Default data</text>
+    <text x="46" y="283" fill="#aabbd0" font-size="17">Heavy overrides</text>
+    <text x="46" y="311" fill="#aabbd0" font-size="17">HeavyArmored overrides</text>
+    <text x="375" y="96" fill="#aabbd0" font-size="16">Generated graph resources</text>
+    <rect x="375" y="105" width="440" height="70" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="393" y="133" fill="#f1f5fa" font-size="18" font-weight="600">Default</text>
+    <text x="393" y="158" fill="#aabbd0" font-size="17">graphs/character.ag</text>
+    <rect x="375" y="210" width="440" height="70" rx="8" fill="#30263e" stroke="#a487c7"/>
+    <text x="393" y="238" fill="#e8d6ff" font-size="18" font-weight="600">Heavy</text>
+    <text x="393" y="263" fill="#e8d6ff" font-size="17">graphs/character.ag+Heavy.ag</text>
+    <rect x="375" y="315" width="440" height="70" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="393" y="343" fill="#f1f5fa" font-size="18" font-weight="600">HeavyArmored</text>
+    <text x="393" y="368" fill="#aabbd0" font-size="17">graphs/character.ag+HeavyArmored.ag</text>
+    <rect x="880" y="190" width="212" height="110" rx="8" fill="#24332f" stroke="#739c89"/>
+    <text x="898" y="222" fill="#d5f0e2" font-size="20" font-weight="600">Renderer</text>
+    <text x="898" y="252" fill="#b5cec2" font-size="17">Load Heavy</text>
+    <text x="898" y="279" fill="#b5cec2" font-size="17">Assign its Graph</text>
+    <text x="28" y="420" fill="#aabbd0" font-size="17">The named resources are generated from the original .ag; do not create separate variation source files.</text>
+  </g>
+</svg>

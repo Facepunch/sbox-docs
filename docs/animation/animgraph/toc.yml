@@ -13,6 +13,8 @@ items:
   href: layers-and-masks.md
 - name: Parameters and Code
   href: parameters-and-code.md
+- name: Variations
+  href: variations.md
 - name: Internal Graphs
   href: internal-graphs.md
 - name: External Graphs

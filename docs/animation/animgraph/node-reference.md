@@ -63,6 +63,8 @@ A Parameterized Selector does not generate randomness by itself. Supply a suitab
 
 See the [selector and variation examples](/animation/animgraph/runtime-graph-builder/clips-and-blends.md#select-once-on-entry).
 
+These entry-time choices are different from [named graph variations](/animation/animgraph/variations.md), which share graph structure but override authored node data.
+
 ## State machines and transitions
 
 | Node | What it does / where it belongs |

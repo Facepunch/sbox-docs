@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="585" viewBox="0 0 1120 585" role="img" aria-labelledby="title description">
+  <title id="title">Each node inherits from its nearest override</title>
+  <desc id="description">Default supplies ordinary idle and walk data. Heavy is a child of Default: it inherits idle but overrides walk with heavy_walk.anim. HeavyArmored is a child of Heavy: it overrides idle with armored_idle.anim and inherits Heavy's walk. Light is a sibling of Heavy and inherits both nodes from Default. The graph structure is shared by all four variations.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="585" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="40" fill="#f1f5fa" font-size="24" font-weight="600">Each node inherits from its nearest override</text>
+    <text x="28" y="70" fill="#aabbd0" font-size="17">One shared graph structure. Idle and Walk resolve their data independently.</text>
+    <g fill="none" stroke="#b8c7dc" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M 480 222 V 247 H 275 V 280"/>
+      <path d="M 640 222 V 247 H 845 V 280"/>
+      <path d="M 275 390 V 435"/>
+    </g>
+    <rect x="340" y="110" width="440" height="112" rx="9" fill="#1b3045" stroke="#527da5"/>
+    <text x="360" y="141" fill="#d4e9ff" font-size="21" font-weight="600">Default</text>
+    <text x="360" y="172" fill="#d4e9ff" font-size="18">Idle: idle.anim</text>
+    <text x="360" y="201" fill="#d4e9ff" font-size="18">Walk: walk.anim</text>
+    <rect x="55" y="280" width="440" height="110" rx="9" fill="#30263e" stroke="#a487c7"/>
+    <text x="75" y="311" fill="#e8d6ff" font-size="21" font-weight="600">Heavy</text>
+    <text x="75" y="342" fill="#aabbd0" font-size="18">Idle: inherited from Default</text>
+    <text x="75" y="371" fill="#e8d6ff" font-size="18" font-weight="600">Walk: heavy_walk.anim (override)</text>
+    <rect x="625" y="280" width="440" height="110" rx="9" fill="#202b39" stroke="#8193ab"/>
+    <text x="645" y="311" fill="#f1f5fa" font-size="21" font-weight="600">Light</text>
+    <text x="645" y="342" fill="#aabbd0" font-size="18">Idle: inherited from Default</text>
+    <text x="645" y="371" fill="#aabbd0" font-size="18">Walk: inherited from Default</text>
+    <rect x="55" y="435" width="440" height="110" rx="9" fill="#24332f" stroke="#739c89"/>
+    <text x="75" y="466" fill="#d5f0e2" font-size="21" font-weight="600">HeavyArmored</text>
+    <text x="75" y="497" fill="#d5f0e2" font-size="18" font-weight="600">Idle: armored_idle.anim (override)</text>
+    <text x="75" y="526" fill="#cfbddf" font-size="18">Walk: inherited from Heavy</text>
+    <text x="625" y="465" fill="#f1f5fa" font-size="19" font-weight="600">Overrides belong to individual nodes</text>
+    <text x="625" y="497" fill="#aabbd0" font-size="17">HeavyArmored changes Idle, but stays linked</text>
+    <text x="625" y="524" fill="#aabbd0" font-size="17">to Heavy's Walk data. Light is unaffected.</text>
+    <text x="28" y="570" fill="#aabbd0" font-size="16">For each node: use this variation's override, otherwise the nearest ancestor's, otherwise Default.</text>
+  </g>
+</svg>

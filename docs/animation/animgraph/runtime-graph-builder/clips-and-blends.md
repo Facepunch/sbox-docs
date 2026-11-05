@@ -1,7 +1,7 @@
 ---
 title: "Clips and Blends"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 # Clips and Blends
@@ -170,6 +170,8 @@ The first true condition wins. If none is true, there is no selected pose. Put t
 | `TargetSelector( target, clips, settings )` | Choose the clip whose baked endpoint best matches a target |
 
 **Variation does not generate a new random seed.** Selection uses the integer part of the absolute seed modulo the total weight. With weights `2, 1`, seeds `0` and `1` choose the first option and `2` chooses the second. Weights are integers from `0` to `255`; keep at least one positive.
+
+These builder selectors are not the editor's [named graph variations](/animation/animgraph/variations.md). Named variations override authored node data and compile into separately loadable graph resources.
 
 For random variation, use a suitable range such as `builder.RandomFloat( 0, 1000 )`. The default random range of `0` to `1` is unsuitable here: its integer part almost always selects the first weighted entry. A random node samples on initialization, not every frame.
 

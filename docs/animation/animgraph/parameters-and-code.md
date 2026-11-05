@@ -1,7 +1,7 @@
 ---
 title: "Parameters and Code"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 # Parameters and Code
@@ -60,6 +60,8 @@ Renderer.Animation.Graph = Sandbox.Animation.Graph.Load( "graphs/character.ag" )
 Use your own asset path, relative to `Assets`. Assign the graph when setting up or changing the character, not every frame.
 
 `Renderer.Animation.Graph` returns the effective graph, including the model default. `Renderer.Animation.IsValid` tells you whether a runtime AG2 controller is available.
+
+To use a named [variation](/animation/animgraph/variations.md#use-a-variation-in-gameplay), load its generated resource, such as `graphs/character.ag+Heavy.ag`. The base `.ag` path always selects Default, regardless of which variation is selected in the editor.
 
 ## Saved values and live values
 

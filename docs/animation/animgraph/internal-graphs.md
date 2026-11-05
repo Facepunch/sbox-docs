@@ -161,6 +161,8 @@ Gameplay's `Animation.ExternalGraphs` API only finds slots in the main graph. An
 
 ## Child variations
 
+See [Variations](/animation/animgraph/variations.md) for creating the hierarchy, overriding node data, and loading a named variation in gameplay.
+
 An Internal Graph node's **Graph Path** and **Graph Variation** select the child asset and its variation. Blank Graph Variation uses the child's default; it does not automatically select a child variation with the parent's name.
 
 The parent can override these node settings in its own authored variations. This is useful when character variants share the same main structure but reference different compatible movement content.

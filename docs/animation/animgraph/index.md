@@ -43,6 +43,7 @@ Unlike ActionGraph, pose connections are not execution signals. You are describi
 | Add a pose over another pose | **Local Layer** and **Layer Blend** |
 | Play an action layer with its own states | **State Machine Layer** and **Layer Blend** |
 | Restrict a layer to part of the body | **Bone Mask** |
+| Share one graph structure across character-specific animation setups | **Variations** |
 | Reuse an authored graph driven by parent parameters | **Internal Graph** |
 | Let items supply custom holds or actions at runtime | **External Graph** |
 
@@ -59,6 +60,8 @@ Start with [your first graph](/animation/animgraph/getting-started.md), then ext
 3. [Use layers and masks](/animation/animgraph/layers-and-masks.md) to wave while the legs keep moving.
 
 [Skeletons and clips](/animation/animgraph/skeletons-and-clips.md) explains asset preparation. [Parameters and code](/animation/animgraph/parameters-and-code.md) connects the graph to your game.
+
+[Variations](/animation/animgraph/variations.md) let one graph serve a family of characters or items, with inherited animation data and targeted overrides.
 
 [Internal Graphs](/animation/animgraph/internal-graphs.md) explains reusable child assets, parameter passing, and shared locomotion. [External Graphs](/animation/animgraph/external-graphs.md) shows how to extend a main character graph with custom item hold types, draw-to-hold sequences, and runtime-selected actions, using either the editor or C#.
 
