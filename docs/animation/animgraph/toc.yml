@@ -13,8 +13,10 @@ items:
   href: layers-and-masks.md
 - name: Parameters and Code
   href: parameters-and-code.md
+- name: Internal Graphs
+  href: internal-graphs.md
 - name: External Graphs
-  href: runtime-graph-builder/external-graphs.md
+  href: external-graphs.md
 - name: Node Reference
   href: node-reference.md
 - name: Runtime Graph Builder

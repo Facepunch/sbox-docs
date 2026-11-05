@@ -1,14 +1,16 @@
 ---
-title: "Referenced and External Graphs"
+title: "External Graphs"
 created: 2026-11-04
 updated: 2026-11-05
 ---
 
-# Referenced and External Graphs
+# External Graphs
 
 An **External Graph** is an extension point in an animation graph. The main graph declares a named slot, and gameplay connects another graph to it at runtime. That child supplies a pose wherever the slot is used, without replacing the character's main graph.
 
 The child can be much more than one clip: it can contain states, transitions, blends, layers, and procedural adjustments. It can be an authored `.ag` or a graph built in C#. The parent does not need to know which assets will be connected later.
+
+**You do not need the runtime graph builder to use external graphs.** Author both graphs in the AnimGraph editor, then use gameplay code to connect the child to the parent's slot. "External" means the child is supplied at runtime, not that its nodes must be constructed in code. The C# builder examples below are optional alternatives to editor authoring.
 
 For example, a game's main character graph can handle locomotion, while each equipped item supplies its own upper-body hold animation. Adding a fishing rod, camera, or new weapon then means creating another child graph, not adding another hold type to the main graph.
 
@@ -26,12 +28,13 @@ Slots are part of the parent's definition; `Connect` cannot add one to an arbitr
 
 ## External or internal?
 
-A referenced graph, called **Internal Graph** in the editor, is a known child asset built into the graph definition. An external graph is chosen by gameplay at runtime.
+A referenced graph, called [Internal Graph](/animation/animgraph/internal-graphs.md) in the editor, is a known child asset built into the graph definition. An external graph is chosen by gameplay at runtime.
 
 | | Referenced graph | External graph |
 |---|---|---|
+| Editor node | **Internal Graph** | **External Graph** |
 | Builder method | `ReferencedGraph( path, fallback )` | `ExternalGraphSlot( name, fallback )` |
-| Child chosen | When building the parent | When gameplay calls `Connect` |
+| Child chosen | When authoring the parent | When gameplay calls `Connect` |
 | Parent parameter values | Compatible matching names are reflected into the child | Not inherited; child controls use their defaults |
 | Typical use | Reusable authored locomotion driven by parent inputs | Item-specific behavior or a runtime-selected action |
 
@@ -85,7 +88,7 @@ With nothing equipped, the layer has zero weight, so the entire locomotion pose 
 
 This deliberately starts with immediate switching. Simply increasing Float Switch's Ease Time does **not** implement a correct unequip fade: disconnecting would remove the item pose before it could fade out. See [smooth changes](#smooth-changes-and-interruption).
 
-### The same parent setup in C#
+### Optional: build the parent setup in C#
 
 This fragment assumes `builder` already has its skeleton, all control parameters are declared, and `movement` is a pose from that same builder:
 
@@ -189,7 +192,7 @@ These are example asset paths relative to your project's `Assets` folder. Create
 
 Call `Equip` on an equipment change, not every update. Repeated calls restart the child. This example assumes the Renderer remains assigned to the same character; unequip before changing that reference. Controller recreation requires an explicit re-equip if the item should remain visible.
 
-### Generate a draw-to-hold graph
+### Optional: generate a draw-to-hold graph
 
 You can also build the item's graph from clips selected by gameplay. This factory takes two valid, bound clips using the same skeleton as the parent:
 
@@ -248,7 +251,7 @@ For an item system, a useful division is:
 
 Apply live aiming or IK to the composed pose in the parent where appropriate. A child can calculate values internally, but a control parameter such as `b_reload` will remain at its runtime default unless the graph's own design avoids needing external writes.
 
-If a reusable child must continuously follow parent inputs, use an **Internal Graph** with compatible matching parameters instead. For a known set of parameter-driven hold types, authored parent states may be simpler. External slots are most useful when the supplied content is open-ended and can operate behind a small, explicit contract.
+If a reusable child must continuously follow parent inputs, use an [Internal Graph](/animation/animgraph/internal-graphs.md#how-parameter-passing-works) with compatible matching parameters instead. For a known set of parameter-driven hold types, authored parent states may be simpler. External slots are most useful when the supplied content is open-ended and can operate behind a small, explicit contract.
 
 ## Combine holds and actions
 

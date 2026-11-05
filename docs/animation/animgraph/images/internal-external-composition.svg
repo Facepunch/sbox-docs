@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="410" viewBox="0 0 1120 410" role="img" aria-labelledby="title description">
+  <title id="title">A reusable base with game-specific extensions</title>
+  <desc id="description">An Internal Graph references a fixed locomotion asset and feeds Layer Blend's Base. A gameplay-selected External Graph in the hold_pose slot feeds a masked Local Layer into Layer 0. Layer Blend sends the composed pose to Graph Output. The parent controls the hold layer's weight and mask; an empty hold slot has zero layer weight.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="410" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="40" fill="#f1f5fa" font-size="24" font-weight="600">A reusable base with game-specific extensions</text>
+    <text x="28" y="70" fill="#aabbd0" font-size="17">Internal Graph for known movement behavior. External Graph for runtime-selected item content.</text>
+    <g fill="none" stroke="#b8c7dc" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M 585 160 H 650"/>
+      <path d="M 270 295 H 335"/>
+      <path d="M 585 295 H 650"/>
+      <path d="M 830 225 H 885"/>
+    </g>
+    <rect x="335" y="110" width="250" height="100" rx="8" fill="#1b3045" stroke="#527da5"/>
+    <text x="353" y="141" fill="#d4e9ff" font-size="20" font-weight="600">Internal Graph</text>
+    <text x="353" y="169" fill="#aabbd0" font-size="17">locomotion.ag</text>
+    <text x="353" y="195" fill="#aabbd0" font-size="16">Receives parent speed</text>
+    <text x="28" y="143" fill="#d4e9ff" font-size="18" font-weight="600">Fixed child asset</text>
+    <text x="28" y="171" fill="#aabbd0" font-size="17">Shared between characters</text>
+    <rect x="28" y="245" width="242" height="100" rx="8" fill="#30263e" stroke="#a487c7"/>
+    <text x="46" y="276" fill="#e8d6ff" font-size="20" font-weight="600">External Graph</text>
+    <text x="46" y="304" fill="#cfbddf" font-size="17">Slot: hold_pose</text>
+    <text x="46" y="330" fill="#cfbddf" font-size="16">Gameplay chooses child</text>
+    <rect x="335" y="245" width="250" height="100" rx="8" fill="#24332f" stroke="#739c89"/>
+    <text x="353" y="276" fill="#d5f0e2" font-size="20" font-weight="600">Local Layer</text>
+    <text x="353" y="304" fill="#b5cec2" font-size="17">Overlay / upper_body</text>
+    <text x="353" y="330" fill="#b5cec2" font-size="16">Parent controls weight</text>
+    <rect x="650" y="110" width="180" height="235" rx="8" fill="#24332f" stroke="#739c89"/>
+    <text x="668" y="140" fill="#d5f0e2" font-size="20" font-weight="600">Layer Blend</text>
+    <text x="668" y="167" fill="#b5cec2" font-size="17">Base</text>
+    <text x="668" y="302" fill="#b5cec2" font-size="17">Layer 0</text>
+    <circle cx="650" cy="160" r="4" fill="#d4e9ff"/>
+    <circle cx="650" cy="295" r="4" fill="#b5cec2"/>
+    <rect x="885" y="185" width="207" height="80" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="909" y="232" fill="#f1f5fa" font-size="20" font-weight="600">Graph Output</text>
+    <text x="28" y="387" fill="#aabbd0" font-size="17">Locomotion stays in the base. The optional hold layer contributes nothing while its slot is empty.</text>
+  </g>
+</svg>

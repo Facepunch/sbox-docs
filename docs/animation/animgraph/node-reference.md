@@ -85,12 +85,12 @@ See [States and Transitions](/animation/animgraph/states-and-transitions.md) for
 |---|---|
 | Pose Group | Organizes a pose tree inside a named group with exposed inputs. Use it to keep a larger graph readable. |
 | Group Input | Exposes a typed connection inside a Pose Group. Must belong to a group, not the top-level graph. |
-| Internal Graph | Runs a fixed child `.ag` asset and reflects compatible matching parent parameter values into it. Called `ReferencedGraph` in the builder. |
+| [Internal Graph](/animation/animgraph/internal-graphs.md) | Runs a fixed child `.ag` asset and reflects compatible matching parent parameter values into it. Called `ReferencedGraph` in the builder. |
 | External Graph | Declares a named slot that gameplay can connect to a chosen graph at runtime. Uses its fallback while disconnected. |
 | Is External Slot Filled | Tests whether a graph is connected to an External Graph slot. Connected does not necessarily mean its branch is active. |
 | External Pose | Accepts a pose supplied by native integration. It is not clip playback, and managed runtime pose assignment is not exposed. |
 
-Unlike Internal Graph, External Graph does not inherit parent control values. See [Referenced and External Graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) for custom item hold types, editor wiring, layered actions, connection rules, and complete gameplay examples.
+Unlike Internal Graph, External Graph does not inherit parent control values. See [External Graphs](/animation/animgraph/external-graphs.md) for custom item hold types, editor wiring, layered actions, connection rules, and complete gameplay examples.
 
 ## Parameters
 

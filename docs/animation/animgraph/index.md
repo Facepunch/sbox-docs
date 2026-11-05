@@ -43,6 +43,7 @@ Unlike ActionGraph, pose connections are not execution signals. You are describi
 | Add a pose over another pose | **Local Layer** and **Layer Blend** |
 | Play an action layer with its own states | **State Machine Layer** and **Layer Blend** |
 | Restrict a layer to part of the body | **Bone Mask** |
+| Reuse an authored graph driven by parent parameters | **Internal Graph** |
 | Let items supply custom holds or actions at runtime | **External Graph** |
 
 **A Selector chooses on entry, not continuously.** If changing a parameter should switch the animation immediately, use a state machine or a blend instead.
@@ -59,7 +60,7 @@ Start with [your first graph](/animation/animgraph/getting-started.md), then ext
 
 [Skeletons and clips](/animation/animgraph/skeletons-and-clips.md) explains asset preparation. [Parameters and code](/animation/animgraph/parameters-and-code.md) connects the graph to your game.
 
-[External Graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) shows how to extend a main character graph with custom item hold types, draw-to-hold sequences, and runtime-selected actions, using either the editor or C#.
+[Internal Graphs](/animation/animgraph/internal-graphs.md) explains reusable child assets, parameter passing, and shared locomotion. [External Graphs](/animation/animgraph/external-graphs.md) shows how to extend a main character graph with custom item hold types, draw-to-hold sequences, and runtime-selected actions, using either the editor or C#.
 
 Want to construct graphs in C#? [Runtime Graph Builder](/animation/animgraph/runtime-graph-builder/index.md) covers clips, blends, states, layers, procedural animation, and runtime-selected actions.
 

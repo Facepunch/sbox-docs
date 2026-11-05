@@ -75,7 +75,7 @@ An action bool such as `b_wave` stays at its last value until you change it. Kee
 
 Do not set it true and immediately false in the same method: the graph may never see the true value. Also decide what should happen if another request arrives during the action; the [basic wave graph](/animation/animgraph/states-and-transitions.md) ignores requests while already waving.
 
-The [runtime state-machine guide](/animation/animgraph/runtime-graph-builder/state-machines.md) includes a wave graph and a C# request driver. For runtime-selected clips without a request bool, use the [external clip player](/animation/animgraph/runtime-graph-builder/external-graphs.md).
+The [runtime state-machine guide](/animation/animgraph/runtime-graph-builder/state-machines.md) includes a wave graph and a C# request driver. For runtime-selected clips without a request bool, use the [external clip player](/animation/animgraph/external-graphs.md).
 
 ## Build a graph in C#
 

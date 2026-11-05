@@ -92,7 +92,7 @@ Assign a renderer running the wave graph. Call `Wave()` from gameplay; the follo
 
 This simple driver assumes the graph evaluates between component updates. If your game suspends or throttles animation evaluation, retain requests until an animation evaluation can consume them rather than discarding them on a wall-clock timer.
 
-This graph does not queue or restart a wave while already waving. Decide those rules explicitly for your game. For runtime-selected one-shots without a bool request, use the [external clip player](/animation/animgraph/runtime-graph-builder/external-graphs.md).
+This graph does not queue or restart a wave while already waving. Decide those rules explicitly for your game. For runtime-selected one-shots without a bool request, use the [external clip player](/animation/animgraph/external-graphs.md).
 
 ## States and entry
 

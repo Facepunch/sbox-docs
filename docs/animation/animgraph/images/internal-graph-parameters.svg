@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="480" viewBox="0 0 1120 480" role="img" aria-labelledby="title description">
+  <title id="title">Parent values in, child pose out</title>
+  <desc id="description">In character.ag, a Float speed parameter passes its value by name and type to the speed control in locomotion.ag. The child uses speed for its idle, walk, and run blend. Its Graph Output returns a pose through the parent's Internal Graph node to the parent's Graph Output. The dashed value connection is automatic, not a wire exposed on the Internal Graph node.</desc>
+  <defs>
+    <marker id="pose-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#b8c7dc"/>
+    </marker>
+    <marker id="value-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#e7c778"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="480" rx="16" fill="#111923"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="28" y="40" fill="#f1f5fa" font-size="24" font-weight="600">Parent values in, child pose out</text>
+    <text x="28" y="70" fill="#aabbd0" font-size="17">Separate assets, connected by an Internal Graph node. No gameplay connection call.</text>
+    <rect x="28" y="105" width="470" height="290" rx="10" fill="#17212d" stroke="#526377"/>
+    <rect x="585" y="105" width="507" height="290" rx="10" fill="#17212d" stroke="#526377"/>
+    <text x="50" y="138" fill="#f1f5fa" font-size="20" font-weight="600">Parent: character.ag</text>
+    <text x="610" y="138" fill="#f1f5fa" font-size="20" font-weight="600">Child: locomotion.ag</text>
+    <g fill="none" stroke="#b8c7dc" stroke-width="2.5" marker-end="url(#pose-arrow)">
+      <path d="M 280 325 H 335"/>
+      <path d="M 965 270 V 305"/>
+      <path d="M 965 365 V 430 H 165 V 365"/>
+    </g>
+    <path d="M 240 205 H 610" fill="none" stroke="#e7c778" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#value-arrow)"/>
+    <path d="M 800 205 H 855" fill="none" stroke="#e7c778" stroke-width="2.5" marker-end="url(#value-arrow)"/>
+    <text x="425" y="184" text-anchor="middle" fill="#e7c778" font-size="16">Match name + type</text>
+    <rect x="50" y="170" width="190" height="70" rx="8" fill="#373122" stroke="#a99157"/>
+    <text x="68" y="200" fill="#f4dfab" font-size="20" font-weight="600">speed</text>
+    <text x="68" y="225" fill="#ccb988" font-size="17">Float parameter</text>
+    <rect x="610" y="170" width="190" height="70" rx="8" fill="#373122" stroke="#a99157"/>
+    <text x="628" y="200" fill="#f4dfab" font-size="20" font-weight="600">speed</text>
+    <text x="628" y="225" fill="#ccb988" font-size="17">Float control</text>
+    <rect x="855" y="160" width="215" height="110" rx="8" fill="#1b3045" stroke="#527da5"/>
+    <text x="873" y="193" fill="#d4e9ff" font-size="20" font-weight="600">Blend 1D</text>
+    <text x="873" y="225" fill="#aabbd0" font-size="17">Idle / walk / run</text>
+    <rect x="50" y="285" width="230" height="80" rx="8" fill="#30263e" stroke="#a487c7"/>
+    <text x="68" y="316" fill="#e8d6ff" font-size="20" font-weight="600">Internal Graph</text>
+    <text x="68" y="344" fill="#cfbddf" font-size="17">locomotion.ag</text>
+    <rect x="335" y="285" width="140" height="80" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="405" y="316" text-anchor="middle" fill="#f1f5fa" font-size="19" font-weight="600">Graph</text>
+    <text x="405" y="343" text-anchor="middle" fill="#f1f5fa" font-size="19" font-weight="600">Output</text>
+    <rect x="855" y="305" width="215" height="60" rx="8" fill="#202b39" stroke="#8193ab"/>
+    <text x="880" y="342" fill="#f1f5fa" font-size="19" font-weight="600">Graph Output</text>
+    <text x="565" y="420" text-anchor="middle" fill="#b8c7dc" font-size="17">Child pose returned to the parent</text>
+    <text x="28" y="465" fill="#aabbd0" font-size="16">Dashed arrow: automatic parameter passing, not an input wire on the Internal Graph node.</text>
+  </g>
+</svg>

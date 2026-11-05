@@ -10,7 +10,7 @@ updated: 2026-11-05
 
 Use it when the graph's contents come from gameplay: a runtime-selected animation, a configurable character, or a small reusable animation setup. Use the graph editor when seeing and tuning the whole graph is more useful than generating it.
 
-You can mix both approaches. An authored character graph can accept a small runtime-built action through an [External Graph slot](/animation/animgraph/runtime-graph-builder/external-graphs.md).
+You can mix both approaches. An authored character graph can accept a small runtime-built action through an [External Graph slot](/animation/animgraph/external-graphs.md).
 
 ## Build once, drive with parameters
 
@@ -138,4 +138,5 @@ The fluent helpers for blends, selectors, layers, and state machines convert to 
 | Add a masked action over movement | [Layers and masks](/animation/animgraph/runtime-graph-builder/layers-and-masks.md) |
 | Aim, solve IK, or adjust root motion | [Procedural animation](/animation/animgraph/runtime-graph-builder/procedural-animation.md) |
 | Make decisions from animation events | [Events and timing](/animation/animgraph/runtime-graph-builder/events-and-timing.md) |
-| Extend a character with custom holds, runtime actions, or reusable child graphs | [Referenced and external graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md) |
+| Reuse an authored child graph with parent-driven inputs | [Internal graphs](/animation/animgraph/internal-graphs.md) |
+| Extend a character with custom holds or runtime-selected actions | [External graphs](/animation/animgraph/external-graphs.md) |

@@ -11,5 +11,3 @@ items:
   href: procedural-animation.md
 - name: Events and Timing
   href: events-and-timing.md
-- name: Referenced and External Graphs
-  href: external-graphs.md

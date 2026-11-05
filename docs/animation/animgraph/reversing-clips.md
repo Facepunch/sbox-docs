@@ -34,7 +34,7 @@ Set the reverse input before the clip starts to play from the end toward the beg
 
 Changing that bool during playback changes direction around the current pose; it is not a general "restart at the end" command. Re-enter the state or use an explicit **Reset Time** request when you want a fresh playback.
 
-A non-looping reversed clip holds its first source pose when finished. It still needs a [state completion transition](/animation/animgraph/states-and-transitions.md) or [external-graph disconnect](/animation/animgraph/runtime-graph-builder/external-graphs.md) to stop contributing.
+A non-looping reversed clip holds its first source pose when finished. It still needs a [state completion transition](/animation/animgraph/states-and-transitions.md) or [external-graph disconnect](/animation/animgraph/external-graphs.md) to stop contributing.
 
 ## When Play In Reverse is ignored
 

@@ -1,7 +1,7 @@
 ---
 title: "Values and Parameters"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 # Values and Parameters
@@ -190,7 +190,7 @@ builder.BindVirtualParameter( "smooth_speed", smoothSpeed );
 
 The typed helpers `VirtualBoolParameter`, `VirtualFloatParameter`, `VirtualIdParameter`, `VirtualVectorParameter`, `VirtualTargetParameter`, and `VirtualBoneMaskParameter` instead return a named wrapper around their value. These wrappers follow their referencing branches' lifetime; they do not automatically mark the calculation persistent.
 
-Virtual parameters are calculated inside the graph, not written with `Animation.Parameters.Set`. Compatible named values can be reflected into [referenced child graphs](/animation/animgraph/runtime-graph-builder/external-graphs.md).
+Virtual parameters are calculated inside the graph, not written with `Animation.Parameters.Set`. Compatible named values can be reflected into [internal child graphs](/animation/animgraph/internal-graphs.md#supply-a-calculated-parent-value).
 
 `Cached( source, cacheOnInit: true )` latches a Bool, Float, ID, Vector, or Target on initialization. With `cacheOnInit: false`, it caches on branch exit instead. It does not support poses or masks.
 
