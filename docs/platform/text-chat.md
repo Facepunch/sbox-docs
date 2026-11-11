@@ -1,11 +1,11 @@
 ---
-title: "Platform Chat"
+title: "Text Chat"
 icon: "💬"
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-11-11
 ---
 
-# Platform Chat
+# Text Chat
 
 Built-in text chat for multiplayer games. Messages are routed through the host, validated, filtered, and displayed via the standard overlay UI - no game code required.
 

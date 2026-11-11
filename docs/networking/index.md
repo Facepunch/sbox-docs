@@ -75,9 +75,9 @@ Tools and tricks for testing your game without a second player on hand.
 
 Install, configure, and run standalone s&box servers.
 
-### [Platform Chat](/networking/chat.md)
+### [Platform](/platform/index.md)
 
-Drop-in text chat that's routed through the host, validated, and filtered for you.
+Text chat, voice chat and your game's own menu, built in.
 
 ### [Http Requests](/networking/http-requests.md)
 
