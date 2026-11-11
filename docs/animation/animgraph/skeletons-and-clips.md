@@ -1,7 +1,7 @@
 ---
 title: "Skeletons and Clips"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-11
 ---
 
 # Skeletons and Clips
@@ -39,6 +39,10 @@ Choose **Animation Clip** from the **Animation** create category.
 You can also import from the graph editor's **Animation Clips** panel. This uses the graph's selected skeleton for you.
 
 The import dialogs copy source files from outside the project into `Assets`, so those sources stay with the project.
+
+## Events
+
+Open an `.anim` to mark moments or ranges on its event timeline. Use typed events to notify game code, ID events for graph conditions, and foot events for locomotion phases. See [Animation Events](/animation/animgraph/events.md) for the differences and an authoring walkthrough.
 
 ## Reverse playback
 

@@ -1,7 +1,7 @@
 ---
 title: "AnimGraph"
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-11
 ---
 
 # AnimGraph
@@ -60,6 +60,8 @@ Start with [your first graph](/animation/animgraph/getting-started.md), then ext
 3. [Use layers and masks](/animation/animgraph/layers-and-masks.md) to wave while the legs keep moving.
 
 [Skeletons and clips](/animation/animgraph/skeletons-and-clips.md) explains asset preparation. [Parameters and code](/animation/animgraph/parameters-and-code.md) connects the graph to your game.
+
+[Animation Events](/animation/animgraph/events.md) explains typed callbacks, ID markers, foot phases, native events, and graph events, with clip-authoring steps and a C# receiver.
 
 [Variations](/animation/animgraph/variations.md) let one graph serve a family of characters or items, with inherited animation data and targeted overrides.
 

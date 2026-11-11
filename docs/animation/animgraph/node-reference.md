@@ -1,7 +1,7 @@
 ---
 title: "Node Reference"
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-11
 ---
 
 # Node Reference
@@ -222,7 +222,7 @@ These nodes query sampled animation data inside the graph. They do not register 
 | Current Sync Event ID | The source state's current sync-event ID. Use inside a transition conduit. |
 | Current Sync Event Index | The source state's sync-event index, percentage, or both, according to its settings. Use inside a transition conduit. |
 
-Scope event queries deliberately: during blending, more than one clip or layer can contribute events. See [Events and Timing](/animation/animgraph/runtime-graph-builder/events-and-timing.md).
+For event types, clip authoring, and C# callbacks, see [Animation Events](/animation/animgraph/events.md). Scope event queries deliberately: during blending, more than one clip or layer can contribute events. See [Events and Timing](/animation/animgraph/runtime-graph-builder/events-and-timing.md).
 
 ## Cached values
 

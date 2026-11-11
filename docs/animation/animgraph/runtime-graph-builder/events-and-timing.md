@@ -1,7 +1,7 @@
 ---
 title: "Events and Timing"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-11
 ---
 
 # Events and Timing
@@ -9,6 +9,8 @@ updated: 2026-11-04
 Event-query nodes let the graph react to events sampled from animation. For example, a transition can wait for a planted foot or a marked interruption window instead of using an arbitrary delay.
 
 They return Bool, Float, or ID nodes to connect inside the graph. They do not register C# callbacks.
+
+For choosing and authoring clip events, typed C# receivers, and the difference between ID, foot, native, and graph events, see [Animation Events](/animation/animgraph/events.md).
 
 ## Gate a transition on a planted foot
 

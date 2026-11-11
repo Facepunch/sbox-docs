@@ -3,6 +3,8 @@ items:
   href: getting-started.md
 - name: Skeletons and Clips
   href: skeletons-and-clips.md
+- name: Animation Events
+  href: events.md
 - name: Reversing Clips
   href: reversing-clips.md
 - name: Blending Movement
