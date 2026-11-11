@@ -19,6 +19,8 @@ This is part of the new platform menu, which is opt-in for now - `menu_platform 
 
 Make a scene for your menu, then pick it in **Project Settings > Game Setup > Menu Scene**.
 
+![](./images/menu-scene-settings.png)
+
 It's just a scene. Put whatever you want in it - a camera, some props, a `ScreenPanel` with your UI. Your System Scene is loaded into it too, like any other scene.
 
 ## Starting the game
