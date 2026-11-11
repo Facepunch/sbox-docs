@@ -1,3 +1,5 @@
 items:
+- name: Menu Scene
+  href: menu-scene.md
 - name: Scene Metadata
   href: scene-metadata.md
