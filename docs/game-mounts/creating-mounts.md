@@ -2,12 +2,12 @@
 title: "Creating Mounts"
 icon: "🛠️"
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-11-13
 ---
 
 # Creating Mounts
 
-The mount system is extensible - anyone can write a mount to add support for a new game or engine and contribute it to s&box via pull request. A mount detects a game's install directory via Steam, scans its files, and converts assets into s&box compatible assets, all at runtime.
+The mount system is extensible - anyone can write a mount to add support for a new game or engine, and contribute it to s&box via pull request to the [sbox-mounts](https://github.com/Facepunch/sbox-mounts/) repo. A mount detects a game's install directory via Steam, scans its files, and converts assets into s&box compatible assets, all at runtime.
 
 ## Overview
 
@@ -16,7 +16,7 @@ The mounting system is built on two key classes:
 - **`BaseGameMount`** - detects the game and registers assets during mount
 - **`ResourceLoader`** - loads and converts individual assets on demand
 
-Mounts live in the s&box engine under the `engine/Mounting/` folder. To add support for a new game or engine, create a new mount project, code it and submit a pull request.
+The mounts included in s&box live in the [sbox-mounts](https://github.com/Facepunch/sbox-mounts/) repo. To contribute support for a new game or engine, create a new addon project, write the mount, and submit a pull request.
 
 ## Creating a Game Mount
 
@@ -25,33 +25,35 @@ Extend `BaseGameMount` and implement the required properties and methods:
 ```csharp
 public class MyGameMount : BaseGameMount
 {
-    public override string Ident => "rust";
-    public override string Title => "Rust";
+	public override string Ident => "rust";
+	public override string Title => "Rust";
 
-    private string GameDir;
+	/// <summary>
+	/// Read-only filesystem of the game's install folder
+	/// </summary>
+	public BaseFileSystem FileSystem { get; private set; }
 
-    protected override void Initialize( InitializeContext context )
-    {
-        // Check if the game is installed via Steam
-        if ( !context.IsAppInstalled( 252490 ) )
-            return;
+	protected override void Initialize( InitializeContext context )
+	{
+		// Check if the game is installed via Steam
+		if ( !context.IsAppInstalled( 252490 ) )
+			return;
 
-        GameDir = context.GetAppDirectory( 252490 );
-        IsInstalled = true;
-    }
+		FileSystem = context.GetFileSystem( 252490 );
+		IsInstalled = true;
+	}
 
-    protected override Task Mount( MountContext context )
-    {
-        // Scan game files and register each resource
-        foreach ( var file in Directory.GetFiles( GameDir, "*.mymodel", SearchOption.AllDirectories ) )
-        {
-            var relative = Path.GetRelativePath( GameDir, file );
-            context.Add( ResourceType.Model, relative, new MyModelLoader( this, file ) );
-        }
+	protected override Task Mount( MountContext context )
+	{
+		// Scan game files and register each resource
+		foreach ( var path in FileSystem.FindFile( "/", "*.mymodel", recursive: true ) )
+		{
+			context.Add( ResourceType.Model, path, new MyModelLoader( this, path ) );
+		}
 
-        IsMounted = true;
-        return Task.CompletedTask;
-    }
+		IsMounted = true;
+		return Task.CompletedTask;
+	}
 }
 ```
 
@@ -61,7 +63,7 @@ public class MyGameMount : BaseGameMount
 
 ### Initialize
 
-Called at startup to detect whether the game is installed. Use `context.IsAppInstalled(appId)` to check Steam, and `context.GetAppDirectory(appId)` to get the install path. Set `IsInstalled = true` if the game is found.
+Called at startup to detect whether the game is installed. Use `context.IsAppInstalled(appId)` to check Steam, and `context.GetFileSystem(appId)` to get a read-only filesystem of the game's install directory. Set `IsInstalled = true` if the game is found.
 
 ### Mount
 
@@ -84,7 +86,7 @@ public class MyModelLoader : ResourceLoader<MyGameMount>
     protected override object Load()
     {
         // Read the file and convert it to an S&box model
-        var data = File.ReadAllBytes( FilePath );
+        var data = Host.FileSystem.ReadAllBytes( FilePath );
         return ConvertToModel( data );
     }
 }
@@ -99,7 +101,7 @@ For resources that take time to load, override `LoadAsync` instead:
 ```csharp
 protected override async Task<object> LoadAsync()
 {
-    var data = await File.ReadAllBytesAsync( FilePath );
+    var data = await Host.FileSystem.ReadAllBytesAsync( FilePath );
     return ConvertToModel( data );
 }
 ```
