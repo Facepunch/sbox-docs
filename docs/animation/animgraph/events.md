@@ -139,6 +139,14 @@ Use **Graph Event Condition** to match a graph event's ID and type. **ID Event C
 
 Game code can observe graph-event names through `SkinnedModelRenderer.OnAnimTagEvent`. For AG2, it reports **Start** when a named graph event becomes active and **End** when it stops being active. It is not the typed-event interface, and it does not report clip ID events.
 
+### Evaluation order
+
+**Graph Event Condition** only sees events sampled so far during the current graph update. Global search removes the source-state restriction; it does not look ahead to nodes that have not evaluated. The condition caches its first result for the rest of that update.
+
+For example, **Layer Blend** evaluates its base before its layers. A **Look At** in the base cannot read an event produced by a layer later in the same update. Keep event-dependent consumers after the event-producing nodes in the connected pose chain, or drive earlier consumers from the control parameters that drive the layer. Moving nodes visually on the canvas does not change evaluation order.
+
+If the condition is inside a [virtual parameter](/animation/animgraph/parameters-and-code.md#virtual-parameters), an earlier consumer can determine the cached value that later consumers receive.
+
 ## Sync tracks are not another callback type
 
 Right-click a track header and enable **Sync Track** to use that track's events to divide the clip into phases. A clip has only one sync track.

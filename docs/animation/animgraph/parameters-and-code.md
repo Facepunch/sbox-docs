@@ -98,6 +98,8 @@ speed ---> Spring ---> Result
 
 Create a Float with **Add Virtual Parameter**, name it `smooth_speed`, and build that calculation in its value graph. Drag `smooth_speed` from Parameters wherever it is needed.
 
+Virtual parameters evaluate on first use and share that cached value across all references for the current graph update. If an earlier consumer reads an event-dependent virtual parameter before the event is produced, later consumers receive the same cached value. Adding another reference does not force reevaluation. See [event evaluation order](/animation/animgraph/events.md#evaluation-order).
+
 Leave **Lifetime** at **Graph** for a calculation whose initialized state should survive state changes. **Referenced Branches** keeps its value tree initialized only while referencing branches need it. When all those branches release it, a later activation starts it again; this matters for springs, random choices, and cached values.
 
 Use virtual parameters to share derived values, not as extra gameplay inputs.
