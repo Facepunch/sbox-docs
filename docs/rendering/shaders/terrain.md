@@ -2,7 +2,7 @@
 title: "Terrain"
 icon: "⛰️"
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-11-15
 ---
 
 s&box comes with a terrain system and fairly large shader backend for various terrain things: meshlets, encoded control map, compact material format, structs, alpha clipping, and some other features.  
@@ -107,7 +107,7 @@ float4 MainPs( PixelInput i ) : SV_Target0
 	Material basicMaterial = Material::Init( i.vPositionWithOffsetWs, i.vPositionSs );
     // ... setup your basic material here...
     // and then sample terrain at given world-space position, with geometric normals applied
-	Material terrain = Terrain::Sample( m.WorldPosition, true );
+	Material terrain = Terrain::Sample( basicMaterial.WorldPosition, true );
 
     // blend two materials together, very shoddy example but you get the idea
     Material final = Material::lerp( basicMaterial, terrain, 0.5f );

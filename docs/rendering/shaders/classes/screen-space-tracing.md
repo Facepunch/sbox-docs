@@ -2,7 +2,7 @@
 title: "Screen Space Tracing"
 icon: "🥢"
 created: 2024-12-07
-updated: 2026-08-03
+updated: 2026-11-15
 ---
 
 # Screen Space Tracing
@@ -23,9 +23,8 @@ The TraceResult structure represents the outcome of a trace operation:
 
 | Member | Type | Description |
 |--------|------|-------------|
-| `HitClipSpace` | `float3` | The hit position in clip space. XY is the UV, Z is the depth. |
-| `Confidence` | `float` | The confidence level of the hit detection. |
-| `ValidHit` | `bool` | Indicates whether a valid hit was found. |
+| `HitUv` | `float2` | Normalized screen UV coordinates of the hit. |
+| `Confidence` | `float` | Zero on a miss; fades near screen edges and the thickness limit. |
 
 ## Usage Example
 
@@ -38,9 +37,9 @@ float3 direction = /* world-space direction */;
 
 TraceResult result = ScreenSpace::Trace( origin, direction );
 
-if ( result.ValidHit )
+if ( result.Confidence > 0.0f )
 {
-    float3 vReflectionColor = FrameBufferCopy[ result.HitClipSpace.xy ].rgb;
+    float3 vReflectionColor = FrameBufferCopy.SampleLevel( g_sBilinearClamp, result.HitUv, 0 ).rgb;
     m.Emission = lerp( m.Emission, vReflectionColor, result.Confidence );
 }
 ```

@@ -2,7 +2,7 @@
 title: "Bindless API"
 icon: "🔗"
 created: 2024-12-03
-updated: 2026-09-03
+updated: 2026-11-15
 ---
 
 # Bindless API
@@ -22,24 +22,26 @@ This allows a lot more versatility in your shaders, less CPU time spent binding 
 The following methods are accessible from shaders:
 
 ```cpp
-Texture2D Bindless::GetTexture2D( int nIndex, bool srgb = false );
+Texture2D Bindless::GetTexture2D( int nIndex );
+Texture2D Bindless::GetTexture2DSrgb( int nIndex );
 Texture3D Bindless::GetTexture3D( int nIndex );
 TextureCube Bindless::GetTextureCube( int nIndex );
 Texture2DArray Bindless::GetTexture2DArray( int nIndex );
 TextureCubeArray Bindless::GetTextureCubeArray( int nIndex );
-SamplerState Bindless::GetSampler( int nIndex );
+SamplerState Bindless::GetSampler( dynamic_uniform int nIndex );
+SamplerState Bindless::GetSamplerNonUniform( int nIndex );
 ```
 
 :::tip
-sRGB variants of Texture2D can be sampled with Bindless::GetTexture2D( nIndex, true );
+sRGB variants of Texture2D can be sampled with `Bindless::GetTexture2DSrgb( nIndex )`.
 :::
 
 Additionally these methods are available in compute shaders only:
 
 ```cpp
-RWTexture2D<float4> Bindless::GetRWTexture2D( int nIndex );
-RWTexture3D<float4> Bindless::GetRWTexture3D( int nIndex );
-RWTexture2DArray<float4> Bindless::GetRWTexture2DArray( int nIndex );
+RWTexture2D<float4> Bindless::GetRWTexture2D( dynamic_uniform int nIndex );
+RWTexture3D<float4> Bindless::GetRWTexture3D( dynamic_uniform int nIndex );
+RWTexture2DArray<float4> Bindless::GetRWTexture2DArray( dynamic_uniform int nIndex );
 ```
 
 ### Example: Bindless Textures
@@ -79,7 +81,7 @@ void SampleTerrain( float2 uv, in out float3 color, in out float3 normal )
   // Combine 4 dynamic terrain materials together
   for ( int i = 0; i < 4; i++ )
   {
-    Texture2D ColorTexture = Bindless::GetTexture2D( TerrainMaterials[i].ColorTextureIndex, true ); // srgb
+    Texture2D ColorTexture = Bindless::GetTexture2DSrgb( TerrainMaterials[i].ColorTextureIndex );
     Texture2D NormalTexture = Bindless::GetTexture2D( TerrainMaterials[i].NormalTextureIndex );
     
     color += ColorTexture.Sample( Sampler, uv );
@@ -119,13 +121,14 @@ float4 MainPs( PixelInput i ) : SV_Target0
 
 # Non-uniform Resource Index
 
-If your bindless resources index is going to vary across threads within a wave (this could happen if passed from a vertex input) it needs to be marked as non-uniform, otherwise you'll get undefined behavior. In pixel shaders the texture getters already apply `NonUniformResourceIndex` for you; samplers don't (it crashes some AMD drivers), so pass a `NonUniform` index instead:
+An index that varies across threads within a wave needs non-uniform descriptor access. The sampled-texture getters handle this automatically in every shader stage. For a varying sampler index, use `GetSamplerNonUniform`; use `GetSampler` when the index is uniform:
 
 ```cpp
-Texture2D texture = Bindless::GetTexture2D( NonUniformResourceIndex( i.TextureIndex ) );
+Texture2D texture = Bindless::GetTexture2D( i.TextureIndex );
 
-NonUniform samplerIndex = { i.SamplerIndex };
-SamplerState sampler = Bindless::GetSampler( samplerIndex );
+SamplerState sampler = Bindless::GetSamplerNonUniform( i.SamplerIndex );
 ```
+
+The compute-only RW texture getters require uniform indices; they do not support non-uniform access.
 
 ![Undefined behavior from a non uniform resource index](./images/undefined-behavior-from-a-non-uniform-resource-index.webp)
