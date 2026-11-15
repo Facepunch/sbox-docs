@@ -34,8 +34,6 @@ These aren't guidelines or a tutorial to creating a highpoly, I'm expecting you 
 
 :::
 
-![Highpoly](./images/headphones_hp.mp4)
-
 Generally, we expect you to make a highpoly to bake down onto your lowpoly. Whatever your approach, we expect an **ambient occlusion map**, **normal map** and **bent normal map**.
 
 
@@ -65,8 +63,6 @@ We expect you to have knowledge on creating UVs. We are just showing examples of
 
 
 ## Texturing 
-
-![Texturing](./images/headphones_03.mp4)
 
 We'd recommend adding details that make the clothing look **used** rather than **factory new**. This lines up well with the current clothing we have created and the overall **worn and torn** aesthetic we lean towards.
 

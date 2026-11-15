@@ -37,8 +37,6 @@ And grab `citizen_human_male_REF.fbx`.
 
 ## Moving Major Shapes
 
-![Moving clothing major shapes](./images/human_1_01.mp4)
-
 Firstly, we want to bring the neck loosely up to the same position of the human neck. As well as moving the wrists into position. No need to rotate or resize anything yet.
 
 ![](./images/moving-major-shapes-1.png)
@@ -74,8 +72,6 @@ Any details like buttons, separate meshes, keep removed while morphing the main 
 
 
 ## **Moving Details** 
-
-![Adjusting clothing details](./images/human_1_02.mp4)
 
 
 ![](./images/moving-details.png)

@@ -60,8 +60,6 @@ You could also simply make your own "fork" of citizen.vmdl while keeping the ref
 These bones are used to drive IK constraints in-engine. **They need animation data, and the default graph assumes it is present.** This data is baked by the 3D animation program during the exporting process.
 
 
-![](./images/ik-bones.jpg)
-
 `root_IK` is the parent to all `*_IK_target` bones. These are effectively "model-space" IK targets.
 
 ### **Why are we doing it this way?**
