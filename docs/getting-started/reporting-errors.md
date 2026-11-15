@@ -2,7 +2,7 @@
 title: "Reporting Errors"
 icon: "🚨"
 created: 2024-01-18
-updated: 2026-09-03
+updated: 2026-11-15
 ---
 
 # Reporting Errors
@@ -43,11 +43,7 @@ Finally, please provide your 64-bit steamid (steamID64); this lets us look up yo
 
 # Common Errors
 
-You NEED the following, if you don't have the following this is likely why:
-
-* Windows 10 and above - Windows 7 will not work
-* At least 4GB of RAM, 8GB for the editor.
-* A graphics card that isn't older than 12 years
+Check that your computer meets the [System Requirements](/getting-started/system-requirements.md), including 64-bit Windows 10 or later, 16 GB RAM, and the listed processor and graphics requirements.
 
 ### Steam Not Found
 
@@ -59,7 +55,7 @@ This tends to happen when you've got a Steam emulator on your system from pirati
 
 ![](./images/failed-to-initialize-vulkan.png)
 
-Graphics cards have supported Vulkan since 2012. If you don't have one, get one.
+Check your graphics card against the [System Requirements](/getting-started/system-requirements.md) and install the latest drivers from its manufacturer.
 
 If you are on a laptop, make sure your drivers are up to date for your integrated and dedicated graphics.
 
