@@ -1,7 +1,7 @@
 ---
 title: "AnimGraph"
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-15
 ---
 
 # AnimGraph
@@ -22,14 +22,25 @@ An **Animation Clip** produces a pose: the positions and rotations of the charac
 
 Other nodes can blend poses, choose between them, or adjust individual bones before the result reaches the output. **Parameters** carry values such as speed, grounded state, or an aiming target into these decisions.
 
-There are two kinds of connections to recognize:
+There are three kinds of connections to recognize:
 
 | Connection | What it carries | Example |
 |---|---|---|
 | Pose | An animation result | A walk clip feeding a blend |
+| Layer | A pose with layer settings | Local Layer feeding Layer Blend |
 | Value | A number, bool, ID, vector, target, or mask | A speed parameter controlling that blend |
 
 Unlike ActionGraph, pose connections are not execution signals. You are describing how to produce a pose, not a sequence of commands. A clip in an inactive state does not keep playing in the background independently.
+
+## Sharing poses and values
+
+**Each pose or layer output connects to one input in the editor.** Connecting it to another input replaces its previous connection. Reroutes and Pose Groups do not bypass this rule.
+
+Value outputs can connect to multiple inputs. For example, the same speed parameter can drive several blends, and the same bone mask can control several layers.
+
+If two branches need the same animation, duplicate the clip node or the pose branch, not the animation asset. Both clip nodes can reference the same `.anim`, but each has its own playback state. Sharing a pose node is not a way to evaluate it once and reuse a cached result.
+
+Older graphs with shared pose or layer outputs keep their saved connections, but compilation reports warnings on the affected nodes. Replace the sharing with separate branches. For branches that should follow the base animation's timing, use [layer synchronization](/animation/animgraph/layers-and-masks.md#keep-pose-branches-separate).
 
 ## Which node should I use?
 

@@ -1,7 +1,7 @@
 ---
 title: "Layers and Masks"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-15
 ---
 
 # Layers and Masks
@@ -21,6 +21,14 @@ Both connect to **Layer Blend**. They describe a layer; they do not connect dire
 
 **Overlay** blends toward an ordinary pose. **Additive** adds a change to the base pose and needs an additive source. Use Overlay for the ordinary wave clip in this example.
 
+## Keep pose branches separate
+
+Do not connect the same pose output to both **Layer Blend.Base** and a layer's **Input**, or reuse one layer output in multiple layer slots. Connecting it again replaces the previous connection. Duplicate the pose or layer branch instead; separate clip nodes can still use the same animation asset.
+
+Enable **Is Synchronized** when a layer should follow the base pose's sync timing. Leave it off for independent actions such as a wave or reload. Synchronization controls timing; it does not allow sharing a pose node.
+
+Parameters, weights, and bone masks can remain shared. See [Sharing Poses and Values](/animation/animgraph/index.md#sharing-poses-and-values) for the connection rules and warnings on older graphs.
+
 ## Make an upper-body mask
 
 Select your `.skel` asset. In **Bone Masks**, add a mask named `upper_body`.
@@ -28,6 +36,8 @@ Select your `.skel` asset. In **Bone Masks**, add a mask named `upper_body`.
 In its bone weights, leave the root, pelvis, and legs at `0`, and set the upper-body bones you want to animate to `1`. Intermediate weights around the spine can soften the boundary. Use your skeleton's own bone names and inspect the mask preview.
 
 Save the skeleton. In the graph, a **Bone Mask** node with **Mask** set to `upper_body` now refers to that mask.
+
+The mask dropdown refreshes when the skeleton recompiles. If compilation fails, the picker warns that its masks may be out of date. Check the console, fix any broken source-file paths, and recompile the `.skel`.
 
 A mask does nothing by itself: connect it to the layer that should use it. Masks belong to the `.skel`, not to the model's old AG1 weightlists.
 

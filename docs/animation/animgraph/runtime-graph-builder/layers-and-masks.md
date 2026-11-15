@@ -1,7 +1,7 @@
 ---
 title: "Layers and Masks"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-15
 ---
 
 # Layers and Masks
@@ -26,6 +26,27 @@ var result = builder.Layers( movement )
 This example requires a breathing clip authored as an additive delta. An ordinary absolute animation does not become additive just because you choose an additive blend mode.
 
 Layers apply in the order added. Each sees the result of the layers below it.
+
+## Use separate pose nodes
+
+Create a separate pose branch for each consumer, even when both branches use the same animation asset. Reusing a `GraphBuilder.Node` does not copy its playback state or cache its pose. The editor's automatic connection replacement does not apply to builder calls.
+
+For example, these two nodes share a clip asset, not a playback instance:
+
+```csharp
+var basePose = builder.Clip( clip );
+var layerPose = builder.Clip( clip );
+
+var result = builder.Layers( basePose )
+    .AddLayer( layerPose, new GraphBuilder.LayerSettings
+    {
+        Synchronized = true
+    } );
+```
+
+Use `Synchronized = true` only when the layer should follow the base's sync timing. Independent actions should keep their own timing. Value nodes, including parameters, weights, and bone masks, can be reused across branches.
+
+For compatibility, a layer input already evaluated during the current update reuses its existing time range instead of advancing again. This is not a cached-pose feature and does not make arbitrary shared pose branches safe.
 
 ## Wave over movement
 
