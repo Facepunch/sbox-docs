@@ -2,7 +2,7 @@
 title: "Dedicated Servers"
 icon: "📦"
 created: 2024-11-07
-updated: 2026-09-03
+updated: 2026-11-15
 ---
 
 # Dedicated Servers
@@ -53,12 +53,14 @@ When run, this will load the `facepunch.sandbox` game with the `facepunch.flatgr
 
 **Windows**
 
-If you have **SteamCMD** installed, set the registry entries pointing to the SteamCMD client DLLs (replace `$dir` with the path to your SteamCMD folder). You can add these commands to the top of your `Run-Server.bat` startup script:
+If you have **SteamCMD** installed, run these commands once in **PowerShell** before starting the server. Set `$steamCmdPath` to your SteamCMD folder:
 
 ```powershell
+$steamCmdPath = 'C:\steamcmd'
+
 New-Item -Path "HKCU:\SOFTWARE\Valve\Steam\ActiveProcess" -Force | Out-Null
-Set-ItemProperty -Path "HKCU:\SOFTWARE\Valve\Steam\ActiveProcess" -Name "SteamClientDll64" -Value "$dir\steamclient64.dll" -Type String
-Set-ItemProperty -Path "HKCU:\SOFTWARE\Valve\Steam\ActiveProcess" -Name "SteamClientDll" -Value "$dir\steamclient.dll" -Type String
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Valve\Steam\ActiveProcess" -Name "SteamClientDll64" -Value "$steamCmdPath\steamclient64.dll" -Type String
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Valve\Steam\ActiveProcess" -Name "SteamClientDll" -Value "$steamCmdPath\steamclient.dll" -Type String
 ```
 
 Alternatively, installing the **Steam desktop client** will satisfy this requirement automatically.

@@ -2,7 +2,7 @@
 title: "Text Chat"
 icon: "💬"
 created: 2026-05-20
-updated: 2026-11-11
+updated: 2026-11-15
 ---
 
 # Text Chat
@@ -49,15 +49,36 @@ Implement `IChatEvent` on a component to intercept, modify, suppress, or filter 
 - **On receiving clients** - after delivery. You can still suppress the message to prevent it from showing in the UI.
 
 ```csharp
+/// <summary>
+/// Routes team messages to players on the sender's team.
+/// </summary>
 public class TeamChat : Component, IChatEvent
 {
+    /// <summary>
+    /// Handles the team command on the host before the message is broadcast.
+    /// </summary>
     public void OnChatMessage( ChatMessageEvent e )
     {
-        if ( !e.Message.StartsWith( "/team" ) )
+        if ( !Networking.IsHost || e.Sender is null )
+        {
             return;
+        }
+
+        if ( e.Message == "/team" )
+        {
+            e.Suppress = true;
+            return;
+        }
+
+        const string prefix = "/team ";
+
+        if ( !e.Message.StartsWith( prefix, StringComparison.Ordinal ) )
+        {
+            return;
+        }
 
         // Strip the command prefix
-        e.Message = e.Message["/team ".Length..];
+        e.Message = e.Message[prefix.Length..];
 
         // Only deliver to players on the same team
         var senderTeam = GetTeam( e.Sender );

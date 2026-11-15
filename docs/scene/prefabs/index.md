@@ -2,7 +2,7 @@
 title: "Prefabs"
 icon: "📦"
 created: 2024-01-10
-updated: 2024-10-03
+updated: 2026-11-15
 ---
 
 # Prefabs
@@ -24,9 +24,9 @@ In the scene view, GameObjects that are instantiations of Prefabs are made obvio
 
 ![They're blue](./images/they-re-blue.png)
 
-When in their Prefab Instantiation state, they can't be edited significantly. You can't view or select objects in their hierarchy.
+You can expand a prefab instance in the hierarchy, select its children, and edit its properties or add components and GameObjects. These changes are stored as [Instance Overrides](/scene/prefabs/instance-overrides.md), so the instance stays linked to the prefab and continues receiving updates from it.
 
-If you want to edit a prefab in the scene you can right-click it and choose `Unlink from Prefab` to change it to a bunch of normal GameObjects.
+To remove that link entirely, right-click the instance and choose `Unlink From Prefab`. It becomes a normal hierarchy of GameObjects.
 
 
 # In Code

@@ -2,7 +2,7 @@
 title: "Sync Properties"
 icon: "🔄"
 created: 2024-01-10
-updated: 2025-01-30
+updated: 2026-11-15
 ---
 
 # Sync Properties
@@ -20,7 +20,7 @@ public class MyComponent : Component
 ```
 
 :::info
-`[Sync]` only works when the GameObject has the `NetworkMode.Object` mode. Properties on `NetworkMode.Snapshot` objects are never synced after the initial snapshot to anyone, even if marked with `[Sync]`.
+`[Sync]` works on components belonging to a networked object: either on its `NetworkMode.Object` root or on its `NetworkMode.Snapshot` descendants. Those descendants share the root's network ownership and do not need to be spawned as separate networked objects. A `NetworkMode.Snapshot` object without a networked ancestor does not receive ongoing `[Sync]` updates after the initial scene snapshot.
 :::
 
 These properties are controlled by the owner of the object, therefore only the owner of the object can change them. If you try to set a `[Sync]` property while `IsProxy` is `true`, the change is silently discarded - it will not replicate. For host-controlled values, see the `FromHost` flag below.

@@ -2,7 +2,7 @@
 title: "Loading Maps"
 icon: "📂"
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-11-15
 ---
 
 # Loading Maps
@@ -67,11 +67,13 @@ var mapInstance = GetComponent<MapInstance>();
 mapInstance.MapName = "facepunch.pool_day";
 ```
 
-You can also manually unload a map.
+To unload a map and keep it unloaded, disable the component. This also cancels any loading in progress.
 
 ```csharp
-mapInstance.UnloadMap();
+mapInstance.Enabled = false;
 ```
+
+Calling `UnloadMap()` alone leaves the component enabled with its `MapName` unchanged, so it loads the map again on the next update. Re-enable the component when you want it to load again.
 
 # Callbacks
 
