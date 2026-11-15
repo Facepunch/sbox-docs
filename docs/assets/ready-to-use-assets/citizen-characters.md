@@ -1,29 +1,29 @@
 ---
-title: "Citizen Characters"
-icon: "🌭"
+title: "Human Characters"
+icon: "🧍"
 created: 2024-07-29
-updated: 2025-09-01
+updated: 2026-11-15
 ---
 
-# Citizen Characters
+# Human Characters
 
-![](https://files.facepunch.com/maxlebled/1b1211b1/citizen_header.jpg)The Citizen character is a default player model provided by Facepunch.
+The Human character is the default player model provided by Facepunch. Use `models/citizen_human/human.vmdl` in your game.
 
 # Character source files
 
 **All source files come with the game: VMDLs, FBXs, animgraphs, etc.**
 
-You can find them right in the game folder, under `addons/citizen/Assets/models/citizen`. These files are synced straight from our source folders; when new source files are added on our end, they'll show up in that folder for you too!
+You can find them right in the game folder, under `addons/citizen/Assets/models/citizen_human`. Start with `human.vmdl` to inspect the model, and `citizen_human_male_REF.fbx` or `citizen_human_female_REF.fbx` when making clothing. These files are synced straight from our source folders; when new source files are added on our end, they'll show up in that folder for you too!
 
 
 :::info
-If you would like to make animations for the Citizen, here is a community-made control rig to get you started: <https://github.com/Ali3nSystems/Ecodelia-Tools-for-Facepunch-Assets>
+The asset folders and reference filenames still contain `citizen`. These are the current paths for the Human assets. The old Citizen player model is retired as the default and is no longer available in avatar selection, but its asset remains available to existing games.
 
 :::
 
 ## Procedural helper bones & constraints
 
-These helper bones are set up to be procedural helpers driven entirely by constraints configured in ModelDoc. Open up `citizen.vmdl` and look at the *AnimConstraintList* prefab to see what makes them tick!
+These helper bones are set up to be procedural helpers driven entirely by constraints configured in ModelDoc. Open up `human.vmdl` and look at the *AnimConstraintList* prefab, `models/citizen_human/prefabs/human_animconstraintlist.vmdl_prefab`, to see what makes them tick!
 
 * `arm_upper_[R/L]_twist[0/1]` (from shoulder to biceps)
 * `arm_elbow_helper_[R/L]` (better deformation for extreme bend angles on the elbow)
@@ -35,7 +35,7 @@ These helper bones are set up to be procedural helpers driven entirely by constr
 
 Because they're procedural, animation data doesn't need to be exported from your 3D program for these; in fact, it's set up to be ignored. Our own animation FBX files usually don't have them exported, which has the added benefit of slightly saving on file size. 
 
-If you're making a model (e.g. clothing) to be bonemerged on top of the citizen, you don't actually *need* to skin your mesh to these bones... but it's better if you do!
+If you're making a model (e.g. clothing) to be bonemerged on top of the Human, use the supplied reference mesh's skinning as a guide for these helper bones.
 
 
 :::warning
@@ -45,7 +45,7 @@ The limb bone is a sort of "container" for its `*_twist{0/1}` bones. **The limb 
 
 # Adding new animations
 
-If you only need to add a few animations to the VMDL, you can try using the "Base Model" feature. This is similar to the Source 1 "$includemodel" feature. **You can only add animations to an existing model using this feature; you can't add anything else.** You only need to reference the official `citizen.vmdl` file in the "Base Model" field, above the "Add" button in ModelDoc.
+If you only need to add a few animations to the VMDL, you can try using the "Base Model" feature. This is similar to the Source 1 "$includemodel" feature. **You can only add animations to an existing model using this feature; you can't add anything else.** Reference `models/citizen_human/human.vmdl` in the "Base Model" field, above the "Add" button in ModelDoc.
 
 
 :::warning
@@ -53,7 +53,7 @@ Name your new animations something unique (maybe by giving them all a prefix); b
 
 :::
 
-You could also simply make your own "fork" of citizen.vmdl while keeping the references to prefabs intact, but you might have to sync some changes manually.
+You could also make your own copy of `human.vmdl` in your project while keeping the references to prefabs intact, but you might have to sync some changes manually.
 
 ## IK bones
 
@@ -81,17 +81,9 @@ There may be different IK solutions implemented in the future.
 
 ## LOD reference & guidelines
 
-To give you an idea of how we use LODs on the Citizen... here are the figures for the base meshes.
+Inspect the Human model's *LODGroupList* in ModelDoc for its current meshes and switch thresholds. The retired Citizen's triangle counts and LOD distances do not describe the Human model.
 
-* **LOD0:** 6.6k tris (+ 7.2k head).
-* **LOD1:** 4.2k tris (+ 7.2k head) @ distance of 5, so it happens fairly close and very fast. **This level is used to trim the low-hanging fruit that has an almost-zero impact to visuals, as soon as possible.** Here, we only use LOD1 to trim the poly density of the feet and fingers. The body and leg meshes remain the exact same; this means far fewer headaches with not needing to sync with underlying topology there. The head remains the same as LOD0(\*).
-* **LOD2:** 1.7k tris (+ 1.0k head) @ distance of 20. We are at a medium distance, slightly on the side of long. Helper bones are culled.
-* **LOD3:** 1.0k tris (+ 0.4k head) @ distance of 40. Long distance. Even more bones are culled.
-* **LOD4:** 1.0k tris (+ 0.2k head) @ distance of 70. Longest distance. This only reduces the head further, cutting down a bit more of its geometry, but most importantly removes its eyes, which cuts down the material count (and therefore draw calls) by one.
-
-*(\*) For now. Whenever our tech & tools allow us to start maintaining a lower-density head with no headaches with regards to transferring morphs etc., we'll probably try to target a 4-5k tris head for LOD1.*
-
-Some clothing items might shift LOD1 back to a distance of 10 instead of 5, but this is only applicable when they are displayed on their own, away from the player; s&box implements a sort of "LOD sync", which makes bonemerged models follow the LOD level of their parent.
+Clothing should reduce detail as the character gets farther from the camera. s&box makes bonemerged models follow the LOD level of their parent, so check your clothing together with the Human model. See [Guidelines & Quality Bar](/assets/clothing/guidelines-quality-bar.md) for clothing LOD guidance.
 
 
 :::tip
@@ -103,9 +95,9 @@ If you are using more than one material, and can cull the number of total materi
 
 ## Stretching limbs
 
-The Citizen has "support" for stretching and squashing the lengths of arms and legs while still looking reasonably good, thanks to the elbow & kneecap helpers. This is NOT actual "per-bone" scaling; the animations don't store scaling values. However, animations are, in a sense, fundamentally just a collection of lists of position & orientation coordinates for X bones at Y times. For example, the lower arm, being a child of the upper arm, sits in its parent space at a position of X = 10. There's nothing that prevents an animation from saying "in my animation, that X position offset is actually 12", meaning a 20% stretch.
+Animations can change a bone's position in its parent's local space, changing the apparent length of a limb without storing a scale value. For example, moving a lower arm's local position from X = 10 to X = 12 stretches the upper arm by 20%.
 
-Likewise, there's nothing that prevents any bone from changing its position in their parent's local space. Human anatomy doesn't work that way, of course, but the Citizen is not a photorealistic character, and pushing bones around in various ways allows to get more interesting poses! Almost all of the "long idle" standing poses do this to various extents.
+The Human rig includes elbow and knee helpers to support deformation. Test custom animations and clothing on the Human mesh, especially when changing limb lengths or using extreme poses.
 
 ## About source file scaling
 

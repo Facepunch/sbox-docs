@@ -2,7 +2,7 @@
 title: "Assets"
 icon: "🎎"
 created: 2025-06-15
-updated: 2026-08-03
+updated: 2026-10-23
 ---
 
 # Assets
@@ -11,11 +11,11 @@ Assets are the building blocks of your game: models, materials, sounds, textures
 
 ## [Clothing](/assets/clothing/index.md)
 
-Create and publish cosmetic clothing items for the Citizen character model.
+Create and publish cosmetic clothing items for the Human character model.
 
 ## [Ready-to-use Assets](/assets/ready-to-use-assets/index.md)
 
-Built-in assets provided by s&box, including Citizen characters and first-person weapon models.
+Built-in assets provided by s&box, including Human characters and first-person weapon models.
 
 ## [Resources](/assets/resources/index.md)
 

@@ -2,10 +2,12 @@
 title: "Layering Clothing"
 icon: "🧅"
 created: 2024-12-20
-updated: 2025-01-14
+updated: 2026-11-15
 ---
 
 # Layering Clothing
+
+Make and test clothing against the Human model. The older illustrations and recordings below show the retired Citizen model; they illustrate layering principles, but use the Human assets and paths described in the text.
 
 ## **Layering of Shirts, Jackets, Trousers, Shoes and Gloves**
 
@@ -57,19 +59,19 @@ A great way of making sure your clothing is fitting with the existing clothing, 
 Right click in your '**Hierarchy**', add an empty asset. Clicking on this new asset, we can 'Add Component' in the Inspector. Type and click in Model Renderer. ![](./images/checking-your-asset-1.png)
 
 
-Click on the 'Model' input, opening a new window. Click onto the Citizen folder, which you can find at the bottom.
+Click on the 'Model' input to open the asset picker. Enable **Show Base Content** to find the supplied Human model.
 
 ![](./images/checking-your-asset-3.png)
 
 
-Head to `citizen\assets\models\citizen` and click on Citizen.vmdl. Now we have the citizen in our scene to start dressing and testing our clothing.
+Choose `models/citizen_human/human.vmdl`. Now we have the Human in our scene to start dressing and testing our clothing.
 
 ![](./images/checking-your-asset-2.png)
 
 ![](./images/checking-your-asset.png)
 
 
-Now we can start adding clothing to test. Head over to `citizen\assets\models\citizen_clothes`, and we can start adding in clothing. 
+Now we can start adding clothing to test. The supplied clothing is under `citizen\assets\models\citizen_clothes`. Use the VMDLs assigned to each clothing definition's `Model` or `Female Model` field so you are comparing the correct fits.
 
 ![](./images/now-we-can-start-adding-clothing-to-test-head-over-to-citi.png) 
 
@@ -99,19 +101,19 @@ Try out a few jackets till you find any clipping with your shirt, or until you f
 ---
 
 
-## Cutting the Citizen 👕🔪
+## Including Visible Skin 👕🔪
 
 
 ![](./images/cutting-the-citizen-1.png)
 
 
-Complimenting this Layering System, Layer 1 Clothing, modeldocs for assets like the `binman_shirt`, we can use cut parts of the citizen torso which can be extracted from the `citizen_REF.fbx` and adjusted in the 3d modeling software of your choice. Extracting only the visible parts of the torso geometry.
+For layer 1 clothing that replaces a bodygroup, include the skin that should remain visible as part of your clothing model. Extract the needed geometry from `citizen_human_male_REF.fbx` or `citizen_human_female_REF.fbx`, matching the body your clothing is fitted to.
 
 
 ![](./images/cutting-the-citizen.png)
 
 
-This becomes very handy for assets that change the silhouette of the citizen. Removing the torso/chest bodygroup. While replacing the skin with a cut-out version of the torso model.
+This is useful for assets that change the silhouette of the Human body: hide the covered bodygroup and replace the exposed skin with the cut-out geometry in your clothing model. Check both body fits so the skin meets the clothing without gaps.
 
 
 ---
@@ -162,7 +164,7 @@ Clipping is inevitable, just keep a close eye on your silhouette of your assets 
 
 
 :::info
-Outfits like the Skeleton, Mascot, Sci-fi Armour, Pirate Outfit, we are able to completely remove the citizen bodygroups. While still treating the assets as .clothing items and using the same logic as the clothing, we can completely replace the citizen.
+Full-body outfits can hide the Human bodygroups and replace the visible character while still using `.clothing` items and the same clothing logic.
 
 :::
 

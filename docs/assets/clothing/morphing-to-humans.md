@@ -1,11 +1,13 @@
 ---
 title: "Morphing to Humans"
-icon: "🌭"
+icon: "🧍"
 created: 2025-01-06
-updated: 2025-01-14
+updated: 2026-10-23
 ---
 
 # Morphing to Humans
+
+Human is now the default character. This guide is for converting existing clothing made for the retired Citizen model. For new clothing, start directly with the Human reference meshes in [First Time Setup](/assets/clothing/first-time-setup.md); skip the conversion steps below. The [female fit guidance](#female-human-version) also applies to new clothing.
 
 ## **Morphing your Clothing to Humans**
 
@@ -23,13 +25,15 @@ The example shown below is a quickly done morph of a clothing piece we've found 
 
 ## **Important Files & Setup**
 
-To start working on a human version of your clothing, like the original citizen, you'll need a REF.fbx file.
+To fit existing clothing to the Human body, you'll need its reference FBX file.
 
 Go to - `sbox\addons\citizen\Assets\models\citizen_human`
 
 And grab `citizen_human_male_REF.fbx`.
 
-![](./images/important-files-setup.png)This is what we use to work on our human versions of our clothing. Like the `citizen_REF.fbx`, it supplies the rig and skinning. 
+![](./images/important-files-setup.png)
+
+This reference supplies the Human mesh, rig, and skinning.
 
 
 ---
@@ -115,7 +119,7 @@ You're heavily morphing a model. Distorted, stretched textures and wobbly topolo
 ![](./images/here-you-can-see-the-stretched-human-model-has-some-distorti.png)
 
 
-Here you can see the stretched human model has some distortion in the textures compared to the original citizen version. This can be further adjusted and fixed. Though, we're not expecting miracles, this amount of morphing is going to produce distorted results.
+Here you can see the clothing fitted to the Human model has some distortion in the textures compared to the original mesh. This can be further adjusted and fixed. Though, we're not expecting miracles, this amount of morphing is going to produce distorted results.
 
 
 ---
@@ -142,13 +146,13 @@ Older clothing pieces naturally weren't made to be morphed to humans, so had lit
 
 ![](./images/final-checks-layering.png)
 
-Like with the original citizen clothing, we want to test that our clothing fits over and under the other clothing layers. Read the [Layering Clothing](/assets/clothing/layering-clothing.md) page for reference. 
+Test that your clothing fits over and under the other Human clothing layers. Read the [Layering Clothing](/assets/clothing/layering-clothing.md) page for reference.
 
 
 ## **LODs**
 
 
-LODs are still needed for the human versions of clothing. You can do this relatively quickly by 'Transferring Attributes' to the original Citizen clothing LODs using the same UVs. 
+Your converted clothing needs LODs. You may be able to reuse the original clothing's LODs by transferring vertex positions from the fitted mesh using the same UVs.
 
 
 Here is an example of 'Transferring Attributes' in Maya. Other software have different ways of doing this. 
@@ -157,9 +161,9 @@ Here is an example of 'Transferring Attributes' in Maya. Other software have dif
 
 
 :::info
-There are plugins in software like Blender that allow you to Transfer Attributes. Using the same UVs of LOD0 from LOD 1,2,3 previously made for the citizen to transfer the vertex positions.
+Tools in 3D software can transfer attributes using shared UVs. Use the fitted LOD0 as the source and the existing LOD1, LOD2, and LOD3 meshes as the targets, then check the results.
 
-Though worst case, you may need to redo the LODs for the human version as well as the citizen.
+If the transfer does not produce a good fit, rebuild the Human clothing LODs. You do not need to maintain the old Citizen version.
 
 :::
 
@@ -175,7 +179,7 @@ If you're making major changes to the topology to fit it better around the human
 
  
 
-We also have the `citizen_human_female_REF` which is used for creating female versions of clothing. Which can be found in `sbox\addons\citizen\Assets\models\citizen_human`. 
+Use `citizen_human_female_REF.fbx` to create a female fit. It can be found in `sbox\addons\citizen\Assets\models\citizen_human`.
 
 
 A **female version** of clothing is **not required** for every clothing piece. Female versions are expected for clothing like short sleeve shirts, shorts, clothing that shows a notable amount of the base body underneath. 

@@ -2,7 +2,7 @@
 title: "Publishing Clothing"
 icon: "📩"
 created: 2024-12-20
-updated: 2025-01-14
+updated: 2026-11-15
 ---
 
 # Publishing Clothing
@@ -18,19 +18,21 @@ First, you'll need a fully set up .Clothing file. This is where we store our VMD
 
 
 :::info
-Before anything, we want to make sure we have our correct files. We want our vmdl for our clothing set up, as well as the human version vmdl. Plus of course the vmat file(s). Which should be applied in the vmdl files.
+Before publishing, prepare the VMDL for your Human clothing and a female fit where needed. Apply the clothing's VMAT files in each VMDL.
 
 :::
 
 
 ![](./images/breakdown-2.gif)
 
-Right click in your folder - `New / Citizen / Clothing Definition` 
+Right click in your folder - `New / Avatar / Clothing Definition`.
 
 
 ![](./images/breakdown-5.gif)
 
-Add your Vmdls, original Citizen model goes in 'Model'. Standard male human version goes in `Human Alt Model` and your Female human variation goes in the `Human Alt Female Model`. 
+Assign your standard Human clothing VMDL to `Model`, and your female fit to `Female Model` where needed. If `Female Model` is empty, the standard model is used for both bodies.
+
+The recordings above show the older setup, where these fields were labelled `Human Alt Model` and `Human Alt Female Model`. The separate legacy Citizen model field is now hidden; no Citizen model is needed.
 
 ### 
 

@@ -2,7 +2,7 @@
 title: "First Time Setup"
 icon: "🔧"
 created: 2024-12-20
-updated: 2025-01-14
+updated: 2026-10-23
 ---
 
 # First Time Setup
@@ -27,42 +27,36 @@ Make sure to turn on *'Show Base Content'*. This will allow you to see important
 
 
 :::warning
-You will **never** need to add or adjust files within the core folders (e.g. the citizen addon folder). Only within your local project folder.
+Keep your changes in your local project folder. Do not edit the supplied files in the core asset folders.
 
 :::
 
 
 
 ---
-
-## Grabbing Citizen Files 🤏
-
-
-![Locating citizen asset files](./images/grab-files.mp4)
-
-Find useful files in `Steam\steamapps\common\sbox\addons\citizen\Assets\models\citizen`
-
-In that folder can use `citizen_REF.fbx`, which supplies you with the citizen mesh and simple rig. 
-
-
-![](./images/grabbing-citizen-files.png)
-
-
-:::info
-Moving forward, we will use `citizen_REF.fbx` to build our clothing around it.
-
-:::
-
-
----
-
 
 ## Grabbing Human Files 🧍
 
 
-We also have the `citizen_human_male_REF` and `citizen_human_female_REF`  which both have the same use-case, but for the human versions of your clothing. 
+The Human is the default character. Find its source files in `Steam\steamapps\common\sbox\addons\citizen\Assets\models\citizen_human`.
 
-These can be found in `sbox\addons\citizen\Assets\models\citizen_human`. 
+Use `citizen_human_male_REF.fbx` to build your clothing around the male body, and `citizen_human_female_REF.fbx` when making a female fit. These files supply the Human mesh, rig, and skinning.
+
+
+:::info
+The folder and reference filenames still contain `citizen`, but these are the Human assets. New clothing should be made for Humans from the start; no Citizen version is needed.
+
+:::
+
+
+---
+
+
+## Working with the Reference Meshes
+
+Work in centimeters to match the supplied references. Apply a **ScaleAndMirror** modifier with a scale of **0.3937** in your clothing VMDL, matching `human.vmdl`.
+
+See [Human Characters](/assets/ready-to-use-assets/citizen-characters.md) for the rig and model setup, and [Morphing to Humans](/assets/clothing/morphing-to-humans.md) if you are adapting an existing clothing item.
 
 
 ![](./images/grabbing-human-files.png)

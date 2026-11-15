@@ -2,7 +2,7 @@
 title: "Exporting Standalone"
 icon: "🧍"
 created: 2025-10-10
-updated: 2026-09-25
+updated: 2026-10-23
 ---
 
 # Exporting Standalone
@@ -42,9 +42,9 @@ We hope you'll find it beneficial to make your game available on s&box, but that
 
 ## Player Models and Clothing
 
-You must replace the default Citizen player models, including the sausage and human models, and Citizen clothing with your own assets before shipping a standalone game.
+You must replace the default Human player models and their clothing with your own assets before shipping a standalone game. This restriction also applies to the retired Citizen models and their clothing.
 
-You can use Citizen models and clothing as placeholders during development and while setting up your Steam store page. This does not permit shipping them in the standalone release.
+You can use these models and clothing as placeholders during development and while setting up your Steam store page. This does not permit shipping them in the standalone release.
 
 ## Export Wizard
 

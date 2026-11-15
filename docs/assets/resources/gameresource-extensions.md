@@ -2,7 +2,7 @@
 title: "GameResource Extensions"
 icon: "🔧"
 created: 2024-12-17
-updated: 2024-12-17
+updated: 2026-10-23
 ---
 
 # GameResource Extensions
@@ -29,6 +29,8 @@ public class ClothingExtension : ResourceExtension<Clothing, ClothingExtension>
 ```
 
 In `ResourceExtension<Clothing, ClothingExtension>`, `Clothing` is the resource you are extending.
+
+The `Citizen` category in this example controls where the asset appears in the editor. It does not select the player model; Human is the default player model.
 
 # Extending Assets with your ResourceExtension
 

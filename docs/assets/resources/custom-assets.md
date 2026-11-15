@@ -2,7 +2,7 @@
 title: "Custom Assets"
 icon: "🧊"
 created: 2024-12-17
-updated: 2026-01-16
+updated: 2026-11-15
 ---
 
 # Custom Assets
@@ -15,7 +15,7 @@ You can find plenty of examples of assets throughout s&box, here's a snippet fro
 
 ```csharp
 // Custom Asset named "Clothing Definition" with the extension ".clothing"
-[AssetType( Name = "Clothing Definition", Extension = "clothing", Category = "citizen" )]
+[AssetType( Name = "Clothing Definition", Extension = "clothing", Category = "Avatar" )]
 public partial class Clothing : GameResource
 {
 	public string Title { get; set; }
@@ -35,6 +35,8 @@ public partial class Clothing : GameResource
 	}
 }
 ```
+
+The `Avatar` category places Clothing Definition under `New / Avatar` in the asset browser.
 
 It is important to note:
 

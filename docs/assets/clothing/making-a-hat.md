@@ -2,14 +2,16 @@
 title: "Making a Hat"
 icon: "🎩"
 created: 2024-12-20
-updated: 2025-01-24
+updated: 2026-11-15
 ---
 
 # Making a Hat
 
 ## **Making Hats / Headwear**
 
-*A somewhat simple set-up compared to other clothing pieces, with less concern of layering with other clothing. This is a simple asset to rig and is easy to make a human version.* 
+*Hats are relatively simple to rig, with less concern about layering than other clothing pieces. Build them around the Human reference mesh from the start.*
+
+The recordings below show an older workflow that began with the retired Citizen model. Use the Human references from [First Time Setup](/assets/clothing/first-time-setup.md) throughout; a separate Citizen version is not needed.
 
 
 
@@ -104,14 +106,14 @@ The tricount for each LOD of the Headphones -
 ---
 
 
-## Human Version
+## Fitting the Human Head
 
 ![Human Version](./images/headphones_05.mp4)
 
-Making a Human version of a hat is relatively easy, compared to other assets. Most hats you'll only need to **scale** and **move it's position** to fit onto the human head.
+Check your hat's scale and position against the Human head. When adapting an existing hat, scaling and repositioning the mesh may be enough, but check the fit around the ears, hair, and face.
 
 
-The Human version when exported, will need it's own .vmdl file, so in this example I **duplicated** my `headphones.vmdl` file, then **renamed** to `headphones_human.vmdl` - I kept the same set-up as the original vmdl file but changed the mesh files to our human version we just exported.
+Export the fitted mesh and reference it in your clothing VMDL. For a new asset, this can simply be `headphones.vmdl`. The recording duplicates an older VMDL as `headphones_human.vmdl` to preserve its setup while replacing the mesh; you only need to maintain the Human asset.
 
 
-You can find more information about creating a human version of an asset on our [Morphing to Humans](/assets/clothing/morphing-to-humans.md) page.
+For help converting existing clothing, see [Morphing to Humans](/assets/clothing/morphing-to-humans.md). When publishing, assign your fitted VMDL to `Model` as described in [Publishing Clothing](/assets/clothing/publishing-clothing.md).

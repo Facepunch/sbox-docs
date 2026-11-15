@@ -2,7 +2,7 @@
 title: "Model Editor"
 icon: "📦"
 created: 2025-09-24
-updated: 2025-11-17
+updated: 2026-10-23
 ---
 
 # Model Editor
@@ -22,7 +22,7 @@ Instead of text commands, everything uses nodes. They can be nested.
 ![](./images/model-editor-2.png)
 
 
-We ship some of our own model sources so you can take a look at them, modify them, and see how everything works. For example, you can find citizen.vmdl at `sbox\addons\citizen\Assets\models\citizen\citizen.vmdl`.
+We ship some of our own model sources so you can take a look at them, modify them, and see how everything works. For example, you can find the default Human model at `sbox\addons\citizen\Assets\models\citizen_human\human.vmdl`.
 
 
 When downloading cloud assets from the editor, some of their authors may have chosen to include their source files; this is the case for our first-person weapons.
@@ -73,7 +73,7 @@ Use the *"Add Simple Animations"* feature. You can access this by clicking on th
 
 You need to create a character model, with its own animgraph that will respond properly to the inputs of the Animation Controller. This involves all steps of model creation, along with animating and creating the graph yourself.
 
-If you can't or don't want to do all this for your new character, you can work "on top of" the Citizen, or extend it, using the "Base Model" feature, or by "forking" the VMDL by reusing part of it (through referencing its prefabs, for example)
+You can also reuse parts of the [Human character](/assets/ready-to-use-assets/citizen-characters.md). Use the "Base Model" feature to add animations, or make your own VMDL that references its prefabs.
 
 
 ### How do I decompile a compiled model (VMDL_C)?
@@ -122,7 +122,7 @@ You can check the compiled hierarchy in the "Compiled Preview Outliner", under "
 
 Think of it as an equivalent of Source 1's `$includemodel` which was used by your "main" model to reference animation-only models.
 
-However, in s&box, it works the other way around! For example, if you want to extend the Citizen character with new animations, your new VMDL (e.g. "citizen_my_custom_version.vmdl") would be referencing "citizen.vmdl" as its "Base Model".
+However, in s&box, it works the other way around! For example, if you want to extend the Human character with new animations, your new VMDL (e.g. `human_my_custom_version.vmdl`) would reference `models/citizen_human/human.vmdl` as its "Base Model".
 
 
 :::warning

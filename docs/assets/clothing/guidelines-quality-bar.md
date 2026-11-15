@@ -2,10 +2,12 @@
 title: "Guidelines & Quality Bar"
 icon: "📖"
 created: 2024-12-20
-updated: 2026-09-03
+updated: 2026-11-15
 ---
 
 # Guidelines & Quality Bar
+
+Use the Human reference meshes and clothing when applying these guidelines. Some older illustrations show the retired Citizen model; their topology and layering examples are not a requirement to make a Citizen version.
 
 # Keeping to our Quality Bar
 
@@ -59,7 +61,7 @@ Example above shows the difference between **==bad==** and **==good==** topology
 
 
 :::tip
-If you're finding it difficult how your topology / density of your topology should look, following the topology of the citizen body wireframe.
+If you're unsure how dense your topology should be, use the Human reference body's wireframe as a guide.
 
 :::
 
@@ -294,7 +296,7 @@ Extremely basic shapes. At this point, the character is only a handful of pixels
 
 ### **LOD4:** optional, removing extra materials.
 
-When we use this level, we use the same mesh as LOD3, but with only one material, to further reduce draw calls. For example, the Citizen character's eyes are removed in LOD4. Depending on your design, you could proceed with this material reduction on LOD3 as well. 
+When we use this level, we use the same mesh as LOD3, but with only one material, to further reduce draw calls. Depending on your design, you could proceed with this material reduction on LOD3 as well.
 
 
 Here's an example with one of our hoodies.
@@ -310,7 +312,7 @@ Always keep in mind that your model will be seen from primarily a third person v
 :::
 
 
-You can check your LOD meshes in ModelDoc through the wireframe feature, or the 'quad overdraw' debug visualization. Here's an example of how this looks with the Citizen character:
+You can check your LOD meshes in ModelDoc through the wireframe feature, or the 'quad overdraw' debug visualization. The older recording below demonstrates these views using the retired Citizen model; check your own clothing on the Human model.
 
 
 ![ModelDoc](./images/sbox_modeldoc_lod.mp4)
@@ -349,33 +351,31 @@ If you're finding it difficult to estimate the size of your triangle counts, how
 
 ---
 
-## **Human Variations** 🧍
+## **Human Fit** 🧍
 
 ![](./images/human-variations-2.gif)
 
-On top of making your clothing asset, you will need to make a **human variation**, potentially a female human human variation as well.
-
-We understand this sounds like double the amount of time and energy.
-
-**While this is extra work, this is much easier than you'd expect.**
+Make your clothing for the Human model from the start. A separate Citizen version is not needed. Test the fit on both male and female bodies, and make a female fit where the same mesh does not work for both.
 
 
 ![](./images/human-variations-1.png)
 
 
-![](./images/human-variations.png)When you make your `.clothing` file that will feature your asset's `.vmdl` file. You'll need to plug in a separate VMDL in the *'Human Alt Model'* input.
+![](./images/human-variations.png)
+
+Assign your Human clothing VMDL to **Model** in the `.clothing` file. The illustrations show the older editor setup, where this field was labelled **Human Alt Model**.
 
 
-You also will need to add a **Human Alt Female Model**, but that is specific to shirts that show off skin. Coats, gloves, hats, shoes, will not need a female version.
+Assign a **Female Model** when the clothing needs a different fit, particularly when it includes exposed skin from the base body. Items that fit both bodies can use the same standard Human model.
 
 
 
 ![](./images/you-also-will-need-to-add-a-human-alt-female-model-but.png)
 
-This allows players to choose between the citizen or the human version of your clothing, giving them option, gives them **double the usage.** 
+Check that both fits work with the other Human clothing layers.
 
 
-We have supplied a **how-to guide** that runs through morphing clothing to human variation. Hopefully to dispel any worries, you'd be surprised how straightforward it is.
+If you are updating existing clothing made for the retired Citizen, the conversion guide covers reshaping the mesh and rebuilding its LODs. It also explains how to make a female fit.
 
 
 **Read through our** [**Morphing to Human Guide**](/assets/clothing/morphing-to-humans.md).

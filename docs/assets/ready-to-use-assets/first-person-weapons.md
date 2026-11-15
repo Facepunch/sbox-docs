@@ -2,7 +2,7 @@
 title: "First-Person Weapons"
 icon: "🔫"
 created: 2024-07-29
-updated: 2026-02-06
+updated: 2026-10-23
 ---
 
 # First-Person Weapons
@@ -38,9 +38,7 @@ You must bonemerge the arms ***→ onto →*** the weapons.
 
 :::
 
-We have two arms: the [human ones](https://sbox.game/facepunch/v_first_person_arms_human), and the [citizen ones](https://sbox.game/facepunch/v_first_person_arms_citizen).
-
-When using the citizen arms, you need to let our weapons know by using a special animgraph parameter. See more below.
+Use the [Human arms](https://sbox.game/facepunch/v_first_person_arms_human). Leave the weapon's `skeleton` animgraph parameter at `0`, the default for Human arms.
 
 :::tip
 The recommended *maximum* FOV for these is 80° (horizontal) at 16:9. I try to keep them looking OK in 4:3 and at higher FOVs, but this is not a guarantee.
@@ -109,7 +107,7 @@ As a reminder, **♻️ self-resetting parameters** set themselves immediately b
 | **Parameters** | **Type & values** | **Description** |
 |------------|---------------|-------------|
 | `camera_position_scale`<br>`camera_rotation_scale` | 🎚️ float, 0.0↔2.0 | Control the strength of camera animations. Setting the float above 1.0 makes them stronger (but only up to 2.0).  |
-| `skeleton` | 🗂️ enum  | Slightly adjusts animations based on which arms you're using. 0 = human (default), 1 = citizen.   |
+| `skeleton` | 🗂️ enum  | Leave at `0` for Human arms (the default). |
 
 
 

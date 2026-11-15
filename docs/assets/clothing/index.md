@@ -2,12 +2,12 @@
 title: "Clothing"
 icon: "🩲"
 created: 2025-01-14
-updated: 2025-06-15
+updated: 2026-10-23
 ---
 
 # Clothing
 
-Create, skin, and publish cosmetic clothing items for the Citizen character model.
+Create, skin, and publish cosmetic clothing items for the Human character model. Start with the Human reference meshes; you do not need to make a Citizen version.
 
 ## [First Time Setup](/assets/clothing/first-time-setup.md)
 
@@ -27,7 +27,7 @@ A step-by-step walkthrough of creating your first clothing item.
 
 ## [Morphing to Humans](/assets/clothing/morphing-to-humans.md)
 
-Adapt your clothing to the human variation of the Citizen.
+Convert existing clothing to fit the Human model, and make a female fit where needed. New clothing should be made for Humans from the start.
 
 ## [Publishing Clothing](/assets/clothing/publishing-clothing.md)
 

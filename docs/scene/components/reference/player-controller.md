@@ -2,7 +2,7 @@
 title: "Player Controller"
 icon: "🏃‍♀️"
 created: 2024-10-30
-updated: 2026-09-03
+updated: 2026-10-23
 ---
 
 # Player Controller
@@ -40,7 +40,7 @@ The camera feature is optional. Right click on the camera tab to disable it.
 
 ## Animator
 
-It has a built in animator. This will animate anything with a Citizen compatible AnimGraph.
+It has a built-in animator. This will animate models with an AnimGraph compatible with the Human character's animation parameters. The **Create Body Renderer** button uses the default Human model, `models/citizen_human/human.vmdl`.
 
 
 :::info
