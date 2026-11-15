@@ -1,6 +1,8 @@
 items:
 - name: Achievements
   href: achievements.md
+- name: AI
+  href: ai.md
 - name: Auth Tokens
   href: auth-tokens.md
 - name: Leaderboards
