@@ -3,5 +3,7 @@ items:
   href: advanced-topics/
 - name: Code Basics
   href: code-basics/
+- name: Scripting
+  href: scripting/
 - name: Libraries
   href: libraries.md
