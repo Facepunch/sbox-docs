@@ -2,7 +2,7 @@
 title: "Creating Mounts"
 icon: "🛠️"
 created: 2026-04-19
-updated: 2026-11-13
+updated: 2026-11-15
 ---
 
 # Creating Mounts
@@ -23,32 +23,49 @@ The mounts included in s&box live in the [sbox-mounts](https://github.com/Facepu
 Extend `BaseGameMount` and implement the required properties and methods:
 
 ```csharp
+using System.IO;
+using System.Threading.Tasks;
+using Sandbox.Mounting;
+
+/// <summary>
+/// Registers loose model files from a game's installation.
+/// </summary>
 public class MyGameMount : BaseGameMount
 {
+	/// <summary>
+	/// Unique identifier used in mount paths.
+	/// </summary>
 	public override string Ident => "rust";
+
+	/// <summary>
+	/// Display name shown in the editor.
+	/// </summary>
 	public override string Title => "Rust";
 
 	/// <summary>
-	/// Read-only filesystem of the game's install folder
+	/// Absolute path to the game's install folder.
 	/// </summary>
-	public BaseFileSystem FileSystem { get; private set; }
+	public string InstallDirectory { get; private set; }
 
 	protected override void Initialize( InitializeContext context )
 	{
 		// Check if the game is installed via Steam
 		if ( !context.IsAppInstalled( 252490 ) )
+		{
 			return;
+		}
 
-		FileSystem = context.GetFileSystem( 252490 );
-		IsInstalled = true;
+		InstallDirectory = context.GetAppDirectory( 252490 );
+		IsInstalled = Directory.Exists( InstallDirectory );
 	}
 
 	protected override Task Mount( MountContext context )
 	{
 		// Scan game files and register each resource
-		foreach ( var path in FileSystem.FindFile( "/", "*.mymodel", recursive: true ) )
+		foreach ( var fullPath in Directory.EnumerateFiles( InstallDirectory, "*.mymodel", SearchOption.AllDirectories ) )
 		{
-			context.Add( ResourceType.Model, path, new MyModelLoader( this, path ) );
+			var path = Path.GetRelativePath( InstallDirectory, fullPath ).Replace( '\\', '/' );
+			context.Add( ResourceType.Model, path, new MyModelLoader( path ) );
 		}
 
 		IsMounted = true;
@@ -57,13 +74,15 @@ public class MyGameMount : BaseGameMount
 }
 ```
 
+This example uses Rust's Steam app ID for installation detection; `.mymodel` and the loader below are placeholders for the format you implement.
+
 ### Ident and Title
 
 `Ident` is a unique lowercase identifier for your mount (e.g. `"quake"`, `"hl1"`). It's used in `mount://` paths and project config. `Title` is the display name shown in the editor.
 
 ### Initialize
 
-Called at startup to detect whether the game is installed. Use `context.IsAppInstalled(appId)` to check Steam, and `context.GetFileSystem(appId)` to get a read-only filesystem of the game's install directory. Set `IsInstalled = true` if the game is found.
+Called at startup to detect whether the game is installed. Use `context.IsAppInstalled(appId)` to check Steam, and `context.GetAppDirectory(appId)` to get its install directory. This returns a directory path, or `null` if it is unavailable. Use `System.IO` to read loose files, or the game's archive reader for packed assets. Set `IsInstalled = true` after confirming the directory exists.
 
 ### Mount
 
@@ -74,25 +93,32 @@ Called when the user enables the mount. Scan the game's files and register each 
 Each resource type needs a `ResourceLoader` that converts the game's native format into something s&box understands. Resources are loaded lazily - `Load()` is only called when the asset is actually used.
 
 ```csharp
+/// <summary>
+/// Reads and converts one model file from the mounted game.
+/// </summary>
 public class MyModelLoader : ResourceLoader<MyGameMount>
 {
-    private string FilePath;
+    private readonly string filePath;
 
-    public MyModelLoader( MyGameMount host, string path )
+    /// <summary>
+    /// Stores a file path relative to the game's install directory.
+    /// </summary>
+    public MyModelLoader( string path )
     {
-        FilePath = path;
+        filePath = path;
     }
 
     protected override object Load()
     {
         // Read the file and convert it to an S&box model
-        var data = Host.FileSystem.ReadAllBytes( FilePath );
+        var fullPath = System.IO.Path.Combine( Host.InstallDirectory, filePath );
+        var data = System.IO.File.ReadAllBytes( fullPath );
         return ConvertToModel( data );
     }
 }
 ```
 
-Use the generic `ResourceLoader<T>` to get typed access to your mount instance via the `Host` property.
+Use the generic `ResourceLoader<T>` to get typed access to your mount instance via the `Host` property. Registering the loader with `context.Add()` assigns its host. Implement `ConvertToModel` for your game's format; it is a placeholder in this example.
 
 ### Async Loading
 
@@ -101,7 +127,8 @@ For resources that take time to load, override `LoadAsync` instead:
 ```csharp
 protected override async Task<object> LoadAsync()
 {
-    var data = await Host.FileSystem.ReadAllBytesAsync( FilePath );
+    var fullPath = System.IO.Path.Combine( Host.InstallDirectory, filePath );
+    var data = await System.IO.File.ReadAllBytesAsync( fullPath );
     return ConvertToModel( data );
 }
 ```
@@ -124,7 +151,7 @@ Register resources using the `ResourceType` enum:
 You can set flags on resources to control their behavior:
 
 ```csharp
-var loader = new MyModelLoader( this, file );
+var loader = new MyModelLoader( file );
 loader.Flags = ResourceFlags.DeveloperOnly; // Only visible in asset browser, not in-game
 ```
 

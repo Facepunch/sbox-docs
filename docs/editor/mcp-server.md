@@ -2,35 +2,35 @@
 title: "MCP Server"
 icon: "🤖"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-11-15
 ---
 
 # MCP Server
 
 The editor can run a [Model Context Protocol](https://modelcontextprotocol.io/) server. This lets AI agents like Claude Code see and drive the project you have open. An agent can read your scene, create and edit game objects, search assets, enter play mode, read the console, take screenshots, and anything else you expose as a tool.
 
-It's on by default. The server only accepts connections from your own machine (`http://127.0.0.1:7269/mcp`).
+It's on by default. Each editor exposes a local named pipe restricted to your operating system user. The `sbox-cli` command bridges this to MCP clients over stdin/stdout; there is no HTTP port to configure.
 
 # Connecting an agent
 
-Open **Editor → Preferences → MCP Server**. You can turn the server on and off, change the port, and see if it's running.
+Open your project in the editor and make sure **Project Settings → AI → Enable MCP Communication** is enabled. The `sbox-cli.exe` executable is in `bin/managed` inside your s&box installation.
 
 ## Claude Code
 
-Click **Copy Claude Code Command** and run it in your project folder:
+Run this in your project folder, replacing `<engine>` with your s&box installation path:
 
 ```
-claude mcp add --transport http sbox http://127.0.0.1:7269/mcp
+claude mcp add sbox -- "<engine>/bin/managed/sbox-cli.exe" --connect
 ```
 
-Now start Claude Code. It can drive whatever project the editor has open.
+Now start Claude Code from that project folder. The CLI connects to the editor for that project; `--connect` requires it to already be running. Closing the client leaves the editor open. Restart the client's MCP connection after restarting the editor.
 
 ## Any other client
 
-Any MCP client works (Cursor, Cline, your own). Point it at the URL from the preferences page (**Copy Url**):
+Configure a stdio MCP server with the full path to `sbox-cli.exe` as its command and `--connect` as its argument. Set its working directory to your project folder, or pass the project's absolute path explicitly:
 
 ```
-http://127.0.0.1:7269/mcp
+"<engine>/bin/managed/sbox-cli.exe" --connect "C:/projects/my-game"
 ```
 
 ## How agents find your tools
