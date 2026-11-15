@@ -2,7 +2,7 @@
 title: "Controller Input"
 icon: "🎮"
 created: 2025-02-25
-updated: 2026-09-03
+updated: 2026-11-15
 ---
 
 # Controller Input
@@ -64,17 +64,17 @@ Angles gyroscope = motionData.Gyroscope; // Gyroscope
 
 You can see how many Controllers are currently connected using `Input.ControllerCount`
 
-With that count you could create a Player GameObject for each index, and then query their Inputs as normal
+With that count you could create a Player GameObject for each controller, and then query their inputs in a player scope. `Input.PlayerIndex.KeyboardAndMouse` is index 0; controllers start at `Input.PlayerIndex.Controller1` (index 1).
 
 ```csharp
-int playerIndex = 0; // The index of the controller this player is using
+var playerIndex = Input.PlayerIndex.Controller1;
 
-using( Input.PlayerScope( playerIndex ) )
+using ( Input.PlayerScope( playerIndex ) )
 {
-  // Any input handling within this code block will only query Controller index 0
-  if( Input.Pressed( "Jump" ) )
+  // Input handling within this block only queries the first controller.
+  if ( Input.Pressed( "Jump" ) )
   {
-    // Make Player 1 jump (or whichever index)
+    // Make this controller's player jump.
   }
 }
 ```

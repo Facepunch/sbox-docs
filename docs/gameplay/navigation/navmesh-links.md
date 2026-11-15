@@ -2,7 +2,7 @@
 title: "NavMesh Links"
 icon: "🔗"
 created: 2025-03-03
-updated: 2026-09-03
+updated: 2026-11-15
 ---
 
 # NavMesh Links
@@ -118,50 +118,60 @@ In this example we crate a custom link component that overrides `OnLinkEntered`.
 Note, how we manually update the Agents position every frame using `Agent.SetAgentPosition()`.
 
 ```csharp
+/// <summary>
+/// Moves agents across this link along a parabolic arc.
+/// </summary>
 public sealed class JumpLink : NavMeshLink
 {
+    /// <summary>
+    /// Starts custom traversal when an agent enters the link.
+    /// </summary>
     protected override void OnLinkEntered( NavMeshAgent agent )
     {
-    	ParabolicJump( agent );
+        ParabolicJump( agent );
     }
-    
+
+    /// <summary>
+    /// Moves the agent along the arc, then resumes normal navigation.
+    /// </summary>
     private async void ParabolicJump( NavMeshAgent agent )
     {
-      	var start = agent.CurrentLinkTraversal.Value.AgentInitialPosition;
-      	var end = agent.CurrentLinkTraversal.Value.LinkExitPosition;
-      
-      	// Calculate peak height for the parabolic arc
-      	var heightDifference = end.z - start.z;
-      	var peakHeight = MathF.Abs( heightDifference ) + 25f;
-      
-      	var mid = (start + end) / 2f;
-      
-      	// Estimate prabolic duration size using a triangle /\ between start, mid, end 
-      	var startToMid = mid.WithZ( peakHeight ) - start;
-      	var midToEnd = end - mid.WithZ( peakHeight );
-      	var duration = ( startToMid + midToEnd ).Length / agent.MaxSpeed;
-      	duration = MathF.Max( 0.75f, duration ); // Ensure minimum duration
-      
-      	TimeSince timeSinceStart = 0;
-      
-      	while ( timeSinceStart < duration )
-      	{
-      		var t = timeSinceStart / duration;
-      
-      		// Linearly interpolate XY positions
-      		var newPosition = Vector3.Lerp( start, end, t );
-      
-      		// Apply parabolic curve to Z position using a quadratic function
-      		var yOffset = 4f * peakHeight * t * (1f - t);
-      		newPosition.z = MathX.Lerp( start.z, end.z, t ) + yOffset;
-      
-      		agent.SetAgentPosition( newPosition );
-      
-      		await Task.Frame();
-      	}
-      
-      	agent.SetAgentPosition( end );
-      	agent.CompleteLinkTraversal();
+        var start = agent.CurrentLinkTraversal.Value.AgentInitialPosition;
+        var end = agent.CurrentLinkTraversal.Value.LinkExitPosition;
+
+        // Calculate peak height for the parabolic arc
+        var heightDifference = end.z - start.z;
+        var peakHeight = MathF.Abs( heightDifference ) + 25f;
+
+        var mid = (start + end) / 2f;
+
+        // Estimate the arc length through its raised midpoint.
+        var raisedMid = mid.WithZ( mid.z + peakHeight );
+        var startToMid = raisedMid - start;
+        var midToEnd = end - raisedMid;
+        var duration = (startToMid.Length + midToEnd.Length) / agent.MaxSpeed;
+        duration = MathF.Max( 0.75f, duration ); // Ensure minimum duration
+
+        TimeSince timeSinceStart = 0;
+
+        while ( timeSinceStart < duration )
+        {
+            var t = timeSinceStart / duration;
+
+            // Linearly interpolate XY positions
+            var newPosition = Vector3.Lerp( start, end, t );
+
+            // Apply parabolic curve to Z position using a quadratic function
+            var yOffset = 4f * peakHeight * t * (1f - t);
+            newPosition.z = MathX.Lerp( start.z, end.z, t ) + yOffset;
+
+            agent.SetAgentPosition( newPosition );
+
+            await Task.Frame();
+        }
+
+        agent.SetAgentPosition( end );
+        agent.CompleteLinkTraversal();
     }
 }
 ```

@@ -2,7 +2,7 @@
 title: "Razor Components"
 icon: "📝"
 created: 2024-09-24
-updated: 2025-08-29
+updated: 2026-11-15
 ---
 
 # Razor Components
@@ -74,7 +74,7 @@ All Panels have a render fragment called ChildContent, so you can add elements i
 @using Sandbox;
 
 <root>
-    @foreach ( var player in PlayerList )
+    @foreach ( var player in Players )
     {
         <div class="row">
             @PlayerRow( player )
@@ -84,7 +84,14 @@ All Panels have a render fragment called ChildContent, so you can add elements i
 
 @code
 {
-    public List<Player> PlayerList { get; set; }
+    /// <summary>
+    /// Players to display in the list.
+    /// </summary>
+    public List<Player> Players { get; set; }
+
+    /// <summary>
+    /// Content to render for each player.
+    /// </summary>
     public RenderFragment<Player> PlayerRow { get; set; }
 }
 ```
@@ -97,7 +104,7 @@ Now to use it we do this:
 @using Sandbox;
 
 <root>
-    <PlayerList PlayerList=@MyPlayerList>
+    <PlayerList Players=@MyPlayerList>
         <PlayerRow Context="item">
             @if (item is not Player player)
                 return;

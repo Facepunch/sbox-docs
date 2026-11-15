@@ -2,7 +2,7 @@
 title: "Math Types"
 icon: "📐"
 created: 2025-06-16
-updated: 2025-06-16
+updated: 2026-11-15
 ---
 
 # Math Types
@@ -81,8 +81,8 @@ Vector3 right = rot.Right;
 Rotation look = Rotation.LookAt(new Vector3(1, 0, 0), Vector3.Up);
 
 // Create basic axis rotations
-Rotation ry = Rotation.FromYaw(90);    // turn right 90°
-Rotation rx = Rotation.FromPitch(45);  // look up 45°
+Rotation ry = Rotation.FromYaw(90);    // turn left 90°
+Rotation rx = Rotation.FromPitch(45);  // look down 45°
 Rotation combined = ry * rx;           // do both
 
 // Smoothly rotate between two rotations
