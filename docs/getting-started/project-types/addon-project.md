@@ -2,7 +2,7 @@
 title: "Addon Project"
 icon: "🧩"
 created: 2024-10-03
-updated: 2026-08-20
+updated: 2026-11-18
 ---
 
 # Addon Project
@@ -18,11 +18,12 @@ Other common uses:
 - A model for a game that loads models from addons
 - A material pack for an existing game
 - A custom resource the game defines, like a card or a recipe
+- A scripted tool or entity for a game that loads scripts from addons
 
 
 
 :::info
-You can't make addon projects that contain code yet - but you can use actiongraph
+Addon projects can't contain compiled C# code, but they can contain [script files](/code/scripting/script-files.md) (`.csx`) and [ActionGraph](/actiongraph/index.md). A script file can define components, so an addon can add its own behaviour to the target game.
 
 :::
 
