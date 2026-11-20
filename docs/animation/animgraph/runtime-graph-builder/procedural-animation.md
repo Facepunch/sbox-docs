@@ -1,7 +1,7 @@
 ---
 title: "Procedural Animation"
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-20
 ---
 
 # Procedural Animation
@@ -12,15 +12,17 @@ All examples below use one builder with its controls already declared. Bone name
 
 ## Reach a target with two-bone IK
 
-Declare a Target parameter such as `hand_target` before adding pose nodes. Then:
+Declare `hand_target` and `elbow_pole` as Target parameters before adding pose nodes. Use the hand target to place the hand and the pole to steer the elbow:
 
 ```csharp
 var result = builder.TwoBoneIK(
     movement,
     "hand_R",
-    handTarget,
+    builder.TargetParameter( "hand_target" ),
     new GraphBuilder.TwoBoneIKSettings
     {
+        PoleTarget = builder.TargetParameter( "elbow_pole" ),
+        SwivelMode = GraphBuilder.IKSwivelMode.PoleTarget,
         WorldSpace = true,
         BlendTime = 0.2f
     }
@@ -29,7 +31,13 @@ var result = builder.TwoBoneIK(
 
 `"hand_R"` must be an actual effector bone in your skeleton. The solver rotates its two parents, such as elbow and shoulder, to reach the target and aligns the effector to the target rotation.
 
-The target is a **Target node**, not a Vector. Supply a target transform through the AG2 parameter API, not legacy `SetIk`.
+With `WorldSpace = true`, pass both positions in world space. For example, given a world-space `Vector3 elbowPolePosition`, update the pole from gameplay with:
+
+```csharp
+Renderer.Animation.Parameters.Set( "elbow_pole", new Transform( elbowPolePosition, Rotation.Identity ) );
+```
+
+Only the pole's position is used. With `WorldSpace = false`, supply transforms in character space. To drive the pole from an animated helper bone instead, set `PoleTarget = builder.BoneTarget( "elbow_hint_R" )` using a bone from your skeleton. Bone targets resolve from the incoming pose in either space.
 
 | `TwoBoneIKSettings` | Purpose |
 |---|---|
@@ -38,7 +46,10 @@ The target is a **Target node**, not a Vector. Supply a target transform through
 | `BlendTime` | Blend-in/out time; default `0.2` seconds |
 | `WorldSpace` | Target coordinate space; default `true` |
 | `BlendMode` | `Effector` (default) or `Pose` |
-| `ChainRotationWeight` | Contribution of chain rotation adjustment |
+| `ChainRotationWeight` | Reference-pose twist influence in Parent mode |
+| `SwivelMode` | `Parent` (default), `EffectorTarget`, or `PoleTarget`. See [swivel modes](../node-reference.md#steer-an-elbow-or-knee-with-a-pole-target). |
+| `PoleTarget` | Optional Target node that steers the middle joint in PoleTarget mode |
+| `SwivelOffset` | Additional rotation around the root-to-effector axis in degrees (default `0`) |
 
 `IKBlendMode.Effector` blends the effector target before solving. `Pose` blends the pre-IK and solved poses and is more expensive.
 
@@ -52,12 +63,15 @@ var result = builder.FootIK( movement, "foot_L", "foot_R",
     {
         LeftTarget = leftTarget,
         RightTarget = rightTarget,
+        SwivelMode = GraphBuilder.IKSwivelMode.PoleTarget,
+        LeftPoleTarget = builder.BoneTarget( "knee_hint_L" ),
+        RightPoleTarget = builder.BoneTarget( "knee_hint_R" ),
         WorldSpace = true,
         BlendTime = 0.15f
     } );
 ```
 
-Use your skeleton's foot names. Supply at least one of `LeftTarget` and `RightTarget`; a single supplied target solves only that foot.
+Replace the foot and knee helper names with bones from your skeleton. The two legs share `SwivelMode` and `SwivelOffset`, but each pole is optional. Supply at least one of `LeftTarget` and `RightTarget`; a single supplied target solves only that foot.
 
 `FootIKSettings` also provides `Enabled` and `BlendMode`. Its defaults differ from two-bone IK: `WorldSpace = false` and `BlendTime = 0`. Set them explicitly to avoid mixing world targets with character-space interpretation.
 

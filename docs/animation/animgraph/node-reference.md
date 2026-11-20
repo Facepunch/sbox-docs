@@ -1,7 +1,7 @@
 ---
 title: "Node Reference"
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 # Node Reference
@@ -191,7 +191,25 @@ See [Layers and Masks](/animation/animgraph/layers-and-masks.md).
 | Two Bone IK | Rotates an effector's two parents to reach a Target, such as positioning a hand. |
 | Foot IK | Applies two-bone IK to one or both feet using supplied targets. Does not perform ground traces for you. |
 
-See [Procedural Animation](/animation/animgraph/runtime-graph-builder/procedural-animation.md) for target spaces, chain setup, and examples.
+### Steer an elbow or knee with a pole target
+
+The effector target places the hand or foot. The pole target tells the elbow or knee which way to bend. For example, you can keep a hand on a handle and move its elbow out to the side.
+
+1. On **Two Bone IK**, connect the hand target to **Effector Target** and set **Swivel Mode** to **Pole Target**.
+2. Connect a **Bone Target** for an elbow helper bone to **Pole Target**, or connect a **Target Parameter** driven by gameplay.
+3. Place the pole to the side of the line from the shoulder to the hand. Move it around that line to steer the elbow. A pole directly on the line gives the solver no bend direction.
+
+On **Foot IK**, connect **Left Pole Target** or **Right Pole Target** to steer the corresponding knee. Each leg still needs its own foot target to run IK.
+
+| Swivel Mode | How the bend is chosen |
+|---|---|
+| Parent (default) | Follows the bend in the incoming pose. |
+| Effector Target | Uses the reference-pose bend relative to the effector target's rotation. Use this to keep a knee facing with a planted foot as the hips turn. |
+| Pole Target | Bends toward the pole's position. Its rotation is ignored. An unset or unresolved pole falls back to Parent for that limb. |
+
+**Swivel Offset** adds a rotation in degrees around the shoulder-to-hand or hip-to-foot axis in any mode. It defaults to zero. Foot IK applies the same offset to both legs.
+
+See [Procedural Animation](runtime-graph-builder/procedural-animation.md#reach-a-target-with-two-bone-ik) for target spaces and C# examples.
 
 ## Root motion
 
