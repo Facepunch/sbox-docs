@@ -81,7 +81,7 @@ Pass `action` itself to `AddLayer`, **not `action.Build()`**. The `StateMachineB
 
 A state-machine layer keeps evaluating while its weight is zero, so it can leave Off and finish transitions. Treating the same machine as an ordinary layer can prevent that behavior.
 
-Off contributes no action pose. It does not play an idle over the torso. The base movement continues underneath, and the wave keeps its own timing. Clear the request as described in [State Machines](/animation/animgraph/runtime-graph-builder/state-machines.md).
+Off contributes no action pose. It does not play an idle over the torso. The base movement continues underneath, and the wave keeps its own timing. Pulse the request from gameplay with `Trigger`. [State Machines](/animation/animgraph/runtime-graph-builder/state-machines.md#trigger-the-wave-from-gameplay)
 
 ## Layer settings
 

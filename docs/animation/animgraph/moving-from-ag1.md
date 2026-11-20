@@ -20,7 +20,7 @@ Start with one character and one working behavior. Keep the old setup available 
 | `Sandbox.AnimationGraph` / renderer `AnimationGraph` | `Sandbox.Animation.Graph` / renderer `Animation.Graph` |
 | Renderer `Set(...)` or `Parameters.Set(...)` | `Animation.Parameters.Set(...)` |
 | `SceneModel.SetAnimParameter(...)` | `SceneModel.Animation.Parameters.Set(...)` |
-| Auto-reset action/gesture parameters | Explicitly clear action bools after an animation update |
+| Auto-reset action/gesture parameters | `Animation.Parameters.Trigger( name )` on a Bool input |
 | Direct Playback node and API | An authored action state, or an External Graph slot for runtime-selected behavior |
 
 **Assigning an `.ag` does not redirect old API calls to it.** Legacy setters still target AG1.
@@ -56,6 +56,16 @@ Renderer.Animation.Parameters.Set( "holdtype", "rifle" );
 ```
 
 Audit the components writing parameters too. **CitizenAnimationHelper still uses the legacy API.** The standard PlayerController has an AG2 path, but a custom driver needs updating explicitly.
+
+## Migrate a jump trigger
+
+For a custom jump driver, declare a Bool named `b_jump` with a default of `false` in the AG2 graph. Use it as the condition on the transition into the jump state. Replace the legacy `Renderer.Set( "b_jump", true )` call with:
+
+```csharp
+Renderer.Animation.Parameters.Trigger( "b_jump" );
+```
+
+Call it when the jump starts. The runtime exposes the pulse for one graph evaluation and handles clearing it. When you use the standard `PlayerController`, it already supplies the request to graphs that declare `b_jump`. [One-shot requests](/animation/animgraph/parameters-and-code.md#one-shot-requests)
 
 ## Rebuild behavior, not the old wiring
 
@@ -106,7 +116,7 @@ External graphs do not inherit matching parent control-parameter values. Keep th
 
 **External Pose is not Direct Playback.** It is for externally computed poses, not selecting an animation clip.
 
-You do not need to author a separate `.ag` for every runtime-selected clip. The [external-graph guide](/animation/animgraph/external-graphs.md) includes a complete clip player that builds a child graph in C#, checks evaluated playback completion, and disconnects it. The [runtime state-machine guide](/animation/animgraph/runtime-graph-builder/state-machines.md) also shows an explicit one-shot bool driver.
+You do not need to author a separate `.ag` for every runtime-selected clip. The [external-graph guide](/animation/animgraph/external-graphs.md) includes a complete clip player that builds a child graph in C#, checks evaluated playback completion, and disconnects it.
 
 ## Check the differences that are easy to miss
 

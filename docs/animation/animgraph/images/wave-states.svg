@@ -27,6 +27,6 @@
       <text x="420" y="203" fill="#d4e9ff" font-size="16">State Completed</text>
       <text x="420" y="225" fill="#aabbd0" font-size="13">0.2-second blend</text>
     </g>
-    <text x="28" y="266" fill="#aabbd0" font-size="13">Clear b_wave after the request is seen, so returning to Idle does not start another wave.</text>
+    <text x="28" y="266" fill="#aabbd0" font-size="13">From gameplay, Trigger( "b_wave" ) pulses the Bool for one graph evaluation.</text>
   </g>
 </svg>

@@ -59,7 +59,7 @@ By default, State Completed becomes true early enough for the transition to **fi
 
 In the preview, turn `b_wave` on to enter Wave, then turn it off while the wave plays. The character should finish the animation and blend back to Idle.
 
-If you leave `b_wave` true, the character can enter Wave again after returning. **AG2 bools do not automatically reset.** In game code, treat an action request as a pulse: keep it true for an animation update, then clear it on the next one. Setting it true and false before the graph evaluates may hide the request entirely.
+From gameplay, call `Renderer.Animation.Parameters.Trigger( "b_wave" )` to pulse the same Bool for one evaluation. Keep its regular value at `false` so returning to Idle leaves the character waiting for another request. [One-shot requests](/animation/animgraph/parameters-and-code.md#one-shot-requests)
 
 This simple graph accepts wave requests only while in Idle. It does not queue requests or restart a wave already in progress.
 

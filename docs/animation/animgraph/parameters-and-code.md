@@ -73,11 +73,21 @@ Do not use persisted parameter writes as a substitute for runtime movement updat
 
 ## One-shot requests
 
-An action bool such as `b_wave` stays at its last value until you change it. Keep it true for an animation update, then clear it on the next one.
+Declare a Bool control parameter with a default of `false` and connect it to a transition condition. When gameplay requests the action, pulse that Bool by name.
 
-Do not set it true and immediately false in the same method: the graph may never see the true value. Also decide what should happen if another request arrives during the action; the [basic wave graph](/animation/animgraph/states-and-transitions.md) ignores requests while already waving.
+```csharp
+Renderer.Animation.Parameters.Trigger( "b_wave" );
+```
 
-The [runtime state-machine guide](/animation/animgraph/runtime-graph-builder/state-machines.md) includes a wave graph and a C# request driver. For runtime-selected clips without a request bool, use the [external clip player](/animation/animgraph/external-graphs.md).
+`Trigger` makes the Bool read as `true` for the next live graph evaluation, then restores its regular value. A skipped evaluation leaves the pulse pending. Multiple calls for the same Bool before evaluation count as one pulse. Use `Set` for values that need to stay set, such as `b_grounded`.
+
+Use `TryTrigger` for optional inputs. It returns `false` when there is no running AG2 graph or the named parameter is missing or has a different type. `Trigger` throws in those cases.
+
+The state machine decides how to respond to a pulse. The wave example only accepts the request from Idle. If the graph evaluates the pulse while already waving, the pulse expires and the current wave continues. [States and Transitions](/animation/animgraph/states-and-transitions.md)
+
+Pending pulses belong to the current graph instance. `Reset()` clears all pending pulses, and `Clear( name )` clears the pulse for that parameter. Ending recording playback or replacing the graph instance also clears pending pulses.
+
+For a wave graph built in C#, see [State Machines](/animation/animgraph/runtime-graph-builder/state-machines.md). For clips chosen at runtime, see the [external clip player](/animation/animgraph/external-graphs.md#play-a-runtime-selected-one-shot).
 
 ## Build a graph in C#
 

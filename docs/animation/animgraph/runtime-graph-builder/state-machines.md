@@ -52,11 +52,9 @@ The first added state is the default: idle. Setting `b_wave` true starts the tra
 
 `Completed( wave )` instead uses a zero lead time: it waits until completion before starting the return blend. The builder does not automatically copy the transition duration into this condition.
 
-## Clear the request in game code
+## Trigger the wave from gameplay
 
-**The graph does not reset `b_wave`.** If it stays true, the action can start again when idle is reached.
-
-For a normally updating renderer, this small driver turns calls to `Wave()` into one-update pulses:
+Assign a renderer running the wave graph and call `Wave()` when gameplay requests the action.
 
 ```csharp
 using Sandbox;
@@ -65,32 +63,14 @@ public sealed class WaveRequestExample : Component
 {
     [Property] public SkinnedModelRenderer Renderer { get; set; }
 
-    private bool pending;
-
     public void Wave()
     {
-        pending = true;
-    }
-
-    protected override void OnUpdate()
-    {
-        Renderer.Animation.Parameters.Set( "b_wave", pending );
-        pending = false;
-    }
-
-    protected override void OnDisabled()
-    {
-        pending = false;
-
-        if ( Renderer.IsValid() && Renderer.Animation.IsValid )
-            Renderer.Animation.Parameters.Set( "b_wave", false );
+        Renderer.Animation.Parameters.Trigger( "b_wave" );
     }
 }
 ```
 
-Assign a renderer running the wave graph. Call `Wave()` from gameplay; the following update clears the input unless another request arrives. Setting true and false back-to-back in the same method would not give the graph an opportunity to observe true.
-
-This simple driver assumes the graph evaluates between component updates. If your game suspends or throttles animation evaluation, retain requests until an animation evaluation can consume them rather than discarding them on a wall-clock timer.
+The controller applies the pulse on the next graph evaluation, even if animation updates are throttled. [One-shot requests](/animation/animgraph/parameters-and-code.md#one-shot-requests)
 
 This graph does not queue or restart a wave while already waving. Decide those rules explicitly for your game. For runtime-selected one-shots without a bool request, use the [external clip player](/animation/animgraph/external-graphs.md).
 
