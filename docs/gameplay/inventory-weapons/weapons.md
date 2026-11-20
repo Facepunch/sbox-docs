@@ -7,7 +7,7 @@ updated: 2026-11-20
 
 # Weapons
 
-`BaseCombatWeapon` is the base for anything a player holds and uses. Guns work straight out of the box, and it stretches to melee weapons and tools with a small subclass. [NPCs](../npcs/combat.md) can use the same weapons.
+`BaseCombatWeapon` is the base for anything a player holds and uses. Guns work straight out of the box, and it stretches to melee weapons and tools with a small subclass. [NPCs](/gameplay/npcs/combat.md) can use the same weapons.
 
 ## Setting up a gun
 

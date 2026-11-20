@@ -19,4 +19,4 @@ Mounts are toggled in the **Asset Browser** or used in the **Sandbox Spawn Menu*
 
 ## NPCs and Weapons
 
-Mounts can also provide [NPC and weapon prefabs](npcs-weapons.md). Load them by their `mount://` paths and use them in your own game.
+Mounts can also provide [NPC and weapon prefabs](/game-mounts/npcs-weapons.md). Load them by their `mount://` paths and use them in your own game.

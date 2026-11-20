@@ -24,8 +24,8 @@ npc?.NetworkSpawn();
 
 ## Using them in your game
 
-How you interact with a prefab depends on its components. Those built on `BaseNpc` and `BaseCombatWeapon` use the engine's [NPC](../gameplay/npcs/index.md) and [weapon](../gameplay/inventory-weapons/weapons.md) APIs. NPCs using `NavigationLayer` need a NavMesh in your scene.
+How you interact with a prefab depends on its components. Those built on `BaseNpc` and `BaseCombatWeapon` use the engine's [NPC](/gameplay/npcs/index.md) and [weapon](/gameplay/inventory-weapons/weapons.md) APIs. NPCs using `NavigationLayer` need a NavMesh in your scene.
 
 ## Creating your own
 
-See [Creating Mounts](creating-mounts.md#npc-and-weapon-prefabs) for registering prefabs. The [Source mounts](https://github.com/Facepunch/sbox-mounts/tree/main/SourceEngine) are an example implementation.
+See [Creating Mounts](/game-mounts/creating-mounts.md#npc-and-weapon-prefabs) for registering prefabs. The [Source mounts](https://github.com/Facepunch/sbox-mounts/tree/main/SourceEngine) are an example implementation.

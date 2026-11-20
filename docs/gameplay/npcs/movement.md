@@ -11,9 +11,9 @@ Movement layers decide how an NPC gets somewhere. Schedules use `Npc.Movement`, 
 
 # Walking
 
-Add a `NavigationLayer` and `NavMeshAgent`, then enable the scene's [NavMesh](../navigation/index.md). Configure walking and running speeds on the layer. It uses the agent for paths and avoidance, and handles [navigation links](../navigation/navmesh-links.md).
+Add a `NavigationLayer` and `NavMeshAgent`, then enable the scene's [NavMesh](/gameplay/navigation/index.md). Configure walking and running speeds on the layer. It uses the agent for paths and avoidance, and handles [navigation links](/gameplay/navigation/navmesh-links.md).
 
-![An NPC traverses ladder, jump, drop and climb links. 1920x1080](images/navigation-links.mp4)
+![An NPC traverses ladder, jump, drop and climb links. 1920x1080](./images/navigation-links.mp4)
 
 When driving an NPC yourself, you can request movement directly:
 
@@ -29,7 +29,7 @@ Call `Movement.Stop()` to cancel the move.
 
 **Hover Height** sets its height above the destination. **Bounds** can keep it in air, in water, or allow both.
 
-![Flying NPCs move without a NavMesh. 1920x1080](images/flying.mp4)
+![Flying NPCs move without a NavMesh. 1920x1080](./images/flying.mp4)
 
 An NPC can have more than one movement layer. Enable the one it starts with, then switch on the host with `SetMovement()`:
 

@@ -45,7 +45,7 @@ var threat = Senses.FindNearestVisible( Disposition.Fearful );
 
 Targets need an active `Component.IDamageable`.
 
-![An NPC stops attacking when its target's damageable component is disabled. 1920x1080](images/live-targets.mp4)
+![An NPC stops attacking when its target's damageable component is disabled. 1920x1080](./images/live-targets.mp4)
 
 # Disturbances
 
@@ -61,4 +61,4 @@ Inside an NPC, `EmitStimulus( StimulusKinds.Gunshot )` is the shorter version. K
 
 `Senses.Disturbance` contains the nearest active stimulus within that stimulus's radius, ignoring the NPC's own. `HearingRange` doesn't apply. Your schedule decides how to react.
 
-![Idle NPCs investigate a gunshot stimulus. 1920x1080](images/stimulus.mp4)
+![Idle NPCs investigate a gunshot stimulus. 1920x1080](./images/stimulus.mp4)

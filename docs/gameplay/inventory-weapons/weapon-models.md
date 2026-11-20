@@ -15,7 +15,7 @@ A weapon has two looks. The view model renders for the holding player in first p
 
 `HoldType` uses a shared `WeaponHolds` name, such as `pistol` or `rifle`. The holder's animator maps this and `Handedness` to its model. If you use your own name, set `HoldFallback` to a `WeaponHolds` name for holders that don't know it.
 
-`PlayerController` handles the player's body animation. NPCs use their own [animator](../npcs/movement.md#animation).
+`PlayerController` handles the player's body animation. NPCs use their own [animator](/gameplay/npcs/movement.md#animation).
 
 ## Attachments
 
