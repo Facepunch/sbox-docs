@@ -1,0 +1,9 @@
+items:
+- name: Schedules & Tasks
+  href: behaviour.md
+- name: Senses & Relationships
+  href: senses.md
+- name: Movement & Animation
+  href: movement.md
+- name: Combat & Damage
+  href: combat.md

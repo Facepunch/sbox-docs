@@ -2,7 +2,7 @@
 title: "Inventory & Weapons"
 icon: "🧰"
 created: 2026-07-04
-updated: 2026-07-04
+updated: 2026-11-20
 ---
 
 # Inventory & Weapons
@@ -11,7 +11,7 @@ The engine ships with an inventory and weapon system, modelled loosely on Garry'
 
 There are three components:
 
-* [BaseInventoryComponent](/gameplay/inventory-weapons/inventory.md) goes on your player. It holds items, tracks which one is deployed, and owns the reserve ammo pool.
+* [BaseInventoryComponent](/gameplay/inventory-weapons/inventory.md) goes on your player or NPC. It holds items, tracks which one is deployed, and owns the reserve ammo pool.
 * [BaseInventoryItem](/gameplay/inventory-weapons/inventory.md) is anything that can live in an inventory. Usable as-is for a simple pickup.
 * [BaseCombatWeapon](/gameplay/inventory-weapons/weapons.md) builds on that to make guns, melee weapons and tools.
 

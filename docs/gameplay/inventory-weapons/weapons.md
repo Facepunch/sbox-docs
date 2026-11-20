@@ -2,12 +2,12 @@
 title: "Weapons"
 icon: "🔫"
 created: 2026-07-04
-updated: 2026-07-04
+updated: 2026-11-20
 ---
 
 # Weapons
 
-`BaseCombatWeapon` is the base for anything a player holds and uses. Guns work straight out of the box, and it stretches to melee weapons and tools with a small subclass.
+`BaseCombatWeapon` is the base for anything a player holds and uses. Guns work straight out of the box, and it stretches to melee weapons and tools with a small subclass. [NPCs](../npcs/combat.md) can use the same weapons.
 
 ## Setting up a gun
 
@@ -37,7 +37,7 @@ Override `PrimaryAttack` or `SecondaryAttack` to change what firing does. The ba
 
 ### Melee weapons
 
-A melee weapon is a short range trace instead of a ballistic volley. Turn the Ammo feature off and override the attack:
+A melee weapon is a short range trace instead of a ballistic volley. Turn the Ammo feature off, set **Attack Damage Tags** to `melee`, and override the attack:
 
 ```csharp
 public class Crowbar : BaseCombatWeapon

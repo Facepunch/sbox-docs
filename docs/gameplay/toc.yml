@@ -5,6 +5,8 @@ items:
   href: input/
 - name: Inventory & Weapons
   href: inventory-weapons/
+- name: NPCs
+  href: npcs/
 - name: Navigation
   href: navigation/
 - name: Terrain

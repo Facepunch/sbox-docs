@@ -1,3 +1,5 @@
 items:
+- name: NPCs & Weapons
+  href: npcs-weapons.md
 - name: Creating Mounts
   href: creating-mounts.md

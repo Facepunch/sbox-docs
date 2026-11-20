@@ -2,7 +2,7 @@
 title: "Game Mounts"
 icon: "🎮"
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-11-20
 ---
 
 # Game Mounts
@@ -16,3 +16,7 @@ Mounted assets are runtime only, it's not possible to publish or ship them with 
 Each mount is a plugin that knows how to find and convert assets from a specific game. When you enable a mount, it detects the game's install directory via Steam, scans for assets, and converts them into s&box compatible assets all at runtime. Mounted assets are accessed via `mount://` paths and lazy-loaded on demand.
 
 Mounts are toggled in the **Asset Browser** or used in the **Sandbox Spawn Menu**. The system is extensible - anyone can write a new mount and contribute it to s&box via pull request.
+
+## NPCs and Weapons
+
+Mounts can also provide [NPC and weapon prefabs](npcs-weapons.md). Load them by their `mount://` paths and use them in your own game.

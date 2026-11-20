@@ -2,7 +2,7 @@
 title: "Creating Mounts"
 icon: "🛠️"
 created: 2026-04-19
-updated: 2026-11-15
+updated: 2026-11-20
 ---
 
 # Creating Mounts
@@ -160,3 +160,13 @@ loader.Flags = ResourceFlags.DeveloperOnly; // Only visible in asset browser, no
 | `DeveloperOnly` | Hidden from game, only visible in the asset browser |
 | `NeverRagdoll`  | Don't treat this model as ragdollable               |
 | `Effect`        | Non-solid, no physics                               |
+
+## NPC and Weapon Prefabs
+
+A mount can supply working NPCs and weapons, not just their models. Register them as `ResourceType.PrefabFile` and have the loader return a `PrefabFile` built with `Sandbox.Mounting.PrefabBuilder`.
+
+Use `WithName( Path )` to name the prefab after the loader's mount path. Build the GameObjects and components inside `builder.Scope()`, then call `builder.Create()` after leaving the scope. `WithMetadata( "Title", "Guard" )` sets the prefab's display title; `Description` and `Group` work the same way.
+
+You can build on the engine's [NPC](../gameplay/npcs/index.md) and [weapon](../gameplay/inventory-weapons/weapons.md) components, or use your own. A converted model still needs an animator that understands its animations. The engine's `CitizenNpcAnimator` is for citizen graphs, not arbitrary rigs.
+
+Register a prefab only when the installation contains the assets it needs.

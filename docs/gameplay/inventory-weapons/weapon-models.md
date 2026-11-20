@@ -2,7 +2,7 @@
 title: "Weapon Models"
 icon: "✋"
 created: 2026-07-04
-updated: 2026-10-23
+updated: 2026-11-20
 ---
 
 # Weapon Models
@@ -13,7 +13,9 @@ updated: 2026-10-23
 
 A weapon has two looks. The view model renders for the holding player in first person, and the world model attaches to the holder's hand bone (`HoldBone`) for everyone else. Assign `ViewModelPrefab` and `WorldModelPrefab` on the weapon, each with a BaseWeaponModel on it.
 
-`HoldType` and `Handedness` on the weapon set how the holder carries it. They drive the "holdtype" parameters on the holder's animgraph, so the Human character stands right with a pistol, a rifle or nothing at all.
+`HoldType` uses a shared `WeaponHolds` name, such as `pistol` or `rifle`. The holder's animator maps this and `Handedness` to its model. If you use your own name, set `HoldFallback` to a `WeaponHolds` name for holders that don't know it.
+
+`PlayerController` handles the player's body animation. NPCs use their own [animator](../npcs/movement.md#animation).
 
 ## Attachments
 
