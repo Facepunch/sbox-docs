@@ -3,6 +3,8 @@ items:
   href: running-local-projects.md
 - name: Serverside Code
   href: serverside-code.md
+- name: Workshop for Dedicated Servers
+  href: server-workshop.md
 - name: Mounts for Dedicated Servers
   href: server-mounts.md
 - name: User Permissions
