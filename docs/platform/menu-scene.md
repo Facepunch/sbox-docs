@@ -2,7 +2,7 @@
 title: "Menu Scene"
 icon: "🏠"
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-25
 ---
 
 # Menu Scene
@@ -10,10 +10,6 @@ updated: 2026-11-11
 Your game can have its own main menu. When someone picks your game in s&box, it loads straight onto your menu scene - your title screen, your background, your buttons - with the platform dock along the bottom so they can still switch games.
 
 Without one, players get a default page made from your Workshop item, and your game isn't loaded until they hit play.
-
-:::info
-This is part of the new platform menu, which is opt-in for now - `menu_platform 1`, or **Settings > Game**.
-:::
 
 ## Setting it up
 
@@ -41,7 +37,7 @@ public sealed class MainMenu : Component
 
 You pick where to go, so you can have more than one button - a singleplayer scene, a multiplayer one, a tutorial.
 
-Your Startup Scene is still used when the game's launched some other way, like with a map, or with the platform menu off.
+Your Startup Scene is still used when the game's launched some other way, like with a map.
 
 ## Lobby, map and settings
 

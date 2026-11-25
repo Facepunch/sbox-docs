@@ -2,7 +2,7 @@
 title: "FAQ"
 icon: "ℹ️"
 created: 2024-02-13
-updated: 2025-09-05
+updated: 2026-11-25
 ---
 
 # FAQ
@@ -13,7 +13,7 @@ updated: 2025-09-05
 
 ## Are you using workshop?
 
-No. We've made a system where you don't have to install addons. This is what [sbox.game](https://sbox.game) is. In the same way, you don't have to install videos from YouTube; you just download what you need.
+Yes. The s&box menu uses Steam Workshop to help players find games and maps. Games, maps and addons are all published to the Workshop.
 
 ## Why not Unity? Why not UE?
 
