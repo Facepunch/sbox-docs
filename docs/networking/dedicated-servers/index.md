@@ -16,6 +16,15 @@ Once SteamCMD has been installed, you can install or update the [s&box Server](h
 
 `./steamcmd +login anonymous +app_update 1892930 validate +quit`
 
+:::warning
+If SteamCMD prints `ERROR! Failed to install app '1892930' (Missing configuration)`, or an existing install keeps saying `already up to date` while a newer build is out, sign in with a Steam account instead of `anonymous`:
+
+`./steamcmd +login your_steam_username +app_update 1892930 validate +quit`
+
+SteamCMD asks for the password and Steam Guard code the first time and remembers the login after that, so update scripts can keep using `+login your_steam_username`.
+
+:::
+
 
 :::info
 You can use `-beta staging` to host a server on the staging branch, this might not be playable by everyone though.
